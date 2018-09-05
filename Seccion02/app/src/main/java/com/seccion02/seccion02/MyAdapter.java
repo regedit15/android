@@ -49,7 +49,7 @@ public class MyAdapter extends BaseAdapter {
 
         if (convertView == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(contex);
-            convertView = layoutInflater.inflate(R.layout.item_lista, null);
+            convertView = layoutInflater.inflate(layout, null);
 
             viewHolder = new ViewHolder();
             viewHolder.textView = convertView.findViewById(R.id.textView);
