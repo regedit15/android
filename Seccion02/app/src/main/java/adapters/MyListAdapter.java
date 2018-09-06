@@ -1,4 +1,4 @@
-package com.seccion02.seccion02;
+package adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,18 +8,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.seccion02.seccion02.R;
+
 import java.util.List;
 
 import models.Frutas;
 
-public class MyAdapter extends BaseAdapter {
+public class MyListAdapter extends BaseAdapter {
 
     private Context contex;
     private int layout;
     private List<Frutas> frutas;
     private ViewHolder viewHolder;
 
-    public MyAdapter(Context contex, int layout, List<Frutas> frutas) {
+    public MyListAdapter(Context contex, int layout, List<Frutas> frutas) {
         this.contex = contex;
         this.layout = layout;
         this.frutas = frutas;
@@ -55,9 +57,9 @@ public class MyAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(layout, null);
 
             viewHolder = new ViewHolder();
-            viewHolder.tituloFruta = convertView.findViewById(R.id.tituloFruta2);
-            viewHolder.descripcionFruta = convertView.findViewById(R.id.descripcionFruta2);
-            viewHolder.imagenFruta = convertView.findViewById(R.id.imagenFruta2);
+            viewHolder.tituloFruta = convertView.findViewById(R.id.tituloFruta);
+            viewHolder.descripcionFruta = convertView.findViewById(R.id.descripcionFruta);
+            viewHolder.imagenFruta = convertView.findViewById(R.id.imagenFruta);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
