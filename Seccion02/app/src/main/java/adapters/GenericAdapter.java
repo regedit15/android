@@ -14,14 +14,14 @@ import java.util.List;
 
 import models.Frutas;
 
-public class MyGridAdapter extends BaseAdapter {
+public class GenericAdapter extends BaseAdapter {
 
     private Context contex;
     private int layout;
     private List<Frutas> frutas;
     private ViewHolder viewHolder;
 
-    public MyGridAdapter(Context contex, int layout, List<Frutas> frutas) {
+    public GenericAdapter(Context contex, int layout, List<Frutas> frutas) {
         this.contex = contex;
         this.layout = layout;
         this.frutas = frutas;
