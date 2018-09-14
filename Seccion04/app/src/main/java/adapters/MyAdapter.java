@@ -70,11 +70,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			// ----------------------------------------------
 
 			itemView.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					// se le pasa el nombre y la posicion
-					onItemClickListener.onItemClick(pelicula, getAdapterPosition());
-				}
+					@Override
+					public void onClick(View v) {
+						// se le pasa el nombre y la posicion
+						onItemClickListener.onItemClick(pelicula, getAdapterPosition());
+					}
 			});
 		}
 	}
