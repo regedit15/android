@@ -49,8 +49,8 @@ public class Fruta {
 	}
 
 	public void agregarCantidad(int cantidad) {
-		if (cantidad < LIMITE_CANTIDAD) {
-			this.cantidad = +cantidad;
+		if (this.cantidad < LIMITE_CANTIDAD) {
+			this.cantidad += cantidad;
 		}
 	}
 

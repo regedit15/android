@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// Enviamos el parametro this para tener tanto el activity como el contexto
-		adapter = new MyAdapter(frutas, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
+		adapter = new MyAdapter(frutas, R.layout.recycler_view_item, this, new MyAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(Fruta fruta, int position) {
 				fruta.agregarCantidad(1);
 				adapter.notifyItemChanged(position);
 				// eliminarItem(position);
-				// Toast.makeText(MainActivity.this, nombre + " eliminado", Toast.LENGTH_SHORT).show();
+				// Toast.makeText(MainActivity.this, " eliminado222", Toast.LENGTH_SHORT).show();
 			}
 		});
 

@@ -1,9 +1,12 @@
 package com.seccion02.seccion04.adapters;
 
-import android.content.Context;
+import android.app.Activity;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -20,21 +23,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 	private List<Fruta> frutas = new ArrayList<Fruta>();
 	private int layout;
+	private Activity activity;
 	private OnItemClickListener onItemClickListener;
 	// Este contexto es necesario para la libreria Picasso
-	private Context context;
 
-	public MyAdapter(List<Fruta> frutas, int layout, OnItemClickListener onItemClickListener) {
+	public MyAdapter(List<Fruta> frutas, int layout, Activity activity, OnItemClickListener onItemClickListener) {
 		this.frutas = frutas;
 		this.layout = layout;
 		this.onItemClickListener = onItemClickListener;
+		this.activity = activity;
 	}
 
 	@NonNull
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-		context = parent.getContext();
-		View view = LayoutInflater.from(context).inflate(layout, parent, false);
+		View view = LayoutInflater.from(activity).inflate(layout, parent, false);
 		ViewHolder viewHolder = new ViewHolder(view);
 		return viewHolder;
 	}
@@ -50,7 +53,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		return frutas.size();
 	}
 
-	public static class ViewHolder extends RecyclerView.ViewHolder {
+	public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 		public TextView textViewTitulo;
 		public TextView textViewDescripcion;
 		public TextView textViewCantidad;
@@ -62,6 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			this.textViewDescripcion = itemView.findViewById(R.id.textViewDescripcion);
 			this.textViewCantidad = itemView.findViewById(R.id.textViewCantidad);
 			this.imageView = itemView.findViewById(R.id.imageView);
+			itemView.setOnCreateContextMenuListener(this);
 		}
 
 		public void bind(final Fruta fruta, final OnItemClickListener onItemClickListener) {
@@ -69,7 +73,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			// -- Se se setean todos los elementos del layout
 			textViewTitulo.setText(fruta.getNombre());
 			textViewDescripcion.setText(fruta.getDescripcion());
+
+			//Nota: si se le pasa un int lo va a tomar como una referencia de un string ej: R.string.app_name
 			textViewCantidad.setText(fruta.getCantidad().toString());
+
+
+			if (fruta.getCantidad() == fruta.LIMITE_CANTIDAD) {
+				// Lo seteamos en color rojo
+				textViewCantidad.setTextColor(R.color.textoRojito);
+				// Lo ponemos en negrita
+				textViewCantidad.setTypeface(null, Typeface.BOLD);
+			} else {
+				// Lo seteamos en color rojo
+				textViewCantidad.setTextColor(R.color.textoGris);
+				// Lo ponemos en negrita
+				textViewCantidad.setTypeface(null, Typeface.NORMAL);
+			}
+
 			// Fit significa que nos abarque todo el contenido
 			Picasso.get().load(fruta.getImagen()).fit().into(imageView);
 			// imageView.setImageResource(fruta.getImagen());
@@ -83,6 +103,47 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 				}
 			});
 		}
+
+		// -------------------------------------------
+		@Override
+		public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+			Fruta frutaSeleccionada = frutas.get(this.getAdapterPosition());
+			menu.setHeaderTitle(frutaSeleccionada.getNombre());
+			// menu.setHeaderIcon(frutaSeleccionada.getImagen());
+
+			activity.getMenuInflater().inflate(R.menu.context_menu, menu);
+			// Recorremos los items del listado y le vamos seteando un objeto, en este caso el MyAdapter
+			// que implementa el onMenuItemClick
+			for (int i = 0; i < menu.size(); i++) {
+				menu.getItem(i).setOnMenuItemClickListener(this);
+			}
+		}
+
+		@Override
+		public boolean onMenuItemClick(MenuItem item) {
+			boolean resultado;
+
+
+			switch (item.getItemId()) {
+				case R.id.itemEliminar:
+					frutas.remove(getAdapterPosition());
+					// refrezca el cambio
+					notifyItemRemoved(getAdapterPosition());
+					resultado = true;
+					break;
+				case R.id.itemResetearCantidad:
+					frutas.get(getAdapterPosition()).resetearCantidad();
+					// refrezca el cambio
+					notifyItemChanged(getAdapterPosition());
+					resultado = true;
+					break;
+				default:
+					resultado = false;
+			}
+			return resultado;
+		}
+		// -------------------------------------------
 	}
 
 	public interface OnItemClickListener {
