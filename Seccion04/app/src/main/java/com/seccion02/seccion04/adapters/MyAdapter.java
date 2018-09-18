@@ -1,4 +1,4 @@
-package adapters;
+package com.seccion02.seccion04.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Pelicula;
+import com.seccion02.seccion04.models.Pelicula;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
@@ -65,16 +65,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 			// -- Se se setean todos los elementos del layout
 			textViewDescripcion.setText(pelicula.getNombre());
+			// Fit significa que nos abarque todo el contenido
 			Picasso.get().load(pelicula.getImagen()).fit().into(imageView);
 			// imageView.setImageResource(pelicula.getImagen());
 			// ----------------------------------------------
 
 			itemView.setOnClickListener(new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						// se le pasa el nombre y la posicion
-						onItemClickListener.onItemClick(pelicula, getAdapterPosition());
-					}
+				@Override
+				public void onClick(View v) {
+					// se le pasa el nombre y la posicion
+					onItemClickListener.onItemClick(pelicula, getAdapterPosition());
+				}
 			});
 		}
 	}

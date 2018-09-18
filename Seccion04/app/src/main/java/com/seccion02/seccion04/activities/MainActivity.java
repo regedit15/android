@@ -1,4 +1,4 @@
-package com.seccion02.seccion04;
+package com.seccion02.seccion04.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,17 +8,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.seccion02.seccion04.R;
+import com.seccion02.seccion04.adapters.MyAdapter;
+import com.seccion02.seccion04.models.Pelicula;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.MyAdapter;
-import models.Pelicula;
-
 public class MainActivity extends AppCompatActivity {
-	private List<Pelicula> peliculas;
+
 	private RecyclerView recyclerView;
 	private RecyclerView.Adapter adapter;
 	private RecyclerView.LayoutManager layoutManager;
+
+	private List<Pelicula> peliculas;
 	private int contador = 0;
 
 	@Override
@@ -39,10 +42,15 @@ public class MainActivity extends AppCompatActivity {
 		// mozaicos que unas son mas grandes que otras, medias desordenadas
 		// layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 		// -----------------------------------------------
+
+
+		// Enviamos el parametro this para tener tanto el activity como el contexto
 		adapter = new MyAdapter(peliculas, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(Pelicula pelicula, int position) {
-				eliminarItem(position);
+				pelicula.agregarCantidad(1);
+				adapter.notifyItemChanged(position);
+				// eliminarItem(position);
 				// Toast.makeText(MainActivity.this, nombre + " eliminado", Toast.LENGTH_SHORT).show();
 			}
 		});
@@ -71,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 		switch (item.getItemId()) {
 			case R.id.itemMenuAgregar:
-				agregarItem(0);
+				agregarItem();
 				resultado = true;
 				break;
 			default:
@@ -81,10 +89,10 @@ public class MainActivity extends AppCompatActivity {
 		return resultado;
 	}
 
-	private void agregarItem(int posicion) {
-		peliculas.add(posicion, new Pelicula("Nuevo Nombre " + contador++, R.drawable.imagen_default));
-		adapter.notifyItemInserted(posicion);
-		layoutManager.scrollToPosition(posicion);
+	private void agregarItem() {
+		peliculas.add(new Pelicula("Nuevo Nombre " + contador++, "Descripcion default", R.drawable.imagen_default));
+		adapter.notifyItemInserted(peliculas.size());
+		layoutManager.scrollToPosition(peliculas.size());
 	}
 
 	private void eliminarItem(int posicion) {
@@ -94,11 +102,11 @@ public class MainActivity extends AppCompatActivity {
 
 	private void setearLista() {
 		peliculas = new ArrayList<Pelicula>();
-		peliculas.add(new Pelicula("Fury", R.drawable.fury));
-		peliculas.add(new Pelicula("Batman", R.drawable.joker));
-		peliculas.add(new Pelicula("Wolf of Wall Street", R.drawable.wolf_of_wall_street));
-		peliculas.add(new Pelicula("Hot Line Maiame", R.drawable.maiame));
-		peliculas.add(new Pelicula("Oblivion", R.drawable.oblivion));
-		peliculas.add(new Pelicula("The Good the Bad and the Ugly", R.drawable.the_good_the_bad_and_the_ugly));
+		peliculas.add(new Pelicula("Fury", "Descripcion 1", R.drawable.fury));
+		peliculas.add(new Pelicula("Batman", "", R.drawable.joker));
+		peliculas.add(new Pelicula("Wolf of Wall Street", "Descripcion 2", R.drawable.wolf_of_wall_street));
+		peliculas.add(new Pelicula("Hot Line Maiame", "Descripcion 3", R.drawable.maiame));
+		peliculas.add(new Pelicula("Oblivion", "Descripcion 4", R.drawable.oblivion));
+		peliculas.add(new Pelicula("The Good the Bad and the Ugly", "Descripcion 5", R.drawable.the_good_the_bad_and_the_ugly));
 	}
 }
