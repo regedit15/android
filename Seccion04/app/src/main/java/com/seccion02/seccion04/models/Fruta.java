@@ -1,15 +1,15 @@
 package com.seccion02.seccion04.models;
 
-public class Pelicula {
+public class Fruta {
 
 	private String nombre;
 	private String descripcion;
 	private int imagen;
-	private int cantidad;
+	private Integer cantidad;
 	public static final int LIMITE_CANTIDAD = 10;
 	public static final int LIMITE_CANTIDAD_DEFAULT = 0;
 
-	public Pelicula(String nombre, String descripcion, int imagen) {
+	public Fruta(String nombre, String descripcion, int imagen) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.imagen = imagen;
@@ -38,6 +38,14 @@ public class Pelicula {
 
 	public void setImagen(int imagen) {
 		this.imagen = imagen;
+	}
+
+	public Integer getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public void agregarCantidad(int cantidad) {

@@ -10,23 +10,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.seccion02.seccion04.R;
+import com.seccion02.seccion04.models.Fruta;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.seccion02.seccion04.models.Pelicula;
-
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-	private List<Pelicula> peliculas = new ArrayList<Pelicula>();
+	private List<Fruta> frutas = new ArrayList<Fruta>();
 	private int layout;
 	private OnItemClickListener onItemClickListener;
 	// Este contexto es necesario para la libreria Picasso
 	private Context context;
 
-	public MyAdapter(List<Pelicula> peliculas, int layout, OnItemClickListener onItemClickListener) {
-		this.peliculas = peliculas;
+	public MyAdapter(List<Fruta> frutas, int layout, OnItemClickListener onItemClickListener) {
+		this.frutas = frutas;
 		this.layout = layout;
 		this.onItemClickListener = onItemClickListener;
 	}
@@ -43,44 +42,50 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	// metodo que se ejecuta cuando se crea el RecyclerView. Realiza el volcado de datos
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-		holder.bind(peliculas.get(position), onItemClickListener);
+		holder.bind(frutas.get(position), onItemClickListener);
 	}
 
 	@Override
 	public int getItemCount() {
-		return peliculas.size();
+		return frutas.size();
 	}
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
+		public TextView textViewTitulo;
 		public TextView textViewDescripcion;
+		public TextView textViewCantidad;
 		public ImageView imageView;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
+			this.textViewTitulo = itemView.findViewById(R.id.textViewTitulo);
 			this.textViewDescripcion = itemView.findViewById(R.id.textViewDescripcion);
+			this.textViewCantidad = itemView.findViewById(R.id.textViewCantidad);
 			this.imageView = itemView.findViewById(R.id.imageView);
 		}
 
-		public void bind(final Pelicula pelicula, final OnItemClickListener onItemClickListener) {
+		public void bind(final Fruta fruta, final OnItemClickListener onItemClickListener) {
 
 			// -- Se se setean todos los elementos del layout
-			textViewDescripcion.setText(pelicula.getNombre());
+			textViewTitulo.setText(fruta.getNombre());
+			textViewDescripcion.setText(fruta.getDescripcion());
+			textViewCantidad.setText(fruta.getCantidad().toString());
 			// Fit significa que nos abarque todo el contenido
-			Picasso.get().load(pelicula.getImagen()).fit().into(imageView);
-			// imageView.setImageResource(pelicula.getImagen());
+			Picasso.get().load(fruta.getImagen()).fit().into(imageView);
+			// imageView.setImageResource(fruta.getImagen());
 			// ----------------------------------------------
 
 			itemView.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					// se le pasa el nombre y la posicion
-					onItemClickListener.onItemClick(pelicula, getAdapterPosition());
+					onItemClickListener.onItemClick(fruta, getAdapterPosition());
 				}
 			});
 		}
 	}
 
 	public interface OnItemClickListener {
-		void onItemClick(Pelicula pelicula, int position);
+		void onItemClick(Fruta fruta, int position);
 	}
 }

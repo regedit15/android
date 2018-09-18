@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.seccion02.seccion04.R;
 import com.seccion02.seccion04.adapters.MyAdapter;
-import com.seccion02.seccion04.models.Pelicula;
+import com.seccion02.seccion04.models.Fruta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 	private RecyclerView.Adapter adapter;
 	private RecyclerView.LayoutManager layoutManager;
 
-	private List<Pelicula> peliculas;
+	private List<Fruta> frutas;
 	private int contador = 0;
 
 	@Override
@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// Enviamos el parametro this para tener tanto el activity como el contexto
-		adapter = new MyAdapter(peliculas, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
+		adapter = new MyAdapter(frutas, R.layout.recycler_view_item, new MyAdapter.OnItemClickListener() {
 			@Override
-			public void onItemClick(Pelicula pelicula, int position) {
-				pelicula.agregarCantidad(1);
+			public void onItemClick(Fruta fruta, int position) {
+				fruta.agregarCantidad(1);
 				adapter.notifyItemChanged(position);
 				// eliminarItem(position);
 				// Toast.makeText(MainActivity.this, nombre + " eliminado", Toast.LENGTH_SHORT).show();
@@ -90,23 +90,32 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void agregarItem() {
-		peliculas.add(new Pelicula("Nuevo Nombre " + contador++, "Descripcion default", R.drawable.imagen_default));
-		adapter.notifyItemInserted(peliculas.size());
-		layoutManager.scrollToPosition(peliculas.size());
+		frutas.add(new Fruta("Nueva Fruta " + contador++, "Descripcion default", R.drawable.question));
+		adapter.notifyItemInserted(frutas.size());
+		layoutManager.scrollToPosition(frutas.size());
 	}
 
 	private void eliminarItem(int posicion) {
-		peliculas.remove(posicion);
+		frutas.remove(posicion);
 		adapter.notifyItemRemoved(posicion);
 	}
 
 	private void setearLista() {
-		peliculas = new ArrayList<Pelicula>();
-		peliculas.add(new Pelicula("Fury", "Descripcion 1", R.drawable.fury));
-		peliculas.add(new Pelicula("Batman", "", R.drawable.joker));
-		peliculas.add(new Pelicula("Wolf of Wall Street", "Descripcion 2", R.drawable.wolf_of_wall_street));
-		peliculas.add(new Pelicula("Hot Line Maiame", "Descripcion 3", R.drawable.maiame));
-		peliculas.add(new Pelicula("Oblivion", "Descripcion 4", R.drawable.oblivion));
-		peliculas.add(new Pelicula("The Good the Bad and the Ugly", "Descripcion 5", R.drawable.the_good_the_bad_and_the_ugly));
+		frutas = new ArrayList<Fruta>();
+		frutas.add(new Fruta("Ananá", "Soy un ananá muy rica", R.drawable.anana));
+		frutas.add(new Fruta("Banana", "Soy una banana muy rica", R.drawable.banana));
+		frutas.add(new Fruta("Brocoli", "Soy un brocoli muy rico", R.drawable.brocoli));
+		frutas.add(new Fruta("Cebolla", "Soy una cebolla muy rica", R.drawable.cebolla));
+		frutas.add(new Fruta("Kiwi", "Soy un kiwi muy rico", R.drawable.kiwi));
+		frutas.add(new Fruta("Lechuga", "Soy un lechuga muy rica", R.drawable.lechuga));
+		frutas.add(new Fruta("Limón", "Soy un limón muy rico", R.drawable.limon));
+		frutas.add(new Fruta("Manzana", "Soy una manzana muy rica", R.drawable.manzana));
+		frutas.add(new Fruta("Morrón", "Soy un morrón muy rico", R.drawable.morron));
+		frutas.add(new Fruta("Naranja", "Soy un naranja muy rica", R.drawable.naranja));
+		frutas.add(new Fruta("Pepino", "Soy un pepin muy rico", R.drawable.pepino));
+		frutas.add(new Fruta("Pera", "Soy una pera muy rica", R.drawable.pera));
+		frutas.add(new Fruta("Pimiento", "Soy un pimiento muy rico", R.drawable.pimiento));
+		frutas.add(new Fruta("Sandía", "Soy una sandía muy rica", R.drawable.sandia));
+		frutas.add(new Fruta("Uva", "Soy una uva muy rica", R.drawable.uva));
 	}
 }
