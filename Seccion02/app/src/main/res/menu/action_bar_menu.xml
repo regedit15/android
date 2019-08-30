@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/itemAgregarFruta"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Agregar Item"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemVistaLista"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="Ver Lista"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemVistaGrid"
+        android:icon="@android:drawable/ic_dialog_dialer"
+        android:title="Ver Grilla"
+        app:showAsAction="always" />
+</menu>
