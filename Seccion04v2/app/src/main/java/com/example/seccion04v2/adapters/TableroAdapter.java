@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.seccion04v2.R;
 import com.example.seccion04v2.models.Tablero;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class TableroAdapter extends BaseAdapter {
@@ -61,8 +62,16 @@ public class TableroAdapter extends BaseAdapter {
 
         Tablero tablero = tableros.get(posicion);
         viewHolder.titulo.setText(tablero.getTitulo());
-        viewHolder.notas.setText("Notas: " + tablero.getNotas().size());
-        viewHolder.fecha.setText(tablero.getFechaCreacion().toString());
+
+        String nota;
+
+        if(tablero.getNotas().size() == 1){
+            nota = "nota";
+        }else{
+            nota = "nota";
+        }
+        viewHolder.notas.setText(tablero.getNotas().size()  + nota);
+        viewHolder.fecha.setText( new SimpleDateFormat("dd/MM/yy").format(tablero.getFechaCreacion()));
 
         return convertView;
     }

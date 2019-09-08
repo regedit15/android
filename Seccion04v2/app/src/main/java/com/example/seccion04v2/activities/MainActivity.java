@@ -1,13 +1,12 @@
 package com.example.seccion04v2.activities;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.example.seccion04v2.R;
@@ -28,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 	private TableroAdapter tableroAdapter;
 	private RealmResults<Tablero> tableros;
 
+	@SuppressLint("WrongViewCast")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
 		tableros = realm.where(Tablero.class).findAll();
 
 		tableroAdapter = new TableroAdapter(this, tableros, R.layout.list_view_item_tablero);
-		listView = findViewById(R.id.lvLista);
+		listView = findViewById(R.id.lvTableros);
 
 		listView.setAdapter(tableroAdapter);
 	}
 
-	public void nuevoTableroClick(View view){
+	public void crearTableroClick(View view) {
 		showAlertForCreatingBoard("Titulo", "mensaje");
 	}
 
