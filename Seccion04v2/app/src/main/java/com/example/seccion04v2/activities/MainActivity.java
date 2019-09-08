@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void crearTableroClick(View view) {
-		showAlertForCreatingBoard("Titulo", "mensaje");
+		showAlertForCreatingBoard("Alta de nota", "Ingrese el titulo de la nota");
 	}
 
 	private void showAlertForCreatingBoard(String titulo, String mensaje){
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		if(mensaje != null){
-			builder.setMessage(titulo);
+			builder.setMessage(mensaje);
 		}
 
 		View vieyInflatter = LayoutInflater.from(this).inflate(R.layout.alta_dialogo, null);
