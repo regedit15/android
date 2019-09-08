@@ -66,9 +66,9 @@ public class TableroAdapter extends BaseAdapter {
         String nota;
 
         if(tablero.getNotas().size() == 1){
-            nota = "nota";
+            nota = " nota";
         }else{
-            nota = "nota";
+            nota = "notas";
         }
         viewHolder.notas.setText(tablero.getNotas().size()  + nota);
         viewHolder.fecha.setText( new SimpleDateFormat("dd/MM/yy").format(tablero.getFechaCreacion()));
