@@ -2,9 +2,11 @@ package com.example.seccion04v2.activities;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -12,15 +14,15 @@ import android.widget.Toast;
 import com.example.seccion04v2.R;
 import com.example.seccion04v2.adapters.TableroAdapter;
 import com.example.seccion04v2.models.Tablero;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RealmChangeListener<RealmResults<Tablero>>, AdapterView.OnItemClickListener {
 
 	private Realm realm;
 	private ListView listView;
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 		realm = Realm.getDefaultInstance();
 		tableros = realm.where(Tablero.class).findAll();
 
+		tableros.addChangeListener(this);
+
 		tableroAdapter = new TableroAdapter(this, tableros, R.layout.list_view_item_tablero);
 		listView = findViewById(R.id.lvTableros);
 
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void crearTableroClick(View view) {
-		showAlertForCreatingBoard("Alta de nota", "Ingrese el titulo de la nota");
+		showAlertForCreatingBoard("Alta de Tablero", "Ingrese el título");
 	}
 
 	private void showAlertForCreatingBoard(String titulo, String mensaje){
@@ -57,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
 			builder.setMessage(mensaje);
 		}
 
-		View vieyInflatter = LayoutInflater.from(this).inflate(R.layout.alta_dialogo, null);
+		View vieyInflatter = LayoutInflater.from(this).inflate(R.layout.popup_alta_tablero, null);
 		builder.setView(vieyInflatter);
 
-		final EditText input = vieyInflatter.findViewById(R.id.etTitulo);
+		final EditText input = vieyInflatter.findViewById(R.id.etTableroTitulo);
 
 		builder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
 			@Override
@@ -82,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
 	private void crearTablero(final String titulo) {
 
 		// Se puede hacer de esta forma
-		realm.beginTransaction();
-		realm.commitTransaction();
+		//realm.beginTransaction();
+		//realm.commitTransaction();
 
 		// O de esta
 		realm.executeTransaction(new Realm.Transaction() {
@@ -94,4 +98,16 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 	}
+
+	@Override
+	public void onChange(RealmResults<Tablero> tableros) {
+		tableroAdapter.notifyDataSetChanged();
+	}
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long id) {
+        Intent intent = new Intent(MainActivity.this, NotaActivity.class);
+        intent.putExtra( "idTablero", tableros.get(posicion).getId());
+        startActivity(intent);
+    }
 }

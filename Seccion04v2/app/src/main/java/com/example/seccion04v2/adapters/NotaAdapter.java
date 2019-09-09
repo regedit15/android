@@ -8,33 +8,33 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.seccion04v2.R;
+import com.example.seccion04v2.models.Nota;
 import com.example.seccion04v2.models.Tablero;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class TableroAdapter extends BaseAdapter {
+public class NotaAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Tablero> tableros;
+    private List<Nota> notas;
     private int layout;
 
 
-    public TableroAdapter(Context context, List<Tablero> tableros, int layout) {
+    public NotaAdapter(Context context, List<Nota> notas, int layout) {
         this.context = context;
-        this.tableros = tableros;
+        this.notas = notas;
         this.layout = layout;
     }
 
-
     @Override
     public int getCount() {
-        return tableros.size();
+        return notas.size();
     }
 
     @Override
-    public Tablero getItem(int posicion) {
-        return tableros.get(posicion);
+    public Nota getItem(int posicion) {
+        return notas.get(posicion);
     }
 
     @Override
@@ -51,36 +51,25 @@ public class TableroAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(layout, null);
             viewHolder = new ViewHolder();
 
-            viewHolder.titulo = convertView.findViewById(R.id.tvTableroTitulo);
-            viewHolder.notas = convertView.findViewById(R.id.tvTableroNotas);
-            viewHolder.fecha = convertView.findViewById(R.id.tvTableroFecha);
+            viewHolder.descripcion = convertView.findViewById(R.id.tvNotaDescripcion);
+            viewHolder.fecha = convertView.findViewById(R.id.tvNotaFecha);
 
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Tablero tablero = tableros.get(posicion);
-        viewHolder.titulo.setText(tablero.getTitulo());
+        Nota nota = notas.get(posicion);
 
-        String nota;
-
-        if(tablero.getNotas().size() == 1){
-            nota = " nota";
-        }else{
-            nota = " notas";
-        }
-        viewHolder.notas.setText(tablero.getNotas().size()  + nota);
-        viewHolder.fecha.setText( new SimpleDateFormat("dd/MM/yy").format(tablero.getFechaCreacion()));
+        viewHolder.descripcion.setText(nota.getDescripcion());
+        viewHolder.fecha.setText( new SimpleDateFormat("dd/MM/yy").format(nota.getFechaCreacion()));
 
         return convertView;
     }
 
     public  class ViewHolder{
-        TextView titulo;
-        TextView notas;
+        TextView descripcion;
         TextView fecha;
-
     }
 
 }
