@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,11 +16,14 @@ import com.example.seccion04v2.R;
 import com.example.seccion04v2.adapters.NotaAdapter;
 import com.example.seccion04v2.models.Nota;
 import com.example.seccion04v2.models.Tablero;
+import com.google.android.material.tabs.TabLayout;
 
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
 import io.realm.RealmList;
+import io.realm.RealmResults;
 
-public class NotaActivity extends AppCompatActivity {
+public class NotaActivity extends AppCompatActivity implements RealmChangeListener<Tablero>{
 
     private Realm realm;
     private ListView listView;
@@ -44,6 +48,7 @@ public class NotaActivity extends AppCompatActivity {
         }
 
         tablero = realm.where(Tablero.class).equalTo("id", idNota).findFirst();
+        tablero.addChangeListener(this);
         notas = tablero.getNotas();
 
         this.setTitle(tablero.getTitulo());
@@ -91,14 +96,19 @@ public class NotaActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    private void crearNota(String descripcion) {
+    private void crearNota(final String descripcion) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 Nota nota = new Nota(descripcion);
                 realm.copyToRealm(tablero);
-                tablero.get
+                tablero.getNotas().add(nota);
             }
         });
+    }
+
+    @Override
+    public void onChange(Tablero tablero) {
+        notaAdapter.notifyDataSetChanged();
     }
 }

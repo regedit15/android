@@ -44,6 +44,14 @@ public class MainActivity extends AppCompatActivity implements RealmChangeListen
 		listView = findViewById(R.id.lvTableros);
 
 		listView.setAdapter(tableroAdapter);
+		listView.setOnItemClickListener(this);
+
+		/*realm.executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				realm.deleteAll();
+			}
+		});*/
 	}
 
 	public void crearTableroClick(View view) {
