@@ -4,19 +4,23 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.seccion04v2.R;
 import com.example.seccion04v2.adapters.TableroAdapter;
 import com.example.seccion04v2.models.Tablero;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -24,27 +28,27 @@ import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity implements RealmChangeListener<RealmResults<Tablero>>, AdapterView.OnItemClickListener {
 
-	private Realm realm;
-	private ListView listView;
-	private TableroAdapter tableroAdapter;
-	private RealmResults<Tablero> tableros;
+    private Realm realm;
+    private ListView listView;
+    private TableroAdapter tableroAdapter;
+    private RealmResults<Tablero> tableros;
 
-	@SuppressLint("WrongViewCast")
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    @SuppressLint("WrongViewCast")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-		realm = Realm.getDefaultInstance();
-		tableros = realm.where(Tablero.class).findAll();
+        realm = Realm.getDefaultInstance();
+        tableros = realm.where(Tablero.class).findAll();
 
-		tableros.addChangeListener(this);
+        tableros.addChangeListener(this);
 
-		tableroAdapter = new TableroAdapter(this, tableros, R.layout.list_view_item_tablero);
-		listView = findViewById(R.id.lvTableros);
+        tableroAdapter = new TableroAdapter(this, tableros, R.layout.list_view_item_tablero);
+        listView = findViewById(R.id.lvTableros);
 
-		listView.setAdapter(tableroAdapter);
-		listView.setOnItemClickListener(this);
+        listView.setAdapter(tableroAdapter);
+        listView.setOnItemClickListener(this);
 
 		/*realm.executeTransaction(new Realm.Transaction() {
 			@Override
@@ -52,70 +56,190 @@ public class MainActivity extends AppCompatActivity implements RealmChangeListen
 				realm.deleteAll();
 			}
 		});*/
-	}
 
-	public void crearTableroClick(View view) {
-		showAlertForCreatingBoard("Alta de Tablero", "Ingrese el título");
-	}
+        registerForContextMenu(listView);
+    }
 
-	private void showAlertForCreatingBoard(String titulo, String mensaje){
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    public void crearTableroClick(View view) {
+        mostrarAlertAltaTablero("Alta de Tablero", "Ingrese el título");
+    }
 
-		if(titulo != null){
-			builder.setTitle(titulo);
-		}
+    private void mostrarAlertAltaTablero(String titulo, String mensaje) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-		if(mensaje != null){
-			builder.setMessage(mensaje);
-		}
+        if (titulo != null) {
+            builder.setTitle(titulo);
+        }
 
-		View vieyInflatter = LayoutInflater.from(this).inflate(R.layout.popup_alta_tablero, null);
-		builder.setView(vieyInflatter);
+        if (mensaje != null) {
+            builder.setMessage(mensaje);
+        }
 
-		final EditText input = vieyInflatter.findViewById(R.id.etTableroTitulo);
+        View vieyInflatter = LayoutInflater.from(this).inflate(R.layout.popup_alta_tablero, null);
+        builder.setView(vieyInflatter);
 
-		builder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialogInterface, int i) {
-				String titulo = input.getText().toString();
+        final EditText input = vieyInflatter.findViewById(R.id.etTableroTitulo);
 
-				if(titulo.length() > 0 ){
-					crearTablero(titulo);
-				}else{
-					Toast.makeText(getApplicationContext(), "El titulo es requerido", Toast.LENGTH_SHORT);
-				}
+        builder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String titulo = input.getText().toString();
 
-			}
-		});
+                if (titulo.length() > 0) {
+                    crearTablero(titulo);
+                } else {
+                    Toast.makeText(getApplicationContext(), "El titulo es requerido", Toast.LENGTH_SHORT);
+                }
 
-		 builder.create().show();
-	}
+            }
+        });
 
-	private void crearTablero(final String titulo) {
+        builder.create().show();
+    }
 
-		// Se puede hacer de esta forma
-		//realm.beginTransaction();
-		//realm.commitTransaction();
+    private void mostrarAlertEditarTablero(String titulo, String mensaje, final Tablero tablero) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-		// O de esta
-		realm.executeTransaction(new Realm.Transaction() {
-			@Override
-			public void execute(Realm realm) {
-				Tablero tablero = new Tablero(titulo);
-				realm.copyToRealm(tablero);
-			}
-		});
-	}
+        if (titulo != null) {
+            builder.setTitle(titulo);
+        }
 
-	@Override
-	public void onChange(RealmResults<Tablero> tableros) {
-		tableroAdapter.notifyDataSetChanged();
-	}
+        if (mensaje != null) {
+            builder.setMessage(mensaje);
+        }
+
+        View vieyInflatter = LayoutInflater.from(this).inflate(R.layout.popup_alta_tablero, null);
+        builder.setView(vieyInflatter);
+
+        final EditText input = vieyInflatter.findViewById(R.id.etTableroTitulo);
+        input.setText(tablero.getTitulo());
+
+        builder.setPositiveButton("Agregar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String titulo = input.getText().toString();
+
+                if (titulo.length() == 0) {
+                    Toast.makeText(getApplicationContext(), "El titulo es obligatorio", Toast.LENGTH_SHORT);
+                } else if (titulo.equals(tablero.getTitulo())) {
+                    Toast.makeText(getApplicationContext(), "El titulo es el mismo", Toast.LENGTH_SHORT);
+                } else {
+                    editarTituloTablero(titulo, tablero);
+                }
+
+            }
+        });
+
+        builder.create().show();
+    }
+
+    private void crearTablero(final String titulo) {
+
+        // Se puede hacer de esta forma
+        //realm.beginTransaction();
+        //realm.commitTransaction();
+
+        // O de esta
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Tablero tablero = new Tablero(titulo);
+                realm.copyToRealm(tablero);
+            }
+        });
+    }
+
+    private void eliminarTablero(final Tablero tablero) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                tablero.deleteFromRealm();
+            }
+        });
+    }
+
+    private void eliminarTodo() {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.deleteAll();
+            }
+        });
+    }
+
+
+    private void editarTituloTablero(final String titulo, final Tablero tablero) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                tablero.setTitulo(titulo);
+                realm.copyToRealmOrUpdate(tablero);
+            }
+        });
+    }
+
+    @Override
+    public void onChange(RealmResults<Tablero> tableros) {
+        tableroAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long id) {
         Intent intent = new Intent(MainActivity.this, NotaActivity.class);
-        intent.putExtra( "idTablero", tableros.get(posicion).getId());
+        intent.putExtra("idTablero", tableros.get(posicion).getId());
         startActivity(intent);
+    }
+
+
+    //
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_tablero, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        boolean resultado;
+
+        switch (item.getItemId()) {
+            case R.id.itEliminarTodo:
+                eliminarTodo();
+                resultado = true;
+                break;
+            default:
+                resultado = super.onContextItemSelected(item);
+                break;
+        }
+        return resultado;
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        menu.setHeaderTitle(tableros.get(info.position).getTitulo());
+        getMenuInflater().inflate(R.menu.context_menu_tablero, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+
+        boolean resultado;
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.itEditarNombreTablero:
+                mostrarAlertEditarTablero("Editar tablero", "Cambiar el nombre del tablero", tableros.get(info.position));
+                resultado = true;
+                break;
+            case R.id.itEliminarTablero:
+                eliminarTablero(tableros.get(info.position));
+                resultado = true;
+                break;
+            default:
+                resultado = super.onContextItemSelected(item);
+                break;
+        }
+        return resultado;
     }
 }

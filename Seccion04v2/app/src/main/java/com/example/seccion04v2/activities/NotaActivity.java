@@ -87,9 +87,8 @@ public class NotaActivity extends AppCompatActivity implements RealmChangeListen
                 if(titulo.length() > 0 ){
                     crearNota(titulo);
                 }else{
-                    Toast.makeText(getApplicationContext(), "La descripcion es requerida", Toast.LENGTH_SHORT);
+                     Toast.makeText(getApplicationContext(), "La descripcion es requerida", Toast.LENGTH_SHORT);
                 }
-
             }
         });
 
