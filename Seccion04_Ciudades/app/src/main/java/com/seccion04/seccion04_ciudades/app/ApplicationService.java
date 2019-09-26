@@ -8,11 +8,20 @@ public class ApplicationService {
 
     private Realm realm = Realm.getDefaultInstance();
 
-    public void eliminarTablero(final Ciudad ciudad) {
+    public void eliminarCiudad(final Ciudad ciudad) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 ciudad.deleteFromRealm();
+            }
+        });
+    }
+
+    public void guardarCiudad(final Ciudad ciudad) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate(ciudad);
             }
         });
     }

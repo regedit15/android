@@ -14,14 +14,14 @@
 		android:layout_marginEnd="16dp"
 		android:layout_marginRight="16dp"
 		android:clickable="true"
-		android:onClick="crearCiudadClick"
+		android:onClick="guardarCiudadClick"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:srcCompat="@android:drawable/ic_menu_save" />
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="0dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
@@ -36,7 +36,7 @@
 			android:layout_marginTop="32dp"
 			android:ems="10"
 			android:inputType="textPersonName"
-			android:text="URL imagen"
+			android:text="http://concepto.de/wp-content/uploads/2018/08/Londres-e1533855310803.jpg"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/etCiudadDescripcion" />
@@ -65,12 +65,22 @@
 			android:layout_marginLeft="32dp"
 			android:layout_marginRight="32dp"
 			android:layout_marginStart="32dp"
+			android:layout_marginTop="32dp"
 			android:ems="10"
 			android:inputType="textPersonName"
 			android:text="Nombre"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			tools:layout_editor_absoluteY="32dp" />
+			app:layout_constraintTop_toBottomOf="@+id/ivCiudadImagen" />
+
+		<ImageView
+			android:id="@+id/ivCiudadImagen"
+			android:layout_width="0dp"
+			android:layout_height="100dp"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:srcCompat="@tools:sample/avatars" />
 
 		<RatingBar
 			android:id="@+id/ratingBar"

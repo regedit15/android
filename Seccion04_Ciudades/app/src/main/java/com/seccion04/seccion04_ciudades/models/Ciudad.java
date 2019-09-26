@@ -17,15 +17,19 @@ public class Ciudad extends RealmObject {
 	@Required
 	private String urlImagen;
 
+	@Required
+	private Float rating;
+
 	public Ciudad() {
 
 	}
 
-	public Ciudad(String nombre, String descripcion, String urlImagen) {
+	public Ciudad(String nombre, String descripcion, String urlImagen, Float rating) {
 		this.id = MyApplication.tabledoId.incrementAndGet();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.urlImagen = urlImagen;
+		this.rating = rating;
 	}
 
 	public int getId() {
@@ -58,5 +62,13 @@ public class Ciudad extends RealmObject {
 
 	public void setUrlImagen(String urlImagen) {
 		this.urlImagen = urlImagen;
+	}
+
+	public Float getRating() {
+		return rating;
+	}
+
+	public void setRating(Float rating) {
+		this.rating = rating;
 	}
 }

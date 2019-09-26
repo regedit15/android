@@ -14,25 +14,25 @@
 		<androidx.cardview.widget.CardView
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:layout_marginBottom="8dp"
 			app:cardBackgroundColor="#03A9F4"
 			app:cardCornerRadius="10dp"
-			tools:layout_editor_absoluteX="210dp"
-			tools:layout_editor_absoluteY="59dp">
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="match_parent"
 				android:layout_height="match_parent">
 
-				<TextView
-					android:id="@+id/tvCiudadCantidadEstrellas"
+				<View
+					android:id="@+id/view"
 					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="8dp"
-					android:layout_marginLeft="8dp"
-					android:layout_marginBottom="8dp"
-					android:text="5"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintStart_toEndOf="@+id/imageView2" />
+					android:layout_height="3dp"
+					android:layout_marginBottom="24dp"
+					android:background="#525252"
+					app:layout_constraintBottom_toBottomOf="parent" />
 
 				<ImageView
 					android:id="@+id/ivCiudadImagen"
@@ -43,32 +43,32 @@
 
 				<ImageView
 					android:id="@+id/imageView2"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="16dp"
-					android:layout_marginLeft="16dp"
+					android:layout_width="15dp"
+					android:layout_height="15dp"
 					android:layout_marginBottom="8dp"
+					android:layout_marginLeft="16dp"
+					android:layout_marginStart="16dp"
 					android:src="@android:drawable/btn_star_big_on"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent" />
 
 				<TextView
-					android:id="@+id/tvEliminarCiudad"
+					android:id="@+id/tvCiudadCantidadEstrellas"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginEnd="8dp"
-					android:layout_marginRight="8dp"
 					android:layout_marginBottom="8dp"
-					android:text="Eliminar"
+					android:layout_marginLeft="8dp"
+					android:layout_marginStart="8dp"
+					android:text="5"
 					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toEndOf="parent" />
+					app:layout_constraintStart_toEndOf="@+id/imageView2" />
 
 				<TextView
 					android:id="@+id/tvCiudadDescripcion"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="16dp"
 					android:layout_marginLeft="16dp"
+					android:layout_marginStart="16dp"
 					android:layout_marginTop="8dp"
 					android:text="Descripcion"
 					app:layout_constraintStart_toStartOf="parent"
@@ -78,12 +78,23 @@
 					android:id="@+id/tvCiudadNombre"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="16dp"
-					android:layout_marginLeft="16dp"
 					android:layout_marginBottom="8dp"
+					android:layout_marginLeft="16dp"
+					android:layout_marginStart="16dp"
 					android:text="Nombre"
 					app:layout_constraintBottom_toBottomOf="@+id/ivCiudadImagen"
 					app:layout_constraintStart_toStartOf="parent" />
+
+				<Button
+					android:id="@+id/btEliminarCiudad"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="8dp"
+					android:layout_marginEnd="8dp"
+					android:layout_marginRight="8dp"
+					android:text="Eliminar"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent" />
 			</androidx.constraintlayout.widget.ConstraintLayout>
 		</androidx.cardview.widget.CardView>
 	</androidx.constraintlayout.widget.ConstraintLayout>
