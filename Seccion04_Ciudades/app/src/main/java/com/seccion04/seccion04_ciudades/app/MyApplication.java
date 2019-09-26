@@ -14,7 +14,6 @@ import io.realm.RealmResults;
 public class MyApplication extends Application {
 
 	public static AtomicInteger tabledoId = new AtomicInteger();
-	public static AtomicInteger notaId = new AtomicInteger();
 
 	@Override
 	public void onCreate() {

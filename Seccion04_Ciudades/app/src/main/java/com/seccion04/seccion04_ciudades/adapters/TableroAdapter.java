@@ -7,34 +7,33 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.seccion04v2.R;
-import com.example.seccion04v2.models.Tablero;
+import com.seccion04.seccion04_ciudades.R;
+import com.seccion04.seccion04_ciudades.models.Ciudad;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class TableroAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Tablero> tableros;
+    private List<Ciudad> lista;
     private int layout;
 
 
-    public TableroAdapter(Context context, List<Tablero> tableros, int layout) {
+    public TableroAdapter(Context context, List<Ciudad> tableros, int layout) {
         this.context = context;
-        this.tableros = tableros;
+        this.lista = tableros;
         this.layout = layout;
     }
 
 
     @Override
     public int getCount() {
-        return tableros.size();
+        return lista.size();
     }
 
     @Override
-    public Tablero getItem(int posicion) {
-        return tableros.get(posicion);
+    public Ciudad getItem(int posicion) {
+        return lista.get(posicion);
     }
 
     @Override
@@ -47,40 +46,33 @@ public class TableroAdapter extends BaseAdapter {
 
         ViewHolder viewHolder;
 
-        if(convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(layout, null);
             viewHolder = new ViewHolder();
 
-            viewHolder.titulo = convertView.findViewById(R.id.tvTableroTitulo);
-            viewHolder.notas = convertView.findViewById(R.id.tvTableroNotas);
-            viewHolder.fecha = convertView.findViewById(R.id.tvTableroFecha);
+            viewHolder.nombre = convertView.findViewById(R.id.tvCiudadNombre);
+            viewHolder.descripcion = convertView.findViewById(R.id.tvCiudadDescripcion);
+//            viewHolder.urlImagen = convertView.findViewById(R.id.tvCiudad);
+
+            Picasso.with(context).load("http://cdn.journaldev.com/wp-content/uploads/2016/11/android-image-picker-project-structure.png").into(imageView)
 
             convertView.setTag(viewHolder);
-        }else{
+        } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Tablero tablero = tableros.get(posicion);
-        viewHolder.titulo.setText(tablero.getTitulo());
-
-        String nota;
-
-        if(tablero.getNotas().size() == 1){
-            nota = " nota";
-        }else{
-            nota = " notas";
-        }
-        viewHolder.notas.setText(tablero.getNotas().size()  + nota);
-        viewHolder.fecha.setText( new SimpleDateFormat("dd/MM/yy").format(tablero.getFechaCreacion()));
+        Ciudad ciudad = lista.get(posicion);
+        viewHolder.nombre.setText(ciudad.getNombre());
+        viewHolder.descripcion.setText(ciudad.getDescripcion());
+//        viewHolder.urlImagen.setText(ciudad.getUrlImagen());
 
         return convertView;
     }
 
-    public  class ViewHolder{
-        TextView titulo;
-        TextView notas;
-        TextView fecha;
-
+    public class ViewHolder {
+        TextView nombre;
+        TextView descripcion;
+        TextView urlImagen;
     }
 
 }
