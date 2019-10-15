@@ -3,6 +3,8 @@ package com.seccion04.seccion04_ciudades.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,6 +14,7 @@ import com.seccion04.seccion04_ciudades.adapters.CiudadAdapter;
 import com.seccion04.seccion04_ciudades.app.ApplicationService;
 import com.seccion04.seccion04_ciudades.models.Ciudad;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements RealmChangeListen
 		// 		Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 		// 	}
 		// }
-		
+
 		realm = Realm.getDefaultInstance();
 
 		// ---------- Borrar todos los datos de la BD
@@ -144,27 +147,27 @@ public class MainActivity extends AppCompatActivity implements RealmChangeListen
 	// // ------------------------------------
 
 	// ---------- Este es el menu de los tres puntitos arriba a la derecha
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// 	getMenuInflater().inflate(R.menu.menu_main, menu);
-	// 	return super.onCreateOptionsMenu(menu);
-	// }
-	//
-	// @Override
-	// public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-	// 	boolean resultado;
-	//
-	// 	switch (item.getItemId()) {
-	// 		case R.id.idBorrarTodo:
-	// 			applicationService.eliminarTodo();
-	// 			resultado = true;
-	// 			break;
-	// 		default:
-	// 			resultado = super.onContextItemSelected(item);
-	// 			break;
-	// 	}
-	// 	return resultado;
-	// }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu_main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+		boolean resultado;
+
+		switch (item.getItemId()) {
+			case R.id.idBorrarTodo:
+				applicationService.eliminarTodo();
+				resultado = true;
+				break;
+			default:
+				resultado = super.onContextItemSelected(item);
+				break;
+		}
+		return resultado;
+	}
 	// --------------------------------------------------------------------
 
 	public void irAGuardarCiudadClick(View view) {
