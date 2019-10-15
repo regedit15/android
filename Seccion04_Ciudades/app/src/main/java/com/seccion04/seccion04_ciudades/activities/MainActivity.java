@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements RealmChangeListen
 		// 		Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 		// 	}
 		// }
-		//
+		
 		realm = Realm.getDefaultInstance();
 
 		// ---------- Borrar todos los datos de la BD
