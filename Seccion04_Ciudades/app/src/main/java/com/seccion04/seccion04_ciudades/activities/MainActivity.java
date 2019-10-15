@@ -3,10 +3,8 @@ package com.seccion04.seccion04_ciudades.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -15,7 +13,6 @@ import com.seccion04.seccion04_ciudades.adapters.CiudadAdapter;
 import com.seccion04.seccion04_ciudades.app.ApplicationService;
 import com.seccion04.seccion04_ciudades.models.Ciudad;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -25,7 +22,7 @@ import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
-public class MainActivity extends AppCompatActivity implements RealmChangeListener<RealmResults<Ciudad>>, AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity implements RealmChangeListener<RealmResults<Ciudad>> {
 
 	private Realm realm;
 	private RecyclerView recyclerView;
@@ -136,39 +133,39 @@ public class MainActivity extends AppCompatActivity implements RealmChangeListen
 		ciudadAdapter.notifyDataSetChanged();
 	}
 
-	// ---------- Esto es cuando tocamos un item del listado de tableros
-	@Override
-	public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long id) {
-
-		// Se cambia al activity de notas pasandole el id del tablero
-		Intent intent = new Intent(MainActivity.this, CrearCiudad.class);
-		intent.putExtra("idCiudad", ciudades.get(posicion).getId());
-		startActivity(intent);
-	}
-	// ------------------------------------
+	// // ---------- Esto es cuando tocamos un item del listado de tableros
+	// @Override
+	// public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long id) {
+	//
+	// 	// Se cambia al activity de notas pasandole el id del tablero
+	// 	Intent intent = new Intent(MainActivity.this, CrearCiudad.class);
+	// 	intent.putExtra("idCiudad", ciudades.get(posicion).getId());
+	// 	startActivity(intent);
+	// }
+	// // ------------------------------------
 
 	// ---------- Este es el menu de los tres puntitos arriba a la derecha
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-		boolean resultado;
-
-		switch (item.getItemId()) {
-			case R.id.idBorrarTodo:
-				applicationService.eliminarTodo();
-				resultado = true;
-				break;
-			default:
-				resultado = super.onContextItemSelected(item);
-				break;
-		}
-		return resultado;
-	}
+	// @Override
+	// public boolean onCreateOptionsMenu(Menu menu) {
+	// 	getMenuInflater().inflate(R.menu.menu_main, menu);
+	// 	return super.onCreateOptionsMenu(menu);
+	// }
+	//
+	// @Override
+	// public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+	// 	boolean resultado;
+	//
+	// 	switch (item.getItemId()) {
+	// 		case R.id.idBorrarTodo:
+	// 			applicationService.eliminarTodo();
+	// 			resultado = true;
+	// 			break;
+	// 		default:
+	// 			resultado = super.onContextItemSelected(item);
+	// 			break;
+	// 	}
+	// 	return resultado;
+	// }
 	// --------------------------------------------------------------------
 
 	public void irAGuardarCiudadClick(View view) {

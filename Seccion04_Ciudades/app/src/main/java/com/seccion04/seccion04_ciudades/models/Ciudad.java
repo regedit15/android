@@ -21,11 +21,11 @@ public class Ciudad extends RealmObject {
 	private Float rating;
 
 	public Ciudad() {
-
+		this.id = MyApplication.ciudadId.incrementAndGet();
 	}
 
 	public Ciudad(String nombre, String descripcion, String urlImagen, Float rating) {
-		this.id = MyApplication.tabledoId.incrementAndGet();
+		this.id = MyApplication.ciudadId.incrementAndGet();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.urlImagen = urlImagen;

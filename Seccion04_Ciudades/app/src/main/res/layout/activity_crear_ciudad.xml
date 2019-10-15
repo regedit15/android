@@ -10,14 +10,14 @@
 		android:id="@+id/floatingActionButton"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="16dp"
 		android:layout_marginEnd="16dp"
 		android:layout_marginRight="16dp"
+		android:layout_marginBottom="16dp"
 		android:clickable="true"
 		android:onClick="guardarCiudadClick"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:srcCompat="@android:drawable/ic_menu_save" />
+		app:srcCompat="@drawable/ic_iconfinder_check" />
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
@@ -29,14 +29,14 @@
 			android:id="@+id/etCiudadUrlImagen"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginEnd="32dp"
-			android:layout_marginLeft="32dp"
-			android:layout_marginRight="32dp"
 			android:layout_marginStart="32dp"
+			android:layout_marginLeft="32dp"
 			android:layout_marginTop="32dp"
+			android:layout_marginEnd="32dp"
+			android:layout_marginRight="32dp"
 			android:ems="10"
 			android:inputType="textPersonName"
-			android:text="http://concepto.de/wp-content/uploads/2018/08/Londres-e1533855310803.jpg"
+			android:text="https://concepto.de/wp-content/uploads/2018/08/Londres-e1533855310803.jpg"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/etCiudadDescripcion" />

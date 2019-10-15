@@ -1,6 +1,7 @@
 package com.seccion04.seccion04_ciudades.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,11 @@ public class CiudadAdapter extends RecyclerView.Adapter<CiudadAdapter.ViewHolder
 			nombre.setText(ciudad.getNombre());
 			descripcion.setText(ciudad.getDescripcion());
 			cantidadEstrellas.setText(ciudad.getRating().toString());
+
+			// ImageView imagen = new ImageView(this);
+			// Picasso.get().load(ciudad.getUrlImagen()).into(imagen);
+			// Picasso.get().load("https://concepto.de/wp-content/uploads/2018/08/Londres-e1533855310803.jpg").into(imagen);
+			Log.d("myTag", ciudad.getUrlImagen());
 			Picasso.get().load(ciudad.getUrlImagen()).into(imagen);
 
 			btnDelete.setOnClickListener(new View.OnClickListener() {

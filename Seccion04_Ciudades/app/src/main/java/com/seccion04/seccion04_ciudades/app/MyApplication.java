@@ -13,7 +13,7 @@ import io.realm.RealmResults;
 
 public class MyApplication extends Application {
 
-	public static AtomicInteger tabledoId = new AtomicInteger();
+	public static AtomicInteger ciudadId = new AtomicInteger();
 
 	@Override
 	public void onCreate() {
@@ -21,7 +21,7 @@ public class MyApplication extends Application {
 		setUpRealConfig();
 
 		Realm realm = Realm.getDefaultInstance();
-		tabledoId = getIdByTabla(realm, Ciudad.class);
+		ciudadId = getIdByTabla(realm, Ciudad.class);
 		realm.close();
 	}
 

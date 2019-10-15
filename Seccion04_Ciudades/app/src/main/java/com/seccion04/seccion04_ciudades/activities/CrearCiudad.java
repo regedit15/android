@@ -22,6 +22,7 @@ public class CrearCiudad extends AppCompatActivity {
 	private Integer idCiudad;
 	private Ciudad ciudad;
 	private ApplicationService applicationService = new ApplicationService();
+	private ImageView imagentt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,9 @@ public class CrearCiudad extends AppCompatActivity {
 		if (bundle != null) {
 			idCiudad = bundle.getInt("idCiudad");
 
-			if (idCiudad != null) {
-
+			if (idCiudad == null) {
+				ciudad = new Ciudad();
+			} else {
 				titulo = "Editar ciudad";
 
 				ciudad = realm.where(Ciudad.class).equalTo("id", idCiudad).findFirst();
@@ -50,6 +52,8 @@ public class CrearCiudad extends AppCompatActivity {
 				((RatingBar) findViewById(R.id.ratingBar)).setRating(ciudad.getRating());
 				Picasso.get().load(ciudad.getUrlImagen()).into((ImageView) findViewById(R.id.ivCiudadImagen));
 			}
+		} else {
+			ciudad = new Ciudad();
 		}
 
 		setTitle(titulo);
@@ -57,14 +61,17 @@ public class CrearCiudad extends AppCompatActivity {
 
 	public void guardarCiudadClick(View view) {
 
-		if (idCiudad != null) {
-			ciudad.setId(idCiudad);
-		}
+		realm.executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				realm.copyToRealmOrUpdate(ciudad);
 
-		ciudad.setNombre(((EditText) findViewById(R.id.etCiudadNombre)).getText().toString());
-		ciudad.setDescripcion(((EditText) findViewById(R.id.etCiudadDescripcion)).getText().toString());
-		ciudad.setRating(((RatingBar) findViewById(R.id.ratingBar)).getRating());
-		ciudad.setUrlImagen(((EditText) findViewById(R.id.etCiudadUrlImagen)).getText().toString());
+				ciudad.setNombre(((EditText) findViewById(R.id.etCiudadNombre)).getText().toString());
+				ciudad.setDescripcion(((EditText) findViewById(R.id.etCiudadDescripcion)).getText().toString());
+				ciudad.setRating(((RatingBar) findViewById(R.id.ratingBar)).getRating());
+				ciudad.setUrlImagen(((EditText) findViewById(R.id.etCiudadUrlImagen)).getText().toString());
+			}
+		});
 
 		applicationService.guardarCiudad(ciudad);
 
