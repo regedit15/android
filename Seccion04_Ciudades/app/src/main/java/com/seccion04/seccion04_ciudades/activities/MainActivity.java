@@ -3,7 +3,6 @@ package com.seccion04.seccion04_ciudades.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements RealmChangeListen
 		// 		Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 		// 	}
 		// }
-
+		//
 		realm = Realm.getDefaultInstance();
 
 		// ---------- Borrar todos los datos de la BD
