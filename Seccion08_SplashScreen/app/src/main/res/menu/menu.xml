@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+		android:id="@+id/menuSalir"
+		android:title="Salir" />
+	<item
+		android:id="@+id/menuSalirYBorrar"
+		android:title="Salir y borrar datos" />
+</menu>
