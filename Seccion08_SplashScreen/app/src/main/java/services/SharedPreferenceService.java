@@ -37,4 +37,8 @@ public class SharedPreferenceService extends AppCompatActivity {
 		editor.clear().apply();
 	}
 
+	public void borraClave(String clave) {
+		editor.remove(clave).apply();
+	}
+
 }

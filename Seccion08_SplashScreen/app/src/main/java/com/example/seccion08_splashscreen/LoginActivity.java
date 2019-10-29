@@ -28,6 +28,7 @@ public class LoginActivity extends BaseActivity {
 		if (sharedPreferenceService.getString(EMAIL) != null && sharedPreferenceService.getString(PASSWORD) != null) {
 			etEmail.setText(sharedPreferenceService.getString(EMAIL));
 			etPassword.setText(sharedPreferenceService.getString(PASSWORD));
+			swRecordarme.setChecked(true);
 		}
 	}
 
