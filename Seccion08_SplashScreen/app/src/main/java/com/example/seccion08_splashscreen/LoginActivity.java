@@ -1,8 +1,6 @@
 package com.example.seccion08_splashscreen;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,10 +10,8 @@ import android.widget.Toast;
 import exceptions.EmailException;
 import exceptions.PasswordException;
 
-public class Login extends BaseActivity {
+public class LoginActivity extends BaseActivity {
 
-	public static final String EMAIL = "email";
-	public static final String PASSWORD = "password";
 	private EditText etEmail;
 	private EditText etPassword;
 	private Switch swRecordarme;
@@ -25,21 +21,9 @@ public class Login extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 
-
-		SharedPreferences sharedPreferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-		sharedPreferences.edit().putString("aaa1", "1111");
-		sharedPreferences.edit().commit();
-
-		String ccc = sharedPreferences.getString("aaa1", null);
-		ccc.toString();
-
-
 		etEmail = findViewById(R.id.etEmail);
 		etPassword = findViewById(R.id.etPassword);
 		swRecordarme = findViewById(R.id.swRecordar);
-
-		String aaa = sharedPreferenceService.getString(EMAIL);
-		String bbb = sharedPreferenceService.getString(PASSWORD);
 
 		if (sharedPreferenceService.getString(EMAIL) != null && sharedPreferenceService.getString(PASSWORD) != null) {
 			etEmail.setText(sharedPreferenceService.getString(EMAIL));
@@ -62,9 +46,6 @@ public class Login extends BaseActivity {
 				sharedPreferenceService.guardarString(EMAIL, etEmail.getText().toString());
 				sharedPreferenceService.guardarString(PASSWORD, etPassword.getText().toString());
 				sharedPreferenceService.commit();
-
-				String aaa = sharedPreferenceService.getString(EMAIL);
-				String bbb = sharedPreferenceService.getString(PASSWORD);
 			}
 
 		} catch (EmailException e) {

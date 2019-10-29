@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity {
 				sharedPreferenceService.borraTodo();
 			case R.id.menuSalir:
 
-				Intent intent = new Intent(this, MainActivity.class);
+				Intent intent = new Intent(this, LoginActivity.class);
 
 				//esto es para que una vez logueado, si presiona al flecha para volver atras no vuelva al login, ya que ya se encuentra logueado.
 				// Entonces esto es como que borra el recorrido que va haciendo

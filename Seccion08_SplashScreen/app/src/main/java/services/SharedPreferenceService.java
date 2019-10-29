@@ -1,43 +1,40 @@
 package services;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SharedPreferenceService extends AppCompatActivity {
 
 	private SharedPreferences sharedPreferences;
+	private Editor editor;
 
 	public SharedPreferenceService(SharedPreferences preferences) {
 		this.sharedPreferences = preferences;
-
-		sharedPreferences.edit().putString("aaa", "aaaasas");
-		sharedPreferences.edit().commit();
-
-		String ccc = sharedPreferences.getString("aaa", null);
-		// ccc.toString();
+		this.editor = sharedPreferences.edit();
 	}
 
 	public void guardarString(String clave, String valor) {
-		sharedPreferences.edit().putString(clave, valor);
+		editor.putString(clave, valor);
 	}
 
 	public String getString(String clave) {
 		return sharedPreferences.getString(clave, null);
 	}
 
+	// Este commit es sincrónico, va a guardar los cambios y despues sigue con la proxima linea
 	public void commit() {
-		// Este commit es sincrónico, va a guardar los cambios y despues sigue con la proxima linea
-		sharedPreferences.edit().commit();
+		editor.commit();
 	}
 
+	// El apply es asincrono, va a crear un nuevo hilo para guardar todas esas cosas
 	public void apply() {
-		// El apply es asincrono, va a crear un nuevo hilo para guardar todas esas cosas
-		sharedPreferences.edit().apply();
+		editor.apply();
 	}
 
 	public void borraTodo() {
-		sharedPreferences.edit().clear().apply();
+		editor.clear().apply();
 	}
 
 }

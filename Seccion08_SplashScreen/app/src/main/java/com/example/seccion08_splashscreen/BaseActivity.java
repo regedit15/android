@@ -10,6 +10,8 @@ import services.ValidationService;
 public class BaseActivity extends AppCompatActivity {
 
 	private static final String PREFERENCES = "Preferences";
+	protected static final String EMAIL = "email";
+	protected static final String PASSWORD = "password";
 	protected SharedPreferenceService sharedPreferenceService;
 	protected ValidationService validationService = new ValidationService();
 

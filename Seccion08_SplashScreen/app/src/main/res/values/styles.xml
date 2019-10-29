@@ -6,4 +6,10 @@
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
 	</style>
+
+	<!-- Esto es para el Splashscreen -->
+	<style name="SplashScreen" parent="Theme.AppCompat.NoActionBar">
+		<!-- aca le pasamos el archivo xml que hemos creado -->
+		<item name="android:windowBackground">@drawable/splashscreen</item>
+	</style>
 </resources>
