@@ -1,4 +1,4 @@
-package com.example.seccion09_fragment.Activities;
+package Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
