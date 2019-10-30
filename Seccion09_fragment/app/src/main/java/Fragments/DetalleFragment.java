@@ -9,18 +9,18 @@ import com.example.seccion09_fragment.R;
 
 import androidx.fragment.app.Fragment;
 
-public class DataFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class DetalleFragment extends Fragment {
 
-	public DataFragment() {
+	public DetalleFragment() {
 		// Required empty public constructor
 	}
 
-	// Esto devuelvo un view que esta inflado con nuestro layout
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-		View view = inflater.inflate(R.layout.fragment_data, container, false);
-
+		View view = inflater.inflate(R.layout.fragment_detalle, container, false);
 		return view;
 	}
 
