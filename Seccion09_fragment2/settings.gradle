@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name='Seccion09_fragment'
