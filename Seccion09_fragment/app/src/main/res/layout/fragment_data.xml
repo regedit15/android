@@ -1,11 +1,34 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	tools:context="Fragments.DataFragment">
-	<!-- TODO: Update blank fragment layout -->
-	<TextView
+
+	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:text="fragmento dataaa" />
+		android:layout_height="match_parent">
+
+		<Button
+			android:id="@+id/bt_enviar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="32dp"
+			android:onClick="enviarClick"
+			android:text="Enviar"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/et_dato" />
+
+		<EditText
+			android:id="@+id/et_dato"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:ems="10"
+			android:inputType="textPersonName"
+			android:text="Name"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			tools:layout_editor_absoluteY="64dp" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
