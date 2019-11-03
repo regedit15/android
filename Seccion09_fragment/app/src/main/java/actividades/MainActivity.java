@@ -1,4 +1,4 @@
-package Activities;
+package actividades;
 
 import android.os.Bundle;
 
@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements DataFragment.Data
 
 	@Override
 	public void enviarDatos(String dato) {
-
 		DetalleFragment detalleFragment = (DetalleFragment) getSupportFragmentManager().findFragmentById(R.id.fg_detalle);
 		detalleFragment.setearTexto(dato);
 	}

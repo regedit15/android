@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 public class DataFragment extends Fragment {
 
 	private DataListener dataListener;
-	Button btEnviar;
+	private Button btEnviar;
 
 	public DataFragment() {
 		// Required empty public constructor

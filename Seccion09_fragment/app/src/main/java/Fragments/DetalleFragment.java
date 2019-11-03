@@ -33,5 +33,4 @@ public class DetalleFragment extends Fragment {
 	public void setearTexto(String dato) {
 		tvTexto.setText(dato);
 	}
-
 }

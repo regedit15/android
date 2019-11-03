@@ -8,13 +8,13 @@
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:orientation="vertical">
+		android:orientation="horizontal">
 
 		<fragment
 			android:id="@+id/fg_data"
 			android:name="Fragments.DataFragment"
 			android:layout_width="match_parent"
-			android:layout_height="500px"
+			android:layout_height="match_parent"
 			android:layout_weight="1"
 			tools:layout="@layout/fragment_data" />
 
@@ -22,7 +22,7 @@
 			android:id="@+id/fg_detalle"
 			android:name="Fragments.DetalleFragment"
 			android:layout_width="match_parent"
-			android:layout_height="500px"
+			android:layout_height="match_parent"
 			android:layout_weight="1"
 			tools:layout="@layout/fragment_detalle" />
 	</LinearLayout>
