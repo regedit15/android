@@ -1,4 +1,4 @@
-package actividades;
+package activities;
 
 import android.os.Bundle;
 
