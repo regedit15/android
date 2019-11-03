@@ -1,8 +1,10 @@
-package com.example.seccion09_fragment_tarea;
+package com.example.seccion09_fragment_tarea.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.seccion09_fragment_tarea.R;
 
 public class MainActivity extends AppCompatActivity {
 
