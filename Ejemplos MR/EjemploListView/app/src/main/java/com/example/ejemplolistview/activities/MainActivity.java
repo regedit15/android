@@ -1,13 +1,16 @@
 package com.example.ejemplolistview.activities;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.ejemplolistview.R;
-import com.example.ejemplolistview.adapters.ListAdapter;
+import com.example.ejemplolistview.adapters.MyListAdapter;
 import com.example.ejemplolistview.models.Fruta;
 
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private ListView listView;
 	private List<Fruta> frutas = new ArrayList<Fruta>();
+	private MyListAdapter myListAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-		agregarFrutas();
 
-		listView = findViewById(R.id.listView);
-		listView.setAdapter(new ListAdapter(this, R.layout.item_lista, frutas));
-
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Toast.makeText(MainActivity.this, "Click a: " + frutas.get(position).getNombre(), Toast.LENGTH_SHORT).show();
-			}
-		});
-	}
-
-	private void agregarFrutas() {
 		frutas.add(new Fruta("Manzana", "Soy una rica manzanita", R.drawable.manzana));
 		frutas.add(new Fruta("Banana", "Soy una rica bananita", R.drawable.banana));
 		frutas.add(new Fruta("Naranja", "Soy una rica naranjita", R.drawable.naranja));
@@ -57,5 +48,74 @@ public class MainActivity extends AppCompatActivity {
 		frutas.add(new Fruta("Pepino", "Soy un rico pepinito", R.drawable.pepino));
 		frutas.add(new Fruta("Brocoli", "Soy un rico brocolito", R.drawable.brocoli));
 		frutas.add(new Fruta("Cebolla", "Soy una rica cebollita", R.drawable.cebolla));
+
+		listView = findViewById(R.id.listView);
+		myListAdapter = new MyListAdapter(this, R.layout.item_lista, frutas);
+		listView.setAdapter(myListAdapter);
+
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Toast.makeText(MainActivity.this, "Click a: " + frutas.get(position).getNombre(), Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		// ------------------------- Menu contextual parte 1
+		registerForContextMenu(listView);
+		// ------------------------------------------------------------------
 	}
+
+	// ------------------------- Menu contextual parte 2
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+		menu.setHeaderTitle(frutas.get(info.position).getNombre());
+		getMenuInflater().inflate(R.menu.context_menu, menu);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		boolean resultado;
+
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+		switch (item.getItemId()) {
+			case R.id.item_eliminar:
+				frutas.remove(info.position);
+				// refrezca el cambio
+				myListAdapter.notifyDataSetChanged();
+				resultado = true;
+				break;
+			default:
+				resultado = super.onContextItemSelected(item);
+		}
+		return resultado;
+	}
+	// ------------------------------------------------------------------
+
+// ------------------------- Menu tres puntitos
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+	getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+	return true;
+}
+
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+	boolean resultado;
+
+	switch (item.getItemId()) {
+		case R.id.ic_eliminarTodos:
+			frutas.clear();
+			myListAdapter.notifyDataSetChanged();
+			resultado = true;
+			break;
+		default:
+			resultado = super.onOptionsItemSelected(item);
+			break;
+	}
+	return resultado;
+}
+// ------------------------------------------------------------------
 }
