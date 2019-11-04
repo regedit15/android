@@ -1,6 +1,8 @@
 package com.example.ejemploreciclerview.activities;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.ejemploreciclerview.R;
@@ -21,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 	private RecyclerView.Adapter adapter;
 	private RecyclerView.LayoutManager layoutManager;
 	private List<Fruta> frutas;
-	// private int contador = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,37 +82,30 @@ public class MainActivity extends AppCompatActivity {
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 	}
 
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// 	getMenuInflater().inflate(R.menu.my_menu, menu);
-	// 	return true;
-	// }
-	//
-	// @Override
-	// public boolean onOptionsItemSelected(MenuItem item) {
-	// 	boolean resultado;
-	//
-	// 	switch (item.getItemId()) {
-	// 		case R.id.itemMenuAgregar:
-	// 			agregarItem();
-	// 			resultado = true;
-	// 			break;
-	// 		default:
-	// 			resultado = super.onOptionsItemSelected(item);
-	// 			break;
-	// 	}
-	// 	return resultado;
-	// }
-
-	private void agregarItem() {
-		frutas.add(new Fruta("Nueva Fruta ", "Descripcion default", R.drawable.question));
-		adapter.notifyItemInserted(frutas.size());
-		layoutManager.scrollToPosition(frutas.size());
+	// ------------------------- Menu tres puntitos
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+		return true;
 	}
 
-	private void eliminarItem(int posicion) {
-		frutas.remove(posicion);
-		adapter.notifyItemRemoved(posicion);
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		boolean resultado;
+
+		switch (item.getItemId()) {
+			case R.id.ic_eliminarTodos:
+				frutas.clear();
+				// myListAdapter.notifyDataSetChanged();
+				adapter.notifyDataSetChanged();
+				resultado = true;
+				break;
+			default:
+				resultado = super.onOptionsItemSelected(item);
+				break;
+		}
+		return resultado;
 	}
+	// ------------------------------------------------------------------
 
 }
