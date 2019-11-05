@@ -1,8 +1,9 @@
 package com.example.ejemploreciclerview.adapters;
 
 import android.app.Activity;
-import android.graphics.Typeface;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -24,7 +25,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	private int layout;
 	private Activity activity;
 	private OnItemClickListener onItemClickListener;
-	// Este contexto es necesario para la libreria Picasso
 
 	public MyAdapter(List<Fruta> frutas, int layout, Activity activity, OnItemClickListener onItemClickListener) {
 		this.frutas = frutas;
@@ -52,20 +52,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		return frutas.size();
 	}
 
-	// public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
-	public class ViewHolder extends RecyclerView.ViewHolder {
+	public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 		public TextView textViewTitulo;
 		public TextView textViewDescripcion;
-		public TextView textViewCantidad;
 		public ImageView imageView;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
 			this.textViewTitulo = itemView.findViewById(R.id.textViewTitulo);
 			this.textViewDescripcion = itemView.findViewById(R.id.textViewDescripcion);
-			this.textViewCantidad = itemView.findViewById(R.id.textViewCantidad);
 			this.imageView = itemView.findViewById(R.id.imageView);
-			// itemView.setOnCreateContextMenuListener(this);
+			itemView.setOnCreateContextMenuListener(this);
 		}
 
 		public void bind(final Fruta fruta, final OnItemClickListener onItemClickListener) {
@@ -74,21 +71,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			textViewTitulo.setText(fruta.getNombre());
 			textViewDescripcion.setText(fruta.getDescripcion());
 
-			//Nota: si se le pasa un int lo va a tomar como una referencia de un string ej: R.string.app_name
-			// textViewCantidad.setText(fruta.getCantidad().toString());
-			textViewCantidad.setText("1");
-
-
-			// Lo seteamos en color rojo
-			// textViewCantidad.setTextColor(R.color.textoGris);
-			// Lo ponemos en negrita
-			textViewCantidad.setTypeface(null, Typeface.NORMAL);
-
 			// Fit significa que nos abarque todo el contenido
 			Picasso.get().load(fruta.getImagen()).fit().into(imageView);
-
-			// viewHolder.imagenFruta = convertView.findViewById(R.id.imagenFruta);
-			// imageView.setImageResource(fruta.getImagen());
 			// ----------------------------------------------
 
 			itemView.setOnClickListener(new View.OnClickListener() {
@@ -100,46 +84,39 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			});
 		}
 
-		// // -------------------------------------------
-		// @Override
-		// public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-		//
-		// 	Fruta frutaSeleccionada = frutas.get(this.getAdapterPosition());
-		// 	menu.setHeaderTitle(frutaSeleccionada.getNombre());
-		// 	// menu.setHeaderIcon(frutaSeleccionada.getImagen());
-		//
-		// 	activity.getMenuInflater().inflate(R.menu.context_menu, menu);
-		// 	// Recorremos los items del listado y le vamos seteando un objeto, en este caso el MyAdapter
-		// 	// que implementa el onMenuItemClick
-		// 	for (int i = 0; i < menu.size(); i++) {
-		// 		menu.getItem(i).setOnMenuItemClickListener(this);
-		// 	}
-		// }
-		//
-		// @Override
-		// public boolean onMenuItemClick(MenuItem item) {
-		// 	boolean resultado;
-		//
-		//
-		// 	switch (item.getItemId()) {
-		// 		case R.id.itemEliminar:
-		// 			frutas.remove(getAdapterPosition());
-		// 			// refrezca el cambio
-		// 			notifyItemRemoved(getAdapterPosition());
-		// 			resultado = true;
-		// 			break;
-		// 		case R.id.itemResetearCantidad:
-		// 			frutas.get(getAdapterPosition()).resetearCantidad();
-		// 			// refrezca el cambio
-		// 			notifyItemChanged(getAdapterPosition());
-		// 			resultado = true;
-		// 			break;
-		// 		default:
-		// 			resultado = false;
-		// 	}
-		// 	return resultado;
-		// }
-		// // -------------------------------------------
+		// -------------------------------------------
+		@Override
+		public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+			Fruta frutaSeleccionada = frutas.get(this.getAdapterPosition());
+			menu.setHeaderTitle(frutaSeleccionada.getNombre());
+			// menu.setHeaderIcon(frutaSeleccionada.getImagen());
+
+			activity.getMenuInflater().inflate(R.menu.context_menu, menu);
+			// Recorremos los items del listado y le vamos seteando un objeto, en este caso el MyAdapter
+			// que implementa el onMenuItemClick
+			for (int i = 0; i < menu.size(); i++) {
+				menu.getItem(i).setOnMenuItemClickListener(this);
+			}
+		}
+
+		@Override
+		public boolean onMenuItemClick(MenuItem item) {
+			boolean resultado;
+
+			switch (item.getItemId()) {
+				case R.id.it_eliminar:
+					frutas.remove(getAdapterPosition());
+					// refrezca el cambio
+					notifyItemRemoved(getAdapterPosition());
+					resultado = true;
+					break;
+				default:
+					resultado = false;
+			}
+			return resultado;
+		}
+		// -------------------------------------------
 	}
 
 	public interface OnItemClickListener {

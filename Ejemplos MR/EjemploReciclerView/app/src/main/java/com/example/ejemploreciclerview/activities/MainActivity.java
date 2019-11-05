@@ -1,8 +1,6 @@
 package com.example.ejemploreciclerview.activities;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.ejemploreciclerview.R;
@@ -80,32 +78,62 @@ public class MainActivity extends AppCompatActivity {
 
 		// Le seteamos una animacion, en este caso, la que viene por defecto. Pero se puede crear una personalizada
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+		// registerForContextMenu(recyclerView);
 	}
 
 	// ------------------------- Menu tres puntitos
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.action_bar_menu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		boolean resultado;
-
-		switch (item.getItemId()) {
-			case R.id.ic_eliminarTodos:
-				frutas.clear();
-				// myListAdapter.notifyDataSetChanged();
-				adapter.notifyDataSetChanged();
-				resultado = true;
-				break;
-			default:
-				resultado = super.onOptionsItemSelected(item);
-				break;
-		}
-		return resultado;
-	}
+	// @Override
+	// public boolean onCreateOptionsMenu(Menu menu) {
+	// 	getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+	// 	return true;
+	// }
+	//
+	// @Override
+	// public boolean onOptionsItemSelected(MenuItem item) {
+	// 	boolean resultado;
+	//
+	// 	switch (item.getItemId()) {
+	// 		case R.id.ic_eliminarTodos:
+	// 			frutas.clear();
+	// 			// myListAdapter.notifyDataSetChanged();
+	// 			adapter.notifyDataSetChanged();
+	// 			resultado = true;
+	// 			break;
+	// 		default:
+	// 			resultado = super.onOptionsItemSelected(item);
+	// 			break;
+	// 	}
+	// 	return resultado;
+	// }
 	// ------------------------------------------------------------------
 
+	// ------------------------- Menu contextual parte 2
+	// @Override
+	// public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+	// 	super.onCreateContextMenu(menu, v, menuInfo);
+	// 	AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+	// 	menu.setHeaderTitle(frutas.get(info.position).getNombre());
+	// 	getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+	// }
+	//
+	// @Override
+	// public boolean onContextItemSelected(MenuItem item) {
+	// 	boolean resultado;
+	//
+	// 	AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+	//
+	// 	switch (item.getItemId()) {
+	// 		// case R.id.item_eliminar:
+	// 		// 	// frutas.remove(info.position);
+	// 		// 	// // refrezca el cambio
+	// 		// 	// myListAdapter.notifyDataSetChanged();
+	// 		// 	resultado = true;
+	// 		// 	break;
+	// 		default:
+	// 			resultado = super.onContextItemSelected(item);
+	// 	}
+	// 	return resultado;
+	// }
+	// ------------------------------------------------------------------
 }
