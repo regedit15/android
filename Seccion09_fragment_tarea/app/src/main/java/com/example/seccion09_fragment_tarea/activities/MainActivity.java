@@ -28,10 +28,6 @@ public class MainActivity extends AppCompatActivity implements MailListadoFragme
 	@Override
 	public void clickMail(Mail mail) {
 		if (estanEnLandscape) {
-			// dataListener.clickMail(mails.get(position));
-
-			// getChildFragmentManager().findFragmentById(
-			// getContext(
 			MailDetalleFragment detalleFragment = (MailDetalleFragment) getSupportFragmentManager().findFragmentById(R.id.fg_mail_detalle);
 			detalleFragment.setearTextos(mail);
 		} else {
