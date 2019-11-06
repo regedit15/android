@@ -1,6 +1,7 @@
 package com.example.seccion09_fragment_tarea.activities;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.example.seccion09_fragment_tarea.R;
@@ -12,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements MailListadoFragment.DataListener {
 
-	private boolean estanEnLandscape;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,13 +20,12 @@ public class MainActivity extends AppCompatActivity implements MailListadoFragme
 
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
 		getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
-		estanEnLandscape = getSupportFragmentManager().findFragmentById(R.id.fg_mail_detalle) != null;
 	}
 
 	@Override
 	public void clickMail(Mail mail) {
-		if (estanEnLandscape) {
+
+		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
 			MailDetalleFragment detalleFragment = (MailDetalleFragment) getSupportFragmentManager().findFragmentById(R.id.fg_mail_detalle);
 			detalleFragment.setearTextos(mail);
 		} else {

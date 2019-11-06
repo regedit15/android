@@ -22,6 +22,5 @@ public class MailDetalle extends AppCompatActivity {
 			Mail mail = (Mail) getIntent().getSerializableExtra("mail");
 			detalleFragment.setearTextos(mail);
 		}
-
 	}
 }
