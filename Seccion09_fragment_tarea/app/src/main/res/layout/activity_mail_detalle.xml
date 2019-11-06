@@ -3,12 +3,12 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".activities.MainActivity">
+	tools:context=".activities.MailDetalle">
 
 	<fragment
-		android:id="@+id/fg_mail_listado"
-		android:name="com.example.seccion09_fragment_tarea.fragments.MailListadoFragment"
+		android:id="@+id/fg_mail_detalle"
+		android:name="com.example.seccion09_fragment_tarea.fragments.MailDetalleFragment"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:layout="@layout/fragment_mail_listado" />
+		tools:layout="@layout/fragment_mail_detalle" />
 </androidx.constraintlayout.widget.ConstraintLayout>
