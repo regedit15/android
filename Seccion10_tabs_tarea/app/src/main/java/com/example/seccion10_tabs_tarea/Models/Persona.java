@@ -3,12 +3,12 @@ package com.example.seccion10_tabs_tarea.Models;
 public class Persona {
 
 	private String nombre;
-	private String pais;
+	private Pais pais;
 
 	public Persona() {
 	}
 
-	public Persona(String nombre, String pais) {
+	public Persona(String nombre, Pais pais) {
 		this.nombre = nombre;
 		this.pais = pais;
 	}
@@ -21,11 +21,11 @@ public class Persona {
 		this.nombre = nombre;
 	}
 
-	public String getPais() {
+	public Pais getPais() {
 		return pais;
 	}
 
-	public void setPais(String pais) {
+	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
 }

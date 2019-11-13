@@ -9,11 +9,11 @@
 		<item>Australia</item>
 	</string-array>
 	<string-array name="paises_values">
-		<item>arg</item>
-		<item>esp</item>
-		<item>brz</item>
-		<item>eua</item>
-		<item>uru</item>
-		<item>aus</item>
+		<item>ARG</item>
+		<item>ESP</item>
+		<item>BRZ</item>
+		<item>EUA</item>
+		<item>URU</item>
+		<item>AUS</item>
 	</string-array>
 </resources>

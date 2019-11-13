@@ -1,5 +1,6 @@
 package com.example.seccion10_tabs_tarea.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.seccion10_tabs_tarea.Interfaces.OnPersonaCreada;
+import com.example.seccion10_tabs_tarea.Models.Pais;
 import com.example.seccion10_tabs_tarea.Models.Persona;
 import com.example.seccion10_tabs_tarea.R;
 
@@ -16,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 public class FromFragment extends Fragment {
 
+	private OnPersonaCreada onPersonaCreada;
 	private Button btCrearPersona;
 	private EditText etNombre;
 	private Spinner spinner;
@@ -45,11 +49,24 @@ public class FromFragment extends Fragment {
 
 				Persona persona = new Persona();
 				persona.setNombre(etNombre.getText().toString());
-				persona.setPais(getResources().getStringArray(R.array.paises_values)[spinner.getSelectedItemPosition()]);
+				persona.setPais(new Pais(spinner.getSelectedItem().toString(), getResources().getStringArray(R.array.paises_values)[spinner.getSelectedItemPosition()]));
+
+				onPersonaCreada.enviarPersona(persona);
 			}
 		});
 		//-----------------------------------------
 
 		return view;
+	}
+
+	@Override
+	public void onAttach(Context context) {
+		super.onAttach(context);
+
+		try {
+			onPersonaCreada = (OnPersonaCreada) context;
+		} catch (Exception e) {
+			throw new ClassCastException(context.toString() + " debe implementar DataListener");
+		}
 	}
 }
