@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="paises">
+		<item>Argentina</item>
+		<item>España</item>
+		<item>Brazil</item>
+		<item>EEUU</item>
+		<item>Uruguay</item>
+		<item>Australia</item>
+	</string-array>
+	<string-array name="paises_values">
+		<item>arg</item>
+		<item>esp</item>
+		<item>brz</item>
+		<item>eua</item>
+		<item>uru</item>
+		<item>aus</item>
+	</string-array>
+</resources>
