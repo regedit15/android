@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import static com.example.seccion10_tabs_tarea.Activities.MainActivity.FRAGMENT_LISTA;
+import static com.example.seccion10_tabs_tarea.Activities.MainActivity.FRAGMENT_PERSONA;
+
 public class PageAdapter extends FragmentStatePagerAdapter {
 	private int cantidadTabs;
 
@@ -21,12 +24,14 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 	public Fragment getItem(int position) {
 		Fragment fragment = null;
 		switch (position) {
-			case 0:
+			case FRAGMENT_PERSONA:
 				fragment = new FromFragment();
 				break;
-			case 1:
+			case FRAGMENT_LISTA:
 				fragment = new ListFragment();
 				break;
+			default:
+				throw new IllegalStateException("Unexpected value: " + position);
 		}
 		return fragment;
 	}

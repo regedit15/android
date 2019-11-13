@@ -16,8 +16,8 @@ import androidx.viewpager.widget.ViewPager;
 public class MainActivity extends AppCompatActivity implements OnPersonaCreada {
 
 	// Esto seria el numero de los tabs basicamente
-	private int FRAGMENT_PERSONA = 0;
-	private int FRAGMENT_LISTA = 1;
+	public static final int FRAGMENT_PERSONA = 0;
+	public static final int FRAGMENT_LISTA = 1;
 	private ViewPager viewPager;
 
 	@Override
@@ -51,12 +51,6 @@ public class MainActivity extends AppCompatActivity implements OnPersonaCreada {
 			}
 		});
 	}
-
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// 	getMenuInflater().inflate(R.menu.menu_action_bar, menu);
-	// 	return super.onCreateOptionsMenu(menu);
-	// }
 
 	@Override
 	public void enviarPersona(Persona persona) {
