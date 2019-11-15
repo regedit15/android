@@ -15,9 +15,7 @@ import com.example.seccion10_tabs_tarea.Models.Pais;
 import com.example.seccion10_tabs_tarea.Models.Persona;
 import com.example.seccion10_tabs_tarea.R;
 
-import androidx.fragment.app.Fragment;
-
-public class FromFragment extends Fragment {
+public class FromFragment extends BaseFragment {
 
 	private OnPersonaCreada onPersonaCreada;
 	private Button btCrearPersona;
@@ -36,9 +34,7 @@ public class FromFragment extends Fragment {
 
 		//--------------- Spinner
 		spinner = view.findViewById(R.id.spPaises);
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.paises, android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(adapter);
+		spinner.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, utilService.getPaises()));
 		//-----------------------------------------
 
 		//--------------- Boton crear persona
@@ -49,7 +45,10 @@ public class FromFragment extends Fragment {
 
 				Persona persona = new Persona();
 				persona.setNombre(etNombre.getText().toString());
-				persona.setPais(new Pais(spinner.getSelectedItem().toString(), getResources().getStringArray(R.array.paises_values)[spinner.getSelectedItemPosition()]));
+				// persona.setPais(new Pais(spinner.getSelectedItem().toString(), getResources().getStringArray(R.array.paises_values)[spinner.getSelectedItemPosition()]));
+				persona.setPais((Pais) spinner.getSelectedItem());
+
+				Pais pais = (Pais) spinner.getSelectedItem();
 
 				onPersonaCreada.enviarPersona(persona);
 			}
@@ -68,5 +67,11 @@ public class FromFragment extends Fragment {
 		} catch (Exception e) {
 			throw new ClassCastException(context.toString() + " debe implementar DataListener");
 		}
+	}
+
+	@Override
+	public void onDetach() {
+		super.onDetach();
+		onPersonaCreada = null;
 	}
 }

@@ -28,4 +28,11 @@ public class Pais {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+
+	//---------- Se sobreescribe para el spinner
+	@Override
+	public String toString() {
+		return nombre;
+	}
+	// ---------------------------------------
 }

@@ -1,6 +1,10 @@
 package com.example.seccion10_tabs_tarea.Services;
 
+import com.example.seccion10_tabs_tarea.Models.Pais;
+import com.example.seccion10_tabs_tarea.Models.Persona;
 import com.example.seccion10_tabs_tarea.R;
+
+import java.util.ArrayList;
 
 public class UtilService {
 
@@ -18,7 +22,7 @@ public class UtilService {
 				resultado = R.drawable.brazil;
 				break;
 			case "EUA":
-				resultado = R.drawable.argentina;
+				resultado = R.drawable.united_states;
 				break;
 			case "URU":
 				resultado = R.drawable.uruguay;
@@ -31,5 +35,28 @@ public class UtilService {
 		}
 
 		return resultado;
+	}
+
+	public ArrayList<Persona> agregarPersonas() {
+		return new ArrayList<Persona>() {{
+			add(new Persona("Pepe", new Pais("Argentina", "ARG")));
+			add(new Persona("Mercel", new Pais("España", "ESP")));
+			add(new Persona("Uber", new Pais("Uruguay", "URU")));
+			add(new Persona("Luacha", new Pais("Brazil", "BRZ")));
+			add(new Persona("Mane", new Pais("Estados Unidos", "EUA")));
+			add(new Persona("Luacha", new Pais("Australia", "AUS")));
+		}};
+	}
+
+	public ArrayList<Pais> getPaises() {
+		return new ArrayList<Pais>() {{
+			add(new Pais());
+			add(new Pais("Argentina", "ARG"));
+			add(new Pais("España", "ESP"));
+			add(new Pais("Brazil", "BRZ"));
+			add(new Pais("EEUU", "EUA"));
+			add(new Pais("Uruguay", "URU"));
+			add(new Pais("Australia", "AUS"));
+		}};
 	}
 }
