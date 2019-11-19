@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<group android:checkableBehavior="single">
+<!--			android:icon="@drawable/ic_iconfinder_music"-->
 		<item
-			android:id="@+id/it_email"
-			android:icon="@android:drawable/sym_action_email"
-			android:title="Email" />
+			android:id="@+id/it_audios"
+			android:icon="@android:drawable/ic_media_play"
+			android:title="Audios" />
+		<!--			android:icon="@drawable/ic_iconfinder_word"-->
+		<!--			android:icon="@drawable/pepe"-->
 		<item
-			android:id="@+id/it_alerts"
-			android:icon="@android:drawable/ic_dialog_alert"
-			android:title="Alerts" />
+			android:id="@+id/it_stickers"
+			android:icon="@drawable/iconfinder_image_1055042"
+			android:title="Stickers" />
+		<!--			android:icon="@drawable/ic_iconfinder_image"-->
 		<item
-			android:id="@+id/it_information"
-			android:icon="@android:drawable/ic_dialog_info"
-			android:title="Information" />
+			android:id="@+id/it_gif"
+			android:icon="@drawable/ic_iconfinder_image"
+			android:title="GIF" />
 	</group>
-	<item android:title="CMP">
-		<menu>
-			<item
-				android:id="@+id/it_allied"
-				android:title="Allied" />
-			<item
-				android:id="@+id/it_axis"
-				android:title="Axis" />
-		</menu>
-	</item>
 </menu>

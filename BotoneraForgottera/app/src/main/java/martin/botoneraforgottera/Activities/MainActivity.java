@@ -2,8 +2,6 @@ package martin.botoneraforgottera.Activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -13,16 +11,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import martin.botoneraforgottera.Fragments.AlertFragment;
-import martin.botoneraforgottera.Fragments.EmailFragment;
-import martin.botoneraforgottera.Fragments.InfoFragment;
+import martin.botoneraforgottera.Fragments.AudiosFragment;
+import martin.botoneraforgottera.Fragments.GifFragment;
+import martin.botoneraforgottera.Fragments.StickersFragment;
 import martin.botoneraforgottera.R;
 
 public class MainActivity extends AppCompatActivity {
 
-	// MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.uber1);
-	//
-	// mediaPlayer.start();
+
 	DrawerLayout drawerLayout;
 	NavigationView navigationView;
 
@@ -42,27 +38,27 @@ public class MainActivity extends AppCompatActivity {
 
 		drawerLayout = findViewById(R.id.drawer_layout);
 
-		drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-			@Override
-			public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-
-			}
-
-			@Override
-			public void onDrawerOpened(@NonNull View drawerView) {
-				Toast.makeText(MainActivity.this, "Open", Toast.LENGTH_LONG).show();
-			}
-
-			@Override
-			public void onDrawerClosed(@NonNull View drawerView) {
-				Toast.makeText(MainActivity.this, "Close", Toast.LENGTH_LONG).show();
-			}
-
-			@Override
-			public void onDrawerStateChanged(int newState) {
-
-			}
-		});
+		// drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+		// 	@Override
+		// 	public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+		//
+		// 	}
+		//
+		// 	@Override
+		// 	public void onDrawerOpened(@NonNull View drawerView) {
+		// 		Toast.makeText(MainActivity.this, "Open", Toast.LENGTH_LONG).show();
+		// 	}
+		//
+		// 	@Override
+		// 	public void onDrawerClosed(@NonNull View drawerView) {
+		// 		Toast.makeText(MainActivity.this, "Close", Toast.LENGTH_LONG).show();
+		// 	}
+		//
+		// 	@Override
+		// 	public void onDrawerStateChanged(int newState) {
+		//
+		// 	}
+		// });
 
 
 		navigationView = findViewById(R.id.navigation_view);
@@ -74,16 +70,16 @@ public class MainActivity extends AppCompatActivity {
 				Fragment fragment = null;
 
 				switch (menuItem.getItemId()) {
-					case R.id.it_email:
-						fragment = new EmailFragment();
+					case R.id.it_audios:
+						fragment = new AudiosFragment();
 						transaction = true;
 						break;
-					case R.id.it_information:
-						fragment = new InfoFragment();
+					case R.id.it_gif:
+						fragment = new GifFragment();
 						transaction = true;
 						break;
-					case R.id.it_alerts:
-						fragment = new AlertFragment();
+					case R.id.it_stickers:
+						fragment = new StickersFragment();
 						transaction = true;
 						break;
 				}
@@ -99,7 +95,10 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		cambiarFragment(new EmailFragment(), navigationView.getMenu().getItem(0));
+		cambiarFragment(new AudiosFragment(), navigationView.getMenu().getItem(0));
+
+
+		// navigationView.getMenu().getItem(1).setIcon(R.drawable.ic_iconfinder_word);
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
