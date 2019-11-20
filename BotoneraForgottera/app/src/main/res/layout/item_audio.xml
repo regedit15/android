@@ -67,13 +67,25 @@
 				app:layout_constraintTop_toTopOf="parent" />
 
 			<Button
-				android:id="@+id/btEliminarCiudad"
+				android:id="@+id/btPlay"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="16dp"
+				android:layout_marginRight="16dp"
+				android:background="@android:color/transparent"
+				android:text="Play"
+				android:textColor="#3C3C3C"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/btShare" />
+
+			<Button
+				android:id="@+id/btShare"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginEnd="8dp"
 				android:layout_marginRight="8dp"
 				android:background="@android:color/transparent"
-				android:text="Play"
+				android:text="SHARE"
 				android:textColor="#3C3C3C"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent" />

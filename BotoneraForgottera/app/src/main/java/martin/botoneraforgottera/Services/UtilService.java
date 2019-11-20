@@ -11,7 +11,8 @@ public class UtilService {
 	public List<Audio> getAudios() {
 		return new ArrayList<Audio>() {{
 			add(new Audio(R.raw.uber1, "Te voy a tocar la jalea", "Descripción 1"));
-			add(new Audio(R.raw.uber1, "Audio 1", "Descripción 2"));
+			// add(new Audio(R.raw.uber1, "Te voy a tocar la jalea", "Descripción 1"));
+			add(new Audio(R.raw.luacha1, "Luacha 1", "Descripción 22"));
 		}};
 
 	}

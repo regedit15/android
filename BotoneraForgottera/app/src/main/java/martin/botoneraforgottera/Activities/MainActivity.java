@@ -1,13 +1,19 @@
 package martin.botoneraforgottera.Activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.File;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -17,7 +23,6 @@ import martin.botoneraforgottera.Fragments.StickersFragment;
 import martin.botoneraforgottera.R;
 
 public class MainActivity extends AppCompatActivity {
-
 
 	DrawerLayout drawerLayout;
 	NavigationView navigationView;
@@ -37,7 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 		drawerLayout = findViewById(R.id.drawer_layout);
+		// Intent intent = new Intent();
 
+
+		// getPackageName();
 		// drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
 		// 	@Override
 		// 	public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -99,7 +107,46 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// navigationView.getMenu().getItem(1).setIcon(R.drawable.ic_iconfinder_word);
+
+		//-----------------------------------------------------
+
+		StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+		StrictMode.setVmPolicy(builder.build());
+
+		Intent shareIntent = new Intent(Intent.ACTION_SEND);
+		shareIntent.setType("application/pdf");
+		shareIntent.setAction(Intent.ACTION_SEND);
+
+		File audio = new File("android.resource://martin.botoneraforgottera/raw/" + "pdfprueba" + ".pdf");
+
+		Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".provider", audio);
+
+		// shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(audio));
+		shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+		shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+		shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(shareIntent);
 	}
+
+
+	// ------------------- Lo mas potable
+	// Uri uri = Uri.parse("android.resource://martin.botoneraforgottera/raw/" + "audio" + ".mp3");
+	//
+	// Intent share = new Intent(Intent.ACTION_SEND);
+	// 	share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+	// 	share.setType("audio/mp3");
+	// 	share.putExtra(Intent.EXTRA_STREAM, uri);
+	//
+	// startActivity(Intent.createChooser(share, "Send song"));
+	//
+	// 	-----------
+	//
+	// File audio = new File("android.resource://martin.botoneraforgottera/raw/" + "audio" + ".mp3");
+	//
+	// Intent share = new Intent(Intent.ACTION_SEND).setType("audio/*");
+	// 	share.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(audio));
+	// startActivity(Intent.createChooser(share, "Share song"));
+	//-----------------------------------------------------------------------
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
 		//cambiamos de fragment

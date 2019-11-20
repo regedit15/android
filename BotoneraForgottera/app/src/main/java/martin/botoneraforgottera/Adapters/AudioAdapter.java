@@ -1,7 +1,9 @@
 package martin.botoneraforgottera.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +64,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 		// public TextView cantidadEstrellas;
 		// public ImageView imagen;
 		public Button btnPlay;
+		public Button btnShare;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
@@ -69,7 +72,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			descripcion = itemView.findViewById(R.id.tvCiudadDescripcion);
 			// imagen = itemView.findViewById(R.id.ivCiudadImagen);
 			// cantidadEstrellas = itemView.findViewById(R.id.tvCiudadCantidadEstrellas);
-			btnPlay = itemView.findViewById(R.id.btEliminarCiudad);
+			btnPlay = itemView.findViewById(R.id.btPlay);
+			btnShare = itemView.findViewById(R.id.btShare);
 		}
 
 		// public void bind(final Audio ciudad, final OnItemClickListener itemListener, final OnButtonClickListener btnListener) {
@@ -90,9 +94,111 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 					// btnListener.onButtonClick(ciudad, getAdapterPosition());
 
 					// MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.uber1);
-					MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.uber1);
+					MediaPlayer mediaPlayer = MediaPlayer.create(context, ciudad.getId());
 
 					mediaPlayer.start();
+				}
+			});
+
+			btnShare.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					// Intent intent = new Intent(Intent.ACTION_SEND);
+					// intent.setType("text/plain");
+					// intent.putExtra(Intent.EXTRA_SUBJECT, "Titulooooo");
+					// intent.putExtra(Intent.EXTRA_TEXT, "Holaaaa como estaaaas!");
+					// context.startActivity(Intent.createChooser(intent, "Share using"));
+
+					//- ---------------------------
+
+
+					// // String sharePath = Environment.getExternalStorageDirectory().getPath() + "/Soundboard/Ringtones/custom_ringtone.ogg";
+					// String aaa = Environment.getExternalStorageDirectory().getPath();
+					// // E:\martincho\E - Documentos\android\BotoneraForgottera\app\src\main\res\raw\luacha1.opus
+					// String sharePath = Environment.getExternalStorageDirectory().getPath() + "/app/src/main/res/raw/uber1mp3.mp3";
+					// // Uri uri = Uri.parse(sharePath);
+					// Intent share = new Intent(Intent.ACTION_SEND);
+					// share.setType("audio/*");
+					// // share.putExtra(Intent.EXTRA_STREAM, uri);
+					//
+					// // String downloadPath = Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS).absolutePath + "/"
+					//
+					// // File file = File(downloadPath + "audio.mp3");
+					// // Uri uri = FileProvider.getUriForFile(context, "com.restart.shareaudiofiles.fileprovider", file);
+					// // share.putExtra(Intent.EXTRA_STREAM, uri);
+					//
+					// // martin.botoneraforgottera.Adapters
+					//
+					// // Uri uri = Uri.parse("android.resource://com.my.package/drawable/icon");
+					// Uri uri = Uri.parse("android.resource://martin.botoneraforgottera/raw/uber1mp3.mp3");
+					//
+					// share.putExtra(Intent.EXTRA_STREAM, uri);
+					//
+					//
+					// context.startActivity(Intent.createChooser(share, "Share Sound File"));
+
+
+					// sssssssssssssss
+
+
+					// // String sharePath = Environment.getExternalStorageDirectory().getPath() + "/Soundboard/Ringtones/custom_ringtone.ogg";
+					// // String aaa = Environment.getExternalStorageDirectory().getPath();
+					// // E:\martincho\E - Documentos\android\BotoneraForgottera\app\src\main\res\raw\luacha1.opus
+					// // String sharePath = Environment.getExternalStorageDirectory().getPath() + "/app/src/main/res/raw/uber1mp3.mp3";
+					// // Uri uri = Uri.parse("android.resource://martin.botoneraforgottera/raw/uber1mp3.mp3");
+					//
+					// // Uri uri = Uri.parse("android.resource://martin.botoneraforgottera/" + R.raw.uber1mp3);
+					//
+					// // Uri uri = Uri.parse("android.resource://" + context.getPackageName() + "/raw/audio");
+					//
+					// // String ppp = ContentResolver.SCHEME_ANDROID_RESOURCE + File.pathSeparator + File.separator + context.getPackageName() + "/raw/" + "audio2222";
+					// // Uri uri = Uri.parse(ppp);
+					// Uri uri = Uri.parse("android.resource://martin.botoneraforgottera/" + R.raw.audio + ".mp3");
+					//
+					//
+					// Intent share = new Intent(Intent.ACTION_SEND);
+					// share.setType("audio/*");
+					// share.putExtra(Intent.EXTRA_STREAM, uri);
+					// context.startActivity(Intent.createChooser(share, "Share Sound File"));
+
+
+					//--------------------
+
+					// Intent share = new Intent(Intent.ACTION_SEND);
+					// share.setType("audio/*");
+					// share.putExtra(Intent.EXTRA_STREAM,Uri.parse("file:///"+mypath));
+					// startActivity(Intent.createChooser(share, "Share Sound File"));
+
+					// -------------------------
+
+
+					// Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sticky_notes); // your bitmap
+					// ByteArrayOutputStream bs = new ByteArrayOutputStream();
+					// bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bs);
+					// intent.putExtra("byteArray", bs.toByteArray());
+
+
+					// --------------
+
+
+					// val path = FileProvider.getUriForFile(this, authorities, firstAudio!!)
+
+					// val shareIntent = Intent();
+					// shareIntent.action = Intent.ACTION_SEND;
+					// shareIntent.putExtra(Intent.EXTRA_STREAM, path);
+					// shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+					// shareIntent.type = "audio/mp3";
+					// startActivity(Intent.createChooser(shareIntent, "Share..."))
+
+					//		--------------------------------------
+					// intent.setType("audio/*");
+					//	 -------------------------------
+					// Intent shareIntent = new Intent(Intent.ACTION_SEND);
+					// shareIntent.setType("audio/*");
+					// shareIntent.setPackage("martin.botoneraforgottera");
+					// shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.audio + ".mp3"));
+					// shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+					// context.startActivity(shareIntent);
 				}
 			});
 
