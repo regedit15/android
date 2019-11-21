@@ -107,7 +107,10 @@ public class AudioService {
 
 	// Esto devuelve un intent ya que la unica forma de llamar al startActivityForResult
 	// es en el fragment o haces un Fragment f = this y pasarlo por parametro
-	public void compartirAudio(Fragment fragment, int idAudio) {
+	public File compartirAudio(Fragment fragment, int idAudio) {
+
+		File fileAudio = null;
+
 		try {
 			validarPermisos(fragment.getContext());
 
@@ -117,7 +120,7 @@ public class AudioService {
 			// File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
 			InputStream inputStream = fragment.getResources().openRawResource(idAudio);
-			File fileAudio = new File(filePath, AUDIO_PARA_COMPARTIR);
+			fileAudio = new File(filePath, AUDIO_PARA_COMPARTIR);
 
 			copiarArchivo(inputStream, fileAudio);
 
@@ -130,6 +133,8 @@ public class AudioService {
 		} catch (PermisoException e) {
 			irAConfiguracionDeLaApp(fragment.getContext());
 		}
+
+		return fileAudio;
 	}
 
 	public void copiarArchivo(InputStream inputStream, File file) {
@@ -153,6 +158,20 @@ public class AudioService {
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 		intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 		context.startActivity(intent);
+	}
+	//	------------------------------------------------------------------------------------------
+
+	//----------------------------- Eliminar Audio
+	public void eliminarFileSiExiste(File file) {
+		if (file != null && file.exists()) {
+			file.delete();
+		}
+	}
+
+	public void eliminarFileSiExisteResult(int requestCode, File file) {
+		if (requestCode == CODIGO_SHARE_OK) {
+			eliminarFileSiExiste(file);
+		}
 	}
 	//	------------------------------------------------------------------------------------------
 }

@@ -10,16 +10,10 @@ public class BaseFragment extends Fragment {
 
 	protected UtilService utilService = new UtilService();
 	protected AudioService audioService = new AudioService();
-	// protected File fileAudio;
-
-	protected void eliminarFileSiExiste(File file) {
-		if (file != null && file.exists()) {
-			file.delete();
-		}
-	}
+	protected File fileAudio;
 
 	protected void compartirAudoooo(int idAudio) {
-		audioService.compartirAudio(this, idAudio);
+		fileAudio = audioService.compartirAudio(this, idAudio);
 	}
 
 }

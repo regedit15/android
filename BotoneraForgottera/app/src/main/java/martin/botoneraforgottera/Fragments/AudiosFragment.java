@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.File;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -25,7 +24,6 @@ public class AudiosFragment extends BaseFragment {
 	private AudioAdapter audioAdapter;
 	private List<Audio> audios;
 	private RecyclerView.LayoutManager mLayoutManager;
-	private File fileAudio;
 
 	public AudiosFragment() {
 	}
@@ -63,15 +61,13 @@ public class AudiosFragment extends BaseFragment {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		eliminarFileSiExiste(fileAudio);
+		audioService.eliminarFileSiExiste(fileAudio);
 	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == audioService.CODIGO_SHARE_OK) {
-			eliminarFileSiExiste(fileAudio);
-		}
+		audioService.eliminarFileSiExisteResult(requestCode, fileAudio);
 	}
 	// ----------------------------------------------------
 }
