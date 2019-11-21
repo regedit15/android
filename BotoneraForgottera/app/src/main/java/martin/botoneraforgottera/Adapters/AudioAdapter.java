@@ -11,7 +11,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
 import martin.botoneraforgottera.Interfaces.OnTagClickListener;
@@ -91,13 +91,14 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			tags = audio.getTags();
 			recyclerViewTags.setHasFixedSize(true);
 			recyclerViewTags.setItemAnimator(new DefaultItemAnimator());
-			layoutManagerTags = new LinearLayoutManager(context);
+			// layoutManagerTags = new LinearLayoutManager(context);
+			layoutManagerTags = new GridLayoutManager(context, 3);
 			recyclerViewTags.setLayoutManager(layoutManagerTags);
 
 			tagsAdapter = new TagsAdapter(tags, R.layout.item_tags, new OnTagClickListener() {
 				@Override
 				public void onTagClick(Tag tag) {
-					Toast.makeText(context, "Presionaste tag", Toast.LENGTH_LONG).show();
+					Toast.makeText(context, "Proximamente filtrado", Toast.LENGTH_LONG).show();
 				}
 			});
 
