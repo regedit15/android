@@ -87,6 +87,13 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			});
 
 
+			btnShare.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					onPlayClickListener.onShareClickListener(audio);
+				}
+			});
+			
 			//--------------------------- Segundo listado
 			tags = audio.getTags();
 			recyclerViewTags.setHasFixedSize(true);
