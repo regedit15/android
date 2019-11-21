@@ -8,10 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -27,6 +24,7 @@ import martin.botoneraforgottera.R;
 
 public class AudiosFragment extends BaseFragment {
 
+	public static final String AUDIO_PARA_COMPARTIR = "audioBotoneraForgottera.mp3";
 	private RecyclerView recyclerView;
 	private AudioAdapter audioAdapter;
 	private List<Audio> audios;
@@ -67,18 +65,13 @@ public class AudiosFragment extends BaseFragment {
 					// File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
 					InputStream inputStream = getResources().openRawResource(R.raw.audio);
-					fileAudio = new File(filePath, "audiocopia.mp3");
+					fileAudio = new File(filePath, AUDIO_PARA_COMPARTIR);
 
-					try {
-						FileUtils.copyInputStreamToFile(inputStream, fileAudio);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-
+					utilService.copiarArchivo(inputStream, fileAudio);
 
 					Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
-					shareIntent.setType("audio/mp3");
+					shareIntent.setType(utilService.TYPE_AUDIO_MP3);
 					shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(getContext(), getNombreProvider(), fileAudio));
 					shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 					startActivityForResult(Intent.createChooser(shareIntent, "Share images..."), CODIGO_SHARE_OK);

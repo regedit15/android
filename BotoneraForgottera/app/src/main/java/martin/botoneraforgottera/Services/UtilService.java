@@ -1,10 +1,5 @@
 package martin.botoneraforgottera.Services;
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Environment;
-
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -13,11 +8,18 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.core.content.FileProvider;
 import martin.botoneraforgottera.Models.Audio;
 import martin.botoneraforgottera.R;
 
 public class UtilService {
+
+	// ------------------ Tipos de Intent para compartir
+	public String TYPE_IMAGE_ALL = "image/*";
+	public String TYPE_IMAGE_PNG = "image/png";
+	public String TYPE_AUDIO_ALL = "audio/*";
+	public String TYPE_AUDIO_MP3 = "audio/mp3";
+	public String TYPE_PDF = "aplication/pdf";
+	//---------------------------------------------------------
 
 	public List<Audio> getAudios() {
 		return new ArrayList<Audio>() {{
@@ -67,6 +69,14 @@ public class UtilService {
 		// // file.deleteOnExit();
 	}
 
+
+	public void copiarArchivo(InputStream inputStream, File file){
+		try {
+			FileUtils.copyInputStreamToFile(inputStream, file);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 }
