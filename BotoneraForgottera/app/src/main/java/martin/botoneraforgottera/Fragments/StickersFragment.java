@@ -5,10 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.R;
 
-public class StickersFragment extends Fragment {
+public class StickersFragment extends BaseFragment {
 
 	public StickersFragment() {
 	}

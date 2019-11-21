@@ -5,10 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.R;
 
-public class GifFragment extends Fragment {
+public class GifFragment extends BaseFragment {
 
 	public GifFragment() {
 	}
