@@ -1,10 +1,13 @@
 package martin.botoneraforgottera.Models;
 
+import java.util.List;
+
 public class Audio {
 
 	private int id;
 	private String nombre;
 	private String descripcion;
+	private List<Tag> tags;
 
 	public Audio() {
 	}
@@ -13,6 +16,13 @@ public class Audio {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+	}
+
+	public Audio(int id, String nombre, String descripcion, List<Tag> tags) {
+		this.id = id;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.tags = tags;
 	}
 
 	public int getId() {
@@ -37,5 +47,13 @@ public class Audio {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
 	}
 }
