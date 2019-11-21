@@ -95,22 +95,19 @@ public class AudiosFragment extends BaseFragment {
 		return view;
 	}
 
-
-	// @Override
-	// protected void onDestroy() {
-	// 	super.onDestroy();
-	// 	if (file.exists()) {
-	// 		file.delete();
-	// 	}
-	// }
+	// -------------- Eliminar el audio al despues de compartir o al cerrar la app
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		eliminarFileSiExiste(fileAudio);
+	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-
-		if (requestCode == CODIGO_SHARE_OK && fileAudio != null && fileAudio.exists()) {
-			fileAudio.delete();
+		if (requestCode == CODIGO_SHARE_OK) {
+			eliminarFileSiExiste(fileAudio);
 		}
 	}
-
+	// ----------------------------------------------------
 }

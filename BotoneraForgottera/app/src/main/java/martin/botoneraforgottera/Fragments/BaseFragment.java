@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.widget.Toast;
 
+import java.io.File;
+
 import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.Exceptions.PermisoException;
 import martin.botoneraforgottera.Services.UtilService;
@@ -29,6 +31,12 @@ public class BaseFragment extends Fragment {
 
 	protected String getNombreProvider() {
 		return new StringBuilder(getContext().getApplicationContext().getPackageName()).append(".").append(NOMBRE_FILE_PROVIDER).toString();
+	}
+
+	protected void eliminarFileSiExiste(File file) {
+		if (file != null && file.exists()) {
+			file.delete();
+		}
 	}
 
 	protected void irAConfiguracionDeLaApp() {
