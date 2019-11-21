@@ -12,12 +12,6 @@ public class Audio {
 	public Audio() {
 	}
 
-	public Audio(int id, String nombre, String descripcion) {
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
-
 	public Audio(int id, String nombre, String descripcion, List<Tag> tags) {
 		this.id = id;
 		this.nombre = nombre;

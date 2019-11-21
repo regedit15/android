@@ -23,7 +23,7 @@ public class AudiosFragment extends BaseFragment {
 	private RecyclerView recyclerView;
 	private AudioAdapter audioAdapter;
 	private List<Audio> audios;
-	private RecyclerView.LayoutManager mLayoutManager;
+	private RecyclerView.LayoutManager layoutManagerAudios;
 
 	public AudiosFragment() {
 	}
@@ -32,12 +32,13 @@ public class AudiosFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.fragment_audios, container, false);
+
 		audios = utilService.getAudios();
-		recyclerView = view.findViewById(R.id.rvListadoCiudades);
+		recyclerView = view.findViewById(R.id.rvListadoAudios);
 		recyclerView.setHasFixedSize(true);
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
-		mLayoutManager = new LinearLayoutManager(getContext());
-		recyclerView.setLayoutManager(mLayoutManager);
+		layoutManagerAudios = new LinearLayoutManager(getContext());
+		recyclerView.setLayoutManager(layoutManagerAudios);
 
 		audioAdapter = new AudioAdapter(audios, R.layout.item_audio, new OnPlayClickListener() {
 			@Override

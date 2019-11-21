@@ -6,12 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
+import martin.botoneraforgottera.Interfaces.OnTagClickListener;
 import martin.botoneraforgottera.Models.Audio;
+import martin.botoneraforgottera.Models.Tag;
 import martin.botoneraforgottera.R;
 
 public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> {
@@ -51,12 +56,23 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 		public Button btnPlay;
 		public Button btnShare;
 
+		//--------------------------- Segundo listado
+		private RecyclerView recyclerViewTags;
+		private TagsAdapter tagsAdapter;
+		private List<Tag> tags;
+		private RecyclerView.LayoutManager layoutManagerTags;
+		//---------------------------
+
 		public ViewHolder(View itemView) {
 			super(itemView);
 			nombre = itemView.findViewById(R.id.tvCiudadNombre);
 			descripcion = itemView.findViewById(R.id.tvCiudadDescripcion);
 			btnPlay = itemView.findViewById(R.id.btPlay);
 			btnShare = itemView.findViewById(R.id.btShare);
+
+			//--------------------------- Segundo listado
+			recyclerViewTags = itemView.findViewById(R.id.rvListadoTags);
+			//----------------------------------------------------------------
 		}
 
 		public void bind(final Audio audio, final OnPlayClickListener onPlayClickListener) {
@@ -70,12 +86,23 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 				}
 			});
 
-			btnShare.setOnClickListener(new View.OnClickListener() {
+
+			//--------------------------- Segundo listado
+			tags = audio.getTags();
+			recyclerViewTags.setHasFixedSize(true);
+			recyclerViewTags.setItemAnimator(new DefaultItemAnimator());
+			layoutManagerTags = new LinearLayoutManager(context);
+			recyclerViewTags.setLayoutManager(layoutManagerTags);
+
+			tagsAdapter = new TagsAdapter(tags, R.layout.item_tags, new OnTagClickListener() {
 				@Override
-				public void onClick(View view) {
-					onPlayClickListener.onShareClickListener(audio);
+				public void onTagClick(Tag tag) {
+					Toast.makeText(context, "Presionaste tag", Toast.LENGTH_LONG).show();
 				}
 			});
+
+			recyclerViewTags.setAdapter(tagsAdapter);
+			//----------------------------------------------------------------
 		}
 	}
 }
