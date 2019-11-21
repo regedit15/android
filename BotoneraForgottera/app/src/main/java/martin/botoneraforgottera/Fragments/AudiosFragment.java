@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import martin.botoneraforgottera.Adapters.AudioAdapter;
-import martin.botoneraforgottera.Exceptions.PermisoException;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
 import martin.botoneraforgottera.Models.Audio;
 import martin.botoneraforgottera.R;
@@ -51,13 +50,7 @@ public class AudiosFragment extends BaseFragment {
 
 			@Override
 			public void onShareClickListener(Audio audio) {
-
-				try {
-					Intent shareIntent = audioService.compartirAudio(getContext(), getResources());
-					startActivityForResult(Intent.createChooser(shareIntent, "Share images..."), audioService.CODIGO_SHARE_OK);
-				} catch (PermisoException e) {
-					audioService.irAConfiguracionDeLaApp(getContext());
-				}
+				compartirAudoooo(audio.getId());
 			}
 		});
 
