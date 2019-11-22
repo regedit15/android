@@ -93,7 +93,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 					onPlayClickListener.onShareClickListener(audio);
 				}
 			});
-			
+
 			//--------------------------- Segundo listado
 			tags = audio.getTags();
 			recyclerViewTags.setHasFixedSize(true);
