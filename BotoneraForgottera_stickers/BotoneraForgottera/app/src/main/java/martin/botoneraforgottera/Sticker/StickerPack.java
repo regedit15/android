@@ -14,10 +14,10 @@ import android.os.Parcelable;
 import java.util.List;
 
 public class StickerPack implements Parcelable {
-	final String identifier;
-	final String name;
-	final String publisher;
-	final String trayImageFile;
+	public final String identifier;
+	public final String name;
+	public final String publisher;
+	public final String trayImageFile;
 	final String publisherEmail;
 	final String publisherWebsite;
 	final String privacyPolicyWebsite;
@@ -102,7 +102,7 @@ public class StickerPack implements Parcelable {
 		return stickers;
 	}
 
-	long getTotalSize() {
+	public long getTotalSize() {
 		return totalSize;
 	}
 

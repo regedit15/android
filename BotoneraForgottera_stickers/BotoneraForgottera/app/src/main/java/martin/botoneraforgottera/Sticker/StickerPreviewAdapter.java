@@ -28,7 +28,7 @@ public class StickerPreviewAdapter extends RecyclerView.Adapter<StickerPreviewVi
 
 	private final LayoutInflater layoutInflater;
 
-	StickerPreviewAdapter(@NonNull final LayoutInflater layoutInflater, final int errorResource, final int cellSize, final int cellPadding, @NonNull final StickerPack stickerPack) {
+	public StickerPreviewAdapter(@NonNull final LayoutInflater layoutInflater, final int errorResource, final int cellSize, final int cellPadding, @NonNull final StickerPack stickerPack) {
 		this.cellSize = cellSize;
 		this.cellPadding = cellPadding;
 		this.cellLimit = 0;

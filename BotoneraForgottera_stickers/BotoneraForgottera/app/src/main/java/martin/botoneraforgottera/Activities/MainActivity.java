@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 		//	 ---------------------- Se piden permisos
-
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 			// pregunta al usuario los permisos
 			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISO_WRITE_OK);
