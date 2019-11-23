@@ -17,9 +17,12 @@ import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.Fragments.AudiosFragment;
 import martin.botoneraforgottera.Fragments.GifFragment;
 import martin.botoneraforgottera.Fragments.StickersFragment;
+import martin.botoneraforgottera.Fragments.StickersListFragment;
+import martin.botoneraforgottera.Interfaces.OnStickerListoListener;
 import martin.botoneraforgottera.R;
+import martin.botoneraforgottera.Sticker.StickerPack;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnStickerListoListener {
 
 	private int PERMISO_WRITE_OK = 1;
 	private DrawerLayout drawerLayout;
@@ -144,5 +147,12 @@ public class MainActivity extends AppCompatActivity {
 		return resultado;
 	}
 
+	@Override
+	public void onStickerListo(StickerPack stickerPack) {
+		// StickersListFragment stickersListFragment = (StickersListFragment) getSupportFragmentManager().findFragmentById(R.id.fg);
+		// detalleFragment.setearTexto(dato);
 
+		Fragment fragment = new StickersListFragment(stickerPack);
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+	}
 }

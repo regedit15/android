@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import martin.botoneraforgottera.Activities.MainActivity;
@@ -26,6 +25,7 @@ import martin.botoneraforgottera.Sticker.StickerPackLoader;
 import martin.botoneraforgottera.Sticker.StickerPreviewAdapter;
 import martin.botoneraforgottera.Sticker.WhitelistCheck;
 
+// Este es el mismo de StickerPackDetailsActivity, no el de lista
 public class StickersListFragment extends BaseFragmentStickers {
 
 	/**
@@ -53,16 +53,18 @@ public class StickersListFragment extends BaseFragmentStickers {
 	private View divider;
 	private WhiteListCheckAsyncTask whiteListCheckAsyncTask;
 
-	public StickersListFragment() {
+	public StickersListFragment(StickerPack stickerPack) {
+		this.stickerPack = stickerPack;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_stickers, container, false);
+		View view = inflater.inflate(R.layout.fragment_stickers_list, container, false);
 
 
-		boolean showUpButton = getActivity().getIntent().getBooleanExtra(EXTRA_SHOW_UP_BUTTON, false);
-		stickerPack = getActivity().getIntent().getParcelableExtra(EXTRA_STICKER_PACK_DATA);
+		// boolean showUpButton = getActivity().getIntent().getBooleanExtra(EXTRA_SHOW_UP_BUTTON, false);
+		// stickerPack = getActivity().getIntent().getParcelableExtra(EXTRA_STICKER_PACK_DATA);
+
 		TextView packNameTextView = view.findViewById(R.id.pack_name);
 		TextView packPublisherTextView = view.findViewById(R.id.author);
 		ImageView packTrayIcon = view.findViewById(R.id.tray_image);

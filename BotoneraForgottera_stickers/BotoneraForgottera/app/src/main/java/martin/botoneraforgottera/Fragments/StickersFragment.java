@@ -15,9 +15,9 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import martin.botoneraforgottera.Activities.MainActivity;
+import martin.botoneraforgottera.Interfaces.OnStickerListoListener;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Sticker.StickerPack;
-import martin.botoneraforgottera.Sticker.StickerPackDetailsActivity;
 import martin.botoneraforgottera.Sticker.StickerPackListActivity;
 import martin.botoneraforgottera.Sticker.StickerPackLoader;
 import martin.botoneraforgottera.Sticker.StickerPackValidator;
@@ -27,6 +27,7 @@ public class StickersFragment extends BaseFragment {
 	private View progressBar;
 	private LoadListAsyncTask loadListAsyncTask;
 	private TextView errorMessageTV;
+	private OnStickerListoListener onStickerListoListener;
 
 	public StickersFragment() {
 	}
@@ -59,13 +60,21 @@ public class StickersFragment extends BaseFragment {
 			getActivity().finish();
 			getActivity().overridePendingTransition(0, 0);
 		} else {
+
+			// ENTRA ACAAAAA no en el de arriba
 			// final Intent intent = new Intent(this, StickerPackDetailsActivity.class);
-			final Intent intent = new Intent(getContext(), StickerPackDetailsActivity.class);
-			intent.putExtra(StickerPackDetailsActivity.EXTRA_SHOW_UP_BUTTON, false);
-			intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_DATA, stickerPackList.get(0));
-			startActivity(intent);
-			getActivity().finish();
-			getActivity().overridePendingTransition(0, 0);
+			// final Intent intent = new Intent(getContext(), StickerPackDetailsActivity.class);
+			// intent.putExtra(StickerPackDetailsActivity.EXTRA_SHOW_UP_BUTTON, false);
+			// intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_DATA, stickerPackList.get(0));
+			// startActivity(intent);
+			// getActivity().finish();
+			// getActivity().overridePendingTransition(0, 0);
+
+
+			// Fragment fragment = new StickersListFragment();
+			// getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
+			onStickerListoListener.onStickerListo(stickerPackList.get(0));
 		}
 	}
 
@@ -121,6 +130,17 @@ public class StickersFragment extends BaseFragment {
 			} else {
 				showStickerPack(stringListPair.second);
 			}
+		}
+	}
+
+	@Override
+	public void onAttach(Context context) {
+		super.onAttach(context);
+
+		try {
+			onStickerListoListener = (OnStickerListoListener) context;
+		} catch (Exception e) {
+			throw new ClassCastException(context.toString() + " debe implementar DataListener");
 		}
 	}
 
