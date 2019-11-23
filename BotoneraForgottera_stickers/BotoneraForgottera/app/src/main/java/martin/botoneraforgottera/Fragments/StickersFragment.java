@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
 import martin.botoneraforgottera.Activities.MainActivity;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Sticker.StickerPack;
@@ -40,9 +39,9 @@ public class StickersFragment extends BaseFragment {
 
 		getActivity().overridePendingTransition(0, 0);
 
-		if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
-			((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-		}
+		// if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+		// 	((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+		// }
 
 		progressBar = view.findViewById(R.id.entry_activity_progress);
 		loadListAsyncTask = new LoadListAsyncTask((MainActivity) getActivity());

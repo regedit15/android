@@ -85,10 +85,11 @@ public class StickersListFragment extends BaseFragmentStickers {
 		packTrayIcon.setImageURI(StickerPackLoader.getStickerAssetUri(stickerPack.identifier, stickerPack.trayImageFile));
 		packSizeTextView.setText(Formatter.formatShortFileSize(getContext(), stickerPack.getTotalSize()));
 		addButton.setOnClickListener(v -> addStickerPackToWhatsApp(stickerPack.identifier, stickerPack.name));
-		if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
-			((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(showUpButton);
-			((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(showUpButton ? getResources().getString(R.string.title_activity_sticker_pack_details_multiple_pack) : getResources().getQuantityString(R.plurals.title_activity_sticker_packs_list, 1));
-		}
+
+		// if (((AppCompatActivity) getActivity()).getSupportActionBar() != null) {
+		// 	((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(showUpButton);
+		// 	((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(showUpButton ? getResources().getString(R.string.title_activity_sticker_pack_details_multiple_pack) : getResources().getQuantityString(R.plurals.title_activity_sticker_packs_list, 1));
+		// }
 
 		return view;
 	}
