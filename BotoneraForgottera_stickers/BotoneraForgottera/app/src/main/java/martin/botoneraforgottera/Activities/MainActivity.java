@@ -1,7 +1,6 @@
 package martin.botoneraforgottera.Activities;
 
 import android.Manifest;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,8 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.Fragments.AudiosFragment;
 import martin.botoneraforgottera.Fragments.GifFragment;
+import martin.botoneraforgottera.Fragments.StickersFragment;
 import martin.botoneraforgottera.R;
-import martin.botoneraforgottera.Sticker.EntryActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -86,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
 						transaction = true;
 						break;
 					case R.id.it_stickers:
-						// fragment = new StickersFragment();
-						// transaction = true;
+						fragment = new StickersFragment();
+						transaction = true;
 
-						startActivity(new Intent(MainActivity.this, EntryActivity.class));
+						// startActivity(new Intent(MainActivity.this, EntryActivity.class));
 						break;
 				}
 

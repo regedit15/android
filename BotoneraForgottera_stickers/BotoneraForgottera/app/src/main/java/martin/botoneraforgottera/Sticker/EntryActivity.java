@@ -40,7 +40,7 @@ public class EntryActivity extends BaseActivity {
 		loadListAsyncTask.execute();
 	}
 
-	private void showStickerPack(ArrayList<StickerPack> stickerPackList) {
+	public void showStickerPack(ArrayList<StickerPack> stickerPackList) {
 		progressBar.setVisibility(View.GONE);
 		if (stickerPackList.size() > 1) {
 			final Intent intent = new Intent(this, StickerPackListActivity.class);
@@ -58,7 +58,7 @@ public class EntryActivity extends BaseActivity {
 		}
 	}
 
-	private void showErrorMessage(String errorMessage) {
+	public void showErrorMessage(String errorMessage) {
 		progressBar.setVisibility(View.GONE);
 		Log.e("EntryActivity", "error fetching sticker packs, " + errorMessage);
 		final TextView errorMessageTV = findViewById(R.id.error_message);
@@ -73,10 +73,10 @@ public class EntryActivity extends BaseActivity {
 		}
 	}
 
-	static class LoadListAsyncTask extends AsyncTask<Void, Void, Pair<String, ArrayList<StickerPack>>> {
+	public static class LoadListAsyncTask extends AsyncTask<Void, Void, Pair<String, ArrayList<StickerPack>>> {
 		private final WeakReference<EntryActivity> contextWeakReference;
 
-		LoadListAsyncTask(EntryActivity activity) {
+		public LoadListAsyncTask(EntryActivity activity) {
 			this.contextWeakReference = new WeakReference<>(activity);
 		}
 

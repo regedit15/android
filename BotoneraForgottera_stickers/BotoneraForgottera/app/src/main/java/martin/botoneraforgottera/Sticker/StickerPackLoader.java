@@ -39,13 +39,13 @@ import static martin.botoneraforgottera.Sticker.StickerContentProvider.STICKER_P
 import static martin.botoneraforgottera.Sticker.StickerContentProvider.STICKER_PACK_NAME_IN_QUERY;
 import static martin.botoneraforgottera.Sticker.StickerContentProvider.STICKER_PACK_PUBLISHER_IN_QUERY;
 
-class StickerPackLoader {
+public class StickerPackLoader {
 
 	/**
 	 * Get the list of sticker packs for the sticker content provider
 	 */
 	@NonNull
-	static ArrayList<StickerPack> fetchStickerPacks(Context context) throws IllegalStateException {
+	public static ArrayList<StickerPack> fetchStickerPacks(Context context) throws IllegalStateException {
 		final Cursor cursor = context.getContentResolver().query(StickerContentProvider.AUTHORITY_URI, null, null, null, null);
 		if (cursor == null) {
 			throw new IllegalStateException("could not fetch from content provider, " + BuildConfig.CONTENT_PROVIDER_AUTHORITY);
