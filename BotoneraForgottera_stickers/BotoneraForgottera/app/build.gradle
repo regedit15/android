@@ -1,6 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
+    //the compression of webp file during build causes problem with FileDescriptor in ContentProvider.
+    aaptOptions {
+        noCompress "webp"
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
