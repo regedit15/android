@@ -1,7 +1,6 @@
 package martin.botoneraforgottera.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,23 +17,22 @@ import martin.botoneraforgottera.Activities.MainActivity;
 import martin.botoneraforgottera.Interfaces.OnStickerListoListener;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Sticker.StickerPack;
-import martin.botoneraforgottera.Sticker.StickerPackListActivity;
 import martin.botoneraforgottera.Sticker.StickerPackLoader;
 import martin.botoneraforgottera.Sticker.StickerPackValidator;
 
-public class StickersFragment extends BaseFragment {
+public class PaqueteStickersFragment extends BaseFragment {
 
 	private View progressBar;
 	private LoadListAsyncTask loadListAsyncTask;
 	private TextView errorMessageTV;
 	private OnStickerListoListener onStickerListoListener;
 
-	public StickersFragment() {
+	public PaqueteStickersFragment() {
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_stickers, container, false);
+		View view = inflater.inflate(R.layout.fragment_paquete_stickers, container, false);
 
 		errorMessageTV = view.findViewById(R.id.error_message);
 
@@ -53,27 +51,18 @@ public class StickersFragment extends BaseFragment {
 
 	private void showStickerPack(ArrayList<StickerPack> stickerPackList) {
 		progressBar.setVisibility(View.GONE);
-		if (stickerPackList.size() > 1) {
-			final Intent intent = new Intent(getContext(), StickerPackListActivity.class);
-			intent.putParcelableArrayListExtra(StickerPackListActivity.EXTRA_STICKER_PACK_LIST_DATA, stickerPackList);
-			startActivity(intent);
-			getActivity().finish();
-			getActivity().overridePendingTransition(0, 0);
-		} else {
 
-			// ENTRA ACAAAAA no en el de arriba
-			// final Intent intent = new Intent(this, StickerPackDetailsActivity.class);
-			// final Intent intent = new Intent(getContext(), StickerPackDetailsActivity.class);
-			// intent.putExtra(StickerPackDetailsActivity.EXTRA_SHOW_UP_BUTTON, false);
-			// intent.putExtra(StickerPackDetailsActivity.EXTRA_STICKER_PACK_DATA, stickerPackList.get(0));
+		if (stickerPackList.size() > 1) {
+			// Entra aca si solo tenes mas de 1 paquete de stickers
+			// final Intent intent = new Intent(getContext(), StickerPackListActivity.class);
+			// intent.putParcelableArrayListExtra(StickerPackListActivity.EXTRA_STICKER_PACK_LIST_DATA, stickerPackList);
 			// startActivity(intent);
 			// getActivity().finish();
 			// getActivity().overridePendingTransition(0, 0);
-
-
-			// Fragment fragment = new StickersListFragment();
-			// getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
-
+			// Entra aca si solo tenes 1 paquete de stickers
+			onStickerListoListener.onStickerListo2(stickerPackList);
+		} else {
+			// Entra aca si solo tenes 1 paquete de stickers
 			onStickerListoListener.onStickerListo(stickerPackList.get(0));
 		}
 	}

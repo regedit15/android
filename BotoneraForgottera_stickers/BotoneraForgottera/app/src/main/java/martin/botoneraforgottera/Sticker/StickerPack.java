@@ -44,7 +44,7 @@ public class StickerPack implements Parcelable {
 		this.avoidCache = avoidCache;
 	}
 
-	void setIsWhitelisted(boolean isWhitelisted) {
+	public void setIsWhitelisted(boolean isWhitelisted) {
 		this.isWhitelisted = isWhitelisted;
 	}
 

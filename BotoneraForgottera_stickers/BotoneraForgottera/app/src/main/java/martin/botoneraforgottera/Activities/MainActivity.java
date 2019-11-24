@@ -7,6 +7,9 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,7 +19,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.Fragments.AudiosFragment;
 import martin.botoneraforgottera.Fragments.GifFragment;
-import martin.botoneraforgottera.Fragments.StickersFragment;
+import martin.botoneraforgottera.Fragments.ListadoPaquetesStickersFragment;
+import martin.botoneraforgottera.Fragments.PaqueteStickersFragment;
 import martin.botoneraforgottera.Fragments.StickersListFragment;
 import martin.botoneraforgottera.Interfaces.OnStickerListoListener;
 import martin.botoneraforgottera.R;
@@ -88,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnStickerListoLis
 						transaction = true;
 						break;
 					case R.id.it_stickers:
-						fragment = new StickersFragment();
+						fragment = new PaqueteStickersFragment();
 						transaction = true;
 
 						// startActivity(new Intent(MainActivity.this, EntryActivity.class));
@@ -153,6 +157,12 @@ public class MainActivity extends AppCompatActivity implements OnStickerListoLis
 		// detalleFragment.setearTexto(dato);
 
 		Fragment fragment = new StickersListFragment(stickerPack);
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+	}
+
+	@Override
+	public void onStickerListo2(ArrayList<StickerPack> stickerPackList) {
+		Fragment fragment = new ListadoPaquetesStickersFragment(stickerPackList);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
 	}
 }

@@ -36,7 +36,7 @@ public class StickerPackListAdapter extends RecyclerView.Adapter<StickerPackList
 	private int maxNumberOfStickersInARow;
 	private int minMarginBetweenImages;
 
-	StickerPackListAdapter(@NonNull List<StickerPack> stickerPacks, @NonNull OnAddButtonClickedListener onAddButtonClickedListener) {
+	public StickerPackListAdapter(@NonNull List<StickerPack> stickerPacks, @NonNull OnAddButtonClickedListener onAddButtonClickedListener) {
 		this.stickerPacks = stickerPacks;
 		this.onAddButtonClickedListener = onAddButtonClickedListener;
 	}
@@ -109,7 +109,7 @@ public class StickerPackListAdapter extends RecyclerView.Adapter<StickerPackList
 		return stickerPacks.size();
 	}
 
-	void setImageRowSpec(int maxNumberOfStickersInARow, int minMarginBetweenImages) {
+	public void setImageRowSpec(int maxNumberOfStickersInARow, int minMarginBetweenImages) {
 		this.minMarginBetweenImages = minMarginBetweenImages;
 		if (this.maxNumberOfStickersInARow != maxNumberOfStickersInARow) {
 			this.maxNumberOfStickersInARow = maxNumberOfStickersInARow;
@@ -117,7 +117,7 @@ public class StickerPackListAdapter extends RecyclerView.Adapter<StickerPackList
 		}
 	}
 
-	void setStickerPackList(List<StickerPack> stickerPackList) {
+	public void setStickerPackList(List<StickerPack> stickerPackList) {
 		this.stickerPacks = stickerPackList;
 	}
 

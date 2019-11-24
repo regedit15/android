@@ -16,14 +16,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import martin.botoneraforgottera.R;
 
-class StickerPackListItemViewHolder extends RecyclerView.ViewHolder {
+public class StickerPackListItemViewHolder extends RecyclerView.ViewHolder {
 
 	final View container;
 	final TextView titleView;
 	final TextView publisherView;
 	final TextView filesizeView;
 	final ImageView addButton;
-	final LinearLayout imageRowView;
+	public final LinearLayout imageRowView;
 
 	StickerPackListItemViewHolder(final View itemView) {
 		super(itemView);

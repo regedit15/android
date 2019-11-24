@@ -225,6 +225,97 @@
                     ]
                 }
             ]
+        },
+        {
+            "identifier": "2",
+            "name": "Cuppy2",
+            "publisher": "Jane Doe222",
+            "tray_image_file": "tray_Cuppy.png",
+            "image_data_version": "1",
+            "avoid_cache": false,
+            "publisher_email": "",
+            "publisher_website": "",
+            "privacy_policy_website": "",
+            "license_agreement_website": "",
+            "stickers": [
+                {
+                    "image_file": "Sticker_31.webp",
+                    "emojis": [
+                        "☕",
+                        "🙂"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_32.webp",
+                    "emojis": [
+                        "😄",
+                        "😀"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_33.webp",
+                    "emojis": [
+                        "🖐",
+                        "👋"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_34.webp",
+                    "emojis": [
+                        "🍵",
+                        "😌"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_35.webp",
+                    "emojis": [
+                        "📱",
+                        "😦"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_36.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_37.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_38.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_39.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_40.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_41.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                }
+            ]
         }
     ]
 }
