@@ -1,0 +1,4 @@
+#Sat Nov 23 21:26:18 ART 2019
+base.0=E\:\\martincho\\E - Documentos\\android\\BotoneraForgottera_stickers_v2\\BotoneraForgottera\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
