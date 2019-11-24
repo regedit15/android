@@ -4,9 +4,9 @@
     "sticker_packs": [
         {
             "identifier": "1",
-            "name": "Cuppy",
-            "publisher": "Jane Doe",
-            "tray_image_file": "tray_Cuppy.png",
+            "name": "Random",
+            "publisher": "McPollo",
+            "tray_image_file": "pato_donald_war.png",
             "image_data_version": "1",
             "avoid_cache": false,
             "publisher_email": "",
@@ -228,9 +228,9 @@
         },
         {
             "identifier": "2",
-            "name": "Cuppy2",
-            "publisher": "Jane Doe222",
-            "tray_image_file": "tray_Cuppy.png",
+            "name": "Shifladosh",
+            "publisher": "McPollo",
+            "tray_image_file": "gaston.png",
             "image_data_version": "1",
             "avoid_cache": false,
             "publisher_email": "",
@@ -310,6 +310,139 @@
                 },
                 {
                     "image_file": "Sticker_41.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_42.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_43.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_44.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_45.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_46.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_47.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_48.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_49.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_50.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_51.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_52.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_53.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_54.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_55.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_56.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_57.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_58.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_59.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_60.webp",
                     "emojis": [
                         "🔋",
                         "😵"

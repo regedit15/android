@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -151,11 +150,13 @@ public class MainActivity extends AppCompatActivity implements OnStickerListoLis
 		return resultado;
 	}
 
+
+	//Nota sobre los stickers: cada stickers debe estar en formato .webp y debe tener 512x512 pixeles
+	// y pesar menos de 100 kb
+	// La imagen del icono del paquete debe tener 96x96 pixeles y pesar menos de 50 kb
+
 	@Override
 	public void onStickerListo(StickerPack stickerPack) {
-		// StickersListFragment stickersListFragment = (StickersListFragment) getSupportFragmentManager().findFragmentById(R.id.fg);
-		// detalleFragment.setearTexto(dato);
-
 		Fragment fragment = new StickersListFragment(stickerPack);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
 	}

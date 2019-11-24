@@ -54,12 +54,6 @@ public class PaqueteStickersFragment extends BaseFragment {
 
 		if (stickerPackList.size() > 1) {
 			// Entra aca si solo tenes mas de 1 paquete de stickers
-			// final Intent intent = new Intent(getContext(), StickerPackListActivity.class);
-			// intent.putParcelableArrayListExtra(StickerPackListActivity.EXTRA_STICKER_PACK_LIST_DATA, stickerPackList);
-			// startActivity(intent);
-			// getActivity().finish();
-			// getActivity().overridePendingTransition(0, 0);
-			// Entra aca si solo tenes 1 paquete de stickers
 			onStickerListoListener.onStickerListo2(stickerPackList);
 		} else {
 			// Entra aca si solo tenes 1 paquete de stickers

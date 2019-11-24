@@ -40,12 +40,7 @@ public class ListadoPaquetesStickersFragment extends BaseFragmentStickers {
 		View view = inflater.inflate(R.layout.fragment_listado_paquetes_stickers, container, false);
 
 		packRecyclerView = view.findViewById(R.id.sticker_pack_list);
-		// stickerPackList = getActivity().getIntent().getParcelableArrayListExtra(EXTRA_STICKER_PACK_LIST_DATA);
 		showStickerPackList(stickerPackList);
-
-		// if (getSupportActionBar() != null) {
-		// 	getSupportActionBar().setTitle(getResources().getQuantityString(R.plurals.title_activity_sticker_packs_list, stickerPackList.size()));
-		// }
 
 		return view;
 	}
