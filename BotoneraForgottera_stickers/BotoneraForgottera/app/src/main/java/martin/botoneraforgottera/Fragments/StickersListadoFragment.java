@@ -26,7 +26,7 @@ import martin.botoneraforgottera.Sticker.StickerPreviewAdapter;
 import martin.botoneraforgottera.Sticker.WhitelistCheck;
 
 // Este es el mismo de StickerPackDetailsActivity, no el de lista
-public class StickersListFragment extends BaseFragmentStickers {
+public class StickersListadoFragment extends BaseFragmentStickers {
 
 	/**
 	 * Do not change below values of below 3 lines as this is also used by WhatsApp
@@ -53,7 +53,7 @@ public class StickersListFragment extends BaseFragmentStickers {
 	private View divider;
 	private WhiteListCheckAsyncTask whiteListCheckAsyncTask;
 
-	public StickersListFragment(StickerPack stickerPack) {
+	public StickersListadoFragment(StickerPack stickerPack) {
 		this.stickerPack = stickerPack;
 	}
 

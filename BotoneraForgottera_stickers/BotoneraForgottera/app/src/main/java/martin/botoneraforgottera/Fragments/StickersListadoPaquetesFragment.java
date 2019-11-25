@@ -21,7 +21,7 @@ import martin.botoneraforgottera.Sticker.StickerPackListAdapter;
 import martin.botoneraforgottera.Sticker.StickerPackListItemViewHolder;
 import martin.botoneraforgottera.Sticker.WhitelistCheck;
 
-public class ListadoPaquetesStickersFragment extends BaseFragmentStickers {
+public class StickersListadoPaquetesFragment extends BaseFragmentStickers {
 
 	public static final String EXTRA_STICKER_PACK_LIST_DATA = "sticker_pack_list";
 	private static final int STICKER_PREVIEW_DISPLAY_LIMIT = 5;
@@ -31,7 +31,7 @@ public class ListadoPaquetesStickersFragment extends BaseFragmentStickers {
 	private WhiteListCheckAsyncTask whiteListCheckAsyncTask;
 	private ArrayList<StickerPack> stickerPackList;
 
-	public ListadoPaquetesStickersFragment(ArrayList<StickerPack> stickerPackList) {
+	public StickersListadoPaquetesFragment(ArrayList<StickerPack> stickerPackList) {
 		this.stickerPackList = stickerPackList;
 	}
 

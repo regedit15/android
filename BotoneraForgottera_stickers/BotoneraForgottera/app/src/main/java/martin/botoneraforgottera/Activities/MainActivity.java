@@ -18,9 +18,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.Fragments.AudiosFragment;
 import martin.botoneraforgottera.Fragments.GifFragment;
-import martin.botoneraforgottera.Fragments.ListadoPaquetesStickersFragment;
-import martin.botoneraforgottera.Fragments.PaqueteStickersFragment;
-import martin.botoneraforgottera.Fragments.StickersListFragment;
+import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
+import martin.botoneraforgottera.Fragments.StickersCargandoFragment;
+import martin.botoneraforgottera.Fragments.StickersListadoFragment;
 import martin.botoneraforgottera.Interfaces.OnStickerListoListener;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Sticker.StickerPack;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements OnStickerListoLis
 						transaction = true;
 						break;
 					case R.id.it_stickers:
-						fragment = new PaqueteStickersFragment();
+						fragment = new StickersCargandoFragment();
 						transaction = true;
 
 						// startActivity(new Intent(MainActivity.this, EntryActivity.class));
@@ -157,13 +157,15 @@ public class MainActivity extends AppCompatActivity implements OnStickerListoLis
 
 	@Override
 	public void onStickerListo(StickerPack stickerPack) {
-		Fragment fragment = new StickersListFragment(stickerPack);
+		Fragment fragment = new StickersListadoFragment(stickerPack);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
 	}
 
 	@Override
 	public void onStickerListo2(ArrayList<StickerPack> stickerPackList) {
-		Fragment fragment = new ListadoPaquetesStickersFragment(stickerPackList);
+		Fragment fragment = new StickersListadoPaquetesFragment(stickerPackList);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+
+
 	}
 }

@@ -20,14 +20,14 @@ import martin.botoneraforgottera.Sticker.StickerPack;
 import martin.botoneraforgottera.Sticker.StickerPackLoader;
 import martin.botoneraforgottera.Sticker.StickerPackValidator;
 
-public class PaqueteStickersFragment extends BaseFragment {
+public class StickersCargandoFragment extends BaseFragment {
 
 	private View progressBar;
 	private LoadListAsyncTask loadListAsyncTask;
 	private TextView errorMessageTV;
 	private OnStickerListoListener onStickerListoListener;
 
-	public PaqueteStickersFragment() {
+	public StickersCargandoFragment() {
 	}
 
 	@Override
