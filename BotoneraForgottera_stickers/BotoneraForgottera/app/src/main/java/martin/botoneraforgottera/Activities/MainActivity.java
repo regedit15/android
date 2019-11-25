@@ -21,11 +21,11 @@ import martin.botoneraforgottera.Fragments.GifFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
 import martin.botoneraforgottera.Fragments.StickersCargandoFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoFragment;
-import martin.botoneraforgottera.Interfaces.OnStickerListoListener;
+import martin.botoneraforgottera.Interfaces.StickerListener;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Sticker.StickerPack;
 
-public class MainActivity extends AppCompatActivity implements OnStickerListoListener {
+public class MainActivity extends AppCompatActivity implements StickerListener {
 
 	private int PERMISO_WRITE_OK = 1;
 	private DrawerLayout drawerLayout;
@@ -156,13 +156,13 @@ public class MainActivity extends AppCompatActivity implements OnStickerListoLis
 	// La imagen del icono del paquete debe tener 96x96 pixeles y pesar menos de 50 kb
 
 	@Override
-	public void onStickerListo(StickerPack stickerPack) {
+	public void listarStickers(StickerPack stickerPack) {
 		Fragment fragment = new StickersListadoFragment(stickerPack);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
 	}
 
 	@Override
-	public void onStickerListo2(ArrayList<StickerPack> stickerPackList) {
+	public void listarPaquetes(ArrayList<StickerPack> stickerPackList) {
 		Fragment fragment = new StickersListadoPaquetesFragment(stickerPackList);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
 

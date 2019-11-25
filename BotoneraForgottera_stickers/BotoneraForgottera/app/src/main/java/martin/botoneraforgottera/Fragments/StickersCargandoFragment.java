@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import martin.botoneraforgottera.Activities.MainActivity;
-import martin.botoneraforgottera.Interfaces.OnStickerListoListener;
+import martin.botoneraforgottera.Interfaces.StickerListener;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Sticker.StickerPack;
 import martin.botoneraforgottera.Sticker.StickerPackLoader;
@@ -25,7 +25,7 @@ public class StickersCargandoFragment extends BaseFragment {
 	private View progressBar;
 	private LoadListAsyncTask loadListAsyncTask;
 	private TextView errorMessageTV;
-	private OnStickerListoListener onStickerListoListener;
+	private StickerListener stickerListener;
 
 	public StickersCargandoFragment() {
 	}
@@ -54,10 +54,10 @@ public class StickersCargandoFragment extends BaseFragment {
 
 		if (stickerPackList.size() > 1) {
 			// Entra aca si solo tenes mas de 1 paquete de stickers
-			onStickerListoListener.onStickerListo2(stickerPackList);
+			stickerListener.listarPaquetes(stickerPackList);
 		} else {
 			// Entra aca si solo tenes 1 paquete de stickers
-			onStickerListoListener.onStickerListo(stickerPackList.get(0));
+			stickerListener.listarStickers(stickerPackList.get(0));
 		}
 	}
 
@@ -121,7 +121,7 @@ public class StickersCargandoFragment extends BaseFragment {
 		super.onAttach(context);
 
 		try {
-			onStickerListoListener = (OnStickerListoListener) context;
+			stickerListener = (StickerListener) context;
 		} catch (Exception e) {
 			throw new ClassCastException(context.toString() + " debe implementar DataListener");
 		}

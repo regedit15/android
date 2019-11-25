@@ -74,15 +74,21 @@ public class StickersListadoPaquetesFragment extends BaseFragmentStickers {
 	private final StickerPackListAdapter.OnAddButtonClickedListener onAddButtonClickedListener = pack -> addStickerPackToWhatsApp(pack.identifier, pack.name);
 
 	private void recalculateColumnCount() {
-		final int previewSize = getResources().getDimensionPixelSize(R.dimen.sticker_pack_list_item_preview_image_size);
-		int firstVisibleItemPosition = packLayoutManager.findFirstVisibleItemPosition();
-		StickerPackListItemViewHolder viewHolder = (StickerPackListItemViewHolder) packRecyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition);
-		if (viewHolder != null) {
-			final int widthOfImageRow = viewHolder.imageRowView.getMeasuredWidth();
-			final int max = Math.max(widthOfImageRow / previewSize, 1);
-			int maxNumberOfImagesInARow = Math.min(STICKER_PREVIEW_DISPLAY_LIMIT, max);
-			int minMarginBetweenImages = (widthOfImageRow - maxNumberOfImagesInARow * previewSize) / (maxNumberOfImagesInARow - 1);
-			allStickerPacksListAdapter.setImageRowSpec(maxNumberOfImagesInARow, minMarginBetweenImages);
+
+		// Solucion al error Illegalstateexception fragment .... not attached to a contex
+		// Fuente: https://stackoverflow.com/questions/28672883/java-lang-illegalstateexception-fragment-not-attached-to-activity
+		if (isAdded()) {
+
+			final int previewSize = getResources().getDimensionPixelSize(R.dimen.sticker_pack_list_item_preview_image_size);
+			int firstVisibleItemPosition = packLayoutManager.findFirstVisibleItemPosition();
+			StickerPackListItemViewHolder viewHolder = (StickerPackListItemViewHolder) packRecyclerView.findViewHolderForAdapterPosition(firstVisibleItemPosition);
+			if (viewHolder != null) {
+				final int widthOfImageRow = viewHolder.imageRowView.getMeasuredWidth();
+				final int max = Math.max(widthOfImageRow / previewSize, 1);
+				int maxNumberOfImagesInARow = Math.min(STICKER_PREVIEW_DISPLAY_LIMIT, max);
+				int minMarginBetweenImages = (widthOfImageRow - maxNumberOfImagesInARow * previewSize) / (maxNumberOfImagesInARow - 1);
+				allStickerPacksListAdapter.setImageRowSpec(maxNumberOfImagesInARow, minMarginBetweenImages);
+			}
 		}
 	}
 
