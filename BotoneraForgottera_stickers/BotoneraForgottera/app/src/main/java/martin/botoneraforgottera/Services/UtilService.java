@@ -11,12 +11,15 @@ public class UtilService {
 
 	private String TAG_UBER = "#uber";
 	private String TAG_FABRIO = "#fabrio";
+	private String TAG_FIURI = "#iuri";
 	private String TAG_MACREE = "#macree";
 	private String TAG_GOL = "#gol";
 	private String TAG_RIVER = "#river";
 	private String TAG_LUCHON = "#luchon";
 	private String TAG_PELOTUDO = "#pelotudo";
 	private String TAG_SONIDO = "#sonido";
+	private String TAG_SHIT_MUSIC = "#shitmusic";
+	private String TAG_RISA = "#risa";
 	private String TAG_ERUCTO = "#eructo";
 	private String TAG_PEDO = "#pedo";
 	private String TAG_LUACHA = "#luacha";
@@ -38,6 +41,7 @@ public class UtilService {
 	private String TAG_EISH = "#eish";
 	private String TAG_AY_QUE_RECO_MAME = "#ayquerecomame";
 	private String TAG_NIGUIN = "#niguin";
+	private String TAG_TREN = "#tren";
 	private String TAG_BASTA_CHICOS = "#bastachicos";
 	private String TAG_FORT = "#fort";
 	private String TAG_PASA_EL_LINK = "#pasaellink";
@@ -220,7 +224,6 @@ public class UtilService {
 				add(new Tag(TAG_UBER));
 			}}));
 			add(new Audio(R.raw.audio_43, "* Sonido de pedo *", "", new ArrayList<Tag>() {{
-				add(new Tag(TAG_GAJTAUN));
 				add(new Tag(TAG_PEDO));
 				add(new Tag(TAG_SONIDO));
 			}}));
@@ -600,6 +603,167 @@ public class UtilService {
 			add(new Audio(R.raw.audio_145, "Que onda furiii", "", new ArrayList<Tag>() {{
 				add(new Tag(TAG_GAJTAUN));
 				add(new Tag(TAG_SALUDO));
+			}}));
+			add(new Audio(R.raw.audio_146, "La podes cortar flaco?", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_FIURI));
+			}}));
+			add(new Audio(R.raw.audio_147, "Consulta al doctor, yo soy enfermero", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_UBER));
+			}}));
+			add(new Audio(R.raw.audio_148, "JAJA AJAJAJA AJAJA AJAJ", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_UBER));
+				add(new Tag(TAG_SONIDO));
+				add(new Tag(TAG_RISA));
+			}}));
+			add(new Audio(R.raw.audio_149, "Bueno hijo de puta, no me sale, que uqeres que haga", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+				add(new Tag(TAG_HIJO_DE_PUTA));
+			}}));
+			add(new Audio(R.raw.audio_150, "No podes preguntar algo asi en este grupo de mierda", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+			}}));
+			add(new Audio(R.raw.audio_151, "Que te pasa con mane facho hijo de mil putas?", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_UBER));
+				add(new Tag(TAG_HIJO_DE_PUTA));
+			}}));
+			add(new Audio(R.raw.audio_152, "Si, este, rompo culos tambien a domicilio", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_UBER));
+			}}));
+			add(new Audio(R.raw.audio_153, "Es muy facil", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+			}}));
+			add(new Audio(R.raw.audio_154, "No es todo lo mismo eso?", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+			}}));
+			add(new Audio(R.raw.audio_155, "Los alemanes nos atacaron anoche repetidas veces", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_GAJTAUN));
+				add(new Tag(TAG_FH2));
+			}}));
+			add(new Audio(R.raw.audio_156, "HIJO-DE-PUTA...", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+				add(new Tag(TAG_HIJO_DE_PUTA));
+			}}));
+			add(new Audio(R.raw.audio_157, "Haaawwwww... que tierno...", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_GAJTAUN));
+			}}));
+			add(new Audio(R.raw.audio_158, "A mi se me hace que sos marica", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_NIGUIN));
+			}}));
+			add(new Audio(R.raw.audio_159, "Ay que reco mamee (43)", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_AY_QUE_RECO_MAME));
+			}}));
+			add(new Audio(R.raw.audio_160, "PECHULEEEEEEN (12)", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_SALUDO));
+			}}));
+			add(new Audio(R.raw.audio_161, "Ha si?.. bueno tu hermana", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_UBER));
+			}}));
+			add(new Audio(R.raw.audio_162, "Cuere que cuere... pum pum..♫", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_UBER));
+				add(new Tag(TAG_SONIDO));
+			}}));
+			add(new Audio(R.raw.audio_163, "Gajtaaaaaaaaaun", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+				add(new Tag(TAG_SALUDO));
+			}}));
+			add(new Audio(R.raw.audio_164, "Gajtaaaaaaaaaun", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_NIGUIN));
+				add(new Tag(TAG_SALUDO));
+			}}));
+			add(new Audio(R.raw.audio_165, "Ah no? y yo que soy", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+			}}));
+			add(new Audio(R.raw.audio_166, "Ay todas esas drogas, quisiera tener ahora mismo una dududu..", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_NIGUIN));
+				add(new Tag(TAG_SIMPSONS));
+			}}));
+			add(new Audio(R.raw.audio_167, "Chicles beldent, chicles beldent...", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_GAJTAUN));
+				add(new Tag(TAG_TREN));
+			}}));
+			add(new Audio(R.raw.audio_168, "Chicles beldent, chicles beldent... (2)", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_GAJTAUN));
+				add(new Tag(TAG_TREN));
+			}}));
+			add(new Audio(R.raw.audio_169, "Se te hizo agua la boca cogote", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_GAJTAUN));
+			}}));
+			add(new Audio(R.raw.audio_169, "Se te hizo agua la boca cogote", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_GAJTAUN));
+			}}));
+			add(new Audio(R.raw.audio_170, "* Sonido de pedo (2) *", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_PEDO));
+				add(new Tag(TAG_SONIDO));
+			}}));
+			add(new Audio(R.raw.audio_171, "Estaba haciendo nonita?", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_NIGUIN));
+			}}));
+			add(new Audio(R.raw.audio_172, "Salí de ahi ya oshtia", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_OSHTIAPUTA));
+			}}));
+			add(new Audio(R.raw.audio_173, "Joder", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_JODER));
+			}}));
+			add(new Audio(R.raw.audio_174, "Mira como esta esa rapada viejaa", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_JODER));
+			}}));
+			add(new Audio(R.raw.audio_175, "* Sonido de pedo (3) *", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_PEDO));
+				add(new Tag(TAG_SONIDO));
+			}}));
+			add(new Audio(R.raw.audio_176, "* Sonido de pedo (4) *", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_PEDO));
+				add(new Tag(TAG_SONIDO));
+			}}));
+			add(new Audio(R.raw.audio_177, "Por que eliminaste ese mensaje?", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+				add(new Tag(TAG_CAGON));
+			}}));
+			add(new Audio(R.raw.audio_178, "Hijo de puta, que vas a cocinar", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_NIGUIN));
+			}}));
+			add(new Audio(R.raw.audio_179, "El hombre mira al hombreeee... y le aguanta la mmirada", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_GAJTAUN));
+				add(new Tag(TAG_SONIDO));
+				add(new Tag(TAG_SHIT_MUSIC));
+			}}));
+			add(new Audio(R.raw.audio_180, "Mandale saludos", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_SALUDO));
+			}}));
+			add(new Audio(R.raw.audio_181, "Che poio hay quilombo eh", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+			}}));
+			add(new Audio(R.raw.audio_182, "Hicieron trampa pocho, hicieron trampa!", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+			}}));
+			add(new Audio(R.raw.audio_183, "Fabri de mi vidaa", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+			}}));
+			add(new Audio(R.raw.audio_184, "PICHULEEEEEEN (13)", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_SALUDO));
+			}}));
+			add(new Audio(R.raw.audio_185, "Que haces despierto vos a esta hora?", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_FABRIO));
+			}}));
+			add(new Audio(R.raw.audio_186, "Es sabado vieja", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+			}}));
+			add(new Audio(R.raw.audio_187, "Pero mirá ese deportista papá", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_FABRIO));
+			}}));
+			add(new Audio(R.raw.audio_188, "Puta madreee", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_MARCE));
+				add(new Tag(TAG_HIJO_DE_PUTA));
+			}}));
+			add(new Audio(R.raw.audio_189, "* Pac pac pac pac pac *", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_SONIDO));
 			}}));
 		}};
 	}
