@@ -2,21 +2,54 @@ package martin.botoneraforgottera.Models;
 
 import java.util.List;
 
-public class Audio {
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+import martin.botoneraforgottera.Services.RealmService;
 
+public class Audio extends RealmObject {
+
+	@PrimaryKey
 	private int id;
+	private int idAudio;
 	private String nombre;
 	private String descripcion;
-	private List<Tag> tags;
+	private RealmList<Tag> tags;
 
 	public Audio() {
 	}
 
-	public Audio(int id, String nombre, String descripcion, List<Tag> tags) {
-		this.id = id;
+	public Audio(int idAudio, String nombre, String descripcion, RealmList<Tag> tags) {
+		// public Audio(int idAudio, String nombre, String descripcion, List<Tag> tags) {
+		this.id = RealmService.audioId.incrementAndGet();
+		this.idAudio = idAudio;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.tags = tags;
+
+		// this.tags = tags;
+		// this.tags = new RealmList<>();
+		//
+		// for (Tag tag : tags) {
+		// 	tags.add(tag);
+		// }
+	}
+
+	public Audio(int idAudio, String nombre, List<Tag> tagsList) {
+		this.id = RealmService.audioId.incrementAndGet();
+		this.idAudio = idAudio;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+
+		// this.tags = tags;
+		this.tags = new RealmList<>();
+
+		// for (Tag tag : tags) {
+		// 	tags.add(tag);
+		// }
+
+		for (int i = 0; i > tagsList.size(); i++) {
+			this.tags.add(tagsList.get(i));
+		}
 	}
 
 	public int getId() {
@@ -25,6 +58,14 @@ public class Audio {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getIdAudio() {
+		return idAudio;
+	}
+
+	public void setIdAudio(int idAudio) {
+		this.idAudio = idAudio;
 	}
 
 	public String getNombre() {
@@ -43,11 +84,11 @@ public class Audio {
 		this.descripcion = descripcion;
 	}
 
-	public List<Tag> getTags() {
+	public RealmList<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(List<Tag> tags) {
+	public void setTags(RealmList<Tag> tags) {
 		this.tags = tags;
 	}
 }

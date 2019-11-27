@@ -18,11 +18,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import martin.botoneraforgottera.Fragments.AudiosFragment;
 import martin.botoneraforgottera.Fragments.GifFragment;
-import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
 import martin.botoneraforgottera.Fragments.StickersCargandoFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoFragment;
+import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
 import martin.botoneraforgottera.Interfaces.StickerListener;
 import martin.botoneraforgottera.R;
+import martin.botoneraforgottera.Services.RealmService;
 import martin.botoneraforgottera.Sticker.StickerPack;
 
 public class MainActivity extends AppCompatActivity implements StickerListener {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 	private int PERMISO_WRITE_OK = 1;
 	private DrawerLayout drawerLayout;
 	private NavigationView navigationView;
+	public RealmService realmService = new RealmService();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +123,10 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISO_WRITE_OK);
 		}
 		// ------------------------------------------------
+
+
+		realmService.setearConfiguracion(getApplicationContext());
+		toString();
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

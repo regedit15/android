@@ -1,5 +1,6 @@
 package martin.botoneraforgottera.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,17 +14,22 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import io.realm.RealmList;
+import io.realm.RealmResults;
 import martin.botoneraforgottera.Adapters.AudioAdapter;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
 import martin.botoneraforgottera.Models.Audio;
 import martin.botoneraforgottera.R;
+import martin.botoneraforgottera.Services.SharedPreferenceService;
 
 public class AudiosFragment extends BaseFragment {
 
 	private RecyclerView recyclerView;
 	private AudioAdapter audioAdapter;
-	private List<Audio> audios;
+	// private RealmList<Audio> realmListAudios;
+	private RealmResults<Audio> realmResultsAudios;
 	private RecyclerView.LayoutManager layoutManagerAudios;
+	// private Realm realmFragment;
 
 	public AudiosFragment() {
 	}
@@ -33,23 +39,33 @@ public class AudiosFragment extends BaseFragment {
 
 		View view = inflater.inflate(R.layout.fragment_audios, container, false);
 
-		audios = utilService.getAudios();
+		sharedPreferenceService = new SharedPreferenceService(getActivity().getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
+
+		if (sharedPreferenceService.getString(AUDIOS_GUARDADOS) == "SI") {
+			realmResultsAudios = realmService.getAudios();
+		} else {
+			List<Audio> audios = utilService.getAudios();
+			realmService.insertarAudios(audios);
+			realmResultsAudios = realmService.getAudios();
+			sharedPreferenceService.guardarString(AUDIOS_GUARDADOS, "SI");
+		}
+
 		recyclerView = view.findViewById(R.id.rvListadoAudios);
 		recyclerView.setHasFixedSize(true);
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 		layoutManagerAudios = new LinearLayoutManager(getContext());
 		recyclerView.setLayoutManager(layoutManagerAudios);
 
-		audioAdapter = new AudioAdapter(audios, R.layout.item_audio, new OnPlayClickListener() {
+		audioAdapter = new AudioAdapter(realmResultsAudios, R.layout.item_audio, new OnPlayClickListener() {
 			@Override
 			public void onPlayClickListener(Audio audio) {
-				MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), audio.getId());
+				MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), audio.getIdAudio());
 				mediaPlayer.start();
 			}
 
 			@Override
 			public void onShareClickListener(Audio audio) {
-				compartirAudoooo(audio.getId());
+				compartirAudoooo(audio.getIdAudio());
 			}
 		});
 
