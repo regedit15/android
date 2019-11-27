@@ -558,12 +558,12 @@ public class UtilService {
 				add(new Tag(TAG_MARCE));
 				add(new Tag(TAG_HIJO_DE_PUTA));
 			}}));
-			add(new Audio(R.raw.audio_134, "JO-DER", "", new ArrayList<Tag>() {{
+			add(new Audio(R.raw.audio_134, "Es MUY mane", "", new ArrayList<Tag>() {{
+				add(new Tag(TAG_LUACHA));
+			}}));
+			add(new Audio(R.raw.audio_135, "JO-DER", "", new ArrayList<Tag>() {{
 				add(new Tag(TAG_LUACHA));
 				add(new Tag(TAG_JODER));
-			}}));
-			add(new Audio(R.raw.audio_135, "Es MUY mane", "", new ArrayList<Tag>() {{
-				add(new Tag(TAG_LUACHA));
 			}}));
 			add(new Audio(R.raw.audio_136, "Ya no sabe mas que boludez inventar este", "", new ArrayList<Tag>() {{
 				add(new Tag(TAG_LUACHA));
