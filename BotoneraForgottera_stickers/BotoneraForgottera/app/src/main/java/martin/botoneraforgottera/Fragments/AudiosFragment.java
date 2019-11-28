@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import io.realm.RealmList;
 import io.realm.RealmResults;
 import martin.botoneraforgottera.Adapters.AudioAdapter;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
@@ -26,10 +25,8 @@ public class AudiosFragment extends BaseFragment {
 
 	private RecyclerView recyclerView;
 	private AudioAdapter audioAdapter;
-	// private RealmList<Audio> realmListAudios;
 	private RealmResults<Audio> realmResultsAudios;
 	private RecyclerView.LayoutManager layoutManagerAudios;
-	// private Realm realmFragment;
 
 	public AudiosFragment() {
 	}

@@ -63,37 +63,6 @@ public class UtilService {
 
 	public List<Audio> getAudios() {
 
-
-		// RealmList<Audio> realmList = new RealmList<>();
-
-		// RealmList<Audio> audios = new RealmList<Audio>();
-
-		// RealmList<Tag> tags = new RealmList<>();
-		// tags.add(new Tag(TAG_UBER));
-		// tags.add(new Tag(TAG_JALEA));
-		// audios.add(new Audio(R.raw.audio_1, "Te voy a tocar la jalea", "", tags));
-		//
-		// tags = new RealmList<>();
-		// tags.add(new Tag(TAG_UBER));
-		// tags.add(new Tag(TAG_JALEA));
-		// audios.add(new Audio(R.raw.audio_2, "No pichu noo!", "", tags));
-
-
-		// List<Tag> tagggs = ;
-
-		//--------------------------------
-		// List<Audio> audios222 = new ArrayList<Audio>() {{
-		// 	add(new Audio(R.raw.audio_1, "Te voy a tocar la jalea",
-		//
-		// 			new ArrayList<Tag>() {{
-		// 				add(new Tag(TAG_UBER));
-		// 			}}));
-		// }};
-		//--------------------------------
-
-		// audios222.size();
-
-
 		return new ArrayList<Audio>() {{
 			add(new Audio(R.raw.audio_1, "Te voy a tocar la jalea", new ArrayList<Tag>() {{
 				add(new Tag(TAG_UBER));
@@ -793,16 +762,5 @@ public class UtilService {
 				add(new Tag(TAG_SONIDO));
 			}}));
 		}};
-
-
-		// audios.forEach(audio -> {
-		// 	ArrayList.add(audio);
-		// });
-		//
-		// for (Audio audio : audios) {
-		// 	ArrayList.add(audio);
-		// }
-		//
-		// return audios;
 	}
 }

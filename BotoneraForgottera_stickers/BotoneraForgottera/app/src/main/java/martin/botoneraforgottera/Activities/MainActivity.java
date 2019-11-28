@@ -28,6 +28,10 @@ import martin.botoneraforgottera.Sticker.StickerPack;
 
 public class MainActivity extends AppCompatActivity implements StickerListener {
 
+	//Nota sobre los stickers: cada stickers debe estar en formato .webp y debe tener 512x512 pixeles
+	// y pesar menos de 100 kb
+	// La imagen del icono del paquete debe tener 96x96 pixeles y pesar menos de 50 kb
+
 	private int PERMISO_WRITE_OK = 1;
 	private DrawerLayout drawerLayout;
 	private NavigationView navigationView;
@@ -48,33 +52,6 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 
 
 		drawerLayout = findViewById(R.id.drawer_layout);
-		// Intent intent = new Intent();
-
-
-		// getPackageName();
-		// drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-		// 	@Override
-		// 	public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-		//
-		// 	}
-		//
-		// 	@Override
-		// 	public void onDrawerOpened(@NonNull View drawerView) {
-		// 		Toast.makeText(MainActivity.this, "Open", Toast.LENGTH_LONG).show();
-		// 	}
-		//
-		// 	@Override
-		// 	public void onDrawerClosed(@NonNull View drawerView) {
-		// 		Toast.makeText(MainActivity.this, "Close", Toast.LENGTH_LONG).show();
-		// 	}
-		//
-		// 	@Override
-		// 	public void onDrawerStateChanged(int newState) {
-		//
-		// 	}
-		// });
-
-
 		navigationView = findViewById(R.id.navigation_view);
 
 		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -95,13 +72,10 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 					case R.id.it_stickers:
 						fragment = new StickersCargandoFragment();
 						transaction = true;
-
-						// startActivity(new Intent(MainActivity.this, EntryActivity.class));
 						break;
 				}
 
 				if (transaction) {
-
 					cambiarFragment(fragment, menuItem);
 					// Escondemos el menu lateral
 					drawerLayout.closeDrawer(GravityCompat.START);
@@ -113,17 +87,12 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 
 		cambiarFragment(new AudiosFragment(), navigationView.getMenu().getItem(0));
 
-
-		// navigationView.getMenu().getItem(1).setIcon(R.drawable.ic_iconfinder_word);
-
-
 		//	 ---------------------- Se piden permisos
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 			// pregunta al usuario los permisos
 			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISO_WRITE_OK);
 		}
 		// ------------------------------------------------
-
 
 		realmService.setearConfiguracion(getApplicationContext());
 		toString();
@@ -155,11 +124,6 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 		}
 		return resultado;
 	}
-
-
-	//Nota sobre los stickers: cada stickers debe estar en formato .webp y debe tener 512x512 pixeles
-	// y pesar menos de 100 kb
-	// La imagen del icono del paquete debe tener 96x96 pixeles y pesar menos de 50 kb
 
 	@Override
 	public void listarStickers(StickerPack stickerPack) {
