@@ -14,38 +14,25 @@ public class Audio extends RealmObject {
 	private int idAudio;
 	private String nombre;
 	private String descripcion;
+	private boolean favorito;
+
 	private RealmList<Tag> tags;
 
 	public Audio() {
 	}
 
 	public Audio(int idAudio, String nombre, String descripcion, RealmList<Tag> tags) {
-		// public Audio(int idAudio, String nombre, String descripcion, List<Tag> tags) {
 		this.id = RealmService.audioId.incrementAndGet();
 		this.idAudio = idAudio;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-
-		// this.tags = tags;
-		// this.tags = new RealmList<>();
-		//
-		// for (Tag tag : tags) {
-		// 	tags.add(tag);
-		// }
 	}
 
 	public Audio(int idAudio, String nombre, List<Tag> tagsList) {
 		this.id = RealmService.audioId.incrementAndGet();
 		this.idAudio = idAudio;
 		this.nombre = nombre;
-		this.descripcion = descripcion;
-
-		// this.tags = tags;
 		this.tags = new RealmList<>();
-
-		// for (Tag tag : tags) {
-		// 	tags.add(tag);
-		// }
 
 		for (int i = 0; i > tagsList.size(); i++) {
 			this.tags.add(tagsList.get(i));
@@ -90,5 +77,13 @@ public class Audio extends RealmObject {
 
 	public void setTags(RealmList<Tag> tags) {
 		this.tags = tags;
+	}
+
+	public boolean isFavorito() {
+		return favorito;
+	}
+
+	public void setFavorito(boolean favorito) {
+		this.favorito = favorito;
 	}
 }

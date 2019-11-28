@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import io.realm.Realm;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
 import martin.botoneraforgottera.Interfaces.OnTagClickListener;
 import martin.botoneraforgottera.Models.Audio;
@@ -55,6 +57,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 		public TextView descripcion;
 		public Button btnPlay;
 		public Button btnShare;
+		// public ImageButton ibCorazon;
+		public ImageView ibCorazon;
 
 		//--------------------------- Segundo listado
 		private RecyclerView recyclerViewTags;
@@ -69,6 +73,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			descripcion = itemView.findViewById(R.id.tvCiudadDescripcion);
 			btnPlay = itemView.findViewById(R.id.btPlay);
 			btnShare = itemView.findViewById(R.id.btShare);
+			ibCorazon = itemView.findViewById(R.id.ibCorazon);
 
 			//--------------------------- Segundo listado
 			recyclerViewTags = itemView.findViewById(R.id.rvListadoTags);
@@ -111,6 +116,32 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 
 			recyclerViewTags.setAdapter(tagsAdapter);
 			//----------------------------------------------------------------
+
+			//--------------------------- Corazon Favorito
+			setearCorazon(audio.isFavorito());
+
+			ibCorazon.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+
+					Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+						@Override
+						public void execute(Realm realm) {
+							audio.setFavorito(!audio.isFavorito());
+							setearCorazon(audio.isFavorito());
+						}
+					});
+				}
+			});
+			//----------------------------------------------------------------
+		}
+
+		private void setearCorazon(boolean favorito) {
+			if (favorito) {
+				ibCorazon.setImageResource(R.drawable.ic_like_2);
+			} else {
+				ibCorazon.setImageResource(R.drawable.ic_like_1);
+			}
 		}
 	}
 
