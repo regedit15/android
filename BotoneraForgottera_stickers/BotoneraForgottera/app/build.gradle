@@ -51,6 +51,7 @@ dependencies {
     implementation 'commons-io:commons-io:2.6'
     // Realm
     apply plugin: 'realm-android'
+    implementation 'io.realm:android-adapters:3.1.0'
     // wppppppppppppppppppppppppppppppppppppp
     implementation 'com.facebook.fresco:fresco:2.0.0'
     implementation 'com.facebook.fresco:webpsupport:2.0.0'

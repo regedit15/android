@@ -22,6 +22,7 @@ import martin.botoneraforgottera.Fragments.StickersCargandoFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
 import martin.botoneraforgottera.Interfaces.StickerListener;
+import martin.botoneraforgottera.Models.Auto;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Services.RealmService;
 import martin.botoneraforgottera.Sticker.StickerPack;
@@ -96,6 +97,11 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 
 		realmService.setearConfiguracion(getApplicationContext());
 		toString();
+
+
+		Auto auto = new Auto("aaaa");
+
+		auto.toString();
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

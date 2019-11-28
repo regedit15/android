@@ -1,12 +1,12 @@
 package martin.botoneraforgottera.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import java.util.List;
 
@@ -19,13 +19,11 @@ import martin.botoneraforgottera.Adapters.AudioAdapter;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
 import martin.botoneraforgottera.Models.Audio;
 import martin.botoneraforgottera.R;
-import martin.botoneraforgottera.Services.SharedPreferenceService;
 
 public class AudiosFragment extends BaseFragment {
 
 	private RecyclerView recyclerView;
 	private AudioAdapter audioAdapter;
-	private RealmResults<Audio> realmResultsAudios;
 	private RecyclerView.LayoutManager layoutManagerAudios;
 
 	public AudiosFragment() {
@@ -36,15 +34,15 @@ public class AudiosFragment extends BaseFragment {
 
 		View view = inflater.inflate(R.layout.fragment_audios, container, false);
 
-		sharedPreferenceService = new SharedPreferenceService(getActivity().getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
+		RealmResults<Audio> realmResultsAudios;
 
-		if (sharedPreferenceService.getString(AUDIOS_GUARDADOS) == "SI") {
+		if (getsharedPreferenceService().getString(AUDIOS_GUARDADOS) == "SI") {
 			realmResultsAudios = realmService.getAudios();
 		} else {
 			List<Audio> audios = utilService.getAudios();
 			realmService.insertarAudios(audios);
 			realmResultsAudios = realmService.getAudios();
-			sharedPreferenceService.guardarString(AUDIOS_GUARDADOS, "SI");
+			getsharedPreferenceService().guardarString(AUDIOS_GUARDADOS, "SI");
 		}
 
 		recyclerView = view.findViewById(R.id.rvListadoAudios);
@@ -67,7 +65,15 @@ public class AudiosFragment extends BaseFragment {
 		});
 
 		recyclerView.setAdapter(audioAdapter);
-		// audios.addChangeListener(this);
+
+		view.findViewById(R.id.btBuscar).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				audioAdapter.setLista(realmService.filtrarAudios(((EditText) view.findViewById(R.id.etBusqueda)).getText().toString()));
+				audioAdapter.notifyDataSetChanged();
+			}
+		});
+
 		return view;
 	}
 
@@ -83,5 +89,7 @@ public class AudiosFragment extends BaseFragment {
 		super.onActivityResult(requestCode, resultCode, data);
 		audioService.eliminarFileSiExisteResult(requestCode, fileAudio);
 	}
+
 	// ----------------------------------------------------
+
 }

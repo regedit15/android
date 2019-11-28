@@ -122,4 +122,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	public interface OnItemClickListener {
 		void onItemClick(Fruta fruta, int position);
 	}
+
+	public List<Fruta> getFrutas() {
+		return frutas;
+	}
+
+	public void setFrutas(List<Fruta> frutas) {
+		this.frutas = frutas;
+	}
 }

@@ -1,5 +1,7 @@
 package martin.botoneraforgottera.Fragments;
 
+import android.content.Context;
+
 import java.io.File;
 
 import androidx.fragment.app.Fragment;
@@ -16,13 +18,22 @@ public class BaseFragment extends Fragment {
 	protected File fileAudio;
 	protected static final String PREFERENCES = "Preferences";
 	protected static final String AUDIOS_GUARDADOS = "audiosGuardados";
-	// protected SharedPreferenceService sharedPreferenceService = new SharedPreferenceService(getActivity().getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
 	protected SharedPreferenceService sharedPreferenceService;
+
+	public BaseFragment() {
+
+
+	}
+
+	protected SharedPreferenceService getsharedPreferenceService() {
+		if (sharedPreferenceService == null) {
+			sharedPreferenceService = new SharedPreferenceService(getActivity().getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
+		}
+		return sharedPreferenceService;
+	}
 
 	protected void compartirAudoooo(int idAudio) {
 		fileAudio = audioService.compartirAudio(this, idAudio);
-		// sharedPreferenceService = new SharedPreferenceService(getActivity().getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
-		toString();
 	}
 
 }

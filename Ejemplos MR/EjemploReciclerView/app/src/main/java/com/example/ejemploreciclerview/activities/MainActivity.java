@@ -1,6 +1,7 @@
 package com.example.ejemploreciclerview.activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.ejemploreciclerview.R;
@@ -18,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
 	private RecyclerView recyclerView;
-	private RecyclerView.Adapter adapter;
+	private MyAdapter adapter;
 	private RecyclerView.LayoutManager layoutManager;
 	private List<Fruta> frutas;
 
@@ -76,4 +77,16 @@ public class MainActivity extends AppCompatActivity {
 		// Le seteamos una animacion, en este caso, la que viene por defecto. Pero se puede crear una personalizada
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 	}
+
+	public void aaa(View view) {
+
+
+		List<Fruta> lista = new ArrayList<Fruta>();
+		lista.add(new Fruta("AAAAAAAAAAAAA", "aaaaaaaa", R.drawable.anana));
+		lista.add(new Fruta("BBBBBBBBBBBBB", "aaaaaaaaa", R.drawable.banana));
+		adapter.setFrutas(lista);
+		adapter.notifyDataSetChanged();
+	}
+
+
 }

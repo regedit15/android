@@ -113,4 +113,12 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			//----------------------------------------------------------------
 		}
 	}
+
+	public List<Audio> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Audio> lista) {
+		this.lista = lista;
+	}
 }

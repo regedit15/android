@@ -13,7 +13,6 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme"
 		tools:ignore="GoogleAppIndexingWarning">
-		<activity android:name=".Activities.PruebaaaActivity"></activity>
 		<activity android:name=".Activities.MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -28,9 +27,8 @@
 			<meta-data
 				android:name="android.support.FILE_PROVIDER_PATHS"
 				android:resource="@xml/filepaths" />
-		</provider>
-		<!--		wppppppppppppppppppppppppppppppppppppppppppppppppppppp-->
-		<activity android:name=".Sticker.EntryActivity"></activity>
+		</provider> <!-- wppppppppppppppppppppppppppppppppppppppppppppppppppppp -->
+		<activity android:name=".Sticker.EntryActivity" />
 		<activity android:name=".Sticker.StickerPackListActivity" />
 		<activity
 			android:name=".Sticker.StickerPackDetailsActivity"
@@ -56,6 +54,5 @@
 			android:enabled="true"
 			android:exported="true"
 			android:readPermission="com.whatsapp.sticker.READ" />
-		<!--		***********************************************************-->
 	</application>
 </manifest>

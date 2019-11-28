@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
@@ -17,18 +18,15 @@ public class RealmService {
 	public static AtomicInteger audioId = new AtomicInteger();
 	public static AtomicInteger tagId = new AtomicInteger();
 
-	private Realm realm;
-	// public Realm realm;
-
 	public void setearConfiguracion(Context context) {
 
-		// Setear configuracion
+		// ----- Setear configuracion
 		Realm.init(context);
 		RealmConfiguration config = new RealmConfiguration.Builder().build();
 		Realm.setDefaultConfiguration(config);
 		//-----------------
 
-		realm = Realm.getDefaultInstance();
+		Realm realm = Realm.getDefaultInstance();
 		audioId = getIdByTabla(realm, Audio.class);
 		tagId = getIdByTabla(realm, Tag.class);
 		realm.close();
@@ -53,11 +51,7 @@ public class RealmService {
 		});
 	}
 
-	public Realm getRealm() {
-		return realm;
-	}
-
-	public void setRealm(Realm realm) {
-		this.realm = realm;
+	public RealmResults<Audio> filtrarAudios(String nombre) {
+		return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE).findAll();
 	}
 }
