@@ -40,6 +40,9 @@ public class AudiosFragment extends BaseFragment {
 			realmResultsAudios = realmService.getAudios();
 		} else {
 			List<Audio> audios = utilService.getAudios();
+
+			String cantidadAudioooos = "" + audios.size();
+
 			realmService.insertarAudios(audios);
 			realmResultsAudios = realmService.getAudios();
 			getsharedPreferenceService().guardarString(AUDIOS_GUARDADOS, "SI");

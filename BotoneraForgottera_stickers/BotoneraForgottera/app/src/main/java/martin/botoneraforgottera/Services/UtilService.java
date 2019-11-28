@@ -664,7 +664,7 @@ public class UtilService {
 				add(new Tag(TAG_LUACHA));
 				add(new Tag(TAG_SALUDO));
 			}}));
-			add(new Audio(R.raw.audio_164, "Gajtaaaaaaaaaun", new ArrayList<Tag>() {{
+			add(new Audio(R.raw.audio_164, "Buenos díaaaaaaaaaaas", new ArrayList<Tag>() {{
 				add(new Tag(TAG_NIGUIN));
 				add(new Tag(TAG_SALUDO));
 			}}));
@@ -682,9 +682,6 @@ public class UtilService {
 			add(new Audio(R.raw.audio_168, "Chicles beldent, chicles beldent... (2)", new ArrayList<Tag>() {{
 				add(new Tag(TAG_GAJTAUN));
 				add(new Tag(TAG_TREN));
-			}}));
-			add(new Audio(R.raw.audio_169, "Se te hizo agua la boca cogote", new ArrayList<Tag>() {{
-				add(new Tag(TAG_GAJTAUN));
 			}}));
 			add(new Audio(R.raw.audio_169, "Se te hizo agua la boca cogote", new ArrayList<Tag>() {{
 				add(new Tag(TAG_GAJTAUN));
