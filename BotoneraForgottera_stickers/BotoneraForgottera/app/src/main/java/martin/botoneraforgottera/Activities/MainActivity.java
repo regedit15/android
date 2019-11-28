@@ -22,7 +22,6 @@ import martin.botoneraforgottera.Fragments.StickersCargandoFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
 import martin.botoneraforgottera.Interfaces.StickerListener;
-import martin.botoneraforgottera.Models.Auto;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Services.RealmService;
 import martin.botoneraforgottera.Sticker.StickerPack;
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 
 		Toolbar myToolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(myToolbar);
@@ -96,12 +94,6 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 		// ------------------------------------------------
 
 		realmService.setearConfiguracion(getApplicationContext());
-		toString();
-
-
-		Auto auto = new Auto("aaaa");
-
-		auto.toString();
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
@@ -141,7 +133,5 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 	public void listarPaquetes(ArrayList<StickerPack> stickerPackList) {
 		Fragment fragment = new StickersListadoPaquetesFragment(stickerPackList);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
-
-
 	}
 }

@@ -18,6 +18,7 @@ public class BaseFragment extends Fragment {
 	protected File fileAudio;
 	protected static final String PREFERENCES = "Preferences";
 	protected static final String AUDIOS_GUARDADOS = "audiosGuardados";
+	protected static final String SI = "SI";
 	protected SharedPreferenceService sharedPreferenceService;
 
 	public BaseFragment() {

@@ -15,8 +15,14 @@ public class SharedPreferenceService extends AppCompatActivity {
 		this.editor = sharedPreferences.edit();
 	}
 
+	// Acordate de commitear despues!
 	public void guardarString(String clave, String valor) {
 		editor.putString(clave, valor);
+	}
+
+	public void guardarStringYCommitear(String clave, String valor) {
+		editor.putString(clave, valor);
+		commit();
 	}
 
 	public String getString(String clave) {

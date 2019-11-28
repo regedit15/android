@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import java.util.List;
-
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,16 +34,13 @@ public class AudiosFragment extends BaseFragment {
 
 		RealmResults<Audio> realmResultsAudios;
 
-		if (getsharedPreferenceService().getString(AUDIOS_GUARDADOS) == "SI") {
+
+		if (SI.equals(getsharedPreferenceService().getString(AUDIOS_GUARDADOS))) {
 			realmResultsAudios = realmService.getAudios();
 		} else {
-			List<Audio> audios = utilService.getAudios();
-
-			String cantidadAudioooos = "" + audios.size();
-
-			realmService.insertarAudios(audios);
+			realmService.insertarAudios(utilService.getAudios());
 			realmResultsAudios = realmService.getAudios();
-			getsharedPreferenceService().guardarString(AUDIOS_GUARDADOS, "SI");
+			getsharedPreferenceService().guardarStringYCommitear(AUDIOS_GUARDADOS, SI);
 		}
 
 		recyclerView = view.findViewById(R.id.rvListadoAudios);
@@ -92,7 +87,5 @@ public class AudiosFragment extends BaseFragment {
 		super.onActivityResult(requestCode, resultCode, data);
 		audioService.eliminarFileSiExisteResult(requestCode, fileAudio);
 	}
-
 	// ----------------------------------------------------
-
 }
