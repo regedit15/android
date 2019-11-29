@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import io.realm.RealmResults;
+import martin.botoneraforgottera.Activities.MainActivity;
 import martin.botoneraforgottera.Adapters.AudioAdapter;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
 import martin.botoneraforgottera.Models.Audio;
@@ -23,8 +24,13 @@ public class AudiosFragment extends BaseFragment {
 	private RecyclerView recyclerView;
 	private AudioAdapter audioAdapter;
 	private RecyclerView.LayoutManager layoutManagerAudios;
+	private boolean favoritos;
 
 	public AudiosFragment() {
+	}
+
+	public AudiosFragment(boolean favoritos) {
+		this.favoritos = favoritos;
 	}
 
 	@Override
@@ -34,14 +40,20 @@ public class AudiosFragment extends BaseFragment {
 
 		RealmResults<Audio> realmResultsAudios;
 
-
-		if (SI.equals(getsharedPreferenceService().getString(AUDIOS_GUARDADOS))) {
-			realmResultsAudios = realmService.getAudios();
+		if (favoritos) {
+			realmResultsAudios = realmService.getAudiosFavoritos();
 		} else {
-			realmService.insertarAudios(utilService.getAudios());
-			realmResultsAudios = realmService.getAudios();
-			getsharedPreferenceService().guardarStringYCommitear(AUDIOS_GUARDADOS, SI);
+			if (SI.equals(getsharedPreferenceService().getString(AUDIOS_GUARDADOS))) {
+				realmResultsAudios = realmService.getAudios();
+			} else {
+				realmService.insertarAudios(utilService.getAudios());
+				realmResultsAudios = realmService.getAudios();
+				getsharedPreferenceService().guardarStringYCommitear(AUDIOS_GUARDADOS, SI);
+			}
 		}
+
+		// Agrego al titulo la cantidad de audios
+		((MainActivity) getActivity()).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) getActivity()).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(realmResultsAudios.size()).append(")").toString());
 
 		recyclerView = view.findViewById(R.id.rvListadoAudios);
 		recyclerView.setHasFixedSize(true);

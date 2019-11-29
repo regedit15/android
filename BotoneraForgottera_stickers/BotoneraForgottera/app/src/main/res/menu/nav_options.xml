@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<group android:checkableBehavior="single">
-<!--			android:icon="@drawable/ic_iconfinder_music"-->
+		<!--			android:icon="@drawable/ic_iconfinder_music"-->
 		<item
 			android:id="@+id/it_audios"
 			android:icon="@android:drawable/ic_media_play"
 			android:title="Audios" />
+		<item
+			android:id="@+id/it_favoritos"
+			android:icon="@android:drawable/ic_media_play"
+			android:title="Favoritos" />
 		<!--			android:icon="@drawable/ic_iconfinder_word"-->
 		<!--			android:icon="@drawable/pepe"-->
 		<item

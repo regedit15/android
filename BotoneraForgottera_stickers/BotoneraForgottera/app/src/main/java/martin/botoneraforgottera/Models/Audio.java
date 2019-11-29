@@ -34,7 +34,7 @@ public class Audio extends RealmObject {
 		this.nombre = nombre;
 		this.tags = new RealmList<>();
 
-		for (int i = 0; i > tagsList.size(); i++) {
+		for (int i = 0; i < tagsList.size(); i++) {
 			this.tags.add(tagsList.get(i));
 		}
 	}

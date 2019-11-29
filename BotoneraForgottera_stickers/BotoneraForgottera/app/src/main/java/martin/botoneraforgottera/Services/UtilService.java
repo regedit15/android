@@ -63,6 +63,11 @@ public class UtilService {
 
 	public List<Audio> getAudios() {
 
+		Audio aaa = new Audio(R.raw.audio_1, "Te voy a tocar la jalea", new ArrayList<Tag>() {{
+			add(new Tag(TAG_UBER));
+			add(new Tag(TAG_JALEA));
+		}});
+
 		return new ArrayList<Audio>() {{
 			add(new Audio(R.raw.audio_1, "Te voy a tocar la jalea", new ArrayList<Tag>() {{
 				add(new Tag(TAG_UBER));

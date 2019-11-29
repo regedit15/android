@@ -42,6 +42,10 @@ public class RealmService {
 		return Realm.getDefaultInstance().where(Audio.class).findAll();
 	}
 
+	public RealmResults<Audio> getAudiosFavoritos() {
+		return Realm.getDefaultInstance().where(Audio.class).equalTo("favorito", true).findAll();
+	}
+
 	public void insertarAudios(List<Audio> audios) {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override

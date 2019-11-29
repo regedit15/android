@@ -103,7 +103,6 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			tags = audio.getTags();
 			recyclerViewTags.setHasFixedSize(true);
 			recyclerViewTags.setItemAnimator(new DefaultItemAnimator());
-			// layoutManagerTags = new LinearLayoutManager(context);
 			layoutManagerTags = new GridLayoutManager(context, 3);
 			recyclerViewTags.setLayoutManager(layoutManagerTags);
 

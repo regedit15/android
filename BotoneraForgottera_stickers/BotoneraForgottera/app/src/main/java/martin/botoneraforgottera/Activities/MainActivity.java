@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 
 	private int PERMISO_WRITE_OK = 1;
 	private DrawerLayout drawerLayout;
-	private NavigationView navigationView;
+	public NavigationView navigationView;
 	public RealmService realmService = new RealmService();
 
 	@Override
@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 				switch (menuItem.getItemId()) {
 					case R.id.it_audios:
 						fragment = new AudiosFragment();
+						transaction = true;
+						break;
+					case R.id.it_favoritos:
+						fragment = new AudiosFragment(true);
 						transaction = true;
 						break;
 					case R.id.it_gif:
