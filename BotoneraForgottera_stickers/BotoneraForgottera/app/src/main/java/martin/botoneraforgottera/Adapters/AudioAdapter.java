@@ -4,8 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,10 +54,9 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 
 		public TextView nombre;
 		public TextView descripcion;
-		public Button btnPlay;
-		public Button btnShare;
-		// public ImageButton ibCorazon;
-		public ImageView ibCorazon;
+		public ImageButton btPlay;
+		public ImageButton btShare;
+		public ImageButton ibCorazon;
 
 		//--------------------------- Segundo listado
 		private RecyclerView recyclerViewTags;
@@ -71,8 +69,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			super(itemView);
 			nombre = itemView.findViewById(R.id.tvCiudadNombre);
 			descripcion = itemView.findViewById(R.id.tvCiudadDescripcion);
-			btnPlay = itemView.findViewById(R.id.btPlay);
-			btnShare = itemView.findViewById(R.id.btShare);
+			btPlay = itemView.findViewById(R.id.btPlay);
+			btShare = itemView.findViewById(R.id.btShare);
 			ibCorazon = itemView.findViewById(R.id.ibCorazon);
 
 			//--------------------------- Segundo listado
@@ -84,7 +82,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			nombre.setText(audio.getNombre());
 			descripcion.setText(audio.getDescripcion());
 
-			btnPlay.setOnClickListener(new View.OnClickListener() {
+			btPlay.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
 					onPlayClickListener.onPlayClickListener(audio);
@@ -92,7 +90,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 			});
 
 
-			btnShare.setOnClickListener(new View.OnClickListener() {
+			btShare.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
 					onPlayClickListener.onShareClickListener(audio);
