@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import io.realm.Realm;
+import martin.botoneraforgottera.Activities.MainActivity;
 import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
 import martin.botoneraforgottera.Interfaces.OnTagClickListener;
 import martin.botoneraforgottera.Models.Audio;
@@ -127,6 +128,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 						public void execute(Realm realm) {
 							audio.setFavorito(!audio.isFavorito());
 							setearCorazon(audio.isFavorito());
+
+							((MainActivity) context).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) context).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(getLista().size()).append(")").toString());
 						}
 					});
 				}

@@ -52,9 +52,6 @@ public class AudiosFragment extends BaseFragment {
 			}
 		}
 
-		// Agrego al titulo la cantidad de audios
-		((MainActivity) getActivity()).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) getActivity()).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(realmResultsAudios.size()).append(")").toString());
-
 		recyclerView = view.findViewById(R.id.rvListadoAudios);
 		recyclerView.setHasFixedSize(true);
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -81,10 +78,18 @@ public class AudiosFragment extends BaseFragment {
 			public void onClick(View v) {
 				audioAdapter.setLista(realmService.filtrarAudios(((EditText) view.findViewById(R.id.etBusqueda)).getText().toString()));
 				audioAdapter.notifyDataSetChanged();
+				setearCantidadDeAudios();
 			}
 		});
 
+		setearCantidadDeAudios();
+
 		return view;
+	}
+
+	private void setearCantidadDeAudios() {
+		// Agrego al titulo la cantidad de audios
+		((MainActivity) getActivity()).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) getActivity()).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(audioAdapter.getLista().size()).append(")").toString());
 	}
 
 	// -------------- Eliminar el audio al despues de compartir o al cerrar la app
