@@ -4,9 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -54,9 +55,9 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 
 		public TextView nombre;
 		public TextView descripcion;
-		public ImageButton btPlay;
-		public ImageButton btShare;
-		public ImageButton ibCorazon;
+		public MaterialButton btPlay;
+		public MaterialButton btShare;
+		public MaterialButton ibCorazon;
 
 		//--------------------------- Segundo listado
 		private RecyclerView recyclerViewTags;
@@ -135,9 +136,9 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 
 		private void setearCorazon(boolean favorito) {
 			if (favorito) {
-				ibCorazon.setImageResource(R.drawable.ic_like_2);
+				ibCorazon.setIconResource(R.drawable.ic_like_2);
 			} else {
-				ibCorazon.setImageResource(R.drawable.ic_like_1);
+				ibCorazon.setIconResource(R.drawable.ic_like_1);
 			}
 		}
 	}

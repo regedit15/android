@@ -3,9 +3,11 @@
 	<color name="colorPrimary">#008577</color>
 	<color name="colorPrimaryDark">#00574B</color>
 	<color name="colorAccent">#D81B60</color>
-	<!--	wpppppppppppppppppppp-->
+	<color name="colorBoton1">#82B1FF</color>
+	<color name="colorBotonTag">#F7A404</color>
+	<!-- - - - - - - - - - - WhatsApp Stickers - - - - - - - - - - - -  -->
 	<color name="inactiveAddButtonColor">#B3B3B3</color>
 	<color name="infoPageBackgroundColor">#EBEBEB</color>
 	<color name="actionBarArrowColor">@color/colorAccent</color>
-	<!--	wpppppppppppppppppppp-->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 </resources>

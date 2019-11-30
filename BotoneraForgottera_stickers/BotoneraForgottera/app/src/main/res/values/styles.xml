@@ -1,12 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 	<!-- Base application theme. -->
-	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+	<style name="AppTheme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
 		<!-- Customize your theme here. -->
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
 	</style>
-	<!--	wpppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp-->
+	<!-- - - - - - - - - - - WhatsApp Stickers - - - - - - - - - - - -  -->
 	<style name="StickerPreviewButtonText" parent="Widget.MaterialComponents.Button.TextButton">
 		<item name="android:textColor">@android:color/white</item>
 		<item name="android:textSize">14sp</item>
@@ -36,5 +36,5 @@
 		<item name="android:clickable">true</item>
 		<item name="android:foreground">?android:attr/selectableItemBackground</item>
 	</style>
-	<!--	***********************************************************-->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 </resources>

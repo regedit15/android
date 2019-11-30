@@ -48,37 +48,58 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		tools:layout_editor_absoluteX="8dp" />
 
-	<ImageButton
+	<com.google.android.material.button.MaterialButton
 		android:id="@+id/btPlay"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
+		android:layout_width="@dimen/iconoWidth"
+		android:layout_height="@dimen/iconoheight"
 		android:layout_marginEnd="8dp"
 		android:layout_marginRight="8dp"
-		android:background="@drawable/myboton"
-		android:padding="3dp"
+		android:layout_marginBottom="1dp"
+		android:insetLeft="0dp"
+		android:insetTop="0dp"
+		android:insetRight="0dp"
+		android:insetBottom="0dp"
+		app:backgroundTint="@color/colorBoton1"
+		app:icon="@drawable/ic_play_arrow_24px"
+		app:iconGravity="textStart"
+		app:iconPadding="0dp"
+		app:iconSize="50dp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toStartOf="@+id/btShare"
-		app:srcCompat="@android:drawable/ic_media_play" />
+		app:layout_constraintEnd_toStartOf="@+id/btShare" />
 
-	<ImageButton
+	<com.google.android.material.button.MaterialButton
 		android:id="@+id/ibCorazon"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
-		android:background="@drawable/myboton"
-		android:padding="10dp"
+		android:layout_width="@dimen/iconoWidth"
+		android:layout_height="@dimen/iconoheight"
+		android:layout_marginBottom="3dp"
+		android:insetLeft="0dp"
+		android:insetTop="0dp"
+		android:insetRight="0dp"
+		android:insetBottom="0dp"
+		app:backgroundTint="@color/colorBoton1"
+		app:icon="@drawable/ic_like_1"
+		app:iconGravity="textStart"
+		app:iconPadding="0dp"
+		app:iconSize="30dp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:srcCompat="@drawable/ic_like_1" />
+		app:layout_constraintEnd_toEndOf="parent" />
 
-	<ImageButton
+	<com.google.android.material.button.MaterialButton
 		android:id="@+id/btShare"
-		android:layout_width="50dp"
-		android:layout_height="50dp"
+		android:layout_width="@dimen/iconoWidth"
+		android:layout_height="@dimen/iconoheight"
 		android:layout_marginEnd="8dp"
 		android:layout_marginRight="8dp"
-		android:background="@drawable/myboton"
-		android:padding="6dp"
+		android:layout_marginBottom="3dp"
+		android:insetLeft="0dp"
+		android:insetTop="0dp"
+		android:insetRight="0dp"
+		android:insetBottom="0dp"
+		app:backgroundTint="@color/colorBoton1"
+		app:icon="@drawable/ic_share_24px"
+		app:iconGravity="textStart"
+		app:iconPadding="0dp"
+		app:iconSize="35dp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toStartOf="@+id/ibCorazon"
-		app:srcCompat="@android:drawable/ic_menu_share" />
+		app:layout_constraintEnd_toStartOf="@+id/ibCorazon" />
 </androidx.constraintlayout.widget.ConstraintLayout>

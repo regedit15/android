@@ -47,29 +47,24 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.android.material:material:1.0.0'
-    // agregada por MR. Es para el FileUtils
+    // ----------    Para el FileUtils
     implementation 'commons-io:commons-io:2.6'
-    // Realm
+    // --------------------------------------------------------------------
+    // ----------    Realm
     apply plugin: 'realm-android'
     implementation 'io.realm:android-adapters:3.1.0'
-    // wppppppppppppppppppppppppppppppppppppp
+    // --------------------------------------------------------------------
+    // ----------    Material icons
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    // --------------------------------------------------------------------
+    // ----------    WhatsApp Stickers
     implementation 'com.facebook.fresco:fresco:2.0.0'
     implementation 'com.facebook.fresco:webpsupport:2.0.0'
     implementation 'com.facebook.fresco:animated-webp:2.0.0'
     implementation 'com.facebook.fresco:animated-base:2.0.0'
-    // -------------------------------------------
+    // --------------------------------------------------------------------
 
 //    implementation 'com.android.support:support-core-utils:29.0.0'
-
-
-//----------    Material icons
-
-    // https://mvnrepository.com/artifact/com.google.android.material/material
-//    compile group: 'com.google.android.material', name: 'material', version: '1.2.0-alpha02'
-
-//    implementation 'com.google.android.material:material:1.2.0-alpha02'
-
-//    -----------------
 
 
 }

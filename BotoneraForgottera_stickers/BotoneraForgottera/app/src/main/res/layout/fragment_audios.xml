@@ -24,11 +24,20 @@
 				android:ems="10"
 				android:inputType="textPersonName" />
 
-			<ImageButton
+			<com.google.android.material.button.MaterialButton
 				android:id="@+id/btBuscar"
-				android:layout_width="wrap_content"
-				android:layout_height="match_parent"
-				android:src="@android:drawable/ic_search_category_default" />
+				android:layout_width="52dp"
+				android:layout_height="52dp"
+				android:insetLeft="0dp"
+				android:insetTop="0dp"
+				android:insetRight="0dp"
+				android:insetBottom="0dp"
+				app:backgroundTint="#D81B60"
+				app:icon="@drawable/ic_search_24px"
+				app:iconGravity="textStart"
+				app:iconPadding="0dp"
+				app:iconSize="40dp" />
+
 		</LinearLayout>
 
 		<androidx.recyclerview.widget.RecyclerView

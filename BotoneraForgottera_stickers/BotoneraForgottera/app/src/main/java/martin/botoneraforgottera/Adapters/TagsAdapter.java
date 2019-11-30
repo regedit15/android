@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
+import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class TagsAdapter extends RecyclerView.Adapter<TagsAdapter.ViewHolder> {
 
 	public class ViewHolder extends RecyclerView.ViewHolder {
 
-		public Button btnClickTag;
+		public MaterialButton btnClickTag;
 
 		public ViewHolder(View itemView) {
 			super(itemView);

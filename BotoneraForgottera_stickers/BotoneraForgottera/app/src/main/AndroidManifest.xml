@@ -18,7 +18,8 @@
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		</activity> <!-- - - - - - 	Agregamos nuestro FileProvider       - - - - - -->
+		</activity>
+		<!-- - - - - - - - - - - FileProvider Para Audios - - - - - - - - - - - -  -->
 		<provider
 			android:name="androidx.core.content.FileProvider"
 			android:authorities="${applicationId}.myfileprovider"
@@ -27,7 +28,9 @@
 			<meta-data
 				android:name="android.support.FILE_PROVIDER_PATHS"
 				android:resource="@xml/filepaths" />
-		</provider> <!-- wppppppppppppppppppppppppppppppppppppppppppppppppppppp -->
+		</provider>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+		<!-- - - - - - - - - - - WhatsApp Stickers - - - - - - - - - - - -  -->
 		<activity android:name=".Sticker.EntryActivity" />
 		<activity android:name=".Sticker.StickerPackListActivity" />
 		<activity
@@ -54,5 +57,6 @@
 			android:enabled="true"
 			android:exported="true"
 			android:readPermission="com.whatsapp.sticker.READ" />
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 	</application>
 </manifest>
