@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 
 				switch (menuItem.getItemId()) {
 					case R.id.it_audios:
-						fragment = new AudiosFragment();
+						fragment = new AudiosFragment(AudiosFragment.TIPO_DEFAULT, null);
 						transaction = true;
 						break;
 					case R.id.it_favoritos:
-						fragment = new AudiosFragment(true);
+						fragment = new AudiosFragment(AudiosFragment.TIPO_FAVORITO, null);
 						transaction = true;
 						break;
 					case R.id.it_gif:
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 						fragment = new StickersCargandoFragment();
 						transaction = true;
 						break;
+
 				}
 
 				if (transaction) {
@@ -87,8 +88,7 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 			}
 		});
 
-
-		cambiarFragment(new AudiosFragment(), navigationView.getMenu().getItem(0));
+		cambiarFragment(new AudiosFragment(AudiosFragment.TIPO_DEFAULT, null), navigationView.getMenu().getItem(0));
 
 		//	 ---------------------- Se piden permisos
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -98,6 +98,13 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 		// ------------------------------------------------
 
 		realmService.setearConfiguracion(getApplicationContext());
+
+		// try {
+		// 	MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.audio_1);
+		// 	mediaPlayer.start();
+		// } catch (Exception e) {
+		// 	e.printStackTrace();
+		// }
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

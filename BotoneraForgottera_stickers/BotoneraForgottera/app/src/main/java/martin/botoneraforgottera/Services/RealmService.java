@@ -55,7 +55,18 @@ public class RealmService {
 		});
 	}
 
-	public RealmResults<Audio> filtrarAudios(String nombre) {
+	public RealmResults<Audio> filtrarAudiosPorTitulo(String nombre) {
 		return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE).findAll();
+	}
+
+	public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList) {
+
+		String[] tags = tagsList.toArray(new String[0]);
+
+		return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE)
+
+				.and().in("tags.nombre", tags)
+
+				.findAll();
 	}
 }

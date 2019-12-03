@@ -11,7 +11,7 @@ public class UtilService {
 
 	private String TAG_UBER = "#uber";
 	private String TAG_FABRIO = "#fabrio";
-	private String TAG_FIURI = "#iuri";
+	private String TAG_FIURI = "#fiuri";
 	private String TAG_MACREE = "#macree";
 	private String TAG_GOL = "#gol";
 	private String TAG_RIVER = "#river";
@@ -61,12 +61,115 @@ public class UtilService {
 	private String TAG_FH2 = "#fh2";
 	private String TAG_FEMINISTA = "#feminista";
 
-	public List<Audio> getAudios() {
+	public List<String> getTags() {
+		return new ArrayList<String>() {{
 
-		Audio aaa = new Audio(R.raw.audio_1, "Te voy a tocar la jalea", new ArrayList<Tag>() {{
-			add(new Tag(TAG_UBER));
-			add(new Tag(TAG_JALEA));
-		}});
+			add(TAG_UBER);
+
+			add(TAG_FABRIO);
+
+			add(TAG_FIURI);
+
+			add(TAG_MACREE);
+
+			add(TAG_GOL);
+
+			add(TAG_RIVER);
+
+			add(TAG_LUCHON);
+
+			add(TAG_PELOTUDO);
+
+			add(TAG_SONIDO);
+
+			add(TAG_SHIT_MUSIC);
+
+			add(TAG_RISA);
+
+			add(TAG_ERUCTO);
+
+			add(TAG_PEDO);
+
+			add(TAG_LUACHA);
+
+			add(TAG_HIJO_DE_PUTA);
+
+			add(TAG_SOCIALISMO);
+
+			add(TAG_MARCE);
+
+			add(TAG_PERO_MAS_BIEN);
+
+			add(TAG_OSHTIAPUTA);
+
+			add(TAG_SALUDO);
+
+			add(TAG_ESE_SOI_IO);
+
+			add(TAG_RAMI);
+
+			add(TAG_AH_PERO_ANOCHE);
+
+			add(TAG_YA_TE_RAJO);
+
+			add(TAG_MANE);
+
+			add(TAG_GAJTAUN);
+
+			add(TAG_BLACK);
+
+			add(TAG_KUKA);
+
+			add(TAG_JODER);
+
+			add(TAG_EISH);
+
+			add(TAG_AY_QUE_RECO_MAME);
+
+			add(TAG_NIGUIN);
+
+			add(TAG_TREN);
+
+			add(TAG_BASTA_CHICOS);
+
+			add(TAG_FORT);
+
+			add(TAG_PASA_EL_LINK);
+
+			add(TAG_SIMPSONS);
+
+			add(TAG_GULI);
+
+			add(TAG_JALEA);
+
+			add(TAG_GRITO);
+
+			add(TAG_VOZ_BOLUDO);
+
+			add(TAG_POIO);
+
+			add(TAG_ROTISERIA);
+
+			add(TAG_COMAN_POIA);
+
+			add(TAG_NOO);
+
+			add(TAG_CAGON);
+
+			add(TAG_VIRGOCHO);
+
+			add(TAG_PUTACO);
+
+			add(TAG_CARAMIERDA);
+
+			add(TAG_FH2);
+
+			add(TAG_FEMINISTA);
+
+		}};
+	}
+
+	public List<Audio> getAudios() {
 
 		return new ArrayList<Audio>() {{
 			add(new Audio(R.raw.audio_1, "Te voy a tocar la jalea", new ArrayList<Tag>() {{
@@ -167,6 +270,7 @@ public class UtilService {
 			add(new Audio(R.raw.audio_26, "Mírenlo.. el putaco", new ArrayList<Tag>() {{
 				add(new Tag(TAG_UBER));
 				add(new Tag(TAG_CAGON));
+				add(new Tag(TAG_PUTACO));
 			}}));
 			add(new Audio(R.raw.audio_27, "Ese virgocho soi io", new ArrayList<Tag>() {{
 				add(new Tag(TAG_MARCE));
@@ -460,7 +564,7 @@ public class UtilService {
 				add(new Tag(TAG_RIVER));
 			}}));
 			add(new Audio(R.raw.audio_107, "Dejense de mierdas, ostias", new ArrayList<Tag>() {{
-				add(new Tag(TAG_FABRIO));
+				add(new Tag(TAG_MARCE));
 				add(new Tag(TAG_OSHTIAPUTA));
 			}}));
 			add(new Audio(R.raw.audio_108, "Poiooooooo (2)", new ArrayList<Tag>() {{
