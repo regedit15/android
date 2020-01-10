@@ -5,6 +5,7 @@ public class Palabra {
 	private String palabraEsp;
 	private String palabraIng;
 	private String pronunciacion;
+	private boolean mostrarRespuesta;
 
 	public Palabra() {
 	}
@@ -37,5 +38,13 @@ public class Palabra {
 
 	public void setPronunciacion(String pronunciacion) {
 		this.pronunciacion = pronunciacion;
+	}
+
+	public boolean isMostrarRespuesta() {
+		return mostrarRespuesta;
+	}
+
+	public void setMostrarRespuesta(boolean mostrarRespuesta) {
+		this.mostrarRespuesta = mostrarRespuesta;
 	}
 }

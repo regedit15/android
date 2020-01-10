@@ -23,19 +23,100 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
-		<androidx.constraintlayout.widget.ConstraintLayout
+		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent">
+			android:layout_height="match_parent"
+			android:orientation="horizontal">
 
-			<TextView
-				android:id="@+id/tv_titulo"
+			<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="TextView"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-		</androidx.constraintlayout.widget.ConstraintLayout>
+				android:layout_height="match_parent"
+				android:layout_gravity="center"
+				android:layout_weight="1">
+
+				<TextView
+					android:id="@+id/tvPalabraIng"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_weight="1"
+					android:gravity="center"
+					android:text="Titulo"
+					android:textStyle="bold"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp">
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/btMostrarRespuesta"
+					android:layout_width="30dp"
+					android:layout_height="30dp"
+					android:insetLeft="0dp"
+					android:insetTop="0dp"
+					android:insetRight="0dp"
+					android:insetBottom="0dp"
+					app:backgroundTint="#448AFF"
+					app:icon="@drawable/ic_binoculars_off"
+					app:iconGravity="textStart"
+					app:iconPadding="0dp"
+					app:iconSize="25dp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/lyRespuesta"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:visibility="invisible">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent">
+
+					<TextView
+						android:id="@+id/tvPronunciacion"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_marginTop="10dp"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="Titulo"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tvPalabraEsp" />
+
+					<TextView
+						android:id="@+id/tvPalabraEsp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_weight="1"
+						android:gravity="center"
+						android:text="Titulo"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</LinearLayout>
 	</androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

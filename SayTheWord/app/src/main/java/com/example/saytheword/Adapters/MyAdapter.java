@@ -8,11 +8,13 @@ import android.widget.TextView;
 
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -21,10 +23,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	private Activity activity;
 	private OnItemClickListener onItemClickListener;
 
-	public MyAdapter(List<Palabra> Palabras, int layout, Activity activity, OnItemClickListener onItemClickListener) {
+	public MyAdapter(List<Palabra> Palabras, int layout, Activity activity) {
 		this.palabras = Palabras;
 		this.layout = layout;
-		this.onItemClickListener = onItemClickListener;
 		this.activity = activity;
 	}
 
@@ -48,35 +49,49 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	}
 
 	public class ViewHolder extends RecyclerView.ViewHolder {
-		public TextView textViewTitulo;
-		// public TextView textViewDescripcion;
-		// public ImageView imageView;
+		public TextView tvPalabraIng;
+		public TextView tvPalabraEsp;
+		public TextView tvPronunciacion;
+		public ConstraintLayout lyRespuesta;
+		public MaterialButton mbMostrarRespuesta;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
-			this.textViewTitulo = itemView.findViewById(R.id.tv_titulo);
-			// this.textViewDescripcion = itemView.findViewById(R.id.textViewDescripcion);
-			// this.imageView = itemView.findViewById(R.id.imageView);
-			// itemView.setOnCreateContextMenuListener(this);
+			this.tvPalabraIng = itemView.findViewById(R.id.tvPalabraIng);
+			this.tvPalabraEsp = itemView.findViewById(R.id.tvPalabraEsp);
+			this.tvPronunciacion = itemView.findViewById(R.id.tvPronunciacion);
+			this.lyRespuesta = itemView.findViewById(R.id.lyRespuesta);
+			this.mbMostrarRespuesta = itemView.findViewById(R.id.btMostrarRespuesta);
 		}
 
-		public void bind(final Palabra Palabra, final OnItemClickListener onItemClickListener) {
+		public void bind(final Palabra palabra, final OnItemClickListener onItemClickListener) {
 
-			// -- Se se setean todos los elementos del layout
-			textViewTitulo.setText(Palabra.getPalabraEsp());
-			// textViewDescripcion.setText(Palabra.getDescripcion());
+			tvPalabraIng.setText(palabra.getPalabraEsp());
+			tvPalabraEsp.setText(palabra.getPalabraIng());
+			tvPronunciacion.setText(palabra.getPronunciacion());
 
-			// Fit significa que nos abarque todo el contenido
-			// Picasso.get().load(Palabra.getImagen()).fit().into(imageView);
-			// ----------------------------------------------
-
-			itemView.setOnClickListener(new View.OnClickListener() {
+			mbMostrarRespuesta.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					// se le pasa el nombre y la posicion
-					onItemClickListener.onItemClick(Palabra, getAdapterPosition());
+					palabra.setMostrarRespuesta(!palabra.isMostrarRespuesta());
+
+					if (palabra.isMostrarRespuesta()) {
+						lyRespuesta.setVisibility(View.VISIBLE);
+					} else {
+						lyRespuesta.setVisibility(View.INVISIBLE);
+					}
+
+					setearIconoBoton(palabra.isMostrarRespuesta());
 				}
 			});
+		}
+
+		private void setearIconoBoton(boolean mostrarRespuesta) {
+			if (mostrarRespuesta) {
+				mbMostrarRespuesta.setIconResource(R.drawable.ic_binoculars_on);
+			} else {
+				mbMostrarRespuesta.setIconResource(R.drawable.ic_binoculars_off);
+			}
 		}
 
 		// -------------------------------------------

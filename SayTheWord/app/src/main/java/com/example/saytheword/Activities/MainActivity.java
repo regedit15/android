@@ -1,8 +1,6 @@
 package com.example.saytheword.Activities;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.example.saytheword.Adapters.MyAdapter;
 import com.example.saytheword.Models.Palabra;
@@ -52,12 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// Enviamos el parametro this para tener tanto el activity como el contexto
-		adapter = new MyAdapter(palabras, R.layout.recycler_view_item, this, new MyAdapter.OnItemClickListener() {
-			@Override
-			public void onItemClick(Palabra fruta, int position) {
-				Toast.makeText(MainActivity.this, "Tocada: " + palabras.get(position).getPalabraEsp(), Toast.LENGTH_SHORT).show();
-			}
-		});
+		// adapter = new MyAdapter(palabras, R.layout.recycler_view_item, this, new MyAdapter.OnItemClickListener() {
+		// 	@Override
+		// 	public void onItemClick(Palabra palabra, int position) {
+		// 		// Toast.makeText(MainActivity.this, "Tocada: " + palabras.get(position).getPalabraEsp(), Toast.LENGTH_SHORT).show();
+		// 	}
+		// });
+		adapter = new MyAdapter(palabras, R.layout.recycler_view_item, this);
 
 
 		recyclerView.setLayoutManager(layoutManager);
@@ -70,43 +69,4 @@ public class MainActivity extends AppCompatActivity {
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 	}
 
-	public void aaa(View view) {
-		flipCard();
-	}
-
-	private void flipCard() {
-		// if (showingBack) {
-		// 	getSupportFragmentManager().popBackStack();
-		// } else {
-		//
-		//
-		// 	// Flip to the back.
-		//
-		// 	// Create and commit a new fragment transaction that adds the fragment for
-		// 	// the back of the card, uses custom animations, and is part of the fragment
-		// 	// manager's back stack.
-		//
-		// 	getSupportFragmentManager().beginTransaction()
-		//
-		// 			// Replace the default fragment animations with animator resources
-		// 			// representing rotations when switching to the back of the card, as
-		// 			// well as animator resources representing rotations when flipping
-		// 			// back to the front (e.g. when the system Back button is pressed).
-		// 			.setCustomAnimations(R.animator.card_flip_right_in, R.animator.card_flip_right_out, R.animator.card_flip_left_in, R.animator.card_flip_left_out)
-		//
-		// 			// Replace any fragments currently in the container view with a
-		// 			// fragment representing the next page (indicated by the
-		// 			// just-incremented currentPage variable).
-		// 			.replace(R.id.contenedor, new CardBack())
-		//
-		// 			// Add this transaction to the back stack, allowing users to press
-		// 			// Back to get to the front of the card.
-		// 			.addToBackStack(null)
-		//
-		// 			// Commit the transaction.
-		// 			.commit();
-		// }
-
-		showingBack = !showingBack;
-	}
 }
