@@ -21,7 +21,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	private List<Palabra> palabras = new ArrayList<Palabra>();
 	private int layout;
 	private Activity activity;
-	private OnItemClickListener onItemClickListener;
 
 	public MyAdapter(List<Palabra> Palabras, int layout, Activity activity) {
 		this.palabras = Palabras;
@@ -40,7 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	// metodo que se ejecuta cuando se crea el RecyclerView. Realiza el volcado de datos
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-		holder.bind(palabras.get(position), onItemClickListener);
+		holder.bind(palabras.get(position));
 	}
 
 	@Override
@@ -64,7 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			this.mbMostrarRespuesta = itemView.findViewById(R.id.btMostrarRespuesta);
 		}
 
-		public void bind(final Palabra palabra, final OnItemClickListener onItemClickListener) {
+		public void bind(final Palabra palabra) {
 
 			tvPalabraIng.setText(palabra.getPalabraEsp());
 			tvPalabraEsp.setText(palabra.getPalabraIng());
