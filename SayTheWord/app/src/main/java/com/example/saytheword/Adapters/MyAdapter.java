@@ -88,9 +88,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 		private void setearIconoBoton(boolean mostrarRespuesta) {
 			if (mostrarRespuesta) {
-				mbMostrarRespuesta.setIconResource(R.drawable.ic_binoculars_on);
+				mbMostrarRespuesta.setIconResource(R.drawable.ic_eye_open);
 			} else {
-				mbMostrarRespuesta.setIconResource(R.drawable.ic_binoculars_off);
+				mbMostrarRespuesta.setIconResource(R.drawable.ic_eye_closed);
 			}
 		}
 
