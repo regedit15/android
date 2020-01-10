@@ -24,7 +24,7 @@
 		android:shadowDx="5"
 		android:shadowDy="5"
 		android:shadowRadius="5"
-		android:text="Forgotten Hope"
+		android:text="Botonera Forgottera v7.0"
 		android:textColor="#FFFFFF"
 		android:textSize="18sp"
 		android:textStyle="bold"

@@ -98,13 +98,6 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 		// ------------------------------------------------
 
 		realmService.setearConfiguracion(getApplicationContext());
-
-		// try {
-		// 	MediaPlayer mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.audio_1);
-		// 	mediaPlayer.start();
-		// } catch (Exception e) {
-		// 	e.printStackTrace();
-		// }
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
