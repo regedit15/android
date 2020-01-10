@@ -29,7 +29,7 @@
 			android:orientation="horizontal">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="center"
 				android:layout_weight="1">
@@ -39,9 +39,8 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
-					android:layout_weight="1"
 					android:gravity="center"
-					android:text="Titulo"
+					android:text="Palabra"
 					android:textStyle="bold"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +63,7 @@
 					android:insetRight="0dp"
 					android:insetBottom="0dp"
 					app:backgroundTint="#448AFF"
-					app:icon="@drawable/ic_binoculars_off"
+					app:icon="@drawable/ic_eye_closed"
 					app:iconGravity="textStart"
 					app:iconPadding="0dp"
 					app:iconSize="25dp"
@@ -76,7 +75,7 @@
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:id="@+id/lyRespuesta"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_weight="1"
 				android:visibility="invisible">
@@ -95,7 +94,6 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="center"
 						android:layout_marginTop="10dp"
-						android:layout_weight="1"
 						android:gravity="center"
 						android:text="Titulo"
 						android:textStyle="bold"
@@ -108,7 +106,6 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_gravity="center"
-						android:layout_weight="1"
 						android:gravity="center"
 						android:text="Titulo"
 						android:textStyle="bold"
