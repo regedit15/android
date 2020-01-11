@@ -1,6 +1,5 @@
 package com.example.saytheword.Adapters;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,18 +19,16 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	private List<Palabra> palabras = new ArrayList<Palabra>();
 	private int layout;
-	private Activity activity;
 
-	public MyAdapter(List<Palabra> Palabras, int layout, Activity activity) {
+	public MyAdapter(List<Palabra> Palabras, int layout) {
 		this.palabras = Palabras;
 		this.layout = layout;
-		this.activity = activity;
 	}
 
 	@NonNull
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-		View view = LayoutInflater.from(activity).inflate(layout, parent, false);
+		View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
 		ViewHolder viewHolder = new ViewHolder(view);
 		return viewHolder;
 	}

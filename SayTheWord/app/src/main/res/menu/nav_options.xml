@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<group android:checkableBehavior="single">
+<!--			android:icon="@android:drawable/sym_action_email"-->
+		<item
+			android:id="@+id/it_listadoPalabras"
+			android:title="Listado Palabras" />
+<!--			android:icon="@android:drawable/ic_dialog_alert"-->
+		<item
+			android:id="@+id/it_juego"
+			android:title="Juego" />
+	</group>
+<!--	<item android:title="CMP">-->
+<!--		<menu>-->
+<!--			<item-->
+<!--				android:id="@+id/it_allied"-->
+<!--				android:title="Allied" />-->
+<!--			<item-->
+<!--				android:id="@+id/it_axis"-->
+<!--				android:title="Axis" />-->
+<!--		</menu>-->
+<!--	</item>-->
+</menu>
