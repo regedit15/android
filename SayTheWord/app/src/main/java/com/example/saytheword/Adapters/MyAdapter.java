@@ -44,6 +44,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		return palabras.size();
 	}
 
+	@Override
+	public long getItemId(int id) {
+		return id;
+	}
+
+	@Override
+	public int getItemViewType(int position) {
+		return position;
+	}
+
 	public class ViewHolder extends RecyclerView.ViewHolder {
 		public TextView tvPalabraIng;
 		public TextView tvPalabraEsp;

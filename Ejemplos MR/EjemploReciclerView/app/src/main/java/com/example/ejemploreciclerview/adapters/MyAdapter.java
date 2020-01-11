@@ -52,6 +52,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		return frutas.size();
 	}
 
+	@Override
+	public long getItemId(int id) {
+		return id;
+	}
+
+	@Override
+	public int getItemViewType(int position) {
+		return position;
+	}
+
 	public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 		public TextView textViewTitulo;
 		public TextView textViewDescripcion;
