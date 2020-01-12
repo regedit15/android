@@ -54,7 +54,7 @@ public class ListadoPalabrasFragment extends Fragment {
 		// 		// Toast.makeText(MainActivity.this, "Tocada: " + palabras.get(position).getPalabraEsp(), Toast.LENGTH_SHORT).show();
 		// 	}
 		// });
-		adapter = new MyAdapter(utilService.getPalabras(), R.layout.recycler_view_item);
+		adapter = new MyAdapter(utilService.palabras, R.layout.recycler_view_item);
 
 		recyclerView.setLayoutManager(layoutManager);
 		recyclerView.setAdapter(adapter);

@@ -10,9 +10,9 @@ public class Palabra {
 	public Palabra() {
 	}
 
-	public Palabra(String palabraEsp, String palabraIng, String pronunciacion) {
-		this.palabraEsp = palabraEsp;
+	public Palabra(String palabraIng, String palabraEsp, String pronunciacion) {
 		this.palabraIng = palabraIng;
+		this.palabraEsp = palabraEsp;
 		this.pronunciacion = pronunciacion;
 	}
 
