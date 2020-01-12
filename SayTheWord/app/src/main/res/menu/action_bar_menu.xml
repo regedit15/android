@@ -2,5 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
 		android:id="@+id/item_reset"
-		android:title="Eliminar" />
+		android:title="Ocultar todo" />
+	<item
+		android:id="@+id/item_espaniolIngles"
+		android:title="Español - Inglés" />
+	<item
+		android:id="@+id/item_inglesEspañol"
+		android:title="Inglés - Español" />
 </menu>

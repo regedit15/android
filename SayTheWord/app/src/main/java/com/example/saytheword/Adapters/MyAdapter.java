@@ -9,20 +9,25 @@ import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
 import com.google.android.material.button.MaterialButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-	private List<Palabra> palabras = new ArrayList<Palabra>();
-	private int layout;
+import static com.example.saytheword.Services.UtilService.TIPO_LISTADO_ESPANIOL_INGLES;
+import static com.example.saytheword.Services.UtilService.TIPO_LISTADO_INGLES_ESPANIOL;
 
-	public MyAdapter(List<Palabra> Palabras, int layout) {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+
+	private List<Palabra> palabras;
+	private int layout;
+	private int TIPO_LISTADO;
+
+	public MyAdapter(List<Palabra> Palabras, int layout, int TIPO_LISTADO) {
 		this.palabras = Palabras;
 		this.layout = layout;
+		this.TIPO_LISTADO = TIPO_LISTADO;
 	}
 
 	@NonNull
@@ -39,50 +44,41 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		holder.bind(palabras.get(position));
 	}
 
-	@Override
-	public int getItemCount() {
-		return palabras.size();
-	}
-
-	@Override
-	public long getItemId(int id) {
-		return id;
-	}
-
-	@Override
-	public int getItemViewType(int position) {
-		return position;
-	}
-
-	public void ocultarTodos() {
-		for (Palabra palabra : palabras) {
-			palabra.setMostrarRespuesta(false);
-		}
-
-		notifyItemRangeChanged(0, getItemCount() - 1);
-	}
-
 	public class ViewHolder extends RecyclerView.ViewHolder {
-		public TextView tvPalabraIng;
-		public TextView tvPalabraEsp;
-		public TextView tvPronunciacion;
+		public TextView tvPalabraIzquierda;
+		public TextView tvPalabraDerechaArriba;
+		public TextView tvPalabraDerechaAbajo;
 		public ConstraintLayout lyRespuesta;
 		public MaterialButton mbMostrarRespuesta;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
-			this.tvPalabraIng = itemView.findViewById(R.id.tvPalabraIng);
-			this.tvPalabraEsp = itemView.findViewById(R.id.tvPalabraEsp);
-			this.tvPronunciacion = itemView.findViewById(R.id.tvPronunciacion);
+			this.tvPalabraIzquierda = itemView.findViewById(R.id.tvPalabraIzquierda);
+			this.tvPalabraDerechaArriba = itemView.findViewById(R.id.tvPalabraDerechaArriba);
+			this.tvPalabraDerechaAbajo = itemView.findViewById(R.id.tvPalabraDerechaAbajo);
 			this.lyRespuesta = itemView.findViewById(R.id.lyRespuesta);
 			this.mbMostrarRespuesta = itemView.findViewById(R.id.btMostrarRespuesta);
 		}
 
 		public void bind(final Palabra palabra) {
 
-			tvPalabraIng.setText(palabra.getPalabraEsp());
-			tvPalabraEsp.setText(palabra.getPalabraIng());
-			tvPronunciacion.setText(palabra.getPronunciacion());
+			// tvPalabraIzquierda.setText(palabra.getPalabraEsp());
+			// tvPalabraDerechaArriba.setText(palabra.getPalabraIng());
+			// tvPalabraDerechaAbajo.setText(palabra.getPronunciacion());
+
+			switch (TIPO_LISTADO) {
+				case TIPO_LISTADO_ESPANIOL_INGLES:
+					tvPalabraIzquierda.setText(palabra.getPalabraEsp());
+					tvPalabraDerechaArriba.setText(palabra.getPalabraIng());
+					tvPalabraDerechaAbajo.setText(palabra.getPronunciacion());
+					break;
+				case TIPO_LISTADO_INGLES_ESPANIOL:
+					tvPalabraIzquierda.setText(palabra.getPalabraIng());
+					tvPalabraDerechaArriba.setText(palabra.getPalabraEsp());
+					tvPalabraDerechaAbajo.setText(palabra.getPronunciacion());
+					break;
+			}
+
 
 			setear(palabra.isMostrarRespuesta());
 
@@ -105,43 +101,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			}
 		}
 
-		// -------------------------------------------
-		// @Override
-		// public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-		//
-		// 	Palabra PalabraSeleccionada = palabras.get(this.getAdapterPosition());
-		// 	menu.setHeaderTitle(PalabraSeleccionada.getNombre());
-		// 	// menu.setHeaderIcon(PalabraSeleccionada.getImagen());
-		//
-		// 	activity.getMenuInflater().inflate(R.menu.context_menu, menu);
-		// 	// Recorremos los items del listado y le vamos seteando un objeto, en este caso el MyAdapter
-		// 	// que implementa el onMenuItemClick
-		// 	for (int i = 0; i < menu.size(); i++) {
-		// 		menu.getItem(i).setOnMenuItemClickListener(this);
-		// 	}
-		// }
-		//
-		// @Override
-		// public boolean onMenuItemClick(MenuItem item) {
-		// 	boolean resultado;
-		//
-		// 	switch (item.getItemId()) {
-		// 		case R.id.it_eliminar:
-		// 			palabras.remove(getAdapterPosition());
-		// 			// refrezca el cambio
-		// 			notifyItemRemoved(getAdapterPosition());
-		// 			resultado = true;
-		// 			break;
-		// 		default:
-		// 			resultado = false;
-		// 	}
-		// 	return resultado;
-		// }
-		// -------------------------------------------
 	}
 
-	public interface OnItemClickListener {
-		void onItemClick(Palabra Palabra, int position);
+	public void ocultarTodos() {
+		for (Palabra palabra : palabras) {
+			palabra.setMostrarRespuesta(false);
+		}
+		notifyDataSetChanged();
+	}
+
+	public void cambiarAInglesEspaniol() {
+		cambiarTipoListado(TIPO_LISTADO_INGLES_ESPANIOL);
+	}
+
+	public void cambiarAEspaniolIngles() {
+		cambiarTipoListado(TIPO_LISTADO_ESPANIOL_INGLES);
+	}
+
+	private void cambiarTipoListado(int tipo) {
+		TIPO_LISTADO = tipo;
+		notifyDataSetChanged();
 	}
 
 	public List<Palabra> getPalabras() {
@@ -150,6 +129,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 	public void setPalabras(List<Palabra> Palabras) {
 		this.palabras = Palabras;
+	}
+
+	@Override
+	public int getItemCount() {
+		return palabras.size();
+	}
+
+	@Override
+	public long getItemId(int id) {
+		return id;
+	}
+
+	@Override
+	public int getItemViewType(int position) {
+		return position;
 	}
 }
 

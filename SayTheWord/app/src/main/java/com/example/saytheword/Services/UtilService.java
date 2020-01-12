@@ -8,6 +8,9 @@ import java.util.Random;
 
 public class UtilService {
 
+	public static final int TIPO_LISTADO_INGLES_ESPANIOL = 1;
+	public static final int TIPO_LISTADO_ESPANIOL_INGLES = 2;
+
 	public List<Palabra> palabras;
 
 	public UtilService() {

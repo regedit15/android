@@ -35,7 +35,7 @@
 				android:layout_weight="1">
 
 				<TextView
-					android:id="@+id/tvPalabraIng"
+					android:id="@+id/tvPalabraIzquierda"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
@@ -89,20 +89,7 @@
 					app:layout_constraintTop_toTopOf="parent">
 
 					<TextView
-						android:id="@+id/tvPronunciacion"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_gravity="center"
-						android:layout_marginTop="10dp"
-						android:gravity="center"
-						android:text="Titulo"
-						android:textStyle="bold"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toBottomOf="@+id/tvPalabraEsp" />
-
-					<TextView
-						android:id="@+id/tvPalabraEsp"
+						android:id="@+id/tvPalabraDerechaArriba"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_gravity="center"
@@ -112,6 +99,19 @@
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/tvPalabraDerechaAbajo"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_marginTop="10dp"
+						android:gravity="center"
+						android:text="Titulo"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tvPalabraDerechaArriba" />
 				</androidx.constraintlayout.widget.ConstraintLayout>
 			</androidx.constraintlayout.widget.ConstraintLayout>
 		</LinearLayout>
