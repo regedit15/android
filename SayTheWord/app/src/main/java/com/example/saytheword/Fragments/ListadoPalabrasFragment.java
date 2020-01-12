@@ -61,7 +61,7 @@ public class ListadoPalabrasFragment extends Fragment {
 	//----------- Option Menu
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.action_bar_menu, menu);
+		inflater.inflate(R.menu.action_bar_menu_listado_palabras, menu);
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 

@@ -17,8 +17,8 @@ import androidx.fragment.app.Fragment;
 
 public class MainActivity extends AppCompatActivity {
 
-	DrawerLayout drawerLayout;
-	NavigationView navigationView;
+	private DrawerLayout drawerLayout;
+	public NavigationView navigationView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
