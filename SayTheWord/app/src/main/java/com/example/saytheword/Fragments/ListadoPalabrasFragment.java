@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.saytheword.Activities.MainActivity;
 import com.example.saytheword.Adapters.MyAdapter;
 import com.example.saytheword.R;
 import com.example.saytheword.Services.UtilService;
@@ -48,7 +49,13 @@ public class ListadoPalabrasFragment extends Fragment {
 		// Le seteamos una animacion, en este caso, la que viene por defecto. Pero se puede crear una personalizada
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+		setearCantidadDeAudios();
 		return view;
+	}
+
+	private void setearCantidadDeAudios() {
+		// Agrego al titulo la cantidad de audios
+		((MainActivity) getActivity()).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) getActivity()).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(adapter.getLista().size()).append(")").toString());
 	}
 
 	//----------- Option Menu

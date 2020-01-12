@@ -20,12 +20,12 @@ import static com.example.saytheword.Services.UtilService.TIPO_LISTADO_INGLES_ES
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-	private List<Palabra> palabras;
+	private List<Palabra> lista;
 	private int layout;
 	private int TIPO_LISTADO;
 
-	public MyAdapter(List<Palabra> Palabras, int layout, int TIPO_LISTADO) {
-		this.palabras = Palabras;
+	public MyAdapter(List<Palabra> lista, int layout, int TIPO_LISTADO) {
+		this.lista = lista;
 		this.layout = layout;
 		this.TIPO_LISTADO = TIPO_LISTADO;
 	}
@@ -41,7 +41,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	// metodo que se ejecuta cuando se crea el RecyclerView. Realiza el volcado de datos
 	@Override
 	public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-		holder.bind(palabras.get(position));
+		holder.bind(lista.get(position));
 	}
 
 	public class ViewHolder extends RecyclerView.ViewHolder {
@@ -61,10 +61,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		}
 
 		public void bind(final Palabra palabra) {
-
-			// tvPalabraIzquierda.setText(palabra.getPalabraEsp());
-			// tvPalabraDerechaArriba.setText(palabra.getPalabraIng());
-			// tvPalabraDerechaAbajo.setText(palabra.getPronunciacion());
 
 			switch (TIPO_LISTADO) {
 				case TIPO_LISTADO_ESPANIOL_INGLES:
@@ -104,7 +100,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	}
 
 	public void ocultarTodos() {
-		for (Palabra palabra : palabras) {
+		for (Palabra palabra : lista) {
 			palabra.setMostrarRespuesta(false);
 		}
 		notifyDataSetChanged();
@@ -123,17 +119,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		notifyDataSetChanged();
 	}
 
-	public List<Palabra> getPalabras() {
-		return palabras;
+	public List<Palabra> getLista() {
+		return lista;
 	}
 
-	public void setPalabras(List<Palabra> Palabras) {
-		this.palabras = Palabras;
+	public void setLista(List<Palabra> Palabras) {
+		this.lista = Palabras;
 	}
 
 	@Override
 	public int getItemCount() {
-		return palabras.size();
+		return lista.size();
 	}
 
 	@Override
