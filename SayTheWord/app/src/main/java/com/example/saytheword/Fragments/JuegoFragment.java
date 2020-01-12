@@ -59,24 +59,12 @@ public class JuegoFragment extends Fragment {
 		btPrevious = view.findViewById(R.id.btPrevious);
 		btRestart = view.findViewById(R.id.btRestart);
 		mbNext = view.findViewById(R.id.btNext);
+		btMostrarRespuestaJuego = view.findViewById(R.id.btMostrarRespuestaJuego);
 
 		tvJuegoPalabraAbajo.setText("");
 		tvJuegoPalabraAbajo2.setText("");
 
 		inicializarJuego();
-		setearTextoArriba();
-
-
-		mbNext.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				indice++;
-				continuarJuego();
-			}
-		});
-
-		btMostrarRespuestaJuego = view.findViewById(R.id.btMostrarRespuestaJuego);
-
 
 		btMostrarRespuestaJuego.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -86,11 +74,26 @@ public class JuegoFragment extends Fragment {
 			}
 		});
 
+		mbNext.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				indice++;
+				continuarJuego();
+			}
+		});
+
 		btPrevious.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				indice--;
 				continuarJuego();
+			}
+		});
+
+		btRestart.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				inicializarJuego();
 			}
 		});
 
@@ -103,6 +106,11 @@ public class JuegoFragment extends Fragment {
 
 	private void continuarJuego() {
 
+		if (indice == 0) {
+			btPrevious.setVisibility(View.INVISIBLE);
+		}else{
+			btPrevious.setVisibility(View.VISIBLE);
+		}
 
 		if (juegoAleatorio == true) {
 			switch (random.nextInt(1)) {
@@ -119,9 +127,8 @@ public class JuegoFragment extends Fragment {
 			btRestart.setVisibility(View.VISIBLE);
 			mbNext.setVisibility(View.INVISIBLE);
 			btPrevious.setVisibility(View.INVISIBLE);
-
+			tvJuegoCantidadPalabras.setVisibility(View.INVISIBLE);
 			tvJuegoPalabraArriba.setText("CONGRATULATIONS!!!!!");
-			inicializarJuego();
 		} else {
 			setearTextoArriba();
 			mostrarRespuesta(false);
@@ -148,7 +155,10 @@ public class JuegoFragment extends Fragment {
 
 		btRestart.setVisibility(View.INVISIBLE);
 		mbNext.setVisibility(View.VISIBLE);
-		btPrevious.setVisibility(View.VISIBLE);
+		btPrevious.setVisibility(View.INVISIBLE);
+		tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
+
+		setearTextoArriba();
 	}
 
 	private void mostrarRespuesta(boolean mostrarRespuesta) {
