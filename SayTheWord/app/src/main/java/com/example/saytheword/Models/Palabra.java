@@ -47,4 +47,8 @@ public class Palabra {
 	public void setMostrarRespuesta(boolean mostrarRespuesta) {
 		this.mostrarRespuesta = mostrarRespuesta;
 	}
+
+	public void cambiarMostrarRespuesta() {
+		mostrarRespuesta = !mostrarRespuesta;
+	}
 }

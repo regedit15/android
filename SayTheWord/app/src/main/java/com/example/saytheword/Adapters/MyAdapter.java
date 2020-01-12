@@ -35,7 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 	// metodo que se ejecuta cuando se crea el RecyclerView. Realiza el volcado de datos
 	@Override
-	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+	public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 		holder.bind(palabras.get(position));
 	}
 
@@ -52,6 +52,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	@Override
 	public int getItemViewType(int position) {
 		return position;
+	}
+
+	public void ocultarTodos() {
+		for (Palabra palabra : palabras) {
+			palabra.setMostrarRespuesta(false);
+		}
+
+		notifyItemRangeChanged(0, getItemCount() - 1);
 	}
 
 	public class ViewHolder extends RecyclerView.ViewHolder {
@@ -76,26 +84,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			tvPalabraEsp.setText(palabra.getPalabraIng());
 			tvPronunciacion.setText(palabra.getPronunciacion());
 
+			setear(palabra.isMostrarRespuesta());
+
 			mbMostrarRespuesta.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					palabra.setMostrarRespuesta(!palabra.isMostrarRespuesta());
-
-					if (palabra.isMostrarRespuesta()) {
-						lyRespuesta.setVisibility(View.VISIBLE);
-					} else {
-						lyRespuesta.setVisibility(View.INVISIBLE);
-					}
-
-					setearIconoBoton(palabra.isMostrarRespuesta());
+					palabra.cambiarMostrarRespuesta();
+					setear(palabra.isMostrarRespuesta());
 				}
 			});
 		}
 
-		private void setearIconoBoton(boolean mostrarRespuesta) {
+		private void setear(boolean mostrarRespuesta) {
 			if (mostrarRespuesta) {
+				lyRespuesta.setVisibility(View.VISIBLE);
 				mbMostrarRespuesta.setIconResource(R.drawable.ic_eye_open);
 			} else {
+				lyRespuesta.setVisibility(View.INVISIBLE);
 				mbMostrarRespuesta.setIconResource(R.drawable.ic_eye_closed);
 			}
 		}

@@ -2,15 +2,15 @@ package com.example.saytheword.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.saytheword.Adapters.MyAdapter;
-import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
 import com.example.saytheword.Services.UtilService;
-
-import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -22,11 +22,10 @@ public class ListadoPalabrasFragment extends Fragment {
 	private RecyclerView recyclerView;
 	private MyAdapter adapter;
 	private RecyclerView.LayoutManager layoutManager;
-	private List<Palabra> palabras;
 	private UtilService utilService = new UtilService();
 
 	public ListadoPalabrasFragment() {
-		palabras = utilService.getPalabras();
+		setHasOptionsMenu(true);
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class ListadoPalabrasFragment extends Fragment {
 		// 		// Toast.makeText(MainActivity.this, "Tocada: " + palabras.get(position).getPalabraEsp(), Toast.LENGTH_SHORT).show();
 		// 	}
 		// });
-		adapter = new MyAdapter(palabras, R.layout.recycler_view_item);
+		adapter = new MyAdapter(utilService.getPalabras(), R.layout.recycler_view_item);
 
 		recyclerView.setLayoutManager(layoutManager);
 		recyclerView.setAdapter(adapter);
@@ -66,7 +65,32 @@ public class ListadoPalabrasFragment extends Fragment {
 		// Le seteamos una animacion, en este caso, la que viene por defecto. Pero se puede crear una personalizada
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+
 		return view;
 	}
+
+	//----------- Option Menu
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.action_bar_menu, menu);
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		boolean resultado;
+
+		switch (item.getItemId()) {
+			case R.id.item_reset:
+				adapter.ocultarTodos();
+				resultado = true;
+				break;
+			default:
+				resultado = super.onOptionsItemSelected(item);
+				break;
+		}
+		return resultado;
+	}
+	//-------------------------------------------------
 
 }
