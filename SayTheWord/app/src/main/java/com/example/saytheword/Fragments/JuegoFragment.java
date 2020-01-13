@@ -13,9 +13,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
+import com.example.saytheword.Services.RealmService;
 import com.example.saytheword.Services.UtilService;
 import com.google.android.material.button.MaterialButton;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -29,6 +31,7 @@ import static com.example.saytheword.Services.UtilService.TIPO_JUEGO_INGLES_ESPA
 public class JuegoFragment extends Fragment {
 
 	private UtilService utilService = new UtilService();
+	private RealmService realmService = new RealmService();
 	private TextView tvJuegoPalabraArriba;
 	private TextView tvJuegoPalabraAbajo;
 	private TextView tvJuegoPalabraAbajo2;
@@ -39,6 +42,7 @@ public class JuegoFragment extends Fragment {
 	private MaterialButton btMostrarRespuestaJuego;
 	private MaterialButton btPrevious;
 	private MaterialButton btRestart;
+	private MaterialButton btPalabraProblematica;
 	private ConstraintLayout lyRespuestaJuego;
 	private int TIPO_JUEGO;
 	private boolean juegoAleatorio;
@@ -64,6 +68,7 @@ public class JuegoFragment extends Fragment {
 		mbNext = view.findViewById(R.id.btNext);
 		btMostrarRespuestaJuego = view.findViewById(R.id.btMostrarRespuestaJuego);
 		ivCongratulations = view.findViewById(R.id.ivCongratulations);
+		btPalabraProblematica = view.findViewById(R.id.btPalabraProblematica);
 
 		tvJuegoPalabraAbajo.setText("");
 		tvJuegoPalabraAbajo2.setText("");
@@ -73,7 +78,7 @@ public class JuegoFragment extends Fragment {
 		btMostrarRespuestaJuego.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				palabrasDesordenadas.get(indice).cambiarMostrarRespuesta();
+				realmService.cambiarMostrarRespuesta(palabrasDesordenadas.get(indice));
 				mostrarRespuesta(palabrasDesordenadas.get(indice).isMostrarRespuesta());
 			}
 		});
@@ -98,6 +103,14 @@ public class JuegoFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 				inicializarJuego();
+			}
+		});
+
+		btPalabraProblematica.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				realmService.cambiarPalabraProblematica(palabrasDesordenadas.get(indice));
+				setearColorPalabraProblematica();
 			}
 		});
 
@@ -138,13 +151,13 @@ public class JuegoFragment extends Fragment {
 			tvJuegoPalabraArriba.setVisibility(View.INVISIBLE);
 			Glide.with(getContext()).load(R.drawable.congratulation).into(ivCongratulations);
 		} else {
-			setearTextoArriba();
+			setearTextoArribaYcolorDeBoton();
 			mostrarRespuesta(false);
 			setearTitulo();
 		}
 	}
 
-	private void setearTextoArriba() {
+	private void setearTextoArribaYcolorDeBoton() {
 		switch (TIPO_JUEGO) {
 			case TIPO_JUEGO_INGLES_ESPANIOL:
 				tvJuegoPalabraArriba.setText(palabrasDesordenadas.get(indice).getPalabraIng());
@@ -153,11 +166,30 @@ public class JuegoFragment extends Fragment {
 				tvJuegoPalabraArriba.setText(palabrasDesordenadas.get(indice).getPalabraEsp());
 				break;
 		}
+		setearColorPalabraProblematica();
+	}
+
+	private void setearColorPalabraProblematica() {
+		if (palabrasDesordenadas.get(indice).isPalabraProblematica()) {
+			btPalabraProblematica.setIconResource(R.drawable.ic_angry);
+			btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
+		} else {
+			btPalabraProblematica.setIconResource(R.drawable.ic_smile);
+			btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+		}
 	}
 
 	private void inicializarJuego() {
-		palabrasDesordenadas = utilService.getPalabras();
+		// ------------- Se hace esto porque si lo igualo a utilService.getPalabras() da error
+		palabrasDesordenadas = new ArrayList<>();
+
+		for (Palabra p : utilService.getPalabras(false)) {
+			palabrasDesordenadas.add(p);
+		}
+
 		Collections.shuffle(palabrasDesordenadas);
+		// --------------------------------------------------------------
+
 		indice = 0;
 		setearTitulo();
 
@@ -169,7 +201,7 @@ public class JuegoFragment extends Fragment {
 		btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
 		tvJuegoPalabraArriba.setVisibility(View.VISIBLE);
 
-		setearTextoArriba();
+		setearTextoArribaYcolorDeBoton();
 	}
 
 	private void mostrarRespuesta(boolean mostrarRespuesta) {

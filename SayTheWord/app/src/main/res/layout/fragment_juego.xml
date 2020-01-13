@@ -47,6 +47,22 @@
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent">
 
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btPalabraProblematica"
+						style="@style/Widget.MaterialComponents.Button"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						app:backgroundTint="#ADADAD"
+						app:icon="@drawable/ic_smile"
+						app:iconGravity="textStart"
+						app:iconPadding="0dp"
+						app:iconSize="25dp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/btNext" />
+
 					<TextView
 						android:id="@+id/tvJuegoCantidadPalabras"
 						android:layout_width="wrap_content"
@@ -126,7 +142,6 @@
 						android:layout_marginTop="32dp"
 						android:text="Next"
 						app:backgroundTint="#82B1FF"
-						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintTop_toBottomOf="@+id/lyRespuestaJuego" />
 
@@ -135,12 +150,13 @@
 						style="@style/Widget.MaterialComponents.Button"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginEnd="24dp"
+						android:layout_marginTop="32dp"
+						android:layout_marginEnd="22dp"
 						android:text="Previous"
 						app:backgroundTint="#82B1FF"
-						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toStartOf="@+id/btNext"
-						app:layout_constraintStart_toStartOf="parent" />
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/lyRespuestaJuego" />
 
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/btRestart"
@@ -150,7 +166,6 @@
 						android:layout_marginTop="32dp"
 						android:text="Restart"
 						app:backgroundTint="#82B1FF"
-						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toBottomOf="@+id/lyRespuestaJuego" />

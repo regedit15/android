@@ -5,6 +5,9 @@
 			android:id="@+id/it_listadoPalabras"
 			android:title="Listado Palabras" />
 		<item
+			android:id="@+id/it_listadoPalabrasProblematicas"
+			android:title="Listado Palabras Problemáticas" />
+		<item
 			android:id="@+id/it_juego"
 			android:title="Juego" />
 	</group>

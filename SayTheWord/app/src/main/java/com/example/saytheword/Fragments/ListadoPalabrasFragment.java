@@ -10,8 +10,12 @@ import android.view.ViewGroup;
 
 import com.example.saytheword.Activities.MainActivity;
 import com.example.saytheword.Adapters.MyAdapter;
+import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
+import com.example.saytheword.Services.RealmService;
 import com.example.saytheword.Services.UtilService;
+
+import java.util.List;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -26,9 +30,12 @@ public class ListadoPalabrasFragment extends Fragment {
 	private MyAdapter adapter;
 	private RecyclerView.LayoutManager layoutManager;
 	private UtilService utilService = new UtilService();
+	private RealmService realmService = new RealmService();
+	private boolean soloPalabrasProblematicas;
 
-	public ListadoPalabrasFragment() {
+	public ListadoPalabrasFragment(boolean soloPalabrasProblematicas) {
 		setHasOptionsMenu(true);
+		this.soloPalabrasProblematicas = soloPalabrasProblematicas;
 	}
 
 	@Override
@@ -38,7 +45,10 @@ public class ListadoPalabrasFragment extends Fragment {
 
 		recyclerView = view.findViewById(R.id.recyclerView);
 		layoutManager = new LinearLayoutManager(getContext());
-		adapter = new MyAdapter(utilService.palabras, R.layout.recycler_view_item, TIPO_LISTADO_INGLES_ESPANIOL);
+
+		List<Palabra> lista = utilService.getPalabras(soloPalabrasProblematicas);
+		realmService.cambiarTodo(lista, false);
+		adapter = new MyAdapter(lista, R.layout.recycler_view_item, TIPO_LISTADO_INGLES_ESPANIOL);
 
 		recyclerView.setLayoutManager(layoutManager);
 		recyclerView.setAdapter(adapter);

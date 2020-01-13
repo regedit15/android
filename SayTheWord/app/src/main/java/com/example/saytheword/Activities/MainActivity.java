@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import com.example.saytheword.Fragments.JuegoFragment;
 import com.example.saytheword.Fragments.ListadoPalabrasFragment;
 import com.example.saytheword.R;
+import com.example.saytheword.Services.RealmService;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -19,11 +20,14 @@ public class MainActivity extends AppCompatActivity {
 
 	private DrawerLayout drawerLayout;
 	public NavigationView navigationView;
+	public RealmService realmService = new RealmService();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+		realmService.setearConfiguracion(getApplicationContext());
 
 
 		Toolbar myToolbar = findViewById(R.id.toolbar);
@@ -46,7 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
 				switch (menuItem.getItemId()) {
 					case R.id.it_listadoPalabras:
-						fragment = new ListadoPalabrasFragment();
+						fragment = new ListadoPalabrasFragment(false);
+						transaction = true;
+						break;
+					case R.id.it_listadoPalabrasProblematicas:
+						fragment = new ListadoPalabrasFragment(true);
 						transaction = true;
 						break;
 					case R.id.it_juego:
@@ -66,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		cambiarFragment(new ListadoPalabrasFragment(), navigationView.getMenu().getItem(0));
+		cambiarFragment(new ListadoPalabrasFragment(false), navigationView.getMenu().getItem(0));
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

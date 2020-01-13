@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
+import com.example.saytheword.Services.RealmService;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	private List<Palabra> lista;
 	private int layout;
 	private int TIPO_LISTADO;
+	private RealmService realmService = new RealmService();
 
 	public MyAdapter(List<Palabra> lista, int layout, int TIPO_LISTADO) {
 		this.lista = lista;
@@ -81,7 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			mbMostrarRespuesta.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					palabra.cambiarMostrarRespuesta();
+					realmService.cambiarMostrarRespuesta(palabra);
 					setear(palabra.isMostrarRespuesta());
 				}
 			});
@@ -96,7 +98,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 				mbMostrarRespuesta.setIconResource(R.drawable.ic_eye_closed);
 			}
 		}
-
 	}
 
 	public void ocultarTodo() {
@@ -107,10 +108,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		cambiarTodo(true);
 	}
 
-	private void cambiarTodo(boolean valor) {
-		for (Palabra palabra : lista) {
-			palabra.setMostrarRespuesta(valor);
-		}
+	private void cambiarTodo(final boolean valor) {
+		realmService.cambiarTodo(lista, valor);
 		notifyDataSetChanged();
 	}
 
