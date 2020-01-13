@@ -48,10 +48,12 @@ public class JuegoFragment extends Fragment {
 	private boolean juegoAleatorio;
 	private Random random = new Random();
 	private ImageView ivCongratulations;
+	private boolean soloPalabrasProblematicas;
 
-	public JuegoFragment() {
+	public JuegoFragment(boolean soloPalabrasProblematicas) {
 		setHasOptionsMenu(true);
 		TIPO_JUEGO = TIPO_JUEGO_INGLES_ESPANIOL;
+		this.soloPalabrasProblematicas = soloPalabrasProblematicas;
 	}
 
 	@Override
@@ -149,6 +151,7 @@ public class JuegoFragment extends Fragment {
 			lyRespuestaJuego.setVisibility(View.INVISIBLE);
 			ivCongratulations.setVisibility(View.VISIBLE);
 			tvJuegoPalabraArriba.setVisibility(View.INVISIBLE);
+			btPalabraProblematica.setVisibility(View.INVISIBLE);
 			Glide.with(getContext()).load(R.drawable.congratulation).into(ivCongratulations);
 		} else {
 			setearTextoArribaYcolorDeBoton();
@@ -183,7 +186,7 @@ public class JuegoFragment extends Fragment {
 		// ------------- Se hace esto porque si lo igualo a utilService.getPalabras() da error
 		palabrasDesordenadas = new ArrayList<>();
 
-		for (Palabra p : utilService.getPalabras(false)) {
+		for (Palabra p : utilService.getPalabras(soloPalabrasProblematicas)) {
 			palabrasDesordenadas.add(p);
 		}
 
@@ -200,6 +203,7 @@ public class JuegoFragment extends Fragment {
 		tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
 		btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
 		tvJuegoPalabraArriba.setVisibility(View.VISIBLE);
+		btPalabraProblematica.setVisibility(View.VISIBLE);
 
 		setearTextoArribaYcolorDeBoton();
 	}

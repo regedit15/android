@@ -48,7 +48,7 @@ public class ListadoPalabrasFragment extends Fragment {
 
 		List<Palabra> lista = utilService.getPalabras(soloPalabrasProblematicas);
 		realmService.cambiarTodo(lista, false);
-		adapter = new MyAdapter(lista, R.layout.recycler_view_item, TIPO_LISTADO_INGLES_ESPANIOL);
+		adapter = new MyAdapter(lista, R.layout.recycler_view_item, TIPO_LISTADO_INGLES_ESPANIOL, getActivity());
 
 		recyclerView.setLayoutManager(layoutManager);
 		recyclerView.setAdapter(adapter);
@@ -59,11 +59,11 @@ public class ListadoPalabrasFragment extends Fragment {
 		// Le seteamos una animacion, en este caso, la que viene por defecto. Pero se puede crear una personalizada
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-		setearCantidadDeAudios();
+		setearTitulo();
 		return view;
 	}
 
-	private void setearCantidadDeAudios() {
+	private void setearTitulo() {
 		// Agrego al titulo la cantidad de audios
 		((MainActivity) getActivity()).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) getActivity()).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(adapter.getLista().size()).append(")").toString());
 	}

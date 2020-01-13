@@ -1,10 +1,12 @@
 package com.example.saytheword.Adapters;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.saytheword.Activities.MainActivity;
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
 import com.example.saytheword.Services.RealmService;
@@ -25,11 +27,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	private int layout;
 	private int TIPO_LISTADO;
 	private RealmService realmService = new RealmService();
+	private Activity activity;
 
-	public MyAdapter(List<Palabra> lista, int layout, int TIPO_LISTADO) {
+	public MyAdapter(List<Palabra> lista, int layout, int TIPO_LISTADO, Activity activity) {
 		this.lista = lista;
 		this.layout = layout;
 		this.TIPO_LISTADO = TIPO_LISTADO;
+		this.activity = activity;
 	}
 
 	@NonNull
@@ -52,6 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		public TextView tvPalabraDerechaAbajo;
 		public ConstraintLayout lyRespuesta;
 		public MaterialButton mbMostrarRespuesta;
+		public MaterialButton btPalabraProblematicaListado;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
@@ -60,6 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			this.tvPalabraDerechaAbajo = itemView.findViewById(R.id.tvPalabraDerechaAbajo);
 			this.lyRespuesta = itemView.findViewById(R.id.lyRespuesta);
 			this.mbMostrarRespuesta = itemView.findViewById(R.id.btMostrarRespuesta);
+			this.btPalabraProblematicaListado = itemView.findViewById(R.id.btPalabraProblematicaListado);
 		}
 
 		public void bind(final Palabra palabra) {
@@ -79,12 +85,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
 			setear(palabra.isMostrarRespuesta());
+			setearColorPalabraProblematica(palabra);
 
 			mbMostrarRespuesta.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					realmService.cambiarMostrarRespuesta(palabra);
 					setear(palabra.isMostrarRespuesta());
+				}
+			});
+
+			btPalabraProblematicaListado.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					realmService.cambiarPalabraProblematica(palabra);
+					setearColorPalabraProblematica(palabra);
+					notifyDataSetChanged();
+
+					((MainActivity) activity).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) activity).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(lista.size()).append(")").toString());
 				}
 			});
 		}
@@ -96,6 +114,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			} else {
 				lyRespuesta.setVisibility(View.INVISIBLE);
 				mbMostrarRespuesta.setIconResource(R.drawable.ic_eye_closed);
+			}
+		}
+
+		private void setearColorPalabraProblematica(Palabra palabra) {
+			if (palabra.isPalabraProblematica()) {
+				btPalabraProblematicaListado.setIconResource(R.drawable.ic_angry);
+				btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraProblematica));
+			} else {
+				btPalabraProblematicaListado.setIconResource(R.drawable.ic_smile);
+				btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraBuena));
 			}
 		}
 	}

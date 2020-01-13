@@ -58,7 +58,11 @@ public class MainActivity extends AppCompatActivity {
 						transaction = true;
 						break;
 					case R.id.it_juego:
-						fragment = new JuegoFragment();
+						fragment = new JuegoFragment(false);
+						transaction = true;
+						break;
+					case R.id.it_juegoPalabrasProblematicas:
+						fragment = new JuegoFragment(true);
 						transaction = true;
 						break;
 				}
