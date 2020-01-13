@@ -36,7 +36,7 @@ public class JuegoFragment extends Fragment {
 	private TextView tvJuegoPalabraAbajo;
 	private TextView tvJuegoPalabraAbajo2;
 	private TextView tvJuegoCantidadPalabras;
-	private List<Palabra> palabrasDesordenadas;
+	private List<Palabra> palabrasDesordenadas = new ArrayList<>();
 	private int indice;
 	private MaterialButton mbNext;
 	private MaterialButton btMostrarRespuestaJuego;
@@ -184,28 +184,40 @@ public class JuegoFragment extends Fragment {
 
 	private void inicializarJuego() {
 		// ------------- Se hace esto porque si lo igualo a utilService.getPalabras() da error
-		palabrasDesordenadas = new ArrayList<>();
+		List<Palabra> lista = utilService.getPalabras(soloPalabrasProblematicas);
 
-		for (Palabra p : utilService.getPalabras(soloPalabrasProblematicas)) {
-			palabrasDesordenadas.add(p);
+		if (lista.isEmpty()) {
+			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
+			btRestart.setVisibility(View.INVISIBLE);
+			ivCongratulations.setVisibility(View.INVISIBLE);
+			mbNext.setVisibility(View.INVISIBLE);
+			btPrevious.setVisibility(View.INVISIBLE);
+			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
+			tvJuegoPalabraArriba.setVisibility(View.INVISIBLE);
+			btPalabraProblematica.setVisibility(View.INVISIBLE);
+			tvJuegoCantidadPalabras.setText("No hay palabras problematicas!");
+		} else {
+			for (Palabra p : lista) {
+				palabrasDesordenadas.add(p);
+			}
+
+			Collections.shuffle(palabrasDesordenadas);
+			// --------------------------------------------------------------
+
+			indice = 0;
+			setearTitulo();
+
+			btRestart.setVisibility(View.INVISIBLE);
+			ivCongratulations.setVisibility(View.INVISIBLE);
+			mbNext.setVisibility(View.VISIBLE);
+			btPrevious.setVisibility(View.INVISIBLE);
+			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
+			btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
+			tvJuegoPalabraArriba.setVisibility(View.VISIBLE);
+			btPalabraProblematica.setVisibility(View.VISIBLE);
+
+			setearTextoArribaYcolorDeBoton();
 		}
-
-		Collections.shuffle(palabrasDesordenadas);
-		// --------------------------------------------------------------
-
-		indice = 0;
-		setearTitulo();
-
-		btRestart.setVisibility(View.INVISIBLE);
-		ivCongratulations.setVisibility(View.INVISIBLE);
-		mbNext.setVisibility(View.VISIBLE);
-		btPrevious.setVisibility(View.INVISIBLE);
-		tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
-		btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
-		tvJuegoPalabraArriba.setVisibility(View.VISIBLE);
-		btPalabraProblematica.setVisibility(View.VISIBLE);
-
-		setearTextoArribaYcolorDeBoton();
 	}
 
 	private void mostrarRespuesta(boolean mostrarRespuesta) {
