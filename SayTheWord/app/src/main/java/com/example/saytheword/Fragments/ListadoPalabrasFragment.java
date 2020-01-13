@@ -70,8 +70,12 @@ public class ListadoPalabrasFragment extends Fragment {
 		boolean resultado;
 
 		switch (item.getItemId()) {
-			case R.id.item_reset:
-				adapter.ocultarTodos();
+			case R.id.item_verTodo:
+				adapter.verTodo();
+				resultado = true;
+				break;
+			case R.id.item_ocultarTodo:
+				adapter.ocultarTodo();
 				resultado = true;
 				break;
 			case R.id.item_espaniolIngles:

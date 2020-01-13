@@ -7,8 +7,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
 import com.example.saytheword.Services.UtilService;
@@ -41,6 +43,7 @@ public class JuegoFragment extends Fragment {
 	private int TIPO_JUEGO;
 	private boolean juegoAleatorio;
 	private Random random = new Random();
+	private ImageView ivCongratulations;
 
 	public JuegoFragment() {
 		setHasOptionsMenu(true);
@@ -60,6 +63,7 @@ public class JuegoFragment extends Fragment {
 		btRestart = view.findViewById(R.id.btRestart);
 		mbNext = view.findViewById(R.id.btNext);
 		btMostrarRespuestaJuego = view.findViewById(R.id.btMostrarRespuestaJuego);
+		ivCongratulations = view.findViewById(R.id.ivCongratulations);
 
 		tvJuegoPalabraAbajo.setText("");
 		tvJuegoPalabraAbajo2.setText("");
@@ -108,12 +112,12 @@ public class JuegoFragment extends Fragment {
 
 		if (indice == 0) {
 			btPrevious.setVisibility(View.INVISIBLE);
-		}else{
+		} else {
 			btPrevious.setVisibility(View.VISIBLE);
 		}
 
 		if (juegoAleatorio == true) {
-			switch (random.nextInt(1)) {
+			switch (random.nextInt(2)) {
 				case 0:
 					TIPO_JUEGO = TIPO_JUEGO_INGLES_ESPANIOL;
 					break;
@@ -127,8 +131,12 @@ public class JuegoFragment extends Fragment {
 			btRestart.setVisibility(View.VISIBLE);
 			mbNext.setVisibility(View.INVISIBLE);
 			btPrevious.setVisibility(View.INVISIBLE);
+			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
 			tvJuegoCantidadPalabras.setVisibility(View.INVISIBLE);
-			tvJuegoPalabraArriba.setText("CONGRATULATIONS!!!!!");
+			lyRespuestaJuego.setVisibility(View.INVISIBLE);
+			ivCongratulations.setVisibility(View.VISIBLE);
+			tvJuegoPalabraArriba.setVisibility(View.INVISIBLE);
+			Glide.with(getContext()).load(R.drawable.congratulation).into(ivCongratulations);
 		} else {
 			setearTextoArriba();
 			mostrarRespuesta(false);
@@ -154,9 +162,12 @@ public class JuegoFragment extends Fragment {
 		setearTitulo();
 
 		btRestart.setVisibility(View.INVISIBLE);
+		ivCongratulations.setVisibility(View.INVISIBLE);
 		mbNext.setVisibility(View.VISIBLE);
 		btPrevious.setVisibility(View.INVISIBLE);
 		tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
+		btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
+		tvJuegoPalabraArriba.setVisibility(View.VISIBLE);
 
 		setearTextoArriba();
 	}

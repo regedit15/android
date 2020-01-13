@@ -99,9 +99,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 	}
 
-	public void ocultarTodos() {
+	public void ocultarTodo() {
+		cambiarTodo(false);
+	}
+
+	public void verTodo() {
+		cambiarTodo(true);
+	}
+
+	private void cambiarTodo(boolean valor) {
 		for (Palabra palabra : lista) {
-			palabra.setMostrarRespuesta(false);
+			palabra.setMostrarRespuesta(valor);
 		}
 		notifyDataSetChanged();
 	}

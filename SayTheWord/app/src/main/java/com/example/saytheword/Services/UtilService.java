@@ -33,7 +33,7 @@ public class UtilService {
 			add(new Palabra("Choir", "Coro", "Cuaier"));
 			add(new Palabra("Coating", "Revestimiento", "Coting"));
 			add(new Palabra("Crowd", "Multitud", "Crawd"));
-			add(new Palabra("Curs", "Curs", "Kurs"));
+			add(new Palabra("Curs", "Canalla", "Kurs"));
 			add(new Palabra("Curse", "Maldición", "Curse"));
 			add(new Palabra("Deceive", "Engañar", "Diceive"));
 			add(new Palabra("Deserve", "Merecer", "Diserve"));
@@ -77,7 +77,7 @@ public class UtilService {
 			add(new Palabra("Roam", "Vagar", "Roum"));
 			add(new Palabra("Rub", "Frotar", "Rab"));
 			add(new Palabra("Scalawag", "Pícaro", "Scalawag"));
-			add(new Palabra("Sentence", "Frase", "ripped"));
+			add(new Palabra("Sentence", "Frase", "Sentence"));
 			add(new Palabra("Shall", "Deberá", "Shall"));
 			add(new Palabra("Shape", "Forma", "Sheip"));
 			add(new Palabra("Sizzle", "Chisporrotear", "Sizzel"));
