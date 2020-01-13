@@ -37,7 +37,7 @@ public class UtilService {
 				add(new Palabra("Crowd", "Multitud", "Crawd"));
 				add(new Palabra("Curs", "Canalla", "Kurs"));
 				add(new Palabra("Curse", "Maldición", "Curs"));
-				add(new Palabra("Deceive", "Engañar", "Diceive"));
+				add(new Palabra("Deceive", "Engañar", "Diciv"));
 				add(new Palabra("Deserve", "Merecer", "Diserve"));
 				add(new Palabra("Dive", "Bucear", "Daive"));
 				add(new Palabra("Earn", "Ganar", "Earn"));

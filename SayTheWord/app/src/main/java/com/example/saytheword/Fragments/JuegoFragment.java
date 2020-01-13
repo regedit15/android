@@ -155,7 +155,9 @@ public class JuegoFragment extends Fragment {
 			Glide.with(getContext()).load(R.drawable.congratulation).into(ivCongratulations);
 		} else {
 			setearTextoArribaYcolorDeBoton();
-			mostrarRespuesta(false);
+
+			mostrarRespuesta(palabrasDesordenadas.get(indice).isMostrarRespuesta());
+
 			setearTitulo();
 		}
 	}
@@ -197,6 +199,9 @@ public class JuegoFragment extends Fragment {
 			btPalabraProblematica.setVisibility(View.INVISIBLE);
 			tvJuegoCantidadPalabras.setText("No hay palabras problematicas!");
 		} else {
+
+			realmService.cambiarTodo(lista, false);
+
 			for (Palabra p : lista) {
 				palabrasDesordenadas.add(p);
 			}
