@@ -3,6 +3,7 @@ package com.example.saytheword.Services;
 import android.content.Context;
 
 import com.example.saytheword.Models.Palabra;
+import com.example.saytheword.Models.VerboIrregular;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,6 +16,7 @@ import io.realm.RealmResults;
 public class RealmService {
 
 	public static AtomicInteger palabraId = new AtomicInteger();
+	public static AtomicInteger verboIrregularId = new AtomicInteger();
 
 	public void setearConfiguracion(Context context) {
 
@@ -26,6 +28,7 @@ public class RealmService {
 
 		Realm realm = Realm.getDefaultInstance();
 		palabraId = getIdByTabla(realm, Palabra.class);
+		verboIrregularId = getIdByTabla(realm, VerboIrregular.class);
 		realm.close();
 	}
 
@@ -35,6 +38,7 @@ public class RealmService {
 		return (results.size() > 0) ? new AtomicInteger(results.max("id").intValue()) : new AtomicInteger();
 	}
 
+	// -------------------------- Palabra
 	public List<Palabra> getPalabras() {
 		return Realm.getDefaultInstance().where(Palabra.class).findAll();
 	}
@@ -52,47 +56,83 @@ public class RealmService {
 		});
 	}
 
-	public void cambiarTodo(final List<Palabra> lista, final boolean valor) {
+	public void cambiarMostrarRespuestasPalabras(final List<Palabra> lista, final boolean valor) {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override
 			public void execute(Realm realm) {
-				for (Palabra palabra : lista) {
-					palabra.setMostrarRespuesta(valor);
+				for (Palabra x : lista) {
+					x.setMostrarRespuesta(valor);
 				}
 			}
 		});
 	}
 
-	public void cambiarMostrarRespuesta(final Palabra p) {
+	public void cambiarMostrarRespuestaPalabra(final Palabra x) {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override
 			public void execute(Realm realm) {
-				p.setMostrarRespuesta(!p.isMostrarRespuesta());
+				x.setMostrarRespuesta(!x.isMostrarRespuesta());
 			}
 		});
 	}
 
-	public void cambiarPalabraProblematica(final Palabra p) {
+	public void cambiarPalabraProblematicaPalabra(final Palabra x) {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override
 			public void execute(Realm realm) {
-				p.setPalabraProblematica(!p.isPalabraProblematica());
+				x.setPalabraProblematica(!x.isPalabraProblematica());
 			}
 		});
 	}
 
-	// public RealmResults<Audio> filtrarAudiosPorTitulo(String nombre) {
-	// 	return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE).findAll();
-	// }
-	//
-	// public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList) {
-	//
-	// 	String[] tags = tagsList.toArray(new String[0]);
-	//
-	// 	return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE)
-	//
-	// 			.and().in("tags.nombre", tags)
-	//
-	// 			.findAll();
-	// }
+	// ----------------------------------------------------
+	// -------------------------- Verbo Irregular
+	public List<VerboIrregular> getIrregularVerbs() {
+		return Realm.getDefaultInstance().where(VerboIrregular.class).findAll();
+	}
+
+	public List<VerboIrregular> getIrregularVerbsProblematicos() {
+		return Realm.getDefaultInstance().where(VerboIrregular.class).equalTo("palabraProblematica", true).findAll();
+	}
+
+	public void insertarIrregularVerbs(final List<VerboIrregular> palabras) {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				Realm.getDefaultInstance().insert(palabras);
+			}
+		});
+	}
+
+	public void cambiarMostrarRespuestasVerbosIrregulares(final List<VerboIrregular> lista, final boolean valor) {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				for (VerboIrregular x : lista) {
+					x.setMostrarRespuesta(valor);
+				}
+			}
+		});
+	}
+
+	public void cambiarMostrarRespuestaVerbosIrregulares(final VerboIrregular x) {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				x.setMostrarRespuesta(!x.isMostrarRespuesta());
+			}
+		});
+	}
+
+	public void cambiarPalabraProblematicaVerbosIrregulares(final VerboIrregular x) {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				x.setPalabraProblematica(!x.isPalabraProblematica());
+			}
+		});
+	}
+	// ----------------------------------------------------
+
+
 }

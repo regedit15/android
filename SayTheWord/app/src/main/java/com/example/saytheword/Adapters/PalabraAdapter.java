@@ -18,21 +18,21 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.saytheword.Services.UtilService.TIPO_LISTADO_ESPANIOL_INGLES;
-import static com.example.saytheword.Services.UtilService.TIPO_LISTADO_INGLES_ESPANIOL;
+import static com.example.saytheword.Services.UtilService.LISTADO_TIPO_TRADUCCION_ESPANIOL_INGLES;
+import static com.example.saytheword.Services.UtilService.LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.ViewHolder> {
 
 	private List<Palabra> lista;
 	private int layout;
-	private int TIPO_LISTADO;
+	private String TIPO_TRADUCCION;
 	private RealmService realmService = new RealmService();
 	private Activity activity;
 
-	public MyAdapter(List<Palabra> lista, int layout, int TIPO_LISTADO, Activity activity) {
+	public PalabraAdapter(List<Palabra> lista, int layout, String TIPO_TRADUCCION, Activity activity) {
 		this.lista = lista;
 		this.layout = layout;
-		this.TIPO_LISTADO = TIPO_LISTADO;
+		this.TIPO_TRADUCCION = TIPO_TRADUCCION;
 		this.activity = activity;
 	}
 
@@ -51,6 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	}
 
 	public class ViewHolder extends RecyclerView.ViewHolder {
+
 		public TextView tvPalabraIzquierda;
 		public TextView tvPalabraDerechaArriba;
 		public TextView tvPalabraDerechaAbajo;
@@ -60,6 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 		public ViewHolder(View itemView) {
 			super(itemView);
+
 			this.tvPalabraIzquierda = itemView.findViewById(R.id.tvPalabraIzquierda);
 			this.tvPalabraDerechaArriba = itemView.findViewById(R.id.tvPalabraDerechaArriba);
 			this.tvPalabraDerechaAbajo = itemView.findViewById(R.id.tvPalabraDerechaAbajo);
@@ -70,18 +72,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 		public void bind(final Palabra palabra) {
 
-			switch (TIPO_LISTADO) {
-				case TIPO_LISTADO_ESPANIOL_INGLES:
+			switch (TIPO_TRADUCCION) {
+				case LISTADO_TIPO_TRADUCCION_ESPANIOL_INGLES:
 					tvPalabraIzquierda.setText(palabra.getPalabraEsp());
 					tvPalabraDerechaArriba.setText(palabra.getPalabraIng());
-					tvPalabraDerechaAbajo.setText(palabra.getPronunciacion());
 					break;
-				case TIPO_LISTADO_INGLES_ESPANIOL:
+				case LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL:
 					tvPalabraIzquierda.setText(palabra.getPalabraIng());
 					tvPalabraDerechaArriba.setText(palabra.getPalabraEsp());
-					tvPalabraDerechaAbajo.setText(palabra.getPronunciacion());
 					break;
 			}
+			tvPalabraDerechaAbajo.setText(palabra.getPronunciacion());
 
 
 			setear(palabra.isMostrarRespuesta());
@@ -90,7 +91,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			mbMostrarRespuesta.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					realmService.cambiarMostrarRespuesta(palabra);
+					realmService.cambiarMostrarRespuestaPalabra(palabra);
 					setear(palabra.isMostrarRespuesta());
 				}
 			});
@@ -98,7 +99,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			btPalabraProblematicaListado.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					realmService.cambiarPalabraProblematica(palabra);
+					realmService.cambiarPalabraProblematicaPalabra(palabra);
 					setearColorPalabraProblematica(palabra);
 					notifyDataSetChanged();
 
@@ -126,6 +127,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 				btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraBuena));
 			}
 		}
+
 	}
 
 	public void ocultarTodo() {
@@ -137,20 +139,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	}
 
 	private void cambiarTodo(final boolean valor) {
-		realmService.cambiarTodo(lista, valor);
+		realmService.cambiarMostrarRespuestasPalabras(lista, valor);
 		notifyDataSetChanged();
 	}
 
 	public void cambiarAInglesEspaniol() {
-		cambiarTipoListado(TIPO_LISTADO_INGLES_ESPANIOL);
+		cambiarTipoListado(LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL);
 	}
 
 	public void cambiarAEspaniolIngles() {
-		cambiarTipoListado(TIPO_LISTADO_ESPANIOL_INGLES);
+		cambiarTipoListado(LISTADO_TIPO_TRADUCCION_ESPANIOL_INGLES);
 	}
 
-	private void cambiarTipoListado(int tipo) {
-		TIPO_LISTADO = tipo;
+	private void cambiarTipoListado(String tipo) {
+		TIPO_TRADUCCION = tipo;
 		notifyDataSetChanged();
 	}
 
@@ -158,8 +160,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 		return lista;
 	}
 
-	public void setLista(List<Palabra> Palabras) {
-		this.lista = Palabras;
+	public void setLista(List<Palabra> lista) {
+		this.lista = lista;
 	}
 
 	@Override

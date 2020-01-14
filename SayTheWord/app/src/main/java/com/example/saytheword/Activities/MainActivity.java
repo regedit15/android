@@ -3,8 +3,9 @@ package com.example.saytheword.Activities;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.saytheword.Fragments.JuegoFragment;
-import com.example.saytheword.Fragments.ListadoPalabrasFragment;
+import com.example.saytheword.Fragments.JuegoPalabrasFragment;
+import com.example.saytheword.Fragments.JuegoVerbosIrregularesFragment;
+import com.example.saytheword.Fragments.ListadoFragment;
 import com.example.saytheword.R;
 import com.example.saytheword.Services.RealmService;
 import com.google.android.material.navigation.NavigationView;
@@ -15,6 +16,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+
+import static com.example.saytheword.Services.UtilService.JUEGO_PALABRAS;
+import static com.example.saytheword.Services.UtilService.JUEGO_PALABRAS_PROBLEMATICAS;
+import static com.example.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES;
+import static com.example.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS;
+import static com.example.saytheword.Services.UtilService.LISTADO_PALABRAS;
+import static com.example.saytheword.Services.UtilService.LISTADO_PALABRAS_PROBLEMATCAS;
+import static com.example.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES;
+import static com.example.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,20 +59,41 @@ public class MainActivity extends AppCompatActivity {
 				Fragment fragment = null;
 
 				switch (menuItem.getItemId()) {
+
+					//	-------------- Verbos Palabras
 					case R.id.it_listadoPalabras:
-						fragment = new ListadoPalabrasFragment(false);
+						fragment = new ListadoFragment(LISTADO_PALABRAS);
 						transaction = true;
 						break;
 					case R.id.it_listadoPalabrasProblematicas:
-						fragment = new ListadoPalabrasFragment(true);
+						fragment = new ListadoFragment(LISTADO_PALABRAS_PROBLEMATCAS);
 						transaction = true;
 						break;
-					case R.id.it_juego:
-						fragment = new JuegoFragment(false);
+					case R.id.it_juegoPalabras:
+						fragment = new JuegoPalabrasFragment(JUEGO_PALABRAS);
 						transaction = true;
 						break;
 					case R.id.it_juegoPalabrasProblematicas:
-						fragment = new JuegoFragment(true);
+						fragment = new JuegoPalabrasFragment(JUEGO_PALABRAS_PROBLEMATICAS);
+						transaction = true;
+						break;
+
+					//	-------------- Verbos Irregulares
+
+					case R.id.it_listadoVerbosIrregulares:
+						fragment = new ListadoFragment(LISTADO_VERBOS_IRREGULARES);
+						transaction = true;
+						break;
+					case R.id.it_listadoVerbosIrregularesProblematicos:
+						fragment = new ListadoFragment(LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS);
+						transaction = true;
+						break;
+					case R.id.it_juegoVerbosIrregulares:
+						fragment = new JuegoVerbosIrregularesFragment(JUEGO_VERBOS_IRREGULARES);
+						transaction = true;
+						break;
+					case R.id.it_juegoVerbosIrregularesProblematicos:
+						fragment = new JuegoVerbosIrregularesFragment(JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS);
 						transaction = true;
 						break;
 				}
@@ -78,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		cambiarFragment(new ListadoPalabrasFragment(false), navigationView.getMenu().getItem(0));
+		cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), navigationView.getMenu().getItem(0));
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

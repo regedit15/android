@@ -8,10 +8,22 @@
 			android:id="@+id/it_listadoPalabrasProblematicas"
 			android:title="Listado Palabras Problemáticas" />
 		<item
-			android:id="@+id/it_juego"
-			android:title="Juego" />
+			android:id="@+id/it_juegoPalabras"
+			android:title="Juego Palabras" />
 		<item
 			android:id="@+id/it_juegoPalabrasProblematicas"
 			android:title="Juego Palabras Problematicas" />
+		<item
+			android:id="@+id/it_listadoVerbosIrregulares"
+			android:title="Listado Verbos Irregulares" />
+		<item
+			android:id="@+id/it_listadoVerbosIrregularesProblematicos"
+			android:title="Listado VI Problematicos" />
+		<item
+			android:id="@+id/it_juegoVerbosIrregulares"
+			android:title="Juego Verbos Irregulares" />
+		<item
+			android:id="@+id/it_juegoVerbosIrregularesProblematicos"
+			android:title="Juego VI Problematicos" />
 	</group>
 </menu>

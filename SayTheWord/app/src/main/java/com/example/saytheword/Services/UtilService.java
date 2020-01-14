@@ -1,5 +1,6 @@
 package com.example.saytheword.Services;
 
+import com.example.saytheword.Models.VerboIrregular;
 import com.example.saytheword.Models.Palabra;
 
 import java.util.ArrayList;
@@ -7,10 +8,21 @@ import java.util.List;
 
 public class UtilService {
 
-	public static final int TIPO_LISTADO_INGLES_ESPANIOL = 1;
-	public static final int TIPO_LISTADO_ESPANIOL_INGLES = 2;
-	public static final int TIPO_JUEGO_INGLES_ESPANIOL = 3;
-	public static final int TIPO_JUEGO_ESPANIOL_INGLES = 4;
+	public static final String LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL = "LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL";
+	public static final String LISTADO_TIPO_TRADUCCION_ESPANIOL_INGLES = "LISTADO_TIPO_TRADUCCION_ESPANIOL_INGLES";
+	public static final String JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL = "JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL";
+	public static final String JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES = "JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES";
+
+	public static final String LISTADO_PALABRAS = "LISTADO_PALABRAS";
+	public static final String LISTADO_PALABRAS_PROBLEMATCAS = "LISTADO_PALABRAS_PROBLEMATCAS";
+	public static final String LISTADO_VERBOS_IRREGULARES = "LISTADO_VERBOS_IRREGULARES";
+	public static final String LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS = "LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS";
+
+	public static final String JUEGO_PALABRAS = "JUEGO_PALABRAS";
+	public static final String JUEGO_PALABRAS_PROBLEMATICAS = "JUEGO_PALABRAS_PROBLEMATICAS";
+	public static final String JUEGO_VERBOS_IRREGULARES = "JUEGO_VERBOS_IRREGULARES";
+	public static final String JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS = "JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS";
+
 	public RealmService realmService = new RealmService();
 
 	public UtilService() {
@@ -114,6 +126,28 @@ public class UtilService {
 
 		if (soloPalabrasProblematicas) {
 			palabras = realmService.getPalabrasProblematicas();
+		}
+
+		return palabras;
+	}
+
+	public List<VerboIrregular> getVerbosIrregulares(boolean soloPalabrasProblematicas) {
+
+		List<VerboIrregular> palabras = realmService.getIrregularVerbs();
+
+		if (palabras.isEmpty()) {
+			palabras = new ArrayList<VerboIrregular>() {{
+				add(new VerboIrregular("Be", "Bi", "Ser/estar", "Was/Were", "Was/were", "Been", "Biin"));
+				add(new VerboIrregular("Beat", "Bit", "Golpear", "Beat", "Bit", "Beaten", "Biten"));
+				add(new VerboIrregular("Become", "Bicome", "Convertirse", "Became", "Biqueim", "Become", "Bicom"));
+				add(new VerboIrregular("Begin", "Bigen", "Comenzar, Empezar", "Began", "Bigan", "Begun", "Bigon"));
+			}};
+
+			realmService.insertarIrregularVerbs(palabras);
+		}
+
+		if (soloPalabrasProblematicas) {
+			palabras = realmService.getIrregularVerbsProblematicos();
 		}
 
 		return palabras;
