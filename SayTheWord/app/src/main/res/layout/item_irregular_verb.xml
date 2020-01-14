@@ -25,10 +25,10 @@
 			android:orientation="horizontal">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
-				android:layout_width="wrap_content"
+				android:layout_width="0dp"
 				android:layout_height="match_parent"
 				android:layout_gravity="center"
-				android:layout_weight="1">
+				android:layout_weight="3">
 
 				<androidx.constraintlayout.widget.ConstraintLayout
 					android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="center"
 						android:gravity="center"
-						android:text="Palabraff ff ff ff ff ff"
+						android:text="Palabra"
 						android:textSize="18dp"
 						android:textStyle="bold"
 						app:layout_constraintEnd_toEndOf="parent"
@@ -111,9 +111,9 @@
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:id="@+id/lyRespuesta"
-				android:layout_width="match_parent"
+				android:layout_width="0dp"
 				android:layout_height="match_parent"
-				android:layout_weight="10"
+				android:layout_weight="7"
 				android:visibility="invisible">
 
 				<androidx.constraintlayout.widget.ConstraintLayout
