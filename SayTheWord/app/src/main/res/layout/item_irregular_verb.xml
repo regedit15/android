@@ -26,38 +26,42 @@
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_height="match_parent"
 				android:layout_gravity="center">
 
-				<TextView
-					android:id="@+id/tvInfinitivo"
-					android:layout_width="wrap_content"
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:layout_marginStart="8dp"
-					android:gravity="center"
-					android:text="Palabra"
-					android:textSize="18dp"
-					android:textStyle="bold"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent" />
-
-				<TextView
-					android:id="@+id/tvPronunciacion"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center"
-					android:layout_marginStart="8dp"
-					android:layout_marginTop="16dp"
-					android:gravity="center"
-					android:text="Palabra"
-					android:textSize="18dp"
-					android:textStyle="bold"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toBottomOf="@+id/tvInfinitivo" />
+					app:layout_constraintTop_toTopOf="parent">
+
+					<TextView
+						android:id="@+id/tvInfinitivo"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:gravity="center"
+						android:text="Palabra"
+						android:textSize="18dp"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent" />
+
+					<TextView
+						android:id="@+id/tvPronunciacion"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:gravity="center"
+						android:text="Palabra"
+						android:textSize="18dp"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						tools:layout_editor_absoluteY="40dp" />
+				</androidx.constraintlayout.widget.ConstraintLayout>
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<androidx.constraintlayout.widget.ConstraintLayout
