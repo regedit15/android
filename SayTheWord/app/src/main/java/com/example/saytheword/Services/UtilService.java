@@ -159,7 +159,7 @@ public class UtilService {
 				add(new VerboIrregular("Dig", "Dig", "Cabar", "Dug", "Dog", "Dug", "Dog"));
 				add(new VerboIrregular("Do", "Do", "Hacer", "Did", "Did", "Done", "Don"));
 				add(new VerboIrregular("Draw", "Dra", "Dibujar, sacar, extraer, empate, sacar", "Drew", "Druu", "Drawn", "Drawn"));
-				add(new VerboIrregular("Dream", "Drim", "Soñar", "Dreamt/Dreamed", "Dramt/Drim", "Dreamt/Dreamed", "Dramt/Drim"));
+				add(new VerboIrregular("Dream", "Drim", "Soñar", "Dreamt/Dreamed", "Dramt/Drimd", "Dreamt/Dreamed", "Dramt/Drim"));
 				add(new VerboIrregular("Drink", "Drink", "Beber", "Drank", "Drank", "Drunk", "Dronk"));
 				add(new VerboIrregular("Drive", "Draiv", "Conducir", "Drove", "Drouv", "Driven", "driven"));
 				add(new VerboIrregular("Eat", "Iit", "Comer", "Ate", "Eit", "Eaten", "Itn"));
@@ -167,7 +167,7 @@ public class UtilService {
 				add(new VerboIrregular("Feed", "Fiid", "Alimentar", "Fed", "Fed", "Fed", "Fed"));
 				add(new VerboIrregular("Feel", "Fiil", "Sentir, tocar", "Felt", "Felt", "Felt", "Felt"));
 				add(new VerboIrregular("Fight", "Faight", "Sentir, tocar", "Fought", "Foot", "Fought", "Foot"));
-				add(new VerboIrregular("Find", "Faind", "Hallar, encontrar", "Found", "faund", "Found", "Found"));
+				add(new VerboIrregular("Find", "Faind", "Hallar, encontrar", "Found", "Faund", "Found", "Found"));
 				add(new VerboIrregular("Fly", "Flay", "Volar", "Flew", "Fluu", "Flow", "Flouw"));
 				add(new VerboIrregular("Forbid", "Forbid", "Prohibir", "Forbade", "Forbeid", "Dorbidden", "Dorbiddn"));
 				add(new VerboIrregular("Forgive", "Forgiv", "Perdonar", "Forgave", "Forgeiv", "Forgiven", "Forgiven"));
@@ -220,7 +220,7 @@ public class UtilService {
 				add(new VerboIrregular("Sit", "Sit", "Sentarse", "Sat", "Sat", "Sat", "Sat"));
 				add(new VerboIrregular("Sleep", "Sliip", "Dormir", "Slept", "Slept", "Slept", "Slept"));
 				add(new VerboIrregular("Speak", "Spik", "Hablar", "Spoke", "Spouk", "Spoken", "Spouken"));
-				add(new VerboIrregular("Spell", "Spell", "Deletrear", "Spelt/Spelled", "Spelt/Spelled", "Spelt/Spelled", "Spelt/Spelled"));
+				add(new VerboIrregular("Spell", "Spell", "Deletrear", "Spelt/Spelled", "Spelt/Spelld", "Spelt/Spelled", "Spelt/Spelld"));
 				add(new VerboIrregular("Spend", "Spend", "Gastar, agotar", "Spent", "Spent", "Spent", "Spent"));
 				add(new VerboIrregular("Stand", "Stand", "Estar en pie, sostener", "Stood", "Stuud", "Stood", "Stuud"));
 				add(new VerboIrregular("Steal", "Steal", "Robar", "Stol/Stoul", "Stol", "Stolen", "Stolen"));

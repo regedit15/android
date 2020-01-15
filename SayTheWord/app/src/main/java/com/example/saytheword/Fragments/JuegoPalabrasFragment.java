@@ -206,6 +206,7 @@ public class JuegoPalabrasFragment extends Fragment {
 			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
 			tvJuegoPalabraArriba.setVisibility(View.INVISIBLE);
 			btPalabraProblematica.setVisibility(View.INVISIBLE);
+			lyRespuestaJuego.setVisibility(View.INVISIBLE);
 			tvJuegoCantidadPalabras.setText("No hay palabras problematicas!");
 		} else {
 

@@ -214,6 +214,7 @@ public class JuegoVerbosIrregularesFragment extends Fragment {
 			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
 			tvInfinitivo.setVisibility(View.INVISIBLE);
 			btPalabraProblematica.setVisibility(View.INVISIBLE);
+			lyRespuestaJuego.setVisibility(View.INVISIBLE);
 			tvJuegoCantidadPalabras.setText("No hay palabras problematicas!");
 		} else {
 
