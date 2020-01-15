@@ -68,7 +68,8 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="TextView"
-						android:textSize="30sp"
+						android:textSize="@dimen/tamanioTextoJuegoVI"
+						android:textStyle="bold"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toTopOf="parent" />
@@ -79,7 +80,8 @@
 						android:layout_height="wrap_content"
 						android:layout_marginTop="20dp"
 						android:text="TextView"
-						android:textSize="30sp"
+						android:textSize="@dimen/tamanioTextoJuegoVI"
+						android:textStyle="bold"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toBottomOf="@+id/tvJuegoCantidadPalabras" />
@@ -115,8 +117,10 @@
 							android:id="@+id/tvTraduccion"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
+							android:gravity="center"
 							android:text="TextView"
-							android:textSize="30sp"
+							android:textSize="@dimen/tamanioTextoJuegoVI"
+							android:textStyle="bold"
 							app:layout_constraintEnd_toEndOf="parent"
 							app:layout_constraintStart_toStartOf="parent"
 							app:layout_constraintTop_toTopOf="parent" />
@@ -127,65 +131,77 @@
 							android:layout_height="wrap_content"
 							android:layout_marginTop="16dp"
 							android:text="TextView"
-							android:textSize="30sp"
+							android:textSize="@dimen/tamanioTextoJuegoVI"
+							android:textStyle="bold"
 							app:layout_constraintEnd_toEndOf="parent"
 							app:layout_constraintStart_toStartOf="parent"
 							app:layout_constraintTop_toBottomOf="@+id/tvTraduccion" />
 
 						<androidx.constraintlayout.widget.ConstraintLayout
-							android:id="@+id/constraintLayout2"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginTop="16dp"
+							app:layout_constraintEnd_toEndOf="parent"
 							app:layout_constraintStart_toStartOf="parent"
 							app:layout_constraintTop_toBottomOf="@+id/tvPronunciacion">
 
-							<TextView
-								android:id="@+id/tvPasadoPronunciacion"
+							<androidx.constraintlayout.widget.ConstraintLayout
+								android:id="@+id/constraintLayout2"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:layout_marginTop="8dp"
-								android:text="TextView"
-								android:textSize="30sp"
 								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toBottomOf="@+id/tvPasado" />
+								app:layout_constraintTop_toTopOf="parent">
 
-							<TextView
-								android:id="@+id/tvPasado"
+								<TextView
+									android:id="@+id/tvPasadoPronunciacion"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="8dp"
+									android:text="TextView"
+									android:textSize="@dimen/tamanioTextoJuegoVI"
+									android:textStyle="bold"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toBottomOf="@+id/tvPasado" />
+
+								<TextView
+									android:id="@+id/tvPasado"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="TextView"
+									android:textSize="@dimen/tamanioTextoJuegoVI"
+									android:textStyle="bold"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="parent" />
+							</androidx.constraintlayout.widget.ConstraintLayout>
+
+							<androidx.constraintlayout.widget.ConstraintLayout
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
-								android:textSize="30sp"
-								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toTopOf="parent" />
-						</androidx.constraintlayout.widget.ConstraintLayout>
+								android:layout_marginStart="16dp"
+								app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+								app:layout_constraintTop_toTopOf="parent">
 
-						<androidx.constraintlayout.widget.ConstraintLayout
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginStart="16dp"
-							android:layout_marginTop="16dp"
-							app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
-							app:layout_constraintTop_toBottomOf="@+id/tvPronunciacion">
+								<TextView
+									android:id="@+id/tvParticipioPronunciacion"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="8dp"
+									android:text="TextView"
+									android:textSize="@dimen/tamanioTextoJuegoVI"
+									android:textStyle="bold"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toBottomOf="@+id/tvParticipio" />
 
-							<TextView
-								android:id="@+id/tvParticipioPronunciacion"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_marginTop="8dp"
-								android:text="TextView"
-								android:textSize="30sp"
-								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toBottomOf="@+id/tvParticipio" />
-
-							<TextView
-								android:id="@+id/tvParticipio"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:text="TextView"
-								android:textSize="30sp"
-								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toTopOf="parent" />
+								<TextView
+									android:id="@+id/tvParticipio"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="TextView"
+									android:textSize="@dimen/tamanioTextoJuegoVI"
+									android:textStyle="bold"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="parent" />
+							</androidx.constraintlayout.widget.ConstraintLayout>
 						</androidx.constraintlayout.widget.ConstraintLayout>
 					</androidx.constraintlayout.widget.ConstraintLayout>
 
