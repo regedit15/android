@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 		// cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), navigationView.getMenu().getItem(0));
-		cambiarFragment(new ListadoFragment(JUEGO_VERBOS_IRREGULARES), navigationView.getMenu().getItem(0));
+		cambiarFragment(new ListadoFragment(LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS), navigationView.getMenu().getItem(5));
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
