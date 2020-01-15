@@ -132,47 +132,61 @@
 							app:layout_constraintStart_toStartOf="parent"
 							app:layout_constraintTop_toBottomOf="@+id/tvTraduccion" />
 
-						<TextView
-							android:id="@+id/tvPasado"
+						<androidx.constraintlayout.widget.ConstraintLayout
+							android:id="@+id/constraintLayout2"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:layout_marginTop="24dp"
-							android:text="TextView"
-							android:textSize="30sp"
+							android:layout_marginTop="16dp"
 							app:layout_constraintStart_toStartOf="parent"
-							app:layout_constraintTop_toBottomOf="@+id/tvPronunciacion" />
+							app:layout_constraintTop_toBottomOf="@+id/tvPronunciacion">
 
-						<TextView
-							android:id="@+id/tvPasadoPronunciacion"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="TextView"
-							android:textSize="30sp"
-							app:layout_constraintStart_toStartOf="parent"
-							app:layout_constraintTop_toBottomOf="@+id/tvPasado" />
+							<TextView
+								android:id="@+id/tvPasadoPronunciacion"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="8dp"
+								android:text="TextView"
+								android:textSize="30sp"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toBottomOf="@+id/tvPasado" />
 
-						<TextView
-							android:id="@+id/tvParticipio"
+							<TextView
+								android:id="@+id/tvPasado"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="TextView"
+								android:textSize="30sp"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
+
+						<androidx.constraintlayout.widget.ConstraintLayout
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginStart="16dp"
-							android:layout_marginTop="24dp"
-							android:text="TextView"
-							android:textSize="30sp"
-							app:layout_constraintEnd_toEndOf="parent"
-							app:layout_constraintStart_toEndOf="@+id/tvPasado"
-							app:layout_constraintTop_toBottomOf="@+id/tvPronunciacion" />
+							android:layout_marginTop="16dp"
+							app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+							app:layout_constraintTop_toBottomOf="@+id/tvPronunciacion">
 
-						<TextView
-							android:id="@+id/tvParticipioPronunciacion"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginStart="16dp"
-							android:text="TextView"
-							android:textSize="30sp"
-							app:layout_constraintEnd_toEndOf="parent"
-							app:layout_constraintStart_toEndOf="@+id/tvPasado"
-							app:layout_constraintTop_toBottomOf="@+id/tvParticipio" />
+							<TextView
+								android:id="@+id/tvParticipioPronunciacion"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="8dp"
+								android:text="TextView"
+								android:textSize="30sp"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toBottomOf="@+id/tvParticipio" />
+
+							<TextView
+								android:id="@+id/tvParticipio"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="TextView"
+								android:textSize="30sp"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
 					</androidx.constraintlayout.widget.ConstraintLayout>
 
 					<com.google.android.material.button.MaterialButton
