@@ -34,6 +34,8 @@ public class UtilService {
 
 		if (palabras.isEmpty()) {
 			palabras = new ArrayList<Palabra>() {{
+
+				//--------------- 1 Parte
 				add(new Palabra("Almonds", "Almendras", "Almonds"));
 				add(new Palabra("At Least", "Al Menos", "At List"));
 				add(new Palabra("Attempt", "Intento", "Attempt"));
@@ -118,7 +120,88 @@ public class UtilService {
 				add(new Palabra("Whine", "Gimoteo", "Waine"));
 				add(new Palabra("Whistle", "Silbar", "Whisel"));
 				add(new Palabra("Wide", "Amplio", "Waid"));
-				add(new Palabra("Yelling", "Gritando", "Ielling"));
+				add(new Palabra("Yell", "Gritar", "Iell"));
+				//--------------- 2 Parte
+				add(new Palabra("Tight", "Apretado", "Tight"));
+				add(new Palabra("Hardly", "Apenas", "Hardly"));
+				add(new Palabra("Meager", "Pobre", "Miger"));
+				add(new Palabra("Owe", "Deber", "Óuu"));
+				add(new Palabra("Cheapskate", "Tacaño", "Chipskeit"));
+				add(new Palabra("Fairly", "Bastante", "Ferly"));
+				add(new Palabra("Heap", "Montón", "Hip"));
+				add(new Palabra("Fence", "Cerca, vaya", "Fens"));
+				add(new Palabra("Unfair", "Injusto", "Anfeir"));
+				add(new Palabra("Greed", "Codicia", "Griid"));
+				add(new Palabra("Let's Go Get", "Vamos A Buscar", "Let's Gou Get"));
+				add(new Palabra("Fate", "Destino", "Feit"));
+				add(new Palabra("Pick On", "Elegir, meterse con, molestar", "Pick On"));
+				add(new Palabra("Pick", "Recoger", "Pick"));
+				add(new Palabra("Bet", "Apuesta", "Bet"));
+				add(new Palabra("Drop By", "Entrar Un Momento", "Drop Bay"));
+				add(new Palabra("Wreck", "Ruina", "Eeck"));
+				add(new Palabra("Hire", "Alquiler", "Haier"));
+				add(new Palabra("Tip", "Propina", "Tip"));
+				add(new Palabra("Rightful", "Legítimo", "Raightfol"));
+				add(new Palabra("Gnaw", "Roer", "Gno"));
+				add(new Palabra("Ankle", "Tobillos", "Anko"));
+				add(new Palabra("Trip", "Viaje", "Trip"));
+				add(new Palabra("Moat", "Foso", "Mout"));
+				add(new Palabra("Rather", "Más Bien, bastante", "Rather"));
+				add(new Palabra("I'd rather", "Preferiría", "I'd rather"));
+				add(new Palabra("Spineless", "Sin Carácter", "Spainless"));
+				add(new Palabra("Varmint", "Bribón", "Varment"));
+				add(new Palabra("Rascal", "Bribón, pillo", "Rascol"));
+				add(new Palabra("Wrangled", "Disputado", "Wrangld"));
+				add(new Palabra("Belly", "Barriga", "Belly\n"));
+				add(new Palabra("Tough", "Difícil", "AAA"));
+				add(new Palabra("Handle", "Encargarse de, manipular", "Handl"));
+				add(new Palabra("Ornery", "Desagradable, vulgar", "Ornery"));
+				add(new Palabra("Stew", "Estofado, guiso", "Stiu"));
+				add(new Palabra("Tongue", "Lengua", "Tong"));
+				add(new Palabra("Necklace", "Collar", "Neckles"));
+				add(new Palabra("Silly", "Tonto, bobo", "Silly"));
+				add(new Palabra("Lend", "Prestar, dar", "Lend"));
+				add(new Palabra("Shield", "Proteger, escudo, blindaje", "Shield"));
+				add(new Palabra("Forehead", "Frente", "Forhead"));
+				add(new Palabra("Theft", "Robo", "Zeft"));
+				add(new Palabra("Mistook", "Confundir", "Mistuuk"));
+				add(new Palabra("Threat", "Amenaza", "Thret"));
+				add(new Palabra("Shrimp", "Camarón", "Shrimp"));
+				add(new Palabra("Grub", "Comida", "Grob"));
+				add(new Palabra("Somehow", "De Alguna Manera", "Somhaw"));
+				add(new Palabra("Gather", "Reúne, acumula", "Gather"));
+				add(new Palabra("Above", "Encima, arriba", "Ovob"));
+				add(new Palabra("Boil", "Hervir", "Boil"));
+				add(new Palabra("By Chance", "Por Casualidad", "Bay Chanz"));
+				add(new Palabra("Wealth", "Riqueza", "Welf"));
+				add(new Palabra("Wonder", "Preguntarse, quien sabe", "Wuonder"));
+				add(new Palabra("Foreign", "Exterior, extranjero", "Foreign"));
+				add(new Palabra("Improve", "Mejorar, perfeccionar", "Impruv"));
+				add(new Palabra("Allowance", "Tolerancia, pensión", "Allawens"));
+				add(new Palabra("Soil", "Suelo, tierra", "Soiol"));
+				add(new Palabra("Crawl", "Gatear", "Crol"));
+				add(new Palabra("Stink", "Hedor, maloliente", "Stink"));
+				add(new Palabra("Leak", "Fuga, escape, perdida", "Liik"));
+				add(new Palabra("Screech", "Chillido", "Scriich"));
+				add(new Palabra("Twisted", "Retorcido, doblado", "Twisted"));
+				add(new Palabra("Fiend", "Demonio", "Find"));
+				add(new Palabra("Worth It", "Vale La Pena", "Worth It"));
+				add(new Palabra("Tan", "Bronceado", "Tan"));
+				add(new Palabra("Sworn", "Jurar", "Sworn"));
+				add(new Palabra("Scratch", "Rasguño, arañar, rascar", "Scratch"));
+				add(new Palabra("Gnarly", "Retorcido", "Narly"));
+				add(new Palabra("Point Out", "Señalar", "Point Aut"));
+				add(new Palabra("Stuff", "Cosas", "Staff"));
+				add(new Palabra("Show Off", "Presumir", "Show Off"));
+				add(new Palabra("Misshapen", "Deforme", "Missheipen"));
+				add(new Palabra("Struck", "Golpear", "Strack"));
+				add(new Palabra("Darn", "Maldito", "Darn"));
+				add(new Palabra("Lagoon", "Laguna", "Laguun"));
+				add(new Palabra("Plenty", "Mucho, muy", "Plenty"));
+				add(new Palabra("Cramp", "Calambre", "Cramp"));
+				add(new Palabra("Tread", "Huella, pisada", "Tred"));
+				add(new Palabra("Drown", "Ahogar", "Drawn"));
+
 			}};
 
 			realmService.insertarPalabras(palabras);
