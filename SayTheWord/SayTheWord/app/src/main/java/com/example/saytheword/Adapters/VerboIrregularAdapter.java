@@ -124,9 +124,11 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 		private void setear(boolean mostrarRespuesta) {
 			if (mostrarRespuesta) {
 				lyRespuesta.setVisibility(View.VISIBLE);
+				tvPronunciacion.setVisibility(View.VISIBLE);
 				btMostrarRespuesta.setIconResource(R.drawable.ic_eye_open);
 			} else {
 				lyRespuesta.setVisibility(View.INVISIBLE);
+				tvPronunciacion.setVisibility(View.INVISIBLE);
 				btMostrarRespuesta.setIconResource(R.drawable.ic_eye_closed);
 			}
 		}

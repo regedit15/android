@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<group android:checkableBehavior="single">
-		<item
-			android:id="@+id/it_listadoPalabras"
-			android:title="Listado Palabras" />
-		<item
-			android:id="@+id/it_listadoPalabrasProblematicas"
-			android:title="Listado Palabras Problemáticas" />
-		<item
-			android:id="@+id/it_juegoPalabras"
-			android:title="Juego Palabras" />
-		<item
-			android:id="@+id/it_juegoPalabrasProblematicas"
-			android:title="Juego Palabras Problematicas" />
-		<item
-			android:id="@+id/it_listadoVerbosIrregulares"
-			android:title="Listado Verbos Irregulares" />
-		<item
-			android:id="@+id/it_listadoVerbosIrregularesProblematicos"
-			android:title="Listado VI Problematicos" />
-		<item
-			android:id="@+id/it_juegoVerbosIrregulares"
-			android:title="Juego Verbos Irregulares" />
-		<item
-			android:id="@+id/it_juegoVerbosIrregularesProblematicos"
-			android:title="Juego VI Problematicos" />
-	</group>
+	<item android:title="Listado">
+		<menu>
+			<group android:checkableBehavior="single">
+				<item
+					android:id="@+id/it_listadoPalabras"
+					android:title="Palabras" />
+				<item
+					android:id="@+id/it_listadoPalabrasProblematicas"
+					android:title="Palabras Problemáticas" />
+				<item
+					android:id="@+id/it_listadoVerbosIrregulares"
+					android:title="Verbos Irregulares" />
+				<item
+					android:id="@+id/it_listadoVerbosIrregularesProblematicos"
+					android:title="Verbos Irregulares Problematicos" />
+			</group>
+		</menu>
+	</item>
+	<item android:title="Juego">
+		<menu>
+			<group android:checkableBehavior="single">
+				<item
+					android:id="@+id/it_juegoPalabras"
+					android:title="Palabras" />
+				<item
+					android:id="@+id/it_juegoPalabrasProblematicas"
+					android:title="Palabras Problematicas" />
+				<item
+					android:id="@+id/it_juegoVerbosIrregulares"
+					android:title="Verbos Irregulares" />
+				<item
+					android:id="@+id/it_juegoVerbosIrregularesProblematicos"
+					android:title="Verbos Irregulares Problematicos" />
+			</group>
+		</menu>
+	</item>
 </menu>

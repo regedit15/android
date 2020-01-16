@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
 				if (transaction) {
 
+					// cambiarFragment(fragment, menuItem);
 					cambiarFragment(fragment, menuItem);
 					// Escondemos el menu lateral
 					drawerLayout.closeDrawer(GravityCompat.START);
@@ -119,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
 		//para que se muestre seleccionado
 		menuItem.setChecked(true);
+
+		// menu.findItem(R.id.item_1).setChecked(true);
 
 		// Seteamos que el titulo de la barra sea igual que el item
 		getSupportActionBar().setTitle(menuItem.getTitle());

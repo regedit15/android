@@ -67,6 +67,7 @@
 						android:id="@+id/tvJuegoCantidadPalabras"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:gravity="center"
 						android:text="TextView"
 						android:textSize="@dimen/tamanioTextoJuegoVI"
 						android:textStyle="bold"
