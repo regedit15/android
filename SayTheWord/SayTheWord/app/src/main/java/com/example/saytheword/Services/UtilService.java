@@ -205,6 +205,8 @@ public class UtilService {
 			}};
 
 			realmService.insertarPalabras(palabras);
+
+			palabras = realmService.getPalabras();
 		}
 
 		if (soloPalabrasProblematicas) {
@@ -324,6 +326,8 @@ public class UtilService {
 			}};
 
 			realmService.insertarIrregularVerbs(palabras);
+
+			palabras = realmService.getIrregularVerbs();
 		}
 
 		if (soloPalabrasProblematicas) {

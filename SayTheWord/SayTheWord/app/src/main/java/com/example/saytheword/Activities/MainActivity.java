@@ -109,13 +109,16 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), navigationView.getMenu().getItem(0));
+		cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), navigationView.getMenu().getItem(0).getSubMenu().getItem(0));
 		// cambiarFragment(new ListadoFragment(LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS), navigationView.getMenu().getItem(5));
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
 		//cambiamos de fragment
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
+
+		// Esto es para arreglar un bug que queda checkeado
+		navigationView.getMenu().getItem(0).getSubMenu().getItem(0).setChecked(false);
 
 		//para que se muestre seleccionado
 		menuItem.setChecked(true);

@@ -45,7 +45,7 @@ public class RealmService {
 	}
 
 	public List<Palabra> getPalabrasProblematicas() {
-		return Realm.getDefaultInstance().where(Palabra.class).equalTo("palabraProblematica", true).findAll();
+		return Realm.getDefaultInstance().where(Palabra.class).equalTo("palabraProblematica", true).sort("palabraIng", Sort.ASCENDING).findAll();
 	}
 
 	public void insertarPalabras(final List<Palabra> palabras) {
@@ -89,11 +89,11 @@ public class RealmService {
 	// ----------------------------------------------------
 	// -------------------------- Verbo Irregular
 	public List<VerboIrregular> getIrregularVerbs() {
-		return Realm.getDefaultInstance().where(VerboIrregular.class).findAll();
+		return Realm.getDefaultInstance().where(VerboIrregular.class).sort("infinitivo", Sort.ASCENDING).findAll();
 	}
 
 	public List<VerboIrregular> getIrregularVerbsProblematicos() {
-		return Realm.getDefaultInstance().where(VerboIrregular.class).equalTo("palabraProblematica", true).findAll();
+		return Realm.getDefaultInstance().where(VerboIrregular.class).equalTo("palabraProblematica", true).sort("infinitivo", Sort.ASCENDING).findAll();
 	}
 
 	public void insertarIrregularVerbs(final List<VerboIrregular> palabras) {
