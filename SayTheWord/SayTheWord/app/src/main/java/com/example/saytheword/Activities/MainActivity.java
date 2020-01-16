@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
 		realmService.setearConfiguracion(getApplicationContext());
 
-
 		Toolbar myToolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(myToolbar);
 
@@ -116,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
 		//cambiamos de fragment
-		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
 
 		//para que se muestre seleccionado
 		menuItem.setChecked(true);

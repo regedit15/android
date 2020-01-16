@@ -74,9 +74,6 @@ public class JuegoPalabrasFragment extends Fragment {
 		ivCongratulations = view.findViewById(R.id.ivCongratulations);
 		btPalabraProblematica = view.findViewById(R.id.btPalabraProblematica);
 
-		// tvJuegoPalabraAbajo.setText("");
-		// tvJuegoPalabraAbajo2.setText("");
-
 		inicializarJuego();
 
 		btMostrarRespuestaJuego.setOnClickListener(new View.OnClickListener() {

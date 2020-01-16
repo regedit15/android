@@ -14,8 +14,6 @@ import com.example.saytheword.Adapters.VerboIrregularAdapter;
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.Models.VerboIrregular;
 import com.example.saytheword.R;
-import com.example.saytheword.Services.RealmService;
-import com.example.saytheword.Services.UtilService;
 
 import java.util.List;
 
@@ -107,7 +105,7 @@ public class ListadoFragment extends BaseFragment {
 				break;
 		}
 
-		((MainActivity) getActivity()).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) getActivity()).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(cantidad).append(")").toString());
+		setearTitulo(new StringBuilder(((MainActivity) getActivity()).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(cantidad).append(")").toString());
 	}
 
 	//----------- Option Menu
@@ -175,7 +173,7 @@ public class ListadoFragment extends BaseFragment {
 				resultado = true;
 				break;
 			case R.id.item_AgregarPalabra:
-				cambiarFragment(new AgregarPalabraFragment(),R.id.frame_layout);
+				cambiarFragment(new AgregarPalabraFragment(), R.id.frame_layout);
 				resultado = true;
 				break;
 			default:
