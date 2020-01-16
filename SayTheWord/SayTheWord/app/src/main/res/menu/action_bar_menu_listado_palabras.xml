@@ -13,4 +13,7 @@
 	<item
 		android:id="@+id/item_verTodo"
 		android:title="Ver todo" />
+	<item
+		android:id="@+id/item_AgregarPalabra"
+		android:title="Agregar Palabra" />
 </menu>

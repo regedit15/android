@@ -19,7 +19,6 @@ import com.example.saytheword.Services.UtilService;
 
 import java.util.List;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,14 +29,12 @@ import static com.example.saytheword.Services.UtilService.LISTADO_TIPO_TRADUCCIO
 import static com.example.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES;
 import static com.example.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS;
 
-public class ListadoFragment extends Fragment {
+public class ListadoFragment extends BaseFragment {
 
 	private RecyclerView recyclerView;
 	private PalabraAdapter palabraAdapter;
 	private VerboIrregularAdapter verboIrregularAdapter;
 	private RecyclerView.LayoutManager layoutManager;
-	private UtilService utilService = new UtilService();
-	private RealmService realmService = new RealmService();
 	private String TIPO_LISTADO;
 
 	public ListadoFragment(String TIPO_LISTADO) {
@@ -175,6 +172,10 @@ public class ListadoFragment extends Fragment {
 						verboIrregularAdapter.cambiarAInglesEspaniol();
 						break;
 				}
+				resultado = true;
+				break;
+			case R.id.item_AgregarPalabra:
+				cambiarFragment(new AgregarPalabraFragment(),R.id.frame_layout);
 				resultado = true;
 				break;
 			default:

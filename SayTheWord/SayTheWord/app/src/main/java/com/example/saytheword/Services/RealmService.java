@@ -12,6 +12,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class RealmService {
 
@@ -40,7 +41,7 @@ public class RealmService {
 
 	// -------------------------- Palabra
 	public List<Palabra> getPalabras() {
-		return Realm.getDefaultInstance().where(Palabra.class).findAll();
+		return Realm.getDefaultInstance().where(Palabra.class).sort("palabraIng", Sort.ASCENDING).findAll();
 	}
 
 	public List<Palabra> getPalabrasProblematicas() {
@@ -133,6 +134,15 @@ public class RealmService {
 		});
 	}
 	// ----------------------------------------------------
+
+	public void insertarPalabra(final Palabra palabra) {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				realm.insert(palabra);
+			}
+		});
+	}
 
 
 }
