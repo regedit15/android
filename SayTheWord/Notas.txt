@@ -1,0 +1,7 @@
+Issues: 
+
+Agregar alta de palabras
+Mejorar el menu, pones juego y listado de palabras. Y una pantalla con 4 botones para cada uno
+Hacer juego con palabras escritas
+Hacer juego con palabras y con vi
+Agregar Allophones en la palabras

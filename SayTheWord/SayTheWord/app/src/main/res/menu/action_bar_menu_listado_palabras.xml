@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item
+		android:id="@+id/item_inglesEspañol"
+		android:title="Inglés - Español" />
+	<item
+		android:id="@+id/item_espaniolIngles"
+		android:title="Español - Inglés" />
+	<item
+		android:id="@+id/item_ocultarTodo"
+		android:title="Ocultar todo" />
+	<item
+		android:id="@+id/item_verTodo"
+		android:title="Ver todo" />
+</menu>
