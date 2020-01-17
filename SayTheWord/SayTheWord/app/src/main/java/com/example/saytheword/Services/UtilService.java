@@ -122,7 +122,7 @@ public class UtilService {
 				add(new Palabra("Wide", "Amplio", "Waid"));
 				add(new Palabra("Yell", "Gritar", "Iell"));
 				//--------------- 2 Parte
-				add(new Palabra("Tight", "Apretado", "Tight"));
+				add(new Palabra("Tight", "Apretado", "Taight"));
 				add(new Palabra("Hardly", "Apenas", "Hardly"));
 				add(new Palabra("Meager", "Pobre", "Miger"));
 				add(new Palabra("Owe", "Deber", "Óuu"));
