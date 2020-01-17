@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".Fragments.JuegoEscribirPalabraFragment">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.cardview.widget.CardView
+			android:id="@+id/cardView"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="50dp"
+			android:layout_marginRight="50dp"
+			app:cardBackgroundColor="#bde3e0"
+			app:cardCornerRadius="15dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.494"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
+
+				<ImageView
+					android:id="@+id/ivCongratulations"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:src="@drawable/congratulation"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_margin="50dp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent">
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btPalabraProblematica"
+						style="@style/Widget.MaterialComponents.Button"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						app:backgroundTint="#ADADAD"
+						app:icon="@drawable/ic_smile"
+						app:iconGravity="textStart"
+						app:iconPadding="0dp"
+						app:iconSize="25dp"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/btNext" />
+
+					<TextView
+						android:id="@+id/tvJuegoCantidadPalabras"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:text="TextView"
+						android:textSize="@dimen/tamanioTextoJuegoVI"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/tvJuegoPalabraArriba"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="24dp"
+						android:gravity="center"
+						android:text="TextView"
+						android:textSize="@dimen/tamanioTextoJuegoVI"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tvJuegoCantidadPalabras" />
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btMostrarRespuestaJuego"
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:layout_marginTop="32dp"
+						android:insetLeft="0dp"
+						android:insetTop="0dp"
+						android:insetRight="0dp"
+						android:insetBottom="0dp"
+						app:backgroundTint="#448AFF"
+						app:icon="@drawable/ic_eye_closed"
+						app:iconGravity="textStart"
+						app:iconPadding="0dp"
+						app:iconSize="25dp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tvJuegoPalabraArriba" />
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:id="@+id/lyRespuestaJuego"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="32dp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/btMostrarRespuestaJuego">
+
+						<TextView
+							android:id="@+id/tvJuegoPalabraAbajo"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:gravity="center"
+							android:text="TextView"
+							android:textSize="@dimen/tamanioTextoJuegoVI"
+							android:textStyle="bold"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+
+						<TextView
+							android:id="@+id/tvJuegoPalabraAbajo2"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="24dp"
+							android:gravity="center"
+							android:text="TextView"
+							android:textSize="@dimen/tamanioTextoJuegoVI"
+							android:textStyle="bold"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/tvJuegoPalabraAbajo" />
+					</androidx.constraintlayout.widget.ConstraintLayout>
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btNext"
+						style="@style/Widget.MaterialComponents.Button"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="32dp"
+						android:text="Next"
+						app:backgroundTint="#82B1FF"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/lyRespuestaJuego" />
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btPrevious"
+						style="@style/Widget.MaterialComponents.Button"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="32dp"
+						android:layout_marginEnd="22dp"
+						android:text="Previous"
+						app:backgroundTint="#82B1FF"
+						app:layout_constraintEnd_toStartOf="@+id/btNext"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/lyRespuestaJuego" />
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btRestart"
+						style="@style/Widget.MaterialComponents.Button"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="32dp"
+						android:text="Restart"
+						app:backgroundTint="#82B1FF"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/lyRespuestaJuego" />
+				</androidx.constraintlayout.widget.ConstraintLayout>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.cardview.widget.CardView>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
