@@ -44,36 +44,35 @@
 						android:inputType="number"
 						android:text="3" />
 				</com.google.android.material.textfield.TextInputLayout>
-				<!--			<RadioGroup-->
-				<!--				android:id="@+id/rgModoDeJuego"-->
-				<!--				android:layout_width="0dp"-->
-				<!--				android:layout_height="wrap_content"-->
-				<!--				android:layout_marginTop="16dp"-->
-				<!--				android:checkedButton="@id/rbModoJuegoIngEsp"-->
-				<!--				app:layout_constraintEnd_toEndOf="parent"-->
-				<!--				app:layout_constraintStart_toStartOf="parent"-->
-				<!--				app:layout_constraintTop_toBottomOf="@+id/textEdit">-->
-				<!--				<RadioButton-->
-				<!--					android:id="@+id/rbModoJuegoIngEsp"-->
-				<!--					android:layout_width="match_parent"-->
-				<!--					android:layout_height="wrap_content"-->
-				<!--					android:text="Inglés - Español" />-->
-				<!--				<RadioButton-->
-				<!--					android:id="@+id/rbModoJuegoEspIng"-->
-				<!--					android:layout_width="match_parent"-->
-				<!--					android:layout_height="wrap_content"-->
-				<!--					android:text="Español - Inglés" />-->
-				<!--			</RadioGroup>-->
-				<Switch
-					android:id="@+id/swSoloPalabrasProblematicas"
-					android:layout_width="wrap_content"
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/textEdit2"
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+					android:layout_width="0dp"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="16dp"
-					android:text="Solo palabras problemáticas"
+					android:layout_marginTop="24dp"
+					android:hint="Cantidad de items"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toBottomOf="@+id/textEdit" />
+					app:layout_constraintTop_toBottomOf="@+id/textEdit">
+
+					<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/etCantidadItems"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:inputType="number"
+						android:text="3" />
+				</com.google.android.material.textfield.TextInputLayout>
 			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<Switch
+				android:id="@+id/swSoloPalabrasProblematicas"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dp"
+				android:text="Solo palabras problemáticas"
+				app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+				tools:layout_editor_absoluteX="5dp" />
 
 			<com.google.android.material.button.MaterialButton
 				android:id="@+id/btComenzarJuego"
@@ -85,7 +84,7 @@
 				app:backgroundTint="#82B1FF"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+				app:layout_constraintTop_toBottomOf="@+id/swSoloPalabrasProblematicas" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

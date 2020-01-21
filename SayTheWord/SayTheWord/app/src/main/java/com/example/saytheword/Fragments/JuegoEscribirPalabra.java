@@ -28,6 +28,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 	private TextView tvCantidadIntentosRestantes;
 	private TextView tvSolucion;
 	private MaterialButton btEvaluar;
+	private MaterialButton btVolver;
 	private MaterialButton btNext;
 	private MaterialButton btPrevious;
 	private MaterialButton btRestart;
@@ -38,11 +39,13 @@ public class JuegoEscribirPalabra extends BaseFragment {
 	private List<Palabra> palabrasDesordenadas = new ArrayList<>();
 	private int indice;
 	private int cantidadIntentos;
+	private int cantidadPalabras;
 	private int cantidadIntentosFallidos;
 	private boolean soloPalabrasProblematicas;
 
-	public JuegoEscribirPalabra(int cantidadIntentos, boolean soloPalabrasProblematicas) {
+	public JuegoEscribirPalabra(int cantidadIntentos, int cantidadPalabras, boolean soloPalabrasProblematicas) {
 		this.cantidadIntentos = cantidadIntentos;
+		this.cantidadPalabras = cantidadPalabras;
 		this.soloPalabrasProblematicas = soloPalabrasProblematicas;
 	}
 
@@ -63,6 +66,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		lyRespuestaJuego = view.findViewById(R.id.lyRespuestaJuego);
 		ivCongratulations = view.findViewById(R.id.ivCongratulations);
 		tvCantidadIntentosRestantes = view.findViewById(R.id.tvCantidadIntentosRestantes);
+		btVolver = view.findViewById(R.id.btVolver);
 
 		inicializarJuego();
 
@@ -123,6 +127,13 @@ public class JuegoEscribirPalabra extends BaseFragment {
 			}
 		});
 
+		btVolver.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				cambiarFragment(new JuegoConfiguracionInicial(), R.id.frame_layout);
+			}
+		});
+
 		return view;
 	}
 
@@ -148,6 +159,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		lyRespuestaJuego.setVisibility(View.INVISIBLE);
 		etRespuestaContenedor.setVisibility(View.INVISIBLE);
 		ivCongratulations.setVisibility(View.VISIBLE);
+		btVolver.setVisibility(View.VISIBLE);
 
 		Glide.with(getContext()).load(idImagen).into(ivCongratulations);
 	}
@@ -195,6 +207,8 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		Collections.shuffle(palabrasDesordenadas);
 		// --------------------------------------------------------------
 
+		palabrasDesordenadas = palabrasDesordenadas.subList(0, cantidadPalabras);
+
 		indice = 0;
 		cantidadIntentosFallidos = 0;
 		setearTitulo();
@@ -206,6 +220,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		tvSolucion.setVisibility(View.VISIBLE);
 
 		btPrevious.setVisibility(View.INVISIBLE);
+		btVolver.setVisibility(View.INVISIBLE);
 		etRespuestaContenedor.setVisibility(View.VISIBLE);
 		btRestart.setVisibility(View.INVISIBLE);
 		lyRespuestaJuego.setVisibility(View.INVISIBLE);

@@ -7,14 +7,20 @@ import android.view.ViewGroup;
 import android.widget.Switch;
 
 import com.example.saytheword.Exceptions.GenericException;
+import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.List;
+
 public class JuegoConfiguracionInicial extends BaseFragment {
 
+	private TextInputEditText etCantidadIntentos;
+	private TextInputEditText etCantidadItems;
 	private Switch swSoloPalabrasProblematicas;
+	private MaterialButton btComenzarJuego;
 
 	public JuegoConfiguracionInicial() {
 	}
@@ -23,20 +29,11 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		final View view = inflater.inflate(R.layout.fragment_juego_configuracion_inicial, container, false);
 
+		setearTitulo("Configurar Juego");
 
-		MaterialButton btComenzarJuego = view.findViewById(R.id.btComenzarJuego);
-// final RadioGroup rgModoDeJuego = view.findViewById(R.id.rgModoDeJuego);
-		//
-		// switch (rgModoDeJuego.getCheckedRadioButtonId()) {
-		// 	case R.id.rgModoDeJuego:
-		// 		break;
-		// 	case R.id.rgModoDeJuego:
-		// 		break;
-		// }
-
-
-
-		final TextInputEditText etCantidadIntentos = view.findViewById(R.id.etCantidadIntentos);
+		btComenzarJuego = view.findViewById(R.id.btComenzarJuego);
+		etCantidadIntentos = view.findViewById(R.id.etCantidadIntentos);
+		etCantidadItems = view.findViewById(R.id.etCantidadItems);
 		swSoloPalabrasProblematicas = view.findViewById(R.id.swSoloPalabrasProblematicas);
 
 		btComenzarJuego.setOnClickListener(new View.OnClickListener() {
@@ -49,11 +46,13 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 
 							Integer.parseInt(etCantidadIntentos.getText().toString()),
 
+							Integer.parseInt(etCantidadItems.getText().toString()),
+
 							swSoloPalabrasProblematicas.isChecked()
 
 					), R.id.frame_layout);
 				} catch (GenericException e) {
-					new MaterialAlertDialogBuilder(getContext()).setTitle("No hay ninguna palabra problematica!").setPositiveButton("Ok", null).show();
+					new MaterialAlertDialogBuilder(getContext()).setTitle(e.getTitulo()).setMessage(e.getMensaje()).setPositiveButton("Ok", null).show();
 				}
 			}
 		});
@@ -62,8 +61,34 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 	}
 
 	private void validar() throws GenericException {
-		if (swSoloPalabrasProblematicas.isChecked() && !utilService.hayPalasProblematicas()) {
-			throw new GenericException();
+
+		List<Palabra> lista = utilService.getPalabras(swSoloPalabrasProblematicas.isChecked());
+
+		if (swSoloPalabrasProblematicas.isChecked() && lista.isEmpty()) {
+			throw new GenericException("No hay ninguna palabra problematica!");
+		}
+
+		try {
+			Integer.parseInt(etCantidadIntentos.getText().toString());
+		} catch (Exception e) {
+			throw new GenericException("Ingrese una cantidad de intentos valida!");
+		}
+
+		int cantidadPalabras;
+		try {
+			cantidadPalabras = Integer.parseInt(etCantidadItems.getText().toString());
+		} catch (Exception e) {
+			throw new GenericException("Ingrese una cantidad de items valida!");
+		}
+
+		if (cantidadPalabras > lista.size()) {
+			throw new GenericException(
+
+					"No hay tantas palabras!",
+
+					new StringBuilder("Pusiste ").append(cantidadPalabras).append(" y solo hay ").append(lista.size()).append(" palabras").toString()
+
+			);
 		}
 	}
 
