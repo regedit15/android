@@ -6,11 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Switch;
 
+import com.example.saytheword.Exceptions.GenericException;
 import com.example.saytheword.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class JuegoConfiguracionInicial extends BaseFragment {
+
+	private Switch swSoloPalabrasProblematicas;
 
 	public JuegoConfiguracionInicial() {
 	}
@@ -21,37 +25,46 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 
 
 		MaterialButton btComenzarJuego = view.findViewById(R.id.btComenzarJuego);
-		// final RadioGroup rgModoDeJuego = view.findViewById(R.id.rgModoDeJuego);
+// final RadioGroup rgModoDeJuego = view.findViewById(R.id.rgModoDeJuego);
+		//
+		// switch (rgModoDeJuego.getCheckedRadioButtonId()) {
+		// 	case R.id.rgModoDeJuego:
+		// 		break;
+		// 	case R.id.rgModoDeJuego:
+		// 		break;
+		// }
+
+
+
 		final TextInputEditText etCantidadIntentos = view.findViewById(R.id.etCantidadIntentos);
-		final Switch swSoloPalabrasProblematicas = view.findViewById(R.id.swSoloPalabrasProblematicas);
+		swSoloPalabrasProblematicas = view.findViewById(R.id.swSoloPalabrasProblematicas);
 
 		btComenzarJuego.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 
-				// String juegoTipo = null;
+				try {
+					validar();
+					cambiarFragment(new JuegoEscribirPalabra(
 
-				// switch (rgModoDeJuego.getCheckedRadioButtonId()) {
-				// 	case R.id.rbModoJuegoIngEsp:
-				// 		juegoTipo = JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
-				// 		break;
-				// 	case R.id.rbModoJuegoEspIng:
-				// 		juegoTipo = JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES;
-				// 		break;
-				// }
+							Integer.parseInt(etCantidadIntentos.getText().toString()),
 
-						// juegoTipo,
-				cambiarFragment(new JuegoEscribirPalabra(
+							swSoloPalabrasProblematicas.isChecked()
 
-						Integer.parseInt(etCantidadIntentos.getText().toString()),
-
-						swSoloPalabrasProblematicas.isChecked()
-
-				), R.id.frame_layout);
+					), R.id.frame_layout);
+				} catch (GenericException e) {
+					new MaterialAlertDialogBuilder(getContext()).setTitle("No hay ninguna palabra problematica!").setPositiveButton("Ok", null).show();
+				}
 			}
 		});
 
 		return view;
+	}
+
+	private void validar() throws GenericException {
+		if (swSoloPalabrasProblematicas.isChecked() && !utilService.hayPalasProblematicas()) {
+			throw new GenericException();
+		}
 	}
 
 }

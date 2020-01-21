@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,13 +21,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class JuegoEscribirPalabra extends BaseFragment {
 
-	private int cantidadIntentos;
-	private int cantidadIntentosFallidos = 0;
-	//---------
-
 	private TextView tvJuegoCantidadPalabras;
 	private TextView tvJuegoPalabraAdivinar;
 	private TextView etRespuesta;
+	private TextInputLayout etRespuestaContenedor;
 	private TextView tvCantidadIntentosRestantes;
 	private TextView tvSolucion;
 	private MaterialButton btEvaluar;
@@ -39,6 +37,8 @@ public class JuegoEscribirPalabra extends BaseFragment {
 
 	private List<Palabra> palabrasDesordenadas = new ArrayList<>();
 	private int indice;
+	private int cantidadIntentos;
+	private int cantidadIntentosFallidos;
 	private boolean soloPalabrasProblematicas;
 
 	public JuegoEscribirPalabra(int cantidadIntentos, boolean soloPalabrasProblematicas) {
@@ -53,6 +53,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		tvJuegoCantidadPalabras = view.findViewById(R.id.tvJuegoCantidadPalabras);
 		tvJuegoPalabraAdivinar = view.findViewById(R.id.tvJuegoPalabraAdivinar);
 		etRespuesta = view.findViewById(R.id.etRespuesta);
+		etRespuestaContenedor = view.findViewById(R.id.etRespuestaContenedor);
 		tvSolucion = view.findViewById(R.id.tvSolucion);
 		btNext = view.findViewById(R.id.btNext);
 		btEvaluar = view.findViewById(R.id.btEvaluar);
@@ -62,7 +63,6 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		lyRespuestaJuego = view.findViewById(R.id.lyRespuestaJuego);
 		ivCongratulations = view.findViewById(R.id.ivCongratulations);
 		tvCantidadIntentosRestantes = view.findViewById(R.id.tvCantidadIntentosRestantes);
-
 
 		inicializarJuego();
 
@@ -101,7 +101,6 @@ public class JuegoEscribirPalabra extends BaseFragment {
 			}
 		});
 
-
 		btNext.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -113,7 +112,14 @@ public class JuegoEscribirPalabra extends BaseFragment {
 			@Override
 			public void onClick(View v) {
 				inicializarJuego();
-				mostrarImagenFinal(R.drawable.congratulation);
+			}
+		});
+
+		btPalabraProblematica.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				realmService.cambiarPalabraProblematicaPalabra(palabrasDesordenadas.get(indice));
+				setearColorPalabraProblematica();
 			}
 		});
 
@@ -131,10 +137,8 @@ public class JuegoEscribirPalabra extends BaseFragment {
 	}
 
 	private void mostrarImagenFinal(int idImagen) {
-
 		tvJuegoCantidadPalabras.setVisibility(View.INVISIBLE);
 		tvJuegoPalabraAdivinar.setVisibility(View.INVISIBLE);
-		etRespuesta.setVisibility(View.INVISIBLE);
 		tvSolucion.setVisibility(View.INVISIBLE);
 		btNext.setVisibility(View.INVISIBLE);
 		btEvaluar.setVisibility(View.INVISIBLE);
@@ -142,9 +146,10 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		btRestart.setVisibility(View.VISIBLE);
 		btPalabraProblematica.setVisibility(View.INVISIBLE);
 		lyRespuestaJuego.setVisibility(View.INVISIBLE);
+		etRespuestaContenedor.setVisibility(View.INVISIBLE);
+		ivCongratulations.setVisibility(View.VISIBLE);
 
-		// Glide.with(getContext()).load(idImagen).into(ivCongratulations);
-		Glide.with(getContext()).load(R.drawable.congratulation).into(ivCongratulations);
+		Glide.with(getContext()).load(idImagen).into(ivCongratulations);
 	}
 
 	private void setearTitulo() {
@@ -157,7 +162,6 @@ public class JuegoEscribirPalabra extends BaseFragment {
 			mostrarImagenFinal(R.drawable.congratulation);
 		} else {
 			setearTextoArribaYcolorDeBoton();
-			// mostrarRespuesta(palabrasDesordenadas.get(indice).isMostrarRespuesta());
 			setearTitulo();
 		}
 	}
@@ -192,12 +196,22 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		// --------------------------------------------------------------
 
 		indice = 0;
+		cantidadIntentosFallidos = 0;
 		setearTitulo();
 
+
+		tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
+		tvJuegoPalabraAdivinar.setVisibility(View.VISIBLE);
+		etRespuestaContenedor.setVisibility(View.VISIBLE);
+		tvSolucion.setVisibility(View.VISIBLE);
+
 		btPrevious.setVisibility(View.INVISIBLE);
+		etRespuestaContenedor.setVisibility(View.VISIBLE);
 		btRestart.setVisibility(View.INVISIBLE);
 		lyRespuestaJuego.setVisibility(View.INVISIBLE);
 		ivCongratulations.setVisibility(View.INVISIBLE);
+		btEvaluar.setVisibility(View.VISIBLE);
+		btPalabraProblematica.setVisibility(View.VISIBLE);
 
 		setearTextoArribaYcolorDeBoton();
 	}

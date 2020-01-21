@@ -344,5 +344,7 @@ public class UtilService {
 		return palabras;
 	}
 
-
+	public boolean hayPalasProblematicas() {
+		return !getPalabras(true).isEmpty();
+	}
 }
