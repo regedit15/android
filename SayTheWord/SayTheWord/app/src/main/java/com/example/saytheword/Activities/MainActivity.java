@@ -3,6 +3,7 @@ package com.example.saytheword.Activities;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.saytheword.Fragments.JuegoConfiguracionInicial;
 import com.example.saytheword.Fragments.JuegoPalabrasFragment;
 import com.example.saytheword.Fragments.JuegoVerbosIrregularesFragment;
 import com.example.saytheword.Fragments.ListadoFragment;
@@ -95,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
 						fragment = new JuegoVerbosIrregularesFragment(JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS);
 						transaction = true;
 						break;
+					case R.id.it_juegoEscribirPalabra:
+						fragment = new JuegoConfiguracionInicial();
+						transaction = true;
+						break;
 				}
 
 				if (transaction) {
@@ -109,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), navigationView.getMenu().getItem(0).getSubMenu().getItem(0));
-		// cambiarFragment(new ListadoFragment(LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS), navigationView.getMenu().getItem(5));
+		// cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), navigationView.getMenu().getItem(0).getSubMenu().getItem(0));
+		cambiarFragment(new JuegoConfiguracionInicial(),  navigationView.getMenu().getItem(1).getSubMenu().getItem(4));
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

@@ -201,6 +201,13 @@ public class UtilService {
 				add(new Palabra("Cramp", "Calambre", "Cramp"));
 				add(new Palabra("Tread", "Huella, pisada", "Tred"));
 				add(new Palabra("Drown", "Ahogar", "Drawn"));
+				//-----------------------
+				add(new Palabra("Fellows", "Becarios", "Fellows"));
+				add(new Palabra("Stealth", "Sigilo, cautela", "Stealf"));
+				add(new Palabra("Instead", "En lugar", "Insted"));
+				add(new Palabra("Bless", "Bendecir, santificar", "Bless"));
+				add(new Palabra("Groceries", "Comestibles", "Groceries"));
+				add(new Palabra("Doubt", "Duda", "Daut"));
 
 			}};
 

@@ -33,6 +33,9 @@
 				<item
 					android:id="@+id/it_juegoVerbosIrregularesProblematicos"
 					android:title="Verbos Irregulares Problematicos" />
+				<item
+					android:id="@+id/it_juegoEscribirPalabra"
+					android:title="Escribir Palabras" />
 			</group>
 		</menu>
 	</item>

@@ -11,8 +11,9 @@ public class BaseFragment extends Fragment {
 	protected UtilService utilService = new UtilService();
 	protected RealmService realmService = new RealmService();
 
-	protected void cambiarFragment(Fragment fragment, int frame_layout) {
-		getActivity().getSupportFragmentManager().beginTransaction().replace(frame_layout, fragment).addToBackStack(null).commit();
+	// Nota: el froma_layout es el id del contenedor donde va cambiando los fragments
+	protected void cambiarFragment(Fragment fragment, int idFrameLayout) {
+		getActivity().getSupportFragmentManager().beginTransaction().replace(idFrameLayout, fragment).addToBackStack(null).commit();
 	}
 
 	protected void setearTitulo(String titulo) {

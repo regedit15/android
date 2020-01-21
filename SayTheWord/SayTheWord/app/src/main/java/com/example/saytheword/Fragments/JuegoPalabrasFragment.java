@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
-import com.example.saytheword.Services.RealmService;
-import com.example.saytheword.Services.UtilService;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -23,17 +21,14 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 
 import static com.example.saytheword.Services.UtilService.JUEGO_PALABRAS;
 import static com.example.saytheword.Services.UtilService.JUEGO_PALABRAS_PROBLEMATICAS;
 import static com.example.saytheword.Services.UtilService.JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES;
 import static com.example.saytheword.Services.UtilService.JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
 
-public class JuegoPalabrasFragment extends Fragment {
+public class JuegoPalabrasFragment extends BaseFragment {
 
-	private UtilService utilService = new UtilService();
-	private RealmService realmService = new RealmService();
 	private TextView tvJuegoPalabraArriba;
 	private TextView tvJuegoPalabraAbajo;
 	private TextView tvJuegoPalabraAbajo2;
