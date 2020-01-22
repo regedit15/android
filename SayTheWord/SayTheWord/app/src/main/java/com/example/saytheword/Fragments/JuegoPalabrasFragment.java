@@ -33,7 +33,7 @@ public class JuegoPalabrasFragment extends BaseFragment {
 	private TextView tvJuegoPalabraAbajo;
 	private TextView tvJuegoPalabraAbajo2;
 	private TextView tvJuegoCantidadPalabras;
-	private List<Palabra> palabrasDesordenadas = new ArrayList<>();
+	private List<Palabra> palabrasDesordenadas;
 	private int indice;
 	private MaterialButton mbNext;
 	private MaterialButton btMostrarRespuestaJuego;
@@ -180,6 +180,7 @@ public class JuegoPalabrasFragment extends BaseFragment {
 		// ------------- Se hace esto porque si lo igualo a utilService.getLista() da error
 
 		List<Palabra> lista = null;
+
 		switch (TIPO_JUEGO) {
 			case JUEGO_PALABRAS:
 				lista = utilService.getPalabras(false);
@@ -203,6 +204,8 @@ public class JuegoPalabrasFragment extends BaseFragment {
 		} else {
 
 			realmService.cambiarMostrarRespuestasPalabras(lista, false);
+
+			palabrasDesordenadas.clear();
 
 			for (Palabra p : lista) {
 				palabrasDesordenadas.add(p);

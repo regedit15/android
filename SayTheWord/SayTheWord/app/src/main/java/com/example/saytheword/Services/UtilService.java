@@ -124,7 +124,7 @@ public class UtilService {
 				//--------------- 2 Parte
 				add(new Palabra("Tight", "Apretado", "Taight"));
 				add(new Palabra("Hardly", "Apenas", "Hardly"));
-				add(new Palabra("Meager", "Pobre, escasp", "Miger"));
+				add(new Palabra("Meager", "Pobre, escaso", "Miger"));
 				add(new Palabra("Owe", "Deber", "Óuu"));
 				add(new Palabra("Cheapskate", "Tacaño", "Chipskeit"));
 				add(new Palabra("Fairly", "Bastante", "Ferly"));
@@ -138,7 +138,7 @@ public class UtilService {
 				add(new Palabra("Pick", "Recoger", "Pick"));
 				add(new Palabra("Bet", "Apuesta", "Bet"));
 				add(new Palabra("Drop By", "Entrar Un Momento", "Drop Bay"));
-				add(new Palabra("Wreck", "Ruina", "Eeck"));
+				add(new Palabra("Wreck", "Ruina", "Reck"));
 				add(new Palabra("Hire", "Alquiler, contratar", "Haier"));
 				add(new Palabra("Tip", "Propina", "Tip"));
 				add(new Palabra("Rightful", "Legítimo", "Raightfol"));
@@ -153,7 +153,7 @@ public class UtilService {
 				add(new Palabra("Rascal", "Bribón, pillo", "Rascol"));
 				add(new Palabra("Wrangle", "Disputar, reñir", "Wrangle"));
 				add(new Palabra("Belly", "Barriga", "Belly\n"));
-				add(new Palabra("Tough", "Difícil", "AAA"));
+				add(new Palabra("Tough", "Difícil", "Tof"));
 				add(new Palabra("Handle", "Encargarse de, manipular", "Handl"));
 				add(new Palabra("Ornery", "Desagradable, vulgar", "Ornery"));
 				add(new Palabra("Stew", "Estofado, guiso", "Stiu"));
@@ -169,7 +169,7 @@ public class UtilService {
 				add(new Palabra("Shrimp", "Camarón", "Shrimp"));
 				add(new Palabra("Grub", "Comida", "Grob"));
 				add(new Palabra("Somehow", "De alguna manera", "Somhaw"));
-				add(new Palabra("Gather", "Reúne, acumula", "Gather"));
+				add(new Palabra("Gather", "Reunir, acumular", "Gather"));
 				add(new Palabra("Above", "Encima, arriba", "Ovob"));
 				add(new Palabra("Boil", "Hervir", "Boil"));
 				add(new Palabra("By Chance", "Por Casualidad", "Bay Chanz"));
