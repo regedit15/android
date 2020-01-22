@@ -3,6 +3,7 @@ package com.example.saytheword.Fragments;
 import com.example.saytheword.Activities.MainActivity;
 import com.example.saytheword.Services.RealmService;
 import com.example.saytheword.Services.UtilService;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import androidx.fragment.app.Fragment;
 
@@ -24,4 +25,9 @@ public class BaseFragment extends Fragment {
 		// Nota: esto funciona siempre y cuando se le haya agregado el ".addToBackStack(null)" al cambiar de fragment
 		getFragmentManager().popBackStackImmediate();
 	}
+
+	protected void mostrarPopup(String titulo, String mensaje) {
+		new MaterialAlertDialogBuilder(getContext()).setTitle(titulo).setMessage(mensaje).setPositiveButton("Aceptar", null).show();
+	}
+
 }

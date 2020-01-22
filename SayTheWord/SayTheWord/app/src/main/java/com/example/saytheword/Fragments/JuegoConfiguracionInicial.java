@@ -10,7 +10,6 @@ import com.example.saytheword.Exceptions.GenericException;
 import com.example.saytheword.Models.Palabra;
 import com.example.saytheword.R;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 
 					), R.id.frame_layout);
 				} catch (GenericException e) {
-					new MaterialAlertDialogBuilder(getContext()).setTitle(e.getTitulo()).setMessage(e.getMensaje()).setPositiveButton("Ok", null).show();
+					mostrarPopup(e.getTitulo(), e.getMensaje());
 				}
 			}
 		});
@@ -91,5 +90,4 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 			);
 		}
 	}
-
 }

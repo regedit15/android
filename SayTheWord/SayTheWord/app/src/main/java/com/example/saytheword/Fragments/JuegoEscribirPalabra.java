@@ -53,6 +53,8 @@ public class JuegoEscribirPalabra extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_juego_escribir_palabra, container, false);
 
+		setearTitulo("Juego Escribir Palabra");
+
 		tvJuegoCantidadPalabras = view.findViewById(R.id.tvJuegoCantidadPalabras);
 		tvJuegoPalabraAdivinar = view.findViewById(R.id.tvJuegoPalabraAdivinar);
 		etRespuesta = view.findViewById(R.id.etRespuesta);
@@ -221,6 +223,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 
 		btPrevious.setVisibility(View.INVISIBLE);
 		btVolver.setVisibility(View.INVISIBLE);
+		btNext.setVisibility(View.INVISIBLE);
 		etRespuestaContenedor.setVisibility(View.VISIBLE);
 		btRestart.setVisibility(View.INVISIBLE);
 		lyRespuestaJuego.setVisibility(View.INVISIBLE);
