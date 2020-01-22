@@ -13,8 +13,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.saytheword.Models.VerboIrregular;
 import com.example.saytheword.R;
-import com.example.saytheword.Services.RealmService;
-import com.example.saytheword.Services.UtilService;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -23,17 +21,13 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 
 import static com.example.saytheword.Services.UtilService.JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES;
 import static com.example.saytheword.Services.UtilService.JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
 import static com.example.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES;
 import static com.example.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS;
 
-public class JuegoVerbosIrregularesFragment extends Fragment {
-
-	private UtilService utilService = new UtilService();
-	private RealmService realmService = new RealmService();
+public class JuegoVerbosIrregularesFragment extends BaseFragment {
 
 	public TextView tvJuegoCantidadPalabras;
 	public TextView tvInfinitivo;
@@ -57,16 +51,20 @@ public class JuegoVerbosIrregularesFragment extends Fragment {
 	private Random random = new Random();
 	private ImageView ivCongratulations;
 	private String TIPO_JUEGO;
+	private int cantidadItems;
 
-	public JuegoVerbosIrregularesFragment(String TIPO_JUEGO) {
+	public JuegoVerbosIrregularesFragment(String TIPO_JUEGO, int cantidadItems) {
 		setHasOptionsMenu(true);
 		this.TIPO_TRADUCCION = JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
 		this.TIPO_JUEGO = TIPO_JUEGO;
+		this.cantidadItems = cantidadItems;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_juego_verbos_irregulares, container, false);
+
+		setearTitulo("Juego");
 
 		tvJuegoCantidadPalabras = view.findViewById(R.id.tvJuegoCantidadPalabras);
 		tvInfinitivo = view.findViewById(R.id.tvInfinitivo);
@@ -220,12 +218,16 @@ public class JuegoVerbosIrregularesFragment extends Fragment {
 
 			realmService.cambiarMostrarRespuestasVerbosIrregulares(lista, false);
 
+			verbosIrregularesDesordenadas.clear();
+
 			for (VerboIrregular x : lista) {
 				verbosIrregularesDesordenadas.add(x);
 			}
 
 			Collections.shuffle(verbosIrregularesDesordenadas);
 			// --------------------------------------------------------------
+
+			verbosIrregularesDesordenadas = verbosIrregularesDesordenadas.subList(0, cantidadItems);
 
 			indice = 0;
 			setearTitulo();

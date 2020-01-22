@@ -4,9 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.saytheword.Fragments.JuegoConfiguracionInicial;
-import com.example.saytheword.Fragments.JuegoPalabrasFragment;
-import com.example.saytheword.Fragments.JuegoVerbosIrregularesFragment;
-import com.example.saytheword.Fragments.ListadoFragment;
+import com.example.saytheword.Fragments.SeleccionListadoFragment;
 import com.example.saytheword.R;
 import com.example.saytheword.Services.RealmService;
 import com.google.android.material.navigation.NavigationView;
@@ -17,15 +15,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
-import static com.example.saytheword.Services.UtilService.JUEGO_PALABRAS;
-import static com.example.saytheword.Services.UtilService.JUEGO_PALABRAS_PROBLEMATICAS;
-import static com.example.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES;
-import static com.example.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS;
-import static com.example.saytheword.Services.UtilService.LISTADO_PALABRAS;
-import static com.example.saytheword.Services.UtilService.LISTADO_PALABRAS_PROBLEMATCAS;
-import static com.example.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES;
-import static com.example.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,44 +48,11 @@ public class MainActivity extends AppCompatActivity {
 				Fragment fragment = null;
 
 				switch (menuItem.getItemId()) {
-
-					//	-------------- Verbos Palabras
-					case R.id.it_listadoPalabras:
-						fragment = new ListadoFragment(LISTADO_PALABRAS);
+					case R.id.it_listado:
+						fragment = new SeleccionListadoFragment();
 						transaction = true;
 						break;
-					case R.id.it_listadoPalabrasProblematicas:
-						fragment = new ListadoFragment(LISTADO_PALABRAS_PROBLEMATCAS);
-						transaction = true;
-						break;
-					case R.id.it_juegoPalabras:
-						fragment = new JuegoPalabrasFragment(JUEGO_PALABRAS);
-						transaction = true;
-						break;
-					case R.id.it_juegoPalabrasProblematicas:
-						fragment = new JuegoPalabrasFragment(JUEGO_PALABRAS_PROBLEMATICAS);
-						transaction = true;
-						break;
-
-					//	-------------- Verbos Irregulares
-
-					case R.id.it_listadoVerbosIrregulares:
-						fragment = new ListadoFragment(LISTADO_VERBOS_IRREGULARES);
-						transaction = true;
-						break;
-					case R.id.it_listadoVerbosIrregularesProblematicos:
-						fragment = new ListadoFragment(LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS);
-						transaction = true;
-						break;
-					case R.id.it_juegoVerbosIrregulares:
-						fragment = new JuegoVerbosIrregularesFragment(JUEGO_VERBOS_IRREGULARES);
-						transaction = true;
-						break;
-					case R.id.it_juegoVerbosIrregularesProblematicos:
-						fragment = new JuegoVerbosIrregularesFragment(JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS);
-						transaction = true;
-						break;
-					case R.id.it_juegoEscribirPalabra:
+					case R.id.it_juego:
 						fragment = new JuegoConfiguracionInicial();
 						transaction = true;
 						break;
@@ -114,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		// cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), navigationView.getMenu().getItem(0).getSubMenu().getItem(0));
-		cambiarFragment(new JuegoConfiguracionInicial(),  navigationView.getMenu().getItem(1).getSubMenu().getItem(4));
+		cambiarFragment(new SeleccionListadoFragment(), navigationView.getMenu().getItem(0));
+		// cambiarFragment(new JuegoConfiguracionInicial(), navigationView.getMenu().getItem(1).getSubMenu().getItem(4));
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
@@ -123,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).addToBackStack(null).commit();
 
 		// Esto es para arreglar un bug que queda checkeado
-		navigationView.getMenu().getItem(0).getSubMenu().getItem(0).setChecked(false);
+		// navigationView.getMenu().getItem(0).getSubMenu().getItem(0).setChecked(false);
+		// navigationView.getMenu().getItem(0).setChecked(false);
 
 		//para que se muestre seleccionado
 		menuItem.setChecked(true);

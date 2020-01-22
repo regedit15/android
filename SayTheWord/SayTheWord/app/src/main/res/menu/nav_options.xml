@@ -1,42 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<item android:title="Listado">
-		<menu>
-			<group android:checkableBehavior="single">
-				<item
-					android:id="@+id/it_listadoPalabras"
-					android:title="Palabras" />
-				<item
-					android:id="@+id/it_listadoPalabrasProblematicas"
-					android:title="Palabras Problemáticas" />
-				<item
-					android:id="@+id/it_listadoVerbosIrregulares"
-					android:title="Verbos Irregulares" />
-				<item
-					android:id="@+id/it_listadoVerbosIrregularesProblematicos"
-					android:title="Verbos Irregulares Problematicos" />
-			</group>
-		</menu>
-	</item>
-	<item android:title="Juego">
-		<menu>
-			<group android:checkableBehavior="single">
-				<item
-					android:id="@+id/it_juegoPalabras"
-					android:title="Palabras" />
-				<item
-					android:id="@+id/it_juegoPalabrasProblematicas"
-					android:title="Palabras Problematicas" />
-				<item
-					android:id="@+id/it_juegoVerbosIrregulares"
-					android:title="Verbos Irregulares" />
-				<item
-					android:id="@+id/it_juegoVerbosIrregularesProblematicos"
-					android:title="Verbos Irregulares Problematicos" />
-				<item
-					android:id="@+id/it_juegoEscribirPalabra"
-					android:title="Escribir Palabras" />
-			</group>
-		</menu>
-	</item>
+	<group android:checkableBehavior="single">
+		<item
+			android:id="@+id/it_listado"
+			android:title="Listado" />
+		<item
+			android:id="@+id/it_juego"
+			android:title="Juego" />
+	</group>
 </menu>

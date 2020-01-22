@@ -151,8 +151,8 @@ public class UtilService {
 				add(new Palabra("Spineless", "Sin carácter", "Spainless"));
 				add(new Palabra("Varmint", "Bribón", "Varment"));
 				add(new Palabra("Rascal", "Bribón, pillo", "Rascol"));
-				add(new Palabra("Wrangle", "Disputar, reñir", "Wrangle"));
-				add(new Palabra("Belly", "Barriga", "Belly\n"));
+				add(new Palabra("Wrangle", "Disputar, reñir", "Wrangl"));
+				add(new Palabra("Belly", "Barriga", "Belly"));
 				add(new Palabra("Tough", "Difícil", "Tof"));
 				add(new Palabra("Handle", "Encargarse de, manipular", "Handl"));
 				add(new Palabra("Ornery", "Desagradable, vulgar", "Ornery"));

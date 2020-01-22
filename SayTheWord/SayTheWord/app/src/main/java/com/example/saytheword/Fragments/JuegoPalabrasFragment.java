@@ -33,7 +33,7 @@ public class JuegoPalabrasFragment extends BaseFragment {
 	private TextView tvJuegoPalabraAbajo;
 	private TextView tvJuegoPalabraAbajo2;
 	private TextView tvJuegoCantidadPalabras;
-	private List<Palabra> palabrasDesordenadas;
+	private List<Palabra> palabrasDesordenadas = new ArrayList<>();
 	private int indice;
 	private MaterialButton mbNext;
 	private MaterialButton btMostrarRespuestaJuego;
@@ -46,16 +46,20 @@ public class JuegoPalabrasFragment extends BaseFragment {
 	private Random random = new Random();
 	private ImageView ivCongratulations;
 	private String TIPO_JUEGO;
+	private int cantidadItems;
 
-	public JuegoPalabrasFragment(String TIPO_JUEGO) {
+	public JuegoPalabrasFragment(String TIPO_JUEGO, int cantidadItems) {
 		setHasOptionsMenu(true);
 		this.TIPO_TRADUCCION = JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
 		this.TIPO_JUEGO = TIPO_JUEGO;
+		this.cantidadItems = cantidadItems;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_juego_palabras, container, false);
+
+		setearTitulo("Juego");
 
 		tvJuegoPalabraArriba = view.findViewById(R.id.tvJuegoPalabraArriba);
 		tvJuegoPalabraAbajo = view.findViewById(R.id.tvJuegoPalabraAbajo);
@@ -213,6 +217,8 @@ public class JuegoPalabrasFragment extends BaseFragment {
 
 			Collections.shuffle(palabrasDesordenadas);
 			// --------------------------------------------------------------
+
+			palabrasDesordenadas = palabrasDesordenadas.subList(0, cantidadItems);
 
 			indice = 0;
 			setearTitulo();

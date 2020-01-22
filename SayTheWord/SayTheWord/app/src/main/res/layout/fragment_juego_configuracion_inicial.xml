@@ -83,7 +83,7 @@
 					android:hint="Cantidad de items"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toBottomOf="@+id/rgPalabrasOVerbosIrregulares">
+					app:layout_constraintTop_toBottomOf="@+id/swSoloPalabrasProblematicas">
 
 					<com.google.android.material.textfield.TextInputEditText
 						android:id="@+id/etCantidadItems"
@@ -100,6 +100,7 @@
 					android:layout_height="wrap_content"
 					android:layout_marginTop="24dp"
 					android:hint="Cantidad de intentos"
+					android:visibility="gone"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toBottomOf="@+id/textEdit2">
@@ -119,7 +120,7 @@
 					android:layout_marginTop="24dp"
 					android:text="Solo palabras problemáticas"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toBottomOf="@+id/etCantidadIntentosContenedor" />
+					app:layout_constraintTop_toBottomOf="@+id/rgPalabrasOVerbosIrregulares" />
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<com.google.android.material.button.MaterialButton
