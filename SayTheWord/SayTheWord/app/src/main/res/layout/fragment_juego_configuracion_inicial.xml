@@ -12,38 +12,67 @@
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/constraintLayout6"
-			android:layout_width="wrap_content"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent">
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintWidth_max="260dp">
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:id="@+id/constraintLayout"
-				android:layout_width="230dp"
+				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent">
 
-				<com.google.android.material.textfield.TextInputLayout
-					android:id="@+id/textEdit"
-					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-					android:layout_width="0dp"
+				<RadioGroup
+					android:id="@+id/rgEscrituraOVisualizacion"
+					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:hint="Cantidad de intentos"
+					android:checkedButton="@id/rdVisualizacion"
+					android:orientation="horizontal"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent">
 
-					<com.google.android.material.textfield.TextInputEditText
-						android:id="@+id/etCantidadIntentos"
+					<RadioButton
+						android:id="@+id/rdVisualizacion"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:text="Visualización" />
+
+					<RadioButton
+						android:id="@+id/rbEscritura"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:text="Escritura" />
+				</RadioGroup>
+
+				<RadioGroup
+					android:id="@+id/rgPalabrasOVerbosIrregulares"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					android:checkedButton="@id/rbPalabras"
+					app:layout_constraintTop_toBottomOf="@+id/rgEscrituraOVisualizacion">
+
+					<RadioButton
+						android:id="@+id/rbPalabras"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:inputType="number"
-						android:text="3" />
-				</com.google.android.material.textfield.TextInputLayout>
+						android:text="Palabras" />
+
+					<RadioButton
+						android:id="@+id/rbVerbosIrregulares"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="Verbos irregulares" />
+				</RadioGroup>
 
 				<com.google.android.material.textfield.TextInputLayout
 					android:id="@+id/textEdit2"
@@ -54,7 +83,7 @@
 					android:hint="Cantidad de items"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toBottomOf="@+id/textEdit">
+					app:layout_constraintTop_toBottomOf="@+id/rgPalabrasOVerbosIrregulares">
 
 					<com.google.android.material.textfield.TextInputEditText
 						android:id="@+id/etCantidadItems"
@@ -63,16 +92,35 @@
 						android:inputType="number"
 						android:text="3" />
 				</com.google.android.material.textfield.TextInputLayout>
-			</androidx.constraintlayout.widget.ConstraintLayout>
 
-			<Switch
-				android:id="@+id/swSoloPalabrasProblematicas"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="24dp"
-				android:text="Solo palabras problemáticas"
-				app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-				tools:layout_editor_absoluteX="5dp" />
+				<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/etCantidadIntentosContenedor"
+					style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					android:hint="Cantidad de intentos"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/textEdit2">
+
+					<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/etCantidadIntentos"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:inputType="number"
+						android:text="3" />
+				</com.google.android.material.textfield.TextInputLayout>
+
+				<Switch
+					android:id="@+id/swSoloPalabrasProblematicas"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					android:text="Solo palabras problemáticas"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/etCantidadIntentosContenedor" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<com.google.android.material.button.MaterialButton
 				android:id="@+id/btComenzarJuego"
@@ -84,7 +132,7 @@
 				app:backgroundTint="#82B1FF"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/swSoloPalabrasProblematicas" />
+				app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
