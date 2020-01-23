@@ -16,21 +16,75 @@
 			tools:layout_editor_absoluteX="50dp"
 			tools:layout_editor_absoluteY="110dp">
 
-			<ImageView
-				android:id="@+id/ivImagenFinal"
-				android:layout_width="0dp"
-				android:layout_height="0dp"
-				android:src="@drawable/congratulation"
-				android:visibility="visible"
+			<LinearLayout
+				android:id="@+id/tablaImagenConBotones"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:visibility="invisible"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
+				app:layout_constraintTop_toTopOf="parent">
+
+				<ImageView
+					android:id="@+id/ivImagenFinal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentLeft="true"
+					android:layout_alignParentRight="true"
+					android:layout_centerVertical="true"
+					android:adjustViewBounds="true"
+					android:cropToPadding="true"
+					android:src="@drawable/congratulation"
+					android:visibility="visible" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="horizontal">
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="1">
+
+						<com.google.android.material.button.MaterialButton
+							android:id="@+id/btVolver"
+							style="@style/Widget.MaterialComponents.Button"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Volver"
+							app:backgroundTint="#82B1FF"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+					</androidx.constraintlayout.widget.ConstraintLayout>
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1">
+
+						<com.google.android.material.button.MaterialButton
+							android:id="@+id/btRestart"
+							style="@style/Widget.MaterialComponents.Button"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Restart"
+							app:backgroundTint="#82B1FF"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+					</androidx.constraintlayout.widget.ConstraintLayout>
+				</LinearLayout>
+			</LinearLayout>
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:id="@+id/lyContenedorGeneral"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
+				android:visibility="visible"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -224,20 +278,33 @@
 									app:layout_constraintTop_toTopOf="parent" />
 							</androidx.constraintlayout.widget.ConstraintLayout>
 						</TableRow>
-					</TableLayout>
 
-					<TextView
-						android:id="@+id/tvCantidadIntentosRestantes"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="24dp"
-						android:gravity="center"
-						android:text="TextView"
-						android:textSize="@dimen/tamanioTextoJuegoVI"
-						android:textStyle="bold"
-						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintStart_toStartOf="parent"
-						app:layout_constraintTop_toBottomOf="@+id/tablaRespuestas" />
+						<TableRow
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:gravity="center_horizontal">
+
+							<androidx.constraintlayout.widget.ConstraintLayout
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_span="1"
+								android:layout_weight="1">
+
+								<TextView
+									android:id="@+id/tvCantidadIntentosRestantes"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="24dp"
+									android:gravity="center"
+									android:text="TextView"
+									android:textSize="@dimen/tamanioTextoJuegoVI"
+									android:textStyle="bold"
+									app:layout_constraintEnd_toEndOf="parent"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="parent" />
+							</androidx.constraintlayout.widget.ConstraintLayout>
+						</TableRow>
+					</TableLayout>
 				</androidx.constraintlayout.widget.ConstraintLayout>
 
 				<TableLayout
@@ -256,25 +323,12 @@
 							android:layout_height="match_parent"
 							android:layout_weight="1">
 
-							<com.google.android.material.button.MaterialButton
-								android:id="@+id/btVolver"
-								style="@style/Widget.MaterialComponents.Button"
+							<TextView
+								android:id="@+id/textView2"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="Volver"
-								app:backgroundTint="#82B1FF"
-								app:layout_constraintEnd_toEndOf="parent"
-								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toTopOf="parent" />
-
-							<com.google.android.material.button.MaterialButton
-								android:id="@+id/btEvaluar"
-								style="@style/Widget.MaterialComponents.Button"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:text="Evaluar"
-								app:backgroundTint="#82B1FF"
-								app:layout_constraintEnd_toEndOf="parent"
+								android:text="TextView"
+								android:visibility="invisible"
 								app:layout_constraintStart_toStartOf="parent"
 								app:layout_constraintTop_toTopOf="parent" />
 						</androidx.constraintlayout.widget.ConstraintLayout>
@@ -296,11 +350,11 @@
 								app:layout_constraintTop_toTopOf="parent" />
 
 							<com.google.android.material.button.MaterialButton
-								android:id="@+id/btRestart"
+								android:id="@+id/btEvaluar"
 								style="@style/Widget.MaterialComponents.Button"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="Restart"
+								android:text="Evaluar"
 								app:backgroundTint="#82B1FF"
 								app:layout_constraintEnd_toEndOf="parent"
 								app:layout_constraintStart_toStartOf="parent"
