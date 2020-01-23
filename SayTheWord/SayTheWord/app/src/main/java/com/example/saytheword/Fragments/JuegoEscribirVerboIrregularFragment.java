@@ -255,15 +255,10 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 		btEvaluar.setVisibility(View.VISIBLE);
 		btPalabraProblematica.setVisibility(View.VISIBLE);
 
-		// btRestart.setVisibility(View.INVISIBLE);
-		// btVolver.setVisibility(View.INVISIBLE);
-		// ivImagenFinal.setVisibility(View.INVISIBLE);
 		tablaImagenConBotones.setVisibility(View.INVISIBLE);
-		// tvCantidadIntentosRestantes.setVisibility(View.INVISIBLE);
 		tablaRespuestas.setVisibility(View.INVISIBLE);
 		btNext.setVisibility(View.INVISIBLE);
 
 		setearTextoArribaYcolorDeBoton();
 	}
-
 }

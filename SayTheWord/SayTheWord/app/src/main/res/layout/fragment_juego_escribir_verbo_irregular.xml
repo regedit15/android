@@ -292,11 +292,11 @@
 
 								<TextView
 									android:id="@+id/tvCantidadIntentosRestantes"
-									android:layout_width="wrap_content"
+									android:layout_width="0dp"
 									android:layout_height="wrap_content"
 									android:layout_marginTop="24dp"
 									android:gravity="center"
-									android:text="TextView"
+									android:text="TextView TextView "
 									android:textSize="@dimen/tamanioTextoJuegoVI"
 									android:textStyle="bold"
 									app:layout_constraintEnd_toEndOf="parent"
