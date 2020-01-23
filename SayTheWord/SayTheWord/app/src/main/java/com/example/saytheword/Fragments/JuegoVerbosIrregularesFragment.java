@@ -227,6 +227,12 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 			Collections.shuffle(verbosIrregularesDesordenadas);
 			// --------------------------------------------------------------
 
+			//------- Esto es por si el usuario quita una palabra problematica y se resetea el juego
+			if (cantidadItems > verbosIrregularesDesordenadas.size()) {
+				cantidadItems = verbosIrregularesDesordenadas.size();
+			}
+			// ---------------------------------------------------------------------------------
+
 			verbosIrregularesDesordenadas = verbosIrregularesDesordenadas.subList(0, cantidadItems);
 
 			indice = 0;

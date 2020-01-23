@@ -153,7 +153,7 @@ public class UtilService {
 				add(new Palabra("Rascal", "Bribón, pillo", "Rascol"));
 				add(new Palabra("Wrangle", "Disputar, reñir", "Wrangl"));
 				add(new Palabra("Belly", "Barriga", "Belly"));
-				add(new Palabra("Tough", "Difícil", "Tof"));
+				add(new Palabra("Tough", "Difícil, duro", "Tof"));
 				add(new Palabra("Handle", "Encargarse de, manipular", "Handl"));
 				add(new Palabra("Ornery", "Desagradable, vulgar", "Ornery"));
 				add(new Palabra("Stew", "Estofado, guiso", "Stiu"));
@@ -208,7 +208,6 @@ public class UtilService {
 				add(new Palabra("Bless", "Bendecir, santificar", "Bless"));
 				add(new Palabra("Groceries", "Comestibles", "Groceries"));
 				add(new Palabra("Doubt", "Duda", "Daut"));
-
 			}};
 
 			realmService.insertarPalabras(palabras);
@@ -238,8 +237,8 @@ public class UtilService {
 				add(new VerboIrregular("Blow", "Blow", "Soplar", "Blew", "Bluu", "Blown ", "Blown "));
 				add(new VerboIrregular("Break", "Breik", "Romper, recreo, faltar a", "Broke", "Brouk", "Broken", "Brouken"));
 				add(new VerboIrregular("Bring", "Bring", "Traer, llevar", "Brought", "Broot", "Brought ", "Broot"));
-				add(new VerboIrregular("Build", "Bild", "Construir", "Built ", "Bilt", "Built", "Built"));
-				add(new VerboIrregular("Burn", "Bern", "Quemar", "Burnt/Burned", "Bernt", "Burnt/Burned", "Bernt"));
+				add(new VerboIrregular("Build", "Bild", "Construir", "Built ", "Bilt", "Built", "Bilt"));
+				add(new VerboIrregular("Burn", "Bern", "Quemar", "Burnt/Burned", "Bernt/Bernd", "Burnt/Burned", "Bernt/Bernd"));
 				add(new VerboIrregular("Burst", "Burst", "Reventar, surgir", "Burst", "Burst", "Burst", "Burst"));
 				add(new VerboIrregular("Buy", "Bay", "Comprar", "Bought", "Boot", "Bought", "Boot"));
 				add(new VerboIrregular("Catch", "Catch", "Atrapar", "Caught", "Coot", "Caught", "Coot"));

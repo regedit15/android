@@ -48,7 +48,7 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 		etCantidadIntentos = view.findViewById(R.id.etCantidadIntentos);
 		etCantidadIntentosContenedor = view.findViewById(R.id.etCantidadIntentosContenedor);
 
-		setearCantidadItems2(utilService.getPalabras(true).size());
+		setearCantidadItems2(utilService.getPalabras(false).size());
 
 		btComenzarJuego.setOnClickListener(new View.OnClickListener() {
 			@Override

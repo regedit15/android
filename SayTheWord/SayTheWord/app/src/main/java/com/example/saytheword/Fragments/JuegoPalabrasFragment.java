@@ -218,6 +218,12 @@ public class JuegoPalabrasFragment extends BaseFragment {
 			Collections.shuffle(palabrasDesordenadas);
 			// --------------------------------------------------------------
 
+			//------- Esto es por si el usuario quita una palabra problematica y se resetea el juego
+			if (cantidadItems > palabrasDesordenadas.size()) {
+				cantidadItems = palabrasDesordenadas.size();
+			}
+			// ---------------------------------------------------------------------------------
+
 			palabrasDesordenadas = palabrasDesordenadas.subList(0, cantidadItems);
 
 			indice = 0;
