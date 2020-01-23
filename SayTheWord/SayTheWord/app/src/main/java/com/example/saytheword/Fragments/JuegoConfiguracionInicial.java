@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 
@@ -48,7 +47,7 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 		etCantidadIntentos = view.findViewById(R.id.etCantidadIntentos);
 		etCantidadIntentosContenedor = view.findViewById(R.id.etCantidadIntentosContenedor);
 
-		setearCantidadItems2(utilService.getPalabras(false).size());
+		setearCantidadItems(utilService.getPalabras(false).size());
 
 		btComenzarJuego.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -78,18 +77,34 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 
 							break;
 						case R.id.rbEscritura:
-							cambiarFragment(new JuegoEscribirPalabra(
 
-									Integer.parseInt(etCantidadIntentos.getText().toString()),
+							switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
+								case R.id.rbPalabras:
+									cambiarFragment(new JuegoEscribirPalabra(
 
-									Integer.parseInt(etCantidadItems.getText().toString()),
+											Integer.parseInt(etCantidadIntentos.getText().toString()),
 
-									swSoloPalabrasProblematicas.isChecked()
+											Integer.parseInt(etCantidadItems.getText().toString()),
 
-							), R.id.frame_layout);
+											swSoloPalabrasProblematicas.isChecked()
+
+									), R.id.frame_layout);
+									break;
+								case R.id.rbVerbosIrregulares:
+
+									cambiarFragment(new JuegoEscribirVerboIrregularFragment(
+
+											Integer.parseInt(etCantidadIntentos.getText().toString()),
+
+											Integer.parseInt(etCantidadItems.getText().toString()),
+
+											swSoloPalabrasProblematicas.isChecked()
+
+									), R.id.frame_layout);
+									break;
+							}
 							break;
 					}
-
 				} catch (GenericException e) {
 					mostrarPopup(e.getTitulo(), e.getMensaje());
 				}
@@ -102,30 +117,26 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 				switch (checkedId) {
 					case R.id.rdVisualizacion:
 						etCantidadIntentosContenedor.setVisibility(View.GONE);
-						rgPalabrasOVerbosIrregulares.getChildAt(1).setEnabled(true);
 						break;
 					case R.id.rbEscritura:
 						etCantidadIntentosContenedor.setVisibility(View.VISIBLE);
-						rgPalabrasOVerbosIrregulares.getChildAt(1).setEnabled(false);
-						((RadioButton) rgPalabrasOVerbosIrregulares.getChildAt(0)).setChecked(true);
 						break;
 				}
-				setearCantidadItems();
+				calcularCantidadItems();
 			}
 		});
-
 
 		rgPalabrasOVerbosIrregulares.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				setearCantidadItems();
+				calcularCantidadItems();
 			}
 		});
 
 		swSoloPalabrasProblematicas.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				setearCantidadItems();
+				calcularCantidadItems();
 			}
 		});
 
@@ -178,41 +189,23 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 		}
 	}
 
-	private void setearCantidadItems() {
+	private void calcularCantidadItems() {
 
 		int cantidad = 0;
 
-		switch (rgEscrituraOVisualizacion.getCheckedRadioButtonId()) {
-			case R.id.rdVisualizacion:
-				switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
-					case R.id.rbPalabras:
-						if (swSoloPalabrasProblematicas.isChecked()) {
-							cantidad = utilService.getPalabras(true).size();
-						} else {
-							cantidad = utilService.getPalabras(false).size();
-						}
-						break;
-					case R.id.rbVerbosIrregulares:
-						if (swSoloPalabrasProblematicas.isChecked()) {
-							cantidad = utilService.getVerbosIrregulares(true).size();
-						} else {
-							cantidad = utilService.getVerbosIrregulares(false).size();
-						}
-						break;
-				}
+		switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
+			case R.id.rbPalabras:
+				cantidad = utilService.getPalabras(swSoloPalabrasProblematicas.isChecked()).size();
 				break;
-			case R.id.rbEscritura:
-				if (swSoloPalabrasProblematicas.isChecked()) {
-					cantidad = utilService.getPalabras(true).size();
-				} else {
-					cantidad = utilService.getPalabras(false).size();
-				}
+			case R.id.rbVerbosIrregulares:
+				cantidad = utilService.getVerbosIrregulares(swSoloPalabrasProblematicas.isChecked()).size();
 				break;
 		}
-		setearCantidadItems2(cantidad);
+
+		setearCantidadItems(cantidad);
 	}
 
-	private void setearCantidadItems2(int cantidad) {
+	private void setearCantidadItems(int cantidad) {
 		etCantidadItems.setText(String.valueOf(cantidad));
 	}
 }
