@@ -138,8 +138,8 @@
 
 							<com.google.android.material.textfield.TextInputLayout
 								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-								android:layout_width="match_parent"
-								android:layout_height="match_parent"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:hint="Infinitivo">
 
@@ -151,8 +151,8 @@
 
 							<com.google.android.material.textfield.TextInputLayout
 								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-								android:layout_width="match_parent"
-								android:layout_height="match_parent"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:hint="Pasado">
 
@@ -164,7 +164,7 @@
 
 							<com.google.android.material.textfield.TextInputLayout
 								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-								android:layout_width="match_parent"
+								android:layout_width="0dp"
 								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:hint="Participio">
@@ -191,42 +191,33 @@
 
 							<TextView
 								android:id="@+id/tvSolucionInfinitivo"
-								android:layout_width="wrap_content"
+								android:layout_width="0dp"
 								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:gravity="center"
 								android:text="TextView"
 								android:textSize="@dimen/tamanioTextoJuegoVI"
-								android:textStyle="bold"
-								app:layout_constraintEnd_toEndOf="parent"
-								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toTopOf="parent" />
+								android:textStyle="bold" />
 
 							<TextView
 								android:id="@+id/tvSolucionPasado"
-								android:layout_width="wrap_content"
+								android:layout_width="0dp"
 								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:gravity="center"
 								android:text="TextView"
 								android:textSize="@dimen/tamanioTextoJuegoVI"
-								android:textStyle="bold"
-								app:layout_constraintEnd_toEndOf="parent"
-								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toTopOf="parent" />
+								android:textStyle="bold" />
 
 							<TextView
 								android:id="@+id/tvSolucionParticipio"
-								android:layout_width="wrap_content"
+								android:layout_width="0dp"
 								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:gravity="center"
 								android:text="TextView"
 								android:textSize="@dimen/tamanioTextoJuegoVI"
-								android:textStyle="bold"
-								app:layout_constraintEnd_toEndOf="parent"
-								app:layout_constraintStart_toStartOf="parent"
-								app:layout_constraintTop_toTopOf="parent" />
+								android:textStyle="bold" />
 						</TableRow>
 
 						<TableRow
