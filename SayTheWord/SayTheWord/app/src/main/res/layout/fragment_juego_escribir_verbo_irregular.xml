@@ -36,8 +36,7 @@
 					android:layout_centerVertical="true"
 					android:adjustViewBounds="true"
 					android:cropToPadding="true"
-					android:src="@drawable/congratulation"
-					android:visibility="visible" />
+					android:src="@drawable/congratulation" />
 
 				<LinearLayout
 					android:layout_width="match_parent"
@@ -84,7 +83,6 @@
 				android:id="@+id/lyContenedorGeneral"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
-				android:visibility="visible"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -141,44 +139,50 @@
 								android:layout_width="0dp"
 								android:layout_height="wrap_content"
 								android:layout_marginLeft="2dp"
-								android:layout_marginRight="1dp"
 								android:layout_weight="1"
-								android:hint="Infinitivo">
+								android:hint="Infinitivo"
+								android:inputType="text">
 
 								<com.google.android.material.textfield.TextInputEditText
 									android:id="@+id/etRespuestaInfinitivo"
 									android:layout_width="match_parent"
-									android:layout_height="wrap_content" />
+									android:layout_height="wrap_content"
+									android:inputType="text"
+									android:nextFocusDown="@id/etRespuestaPasado" />
 							</com.google.android.material.textfield.TextInputLayout>
 
 							<com.google.android.material.textfield.TextInputLayout
 								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 								android:layout_width="0dp"
 								android:layout_height="wrap_content"
-								android:layout_marginLeft="1dp"
-								android:layout_marginRight="1dp"
+								android:layout_marginLeft="2dp"
+								android:layout_marginRight="2dp"
 								android:layout_weight="1"
 								android:hint="Pasado">
 
 								<com.google.android.material.textfield.TextInputEditText
 									android:id="@+id/etRespuestaPasado"
 									android:layout_width="match_parent"
-									android:layout_height="wrap_content" />
+									android:layout_height="wrap_content"
+									android:inputType="text"
+									android:nextFocusDown="@id/etRespuestaParticipio" />
 							</com.google.android.material.textfield.TextInputLayout>
 
 							<com.google.android.material.textfield.TextInputLayout
 								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
 								android:layout_width="0dp"
 								android:layout_height="wrap_content"
-								android:layout_marginLeft="1dp"
 								android:layout_marginRight="2dp"
 								android:layout_weight="1"
-								android:hint="Participio">
+								android:hint="Participio"
+								android:inputType="text">
 
 								<com.google.android.material.textfield.TextInputEditText
 									android:id="@+id/etRespuestaParticipio"
 									android:layout_width="match_parent"
-									android:layout_height="wrap_content" />
+									android:layout_height="wrap_content"
+android:inputType="text"
+android:nextFocusDown="@id/btEvaluar" />
 							</com.google.android.material.textfield.TextInputLayout>
 						</TableRow>
 					</TableLayout>
@@ -226,9 +230,6 @@
 								android:textStyle="bold" />
 						</TableRow>
 
-
-
-
 						<TableRow
 							android:layout_width="match_parent"
 							android:layout_height="match_parent">
@@ -263,8 +264,6 @@
 								android:textSize="@dimen/tamanioTextoJuegoVI"
 								android:textStyle="bold" />
 						</TableRow>
-
-
 
 						<TableRow
 							android:layout_width="match_parent"

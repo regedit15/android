@@ -238,7 +238,7 @@ public class UtilService {
 				add(new VerboIrregular("Begin", "Bigen", "Comenzar, empezar", "Began", "Bigan", "Begun", "Bigon"));
 				add(new VerboIrregular("Bend", "Bend", "Doblar, inclinarse", "Bent", "Bent", "Bent", "Bent"));
 				add(new VerboIrregular("Bite", "Bait", "Morder, picar", "Bit", "Bit", "Bit", "Bit"));
-				add(new VerboIrregular("Blow", "Blow", "Soplar", "Blew", "Bluu", "Blown", "Blown "));
+				add(new VerboIrregular("Blow", "Blow", "Soplar", "Blew", "Bluu", "Blown", "Blown"));
 				add(new VerboIrregular("Break", "Breik", "Romper, recreo, faltar a", "Broke", "Brouk", "Broken", "Brouken"));
 				add(new VerboIrregular("Bring", "Bring", "Traer, llevar", "Brought", "Broot", "Brought", "Broot"));
 				add(new VerboIrregular("Build", "Bild", "Construir", "Built", "Bilt", "Built", "Bilt"));
@@ -264,7 +264,7 @@ public class UtilService {
 				add(new VerboIrregular("Fight", "Faight", "Luchar", "Fought", "Foot", "Fought", "Foot"));
 				add(new VerboIrregular("Find", "Faind", "Hallar, encontrar", "Found", "Faund", "Found", "Faund"));
 				add(new VerboIrregular("Fly", "Flay", "Volar", "Flew", "Fluu", "Flow", "Flouw"));
-				add(new VerboIrregular("Forbid", "Forbid", "Prohibir", "Forbade", "Forbeid", "Dorbidden", "Forbiddn"));
+				add(new VerboIrregular("Forbid", "Forbid", "Prohibir", "Forbade", "Forbeid", "Forbidden", "Forbiddn"));
 				add(new VerboIrregular("Forgive", "Forgiv", "Perdonar", "Forgave", "Forgeiv", "Forgiven", "Forgiven"));
 				add(new VerboIrregular("Freeze", "Friiz", "Congelar", "Froze", "Fouz", "Frozen", "Fouzen"));
 				add(new VerboIrregular("Get", "Get", "Obtener, llegar a, ponerse", "Got", "Gat/Got", "Got", "Gat/Got"));

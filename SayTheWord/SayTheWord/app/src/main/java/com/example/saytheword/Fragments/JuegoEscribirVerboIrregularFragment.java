@@ -198,6 +198,8 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 		etRespuestaInfinitivo.setText("");
 		etRespuestaParticipio.setText("");
 		etRespuestaPasado.setText("");
+
+		etRespuestaInfinitivo.requestFocus();
 	}
 
 	private void setearTitulo() {
@@ -208,6 +210,7 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 
 		if (indice == verbosIrregularesDesordenados.size()) {
 			lyContenedorGeneral.setVisibility(View.INVISIBLE);
+			tablaImagenConBotones.setVisibility(View.VISIBLE);
 			Glide.with(getContext()).load(R.drawable.congratulation).into(ivImagenFinal);
 		} else {
 			btNext.setVisibility(View.INVISIBLE);
