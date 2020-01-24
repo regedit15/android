@@ -28,6 +28,10 @@ public class UtilService {
 	public UtilService() {
 	}
 
+	public boolean conteinsIgnoreCase(String palabraBuscada, String frase) {
+		return frase.toLowerCase().contains(frase.toLowerCase());
+	}
+
 	public List<Palabra> getPalabras(boolean soloPalabrasProblematicas) {
 
 		List<Palabra> palabras = realmService.getPalabras();
@@ -228,39 +232,39 @@ public class UtilService {
 
 		if (palabras.isEmpty()) {
 			palabras = new ArrayList<VerboIrregular>() {{
-				add(new VerboIrregular("Be", "Bi", "Ser, estar", "Was/Were", "Was/were", "Been", "Biin"));
+				add(new VerboIrregular("Be", "Bi", "Ser, estar", "Was/Were", "Was/Were", "Been", "Biin"));
 				add(new VerboIrregular("Beat", "Bit", "Golpear", "Beat", "Bit", "Beaten", "Biten"));
 				add(new VerboIrregular("Become", "Bicom", "Convertirse", "Became", "Biqueim", "Become", "Bicom"));
 				add(new VerboIrregular("Begin", "Bigen", "Comenzar, empezar", "Began", "Bigan", "Begun", "Bigon"));
 				add(new VerboIrregular("Bend", "Bend", "Doblar, inclinarse", "Bent", "Bent", "Bent", "Bent"));
 				add(new VerboIrregular("Bite", "Bait", "Morder, picar", "Bit", "Bit", "Bit", "Bit"));
-				add(new VerboIrregular("Blow", "Blow", "Soplar", "Blew", "Bluu", "Blown ", "Blown "));
+				add(new VerboIrregular("Blow", "Blow", "Soplar", "Blew", "Bluu", "Blown", "Blown "));
 				add(new VerboIrregular("Break", "Breik", "Romper, recreo, faltar a", "Broke", "Brouk", "Broken", "Brouken"));
-				add(new VerboIrregular("Bring", "Bring", "Traer, llevar", "Brought", "Broot", "Brought ", "Broot"));
-				add(new VerboIrregular("Build", "Bild", "Construir", "Built ", "Bilt", "Built", "Bilt"));
+				add(new VerboIrregular("Bring", "Bring", "Traer, llevar", "Brought", "Broot", "Brought", "Broot"));
+				add(new VerboIrregular("Build", "Bild", "Construir", "Built", "Bilt", "Built", "Bilt"));
 				add(new VerboIrregular("Burn", "Bern", "Quemar", "Burnt/Burned", "Bernt/Bernd", "Burnt/Burned", "Bernt/Bernd"));
 				add(new VerboIrregular("Burst", "Burst", "Reventar, surgir", "Burst", "Burst", "Burst", "Burst"));
 				add(new VerboIrregular("Buy", "Bay", "Comprar", "Bought", "Boot", "Bought", "Boot"));
 				add(new VerboIrregular("Catch", "Catch", "Atrapar", "Caught", "Coot", "Caught", "Coot"));
-				add(new VerboIrregular("Choos", "Chuus", "Atrapar", "Chose", "Chouse", "Chosen", "Chousen"));
+				add(new VerboIrregular("Choos", "Chuus", "Atrapar", "Chose", "Chous", "Chosen", "Chousen"));
 				add(new VerboIrregular("Come", "Cam", "Venir, llegart", "Came", "Keim", "Come", "Cam"));
 				add(new VerboIrregular("Cost", "Cost", "Costar, precio", "Cost", "Cost", "Cost", "Cost"));
 				add(new VerboIrregular("Cut", "Cot", "Cortar", "Cut", "Cot", "Cut", "Cot"));
 				add(new VerboIrregular("Deal", "Diel", "Tratar, negociar, reparto", "Dealt", "Delt", "Dealt", "Delt"));
 				add(new VerboIrregular("Dig", "Dig", "Cabar", "Dug", "Dog", "Dug", "Dog"));
-				add(new VerboIrregular("Do", "Do", "Hacer", "Did", "Did", "Done", "Don"));
+				add(new VerboIrregular("Do", "Du", "Hacer", "Did", "Did", "Done", "Don"));
 				add(new VerboIrregular("Draw", "Dra", "Dibujar, sacar, extraer, empate, sacar", "Drew", "Druu", "Drawn", "Drawn"));
 				add(new VerboIrregular("Dream", "Drim", "Soñar", "Dreamt/Dreamed", "Dramt/Drimd", "Dreamt/Dreamed", "Dramt/Drim"));
 				add(new VerboIrregular("Drink", "Drink", "Beber", "Drank", "Drank", "Drunk", "Dronk"));
-				add(new VerboIrregular("Drive", "Draiv", "Conducir", "Drove", "Drouv", "Driven", "driven"));
+				add(new VerboIrregular("Drive", "Draiv", "Conducir", "Drove", "Drouv", "Driven", "Driven"));
 				add(new VerboIrregular("Eat", "Iit", "Comer", "Ate", "Eit", "Eaten", "Itn"));
 				add(new VerboIrregular("Fall", "Fool", "Caer", "Fell", "Fell", "Fallen", "Follen"));
 				add(new VerboIrregular("Feed", "Fiid", "Alimentar", "Fed", "Fed", "Fed", "Fed"));
 				add(new VerboIrregular("Feel", "Fiil", "Sentir, tocar", "Felt", "Felt", "Felt", "Felt"));
-				add(new VerboIrregular("Fight", "Faight", "Sentir, tocar", "Fought", "Foot", "Fought", "Foot"));
-				add(new VerboIrregular("Find", "Faind", "Hallar, encontrar", "Found", "Faund", "Found", "Found"));
+				add(new VerboIrregular("Fight", "Faight", "Luchar", "Fought", "Foot", "Fought", "Foot"));
+				add(new VerboIrregular("Find", "Faind", "Hallar, encontrar", "Found", "Faund", "Found", "Faund"));
 				add(new VerboIrregular("Fly", "Flay", "Volar", "Flew", "Fluu", "Flow", "Flouw"));
-				add(new VerboIrregular("Forbid", "Forbid", "Prohibir", "Forbade", "Forbeid", "Dorbidden", "Dorbiddn"));
+				add(new VerboIrregular("Forbid", "Forbid", "Prohibir", "Forbade", "Forbeid", "Dorbidden", "Forbiddn"));
 				add(new VerboIrregular("Forgive", "Forgiv", "Perdonar", "Forgave", "Forgeiv", "Forgiven", "Forgiven"));
 				add(new VerboIrregular("Freeze", "Friiz", "Congelar", "Froze", "Fouz", "Frozen", "Fouzen"));
 				add(new VerboIrregular("Get", "Get", "Obtener, llegar a, ponerse", "Got", "Gat/Got", "Got", "Gat/Got"));
@@ -342,5 +346,6 @@ public class UtilService {
 
 		return palabras;
 	}
+
 
 }

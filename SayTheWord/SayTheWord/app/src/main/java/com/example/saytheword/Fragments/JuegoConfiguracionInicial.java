@@ -147,19 +147,12 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 
 		int cantidadItems = 0;
 
-		switch (rgEscrituraOVisualizacion.getCheckedRadioButtonId()) {
-			case R.id.rdVisualizacion:
-				switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
-					case R.id.rbPalabras:
-						cantidadItems = utilService.getPalabras(swSoloPalabrasProblematicas.isChecked()).size();
-						break;
-					case R.id.rbVerbosIrregulares:
-						cantidadItems = utilService.getVerbosIrregulares(swSoloPalabrasProblematicas.isChecked()).size();
-						break;
-				}
-				break;
-			case R.id.rbEscritura:
+		switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
+			case R.id.rbPalabras:
 				cantidadItems = utilService.getPalabras(swSoloPalabrasProblematicas.isChecked()).size();
+				break;
+			case R.id.rbVerbosIrregulares:
+				cantidadItems = utilService.getVerbosIrregulares(swSoloPalabrasProblematicas.isChecked()).size();
 				break;
 		}
 

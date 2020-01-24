@@ -32,6 +32,11 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 	private TextView tvSolucionInfinitivo;
 	private TextView tvSolucionPasado;
 	private TextView tvSolucionParticipio;
+
+	private TextView tvPronunciacionInfinitivo;
+	private TextView tvPronunciacionPasado;
+	private TextView tvPronunciacionParticipio;
+
 	private TableLayout tablaRespuestas;
 	private TextView tvCantidadIntentosRestantes;
 	private MaterialButton btEvaluar;
@@ -73,6 +78,9 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 		tvSolucionInfinitivo = view.findViewById(R.id.tvSolucionInfinitivo);
 		tvSolucionPasado = view.findViewById(R.id.tvSolucionPasado);
 		tvSolucionParticipio = view.findViewById(R.id.tvSolucionParticipio);
+		tvPronunciacionInfinitivo = view.findViewById(R.id.tvPronunciacionInfinitivo);
+		tvPronunciacionPasado = view.findViewById(R.id.tvPronunciacionPasado);
+		tvPronunciacionParticipio = view.findViewById(R.id.tvPronunciacionParticipio);
 		tablaRespuestas = view.findViewById(R.id.tablaRespuestas);
 		btNext = view.findViewById(R.id.btNext);
 		btEvaluar = view.findViewById(R.id.btEvaluar);
@@ -113,6 +121,10 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 						tvSolucionInfinitivo.setText(verbosIrregularesDesordenados.get(indice).getInfinitivo());
 						tvSolucionPasado.setText(verbosIrregularesDesordenados.get(indice).getPasado());
 						tvSolucionParticipio.setText(verbosIrregularesDesordenados.get(indice).getParticipio());
+
+						tvPronunciacionInfinitivo.setText(verbosIrregularesDesordenados.get(indice).getPronunciacion());
+						tvPronunciacionPasado.setText(verbosIrregularesDesordenados.get(indice).getPasadoPronunciacion());
+						tvPronunciacionParticipio.setText(verbosIrregularesDesordenados.get(indice).getParticipioPronunciacion());
 
 
 						if (respuestaInfinitivo) {
