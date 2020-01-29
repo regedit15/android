@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.saytheword.Fragments.JuegoConfiguracionInicial;
-import com.example.saytheword.Fragments.JuegoEscribirVerboIrregularFragment;
 import com.example.saytheword.Fragments.SeleccionListadoFragment;
 import com.example.saytheword.R;
 import com.example.saytheword.Services.RealmService;
@@ -71,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
 		});
 
 
-		// cambiarFragment(new SeleccionListadoFragment(), navigationView.getMenu().getItem(0));
-		cambiarFragment(new JuegoEscribirVerboIrregularFragment(3, 5, false), navigationView.getMenu().getItem(0));
+		cambiarFragment(new SeleccionListadoFragment(), navigationView.getMenu().getItem(0));
+		// cambiarFragment(new JuegoEscribirVerboIrregularFragment(3, 5, false), navigationView.getMenu().getItem(0));
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

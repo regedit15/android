@@ -266,7 +266,7 @@ public class UtilService {
 				add(new VerboIrregular("Fly", "Flay", "Volar", "Flew", "Fluu", "Flow", "Flouw"));
 				add(new VerboIrregular("Forbid", "Forbid", "Prohibir", "Forbade", "Forbeid", "Forbidden", "Forbiddn"));
 				add(new VerboIrregular("Forgive", "Forgiv", "Perdonar", "Forgave", "Forgeiv", "Forgiven", "Forgiven"));
-				add(new VerboIrregular("Freeze", "Friiz", "Congelar", "Froze", "Fouz", "Frozen", "FRouzen"));
+				add(new VerboIrregular("Freeze", "Friiz", "Congelar", "Froze", "Fouz", "Frozen", "Frouzen"));
 				add(new VerboIrregular("Get", "Get", "Obtener, llegar a, ponerse", "Got", "Gat/Got", "Got", "Gat/Got"));
 				add(new VerboIrregular("Give", "Giv", "Dar, otorgar, entregar", "Gave", "Geiv", "Given", "Given"));
 				add(new VerboIrregular("Go", "Gou", "Ir, vamos", "Went", "Went", "Gone", "Gon"));
@@ -297,7 +297,7 @@ public class UtilService {
 				add(new VerboIrregular("Ride", "Raid", "Montar, andar, pasear", "Rode", "Roud", "Ridden", "Riddn"));
 				add(new VerboIrregular("Ring", "Ring", "Llamar, sonar", "Rang", "Rang", "Rung", "Rong"));
 				add(new VerboIrregular("Rise", "Raise", "Subir, crecer, levantarse", "Rose", "Rous", "Risen", "Risen"));
-				add(new VerboIrregular("Run", "Ran", "Correr", "Ran", "Raan", "Run", "Raan"));
+				add(new VerboIrregular("Run", "Ran", "Correr", "Ran", "Raan", "Run", "Ran"));
 				add(new VerboIrregular("Say", "Sey", "Decir", "Said", "Sed", "Said", "Sed"));
 				add(new VerboIrregular("See", "Sii", "Ver", "Saw", "Soo", "Seen", "Siin"));
 				add(new VerboIrregular("Sell", "Sell", "Vender", "Sold", "Sold", "Sold", "Sold"));
