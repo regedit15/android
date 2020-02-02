@@ -275,5 +275,9 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 		btNext.setVisibility(View.INVISIBLE);
 
 		setearTextoArribaYcolorDeBoton();
+
+		etRespuestaInfinitivo.setText("");
+		etRespuestaParticipio.setText("");
+		etRespuestaPasado.setText("");
 	}
 }

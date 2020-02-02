@@ -156,8 +156,6 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		continuarJuego();
 		lyRespuestaJuego.setVisibility(View.INVISIBLE);
 		etRespuesta.setText("");
-
-
 	}
 
 	private void setearTitulo() {
@@ -250,5 +248,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		btPalabraProblematica.setVisibility(View.VISIBLE);
 
 		setearTextoArribaYcolorDeBoton();
+
+		etRespuesta.setText("");
 	}
 }

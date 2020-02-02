@@ -65,7 +65,7 @@ public class UtilService {
 				add(new Palabra("Flaw", "Falla", "Floa"));
 				add(new Palabra("Flip", "Dar La Vuelta", "Flep"));
 				add(new Palabra("Gee", "Caramba", "Gii"));
-				add(new Palabra("Get Mean", "Ser Malo", "Get Min"));
+				add(new Palabra("Get Mean", "Ser malo", "Get Min"));
 				add(new Palabra("Grab", "Agarrar", "Grab"));
 				add(new Palabra("Heck", "Infierno", "Hack"));
 				add(new Palabra("Highbrow", "Intelectual", "Highbrow"));
@@ -216,7 +216,7 @@ public class UtilService {
 				add(new Palabra("Restless", "Inquieto", "Restless"));
 				add(new Palabra("Trunk", "Tronco, maletero, baul", "Tronk"));
 				add(new Palabra("Quite", "Bastante", "Kwait"));
-				add(new Palabra("What does it take", "Qué Se Necesita", "What dos it taik"));
+				add(new Palabra("What does it take", "Qué se necesita", "What dos it taik"));
 				add(new Palabra("Moron", "Idiota, imbecil", "Moran"));
 				add(new Palabra("Fit In", "Encajar", "Fit In"));
 				add(new Palabra("Wit", "Ingenio", "Wit"));
@@ -232,7 +232,7 @@ public class UtilService {
 				add(new Palabra("Praise", "Alabar, elogiar", "Preis"));
 				add(new Palabra("Earlier", "Más temprano", "Erlier"));
 				add(new Palabra("Toe", "Dedo del pie", "Tou"));
-				add(new Palabra("Diaper", "Pañal", "Diaper"));
+				add(new Palabra("Diaper", "Pañal", "Daiper"));
 				add(new Palabra("Recipe", "Receta", "Recepi"));
 				add(new Palabra("Due", "Debido", "Du"));
 				add(new Palabra("Starv", "Morir de hambre", "Starv"));
@@ -309,7 +309,7 @@ public class UtilService {
 				add(new VerboIrregular("Buy", "Bay", "Comprar", "Bought", "Boot", "Bought", "Boot"));
 				add(new VerboIrregular("Catch", "Catch", "Atrapar", "Caught", "Coot", "Caught", "Coot"));
 				add(new VerboIrregular("Choos", "Chuus", "Atrapar", "Chose", "Chous", "Chosen", "Chousen"));
-				add(new VerboIrregular("Come", "Cam", "Venir, llegart", "Came", "Keim", "Come", "Cam"));
+				add(new VerboIrregular("Come", "Cam", "Venir, llegar", "Came", "Keim", "Come", "Cam"));
 				add(new VerboIrregular("Cost", "Cost", "Costar, precio", "Cost", "Cost", "Cost", "Cost"));
 				add(new VerboIrregular("Cut", "Cot", "Cortar", "Cut", "Cot", "Cut", "Cot"));
 				add(new VerboIrregular("Deal", "Diel", "Tratar, negociar, reparto", "Dealt", "Delt", "Dealt", "Delt"));
@@ -341,13 +341,13 @@ public class UtilService {
 				add(new VerboIrregular("Hold", "Hold", "Sostener, agarrar", "Held", "Held", "Held", "Held"));
 				add(new VerboIrregular("Hurt", "Hurt/Hert", "Herir, lastimar", "Hurt", "Hurt/Hert", "Hurt", "Hurt/Hert"));
 				add(new VerboIrregular("Keep", "Kiip", "Conservar, quedarse, guardar, lastimar", "Kept", "Kept", "Kept", "Kept"));
-				add(new VerboIrregular("Know", "Now", "Saber, conocer", "Knew", "Niu", "Known", "Known"));
+				add(new VerboIrregular("Know", "Now", "Saber, conocer", "Knew", "Niu", "Known", "Nown"));
 				add(new VerboIrregular("Lay", "Ley", "Poner, colocar, tenderse, hechar", "Laid", "Leid", "Laid", "Leid"));
 				add(new VerboIrregular("Lead", "Liid", "Conducir, llevar, dirigir", "Led", "Led", "Led", "Led"));
 				add(new VerboIrregular("Learn", "Lern", "Aprender", "Lernt/Lerned", "Lernt/Lernd", "Lernt/Lerned", "Lernt/Lernd"));
 				add(new VerboIrregular("Leave", "Liiv", "Dejar", "Left", "Left", "Left", "Left"));
 				add(new VerboIrregular("Let", "Let", "Permitir", "Let", "Let", "Let", "Let"));
-				add(new VerboIrregular("Lie", "Lai", "Mentir, hecharse, acostarse", "Lay", "Ley", "Lain", "Lein"));
+				add(new VerboIrregular("Lie", "Lai", "Mentir", "Lay", "Ley", "Lain", "Lein"));
 				add(new VerboIrregular("Light", "Laight", "Encender, prender", "Lit", "Lit", "Lit", "Lit"));
 				add(new VerboIrregular("Lose", "Luus", "Perder", "Lost", "Lost", "Lost", "Lost"));
 				add(new VerboIrregular("Make", "Meike", "Hacer", "Made", "Meid", "Made", "Meid"));
