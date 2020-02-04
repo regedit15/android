@@ -2,11 +2,15 @@ package martin.ingles.saytheword.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import martin.ingles.saytheword.R;
 import com.google.android.material.button.MaterialButton;
+
+import martin.ingles.saytheword.R;
 
 import static martin.ingles.saytheword.Services.UtilService.LISTADO_PALABRAS;
 import static martin.ingles.saytheword.Services.UtilService.LISTADO_PALABRAS_PROBLEMATCAS;
@@ -21,6 +25,7 @@ public class SeleccionListadoFragment extends BaseFragment {
 	MaterialButton btListadoVerbosIrregularesProblematicos;
 
 	public SeleccionListadoFragment() {
+		setHasOptionsMenu(true);
 	}
 
 	@Override
@@ -63,5 +68,29 @@ public class SeleccionListadoFragment extends BaseFragment {
 		});
 		return view;
 	}
+
+	//----------- Option Menu COMENTAR EN VERSION DE PRODUCCION
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.action_bar_menu_seleccion_listado, menu);
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		boolean resultado;
+
+		switch (item.getItemId()) {
+			case R.id.reiniciar_palabras:
+				utilService.insertarDatosSinModificarPalabrasProblematicas();
+				resultado = true;
+				break;
+			default:
+				resultado = super.onOptionsItemSelected(item);
+				break;
+		}
+		return resultado;
+	}
+	//-------------------------------------------------
 
 }

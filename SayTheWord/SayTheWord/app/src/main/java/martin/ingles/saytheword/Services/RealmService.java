@@ -2,9 +2,6 @@ package martin.ingles.saytheword.Services;
 
 import android.content.Context;
 
-import martin.ingles.saytheword.Models.Palabra;
-import martin.ingles.saytheword.Models.VerboIrregular;
-
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -13,6 +10,8 @@ import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.Sort;
+import martin.ingles.saytheword.Models.Palabra;
+import martin.ingles.saytheword.Models.VerboIrregular;
 
 public class RealmService {
 
@@ -37,6 +36,15 @@ public class RealmService {
 		RealmResults<T> results = realm.where(clase).findAll();
 
 		return (results.size() > 0) ? new AtomicInteger(results.max("id").intValue()) : new AtomicInteger();
+	}
+
+	public void eliminarTodo() {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				realm.deleteAll();
+			}
+		});
 	}
 
 	// -------------------------- Palabra
