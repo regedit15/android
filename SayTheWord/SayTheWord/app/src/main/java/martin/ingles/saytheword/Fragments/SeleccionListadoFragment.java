@@ -7,22 +7,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Switch;
 
 import com.google.android.material.button.MaterialButton;
 
+import martin.ingles.saytheword.Exceptions.GenericException;
 import martin.ingles.saytheword.R;
 
 import static martin.ingles.saytheword.Services.UtilService.LISTADO_PALABRAS;
-import static martin.ingles.saytheword.Services.UtilService.LISTADO_PALABRAS_PROBLEMATCAS;
 import static martin.ingles.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES;
-import static martin.ingles.saytheword.Services.UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS;
 
 public class SeleccionListadoFragment extends BaseFragment {
 
+	Switch swFaciles;
+	Switch swNormales;
+	Switch swDificiles;
 	MaterialButton btListadoPalabras;
-	MaterialButton btListadoPalabrasProblematicas;
 	MaterialButton btListadoVerbosIrregulares;
-	MaterialButton btListadoVerbosIrregularesProblematicos;
 
 	public SeleccionListadoFragment() {
 		setHasOptionsMenu(true);
@@ -30,42 +31,42 @@ public class SeleccionListadoFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
 		View view = inflater.inflate(R.layout.fragment_seleccion_listado, container, false);
 
 		setearTitulo("Listados");
 
+		swFaciles = view.findViewById(R.id.swFaciles);
+		swNormales = view.findViewById(R.id.swNormales);
+		swDificiles = view.findViewById(R.id.swDificiles);
 		btListadoPalabras = view.findViewById(R.id.btListadoPalabras);
-		btListadoPalabrasProblematicas = view.findViewById(R.id.btListadoPalabrasProblematicas);
 		btListadoVerbosIrregulares = view.findViewById(R.id.btListadoVerbosIrregulares);
-		btListadoVerbosIrregularesProblematicos = view.findViewById(R.id.btListadoVerbosIrregularesProblematicos);
 
 		btListadoPalabras.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				cambiarFragment(new ListadoFragment(LISTADO_PALABRAS), R.id.frame_layout);
-			}
-		});
-
-		btListadoPalabrasProblematicas.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				cambiarFragment(new ListadoFragment(LISTADO_PALABRAS_PROBLEMATCAS), R.id.frame_layout);
+				try {
+					validarPalabras("No tienes ninguna palabra!");
+					cambiarFragment(new ListadoFragment(LISTADO_PALABRAS, swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()), R.id.frame_layout);
+				} catch (GenericException e) {
+					mostrarPopup(e.getTitulo(), e.getMensaje());
+				}
 			}
 		});
 
 		btListadoVerbosIrregulares.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				cambiarFragment(new ListadoFragment(LISTADO_VERBOS_IRREGULARES), R.id.frame_layout);
+
+				try {
+					validarVerbosIrregulares("No tienes ningun verbo!");
+					cambiarFragment(new ListadoFragment(LISTADO_VERBOS_IRREGULARES, swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()), R.id.frame_layout);
+				} catch (GenericException e) {
+					mostrarPopup(e.getTitulo(), e.getMensaje());
+				}
 			}
 		});
 
-		btListadoVerbosIrregularesProblematicos.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				cambiarFragment(new ListadoFragment(LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS), R.id.frame_layout);
-			}
-		});
 		return view;
 	}
 
@@ -92,5 +93,23 @@ public class SeleccionListadoFragment extends BaseFragment {
 		return resultado;
 	}
 	//-------------------------------------------------
+
+	private void validarPalabras(String mensajeListaVacia) throws GenericException {
+		validarSeleccionDePalabras(mensajeListaVacia, utilService.getPalabras(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).isEmpty());
+	}
+
+	private void validarVerbosIrregulares(String mensajeListaVacia) throws GenericException {
+		validarSeleccionDePalabras(mensajeListaVacia, utilService.getVerbosIrregulares(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).isEmpty());
+	}
+
+	private void validarSeleccionDePalabras(String mensajeListaVacia, boolean listaVacia) throws GenericException {
+		if (!swFaciles.isChecked() && !swNormales.isChecked() && !swDificiles.isChecked()) {
+			throw new GenericException("Debe elegir al menos un tipo!");
+		}
+
+		if (listaVacia) {
+			throw new GenericException(mensajeListaVacia);
+		}
+	}
 
 }

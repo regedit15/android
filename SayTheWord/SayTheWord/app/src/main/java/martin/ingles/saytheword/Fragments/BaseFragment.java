@@ -1,16 +1,19 @@
 package martin.ingles.saytheword.Fragments;
 
-import martin.ingles.saytheword.Activities.MainActivity;
-import martin.ingles.saytheword.Services.RealmService;
-import martin.ingles.saytheword.Services.UtilService;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import androidx.fragment.app.Fragment;
+import martin.ingles.saytheword.Activities.MainActivity;
+import martin.ingles.saytheword.Services.RealmService;
+import martin.ingles.saytheword.Services.UtilService;
 
 public class BaseFragment extends Fragment {
 
 	protected UtilService utilService = new UtilService();
 	protected RealmService realmService = new RealmService();
+
+	public BaseFragment() {
+	}
 
 	// Nota: el froma_layout es el id del contenedor donde va cambiando los fragments
 	protected void cambiarFragment(Fragment fragment, int idFrameLayout) {
@@ -29,5 +32,4 @@ public class BaseFragment extends Fragment {
 	protected void mostrarPopup(String titulo, String mensaje) {
 		new MaterialAlertDialogBuilder(getContext()).setTitle(titulo).setMessage(mensaje).setPositiveButton("Aceptar", null).show();
 	}
-
 }

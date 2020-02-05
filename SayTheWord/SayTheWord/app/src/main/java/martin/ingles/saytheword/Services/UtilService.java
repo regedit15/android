@@ -1,5 +1,8 @@
 package martin.ingles.saytheword.Services;
 
+import android.app.Activity;
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,18 +17,23 @@ public class UtilService {
 	public static final String JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES = "JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES";
 
 	public static final String LISTADO_PALABRAS = "LISTADO_PALABRAS";
-	public static final String LISTADO_PALABRAS_PROBLEMATCAS = "LISTADO_PALABRAS_PROBLEMATCAS";
 	public static final String LISTADO_VERBOS_IRREGULARES = "LISTADO_VERBOS_IRREGULARES";
-	public static final String LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS = "LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS";
 
-	public static final String JUEGO_PALABRAS = "JUEGO_PALABRAS";
-	public static final String JUEGO_PALABRAS_PROBLEMATICAS = "JUEGO_PALABRAS_PROBLEMATICAS";
-	public static final String JUEGO_VERBOS_IRREGULARES = "JUEGO_VERBOS_IRREGULARES";
-	public static final String JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS = "JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS";
+	public static final int ESTADO_FACIL = 1;
+	public static final int ESTADO_NORMAL = 2;
+	public static final int ESTADO_DIFICIL = 3;
 
 	public RealmService realmService = new RealmService();
 
+	public SharedPreferenceService sharedPreferenceService;
+	protected static final String PREFERENCES = "PREFERENCES";
+	protected static final String DATOD_GUARDADOS = "DATOD_GUARDADOS";
+
 	public UtilService() {
+	}
+
+	public void setsharedPreferenceService(Activity activity) {
+		sharedPreferenceService = new SharedPreferenceService(activity.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
 	}
 
 	public boolean conteinsIgnoreCase(String palabraBuscada, String frase) {
@@ -375,42 +383,29 @@ public class UtilService {
 		}};
 	}
 
-	public List<Palabra> getPalabras(boolean soloPalabrasProblematicas) {
-
-		List<Palabra> palabras = realmService.getPalabras();
-
-		if (palabras.isEmpty()) {
-			palabras = getPalabrasEstaticas();
-
-			realmService.insertarPalabras(palabras);
-
-			palabras = realmService.getPalabras();
-		}
-
-		if (soloPalabrasProblematicas) {
-			palabras = realmService.getPalabrasProblematicas();
-		}
-
-		return palabras;
+	public List<Palabra> getPalabras(boolean faciles, boolean normales, boolean dificiles) {
+		return realmService.getPalabrasPorDificultad(getDificultades(faciles, normales, dificiles));
 	}
 
-	public List<VerboIrregular> getVerbosIrregulares(boolean soloPalabrasProblematicas) {
+	public List<VerboIrregular> getVerbosIrregulares(boolean faciles, boolean normales, boolean dificiles) {
+		return realmService.getIrregularVerbsProblematicos(getDificultades(faciles, normales, dificiles));
+	}
 
-		List<VerboIrregular> palabras = realmService.getIrregularVerbs();
+	private Integer[] getDificultades(boolean faciles, boolean normales, boolean dificiles) {
+		List<Integer> dificultadesLista = new ArrayList<>();
 
-		if (palabras.isEmpty()) {
-			palabras = getVerbosIrregularesEstaticos();
-
-			realmService.insertarIrregularVerbs(palabras);
-
-			palabras = realmService.getIrregularVerbs();
+		if (faciles) {
+			dificultadesLista.add(1);
+		}
+		if (normales) {
+			dificultadesLista.add(2);
+		}
+		if (dificiles) {
+			dificultadesLista.add(3);
 		}
 
-		if (soloPalabrasProblematicas) {
-			palabras = realmService.getIrregularVerbsProblematicos();
-		}
-
-		return palabras;
+		Integer[] dificultades = new Integer[dificultadesLista.size()];
+		return dificultadesLista.toArray(dificultades);
 	}
 
 	public void insertarDatosSinModificarPalabrasProblematicas() {
@@ -425,7 +420,7 @@ public class UtilService {
 			palabraEncontrada = checkearPalabraExistente(listaPalabrasBD, x);
 
 			if (palabraEncontrada != null) {
-				x.setPalabraProblematica(palabraEncontrada.isPalabraProblematica());
+				x.setPalabraProblematica(palabraEncontrada.getPalabraProblematica());
 			}
 		}
 
@@ -438,7 +433,7 @@ public class UtilService {
 			verboIrregularEncontrado = checkearVerboIrregularExistente(listaVerbosIrregularesBD, x);
 
 			if (verboIrregularEncontrado != null) {
-				x.setPalabraProblematica(verboIrregularEncontrado.isPalabraProblematica());
+				x.setPalabraProblematica(verboIrregularEncontrado.getPalabraProblematica());
 			}
 		}
 
@@ -470,7 +465,6 @@ public class UtilService {
 		}
 		return verboIrregularEncontrado;
 	}
-
 
 	//	en el juego de ver una palabra cuando pasa una palabra cullo significado es largo el boton de next pasa a quedar bien pegado a la derecha
 	// Fijarse que en el juego de palabras el next cuando se estira la traduccion se sigue viendo mal..

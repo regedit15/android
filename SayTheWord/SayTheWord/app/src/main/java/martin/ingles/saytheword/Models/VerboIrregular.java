@@ -1,9 +1,8 @@
 package martin.ingles.saytheword.Models;
 
-import martin.ingles.saytheword.Services.RealmService;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import martin.ingles.saytheword.Services.RealmService;
 
 public class VerboIrregular extends RealmObject {
 
@@ -20,7 +19,7 @@ public class VerboIrregular extends RealmObject {
 	private String participioPronunciacion;
 
 	private boolean mostrarRespuesta;
-	private boolean palabraProblematica;
+	private int palabraProblematica;
 
 	public VerboIrregular() {
 	}
@@ -34,6 +33,7 @@ public class VerboIrregular extends RealmObject {
 		this.pasadoPronunciacion = pasadoPronunciacion;
 		this.participio = participio;
 		this.participioPronunciacion = participioPronunciacion;
+		this.palabraProblematica = 2;
 	}
 
 	public int getId() {
@@ -108,11 +108,11 @@ public class VerboIrregular extends RealmObject {
 		this.mostrarRespuesta = mostrarRespuesta;
 	}
 
-	public boolean isPalabraProblematica() {
+	public int getPalabraProblematica() {
 		return palabraProblematica;
 	}
 
-	public void setPalabraProblematica(boolean palabraProblematica) {
+	public void setPalabraProblematica(int palabraProblematica) {
 		this.palabraProblematica = palabraProblematica;
 	}
 }

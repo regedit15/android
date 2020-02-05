@@ -4,5 +4,6 @@
 	<color name="colorPrimaryDark">#00574B</color>
 	<color name="colorAccent">#E8151C</color>
 	<color name="colorPalabraProblematica">#FD0006</color>
-	<color name="colorPalabraBuena">#ADADAD</color>
+	<color name="colorPalabraBuena">#43A047</color>
+	<color name="colorPalabraNormal">#ADADAD</color>
 </resources>

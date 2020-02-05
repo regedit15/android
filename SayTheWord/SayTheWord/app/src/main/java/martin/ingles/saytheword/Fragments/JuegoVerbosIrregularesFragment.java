@@ -11,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import martin.ingles.saytheword.Models.VerboIrregular;
-import martin.ingles.saytheword.R;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -21,11 +19,14 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import martin.ingles.saytheword.Models.VerboIrregular;
+import martin.ingles.saytheword.R;
 
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_DIFICIL;
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_FACIL;
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_NORMAL;
 import static martin.ingles.saytheword.Services.UtilService.JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES;
 import static martin.ingles.saytheword.Services.UtilService.JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
-import static martin.ingles.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES;
-import static martin.ingles.saytheword.Services.UtilService.JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS;
 
 public class JuegoVerbosIrregularesFragment extends BaseFragment {
 
@@ -50,14 +51,19 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 	private boolean juegoAleatorio;
 	private Random random = new Random();
 	private ImageView ivCongratulations;
-	private String TIPO_JUEGO;
 	private int cantidadItems;
 
-	public JuegoVerbosIrregularesFragment(String TIPO_JUEGO, int cantidadItems) {
+	private boolean faciles;
+	private boolean normales;
+	private boolean dificiles;
+
+	public JuegoVerbosIrregularesFragment(boolean faciles, boolean normales, boolean dificiles, int cantidadItems) {
 		setHasOptionsMenu(true);
 		this.TIPO_TRADUCCION = JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
-		this.TIPO_JUEGO = TIPO_JUEGO;
 		this.cantidadItems = cantidadItems;
+		this.faciles = faciles;
+		this.normales = normales;
+		this.dificiles = dificiles;
 	}
 
 	@Override
@@ -181,27 +187,25 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 	}
 
 	private void setearColorPalabraProblematica() {
-		if (verbosIrregularesDesordenadas.get(indice).isPalabraProblematica()) {
-			btPalabraProblematica.setIconResource(R.drawable.ic_angry);
-			btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
-		} else {
-			btPalabraProblematica.setIconResource(R.drawable.ic_smile);
-			btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+		switch (verbosIrregularesDesordenadas.get(indice).getPalabraProblematica()) {
+			case ESTADO_FACIL:
+				btPalabraProblematica.setIconResource(R.drawable.ic_happy);
+				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+				break;
+			case ESTADO_NORMAL:
+				btPalabraProblematica.setIconResource(R.drawable.ic_smile);
+				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraNormal));
+				break;
+			case ESTADO_DIFICIL:
+				btPalabraProblematica.setIconResource(R.drawable.ic_angry);
+				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
+				break;
 		}
 	}
 
 	private void inicializarJuego() {
 		// ------------- Se hace esto porque si lo igualo a utilService.getLista() da error
-
-		List<VerboIrregular> lista = null;
-		switch (TIPO_JUEGO) {
-			case JUEGO_VERBOS_IRREGULARES:
-				lista = utilService.getVerbosIrregulares(false);
-				break;
-			case JUEGO_VERBOS_IRREGULARES_PROBLEMATICOS:
-				lista = utilService.getVerbosIrregulares(true);
-				break;
-		}
+		List<VerboIrregular> lista = utilService.getVerbosIrregulares(faciles, normales, dificiles);
 
 		if (lista.isEmpty()) {
 			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);

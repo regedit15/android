@@ -83,7 +83,7 @@
 					android:hint="Cantidad de items"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toBottomOf="@+id/swSoloPalabrasProblematicas">
+					app:layout_constraintTop_toBottomOf="@+id/swDificiles">
 
 					<com.google.android.material.textfield.TextInputEditText
 						android:id="@+id/etCantidadItems"
@@ -114,13 +114,34 @@
 				</com.google.android.material.textfield.TextInputLayout>
 
 				<Switch
-					android:id="@+id/swSoloPalabrasProblematicas"
+					android:id="@+id/swFaciles"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginTop="24dp"
-					android:text="Solo palabras problemáticas"
+					android:checked="true"
+					android:text="Fáciles"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toBottomOf="@+id/rgPalabrasOVerbosIrregulares" />
+
+				<Switch
+					android:id="@+id/swNormales"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					android:checked="true"
+					android:text="Normales"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/swFaciles" />
+
+				<Switch
+					android:id="@+id/swDificiles"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					android:checked="true"
+					android:text="Difíciles"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/swNormales" />
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<com.google.android.material.button.MaterialButton

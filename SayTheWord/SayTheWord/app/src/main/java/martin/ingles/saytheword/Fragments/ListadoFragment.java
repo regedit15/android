@@ -8,18 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import martin.ingles.saytheword.Activities.MainActivity;
 import martin.ingles.saytheword.Adapters.PalabraAdapter;
 import martin.ingles.saytheword.Adapters.VerboIrregularAdapter;
 import martin.ingles.saytheword.Models.Palabra;
 import martin.ingles.saytheword.Models.VerboIrregular;
 import martin.ingles.saytheword.R;
-
-import java.util.List;
-
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import martin.ingles.saytheword.Services.UtilService;
 
 public class ListadoFragment extends BaseFragment {
@@ -29,10 +28,16 @@ public class ListadoFragment extends BaseFragment {
 	private VerboIrregularAdapter verboIrregularAdapter;
 	private RecyclerView.LayoutManager layoutManager;
 	private String TIPO_LISTADO;
+	boolean faciles;
+	boolean normales;
+	boolean dificiles;
 
-	public ListadoFragment(String TIPO_LISTADO) {
+	public ListadoFragment(String TIPO_LISTADO, boolean faciles, boolean normales, boolean dificiles) {
 		setHasOptionsMenu(true);
 		this.TIPO_LISTADO = TIPO_LISTADO;
+		this.faciles = faciles;
+		this.normales = normales;
+		this.dificiles = dificiles;
 	}
 
 	@Override
@@ -49,25 +54,13 @@ public class ListadoFragment extends BaseFragment {
 
 		switch (TIPO_LISTADO) {
 			case UtilService.LISTADO_PALABRAS:
-				palabras = utilService.getPalabras(false);
-				realmService.cambiarMostrarRespuestasPalabras(palabras, false);
-				palabraAdapter = new PalabraAdapter(palabras, R.layout.item_palabra, UtilService.LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL, getActivity());
-				recyclerView.setAdapter(palabraAdapter);
-				break;
-			case UtilService.LISTADO_PALABRAS_PROBLEMATCAS:
-				palabras = utilService.getPalabras(true);
+				palabras = utilService.getPalabras(faciles, normales, dificiles);
 				realmService.cambiarMostrarRespuestasPalabras(palabras, false);
 				palabraAdapter = new PalabraAdapter(palabras, R.layout.item_palabra, UtilService.LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL, getActivity());
 				recyclerView.setAdapter(palabraAdapter);
 				break;
 			case UtilService.LISTADO_VERBOS_IRREGULARES:
-				verbosIrregulares = utilService.getVerbosIrregulares(false);
-				realmService.cambiarMostrarRespuestasVerbosIrregulares(verbosIrregulares, false);
-				verboIrregularAdapter = new VerboIrregularAdapter(verbosIrregulares, R.layout.item_irregular_verb, UtilService.LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL, getActivity());
-				recyclerView.setAdapter(verboIrregularAdapter);
-				break;
-			case UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS:
-				verbosIrregulares = utilService.getVerbosIrregulares(true);
+				verbosIrregulares = utilService.getVerbosIrregulares(faciles, normales, dificiles);
 				realmService.cambiarMostrarRespuestasVerbosIrregulares(verbosIrregulares, false);
 				verboIrregularAdapter = new VerboIrregularAdapter(verbosIrregulares, R.layout.item_irregular_verb, UtilService.LISTADO_TIPO_TRADUCCION_INGLES_ESPANIOL, getActivity());
 				recyclerView.setAdapter(verboIrregularAdapter);
@@ -91,11 +84,9 @@ public class ListadoFragment extends BaseFragment {
 
 		switch (TIPO_LISTADO) {
 			case UtilService.LISTADO_PALABRAS:
-			case UtilService.LISTADO_PALABRAS_PROBLEMATCAS:
 				cantidad = palabraAdapter.getLista().size();
 				break;
 			case UtilService.LISTADO_VERBOS_IRREGULARES:
-			case UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS:
 				cantidad = verboIrregularAdapter.getLista().size();
 				break;
 		}
@@ -118,11 +109,9 @@ public class ListadoFragment extends BaseFragment {
 			case R.id.item_verTodo:
 				switch (TIPO_LISTADO) {
 					case UtilService.LISTADO_PALABRAS:
-					case UtilService.LISTADO_PALABRAS_PROBLEMATCAS:
 						palabraAdapter.verTodo();
 						break;
 					case UtilService.LISTADO_VERBOS_IRREGULARES:
-					case UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS:
 						verboIrregularAdapter.verTodo();
 						break;
 				}
@@ -131,11 +120,9 @@ public class ListadoFragment extends BaseFragment {
 			case R.id.item_ocultarTodo:
 				switch (TIPO_LISTADO) {
 					case UtilService.LISTADO_PALABRAS:
-					case UtilService.LISTADO_PALABRAS_PROBLEMATCAS:
 						palabraAdapter.ocultarTodo();
 						break;
 					case UtilService.LISTADO_VERBOS_IRREGULARES:
-					case UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS:
 						verboIrregularAdapter.ocultarTodo();
 						break;
 				}
@@ -144,11 +131,9 @@ public class ListadoFragment extends BaseFragment {
 			case R.id.item_espaniolIngles:
 				switch (TIPO_LISTADO) {
 					case UtilService.LISTADO_PALABRAS:
-					case UtilService.LISTADO_PALABRAS_PROBLEMATCAS:
 						palabraAdapter.cambiarAEspaniolIngles();
 						break;
 					case UtilService.LISTADO_VERBOS_IRREGULARES:
-					case UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS:
 						verboIrregularAdapter.cambiarAEspaniolIngles();
 						break;
 				}
@@ -157,11 +142,9 @@ public class ListadoFragment extends BaseFragment {
 			case R.id.item_inglesEspañol:
 				switch (TIPO_LISTADO) {
 					case UtilService.LISTADO_PALABRAS:
-					case UtilService.LISTADO_PALABRAS_PROBLEMATCAS:
 						palabraAdapter.cambiarAInglesEspaniol();
 						break;
 					case UtilService.LISTADO_VERBOS_IRREGULARES:
-					case UtilService.LISTADO_VERBOS_IRREGULARES_PROBLEMATCOS:
 						verboIrregularAdapter.cambiarAInglesEspaniol();
 						break;
 				}

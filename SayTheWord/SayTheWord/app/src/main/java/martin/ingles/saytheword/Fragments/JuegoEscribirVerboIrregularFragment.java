@@ -10,8 +10,6 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import martin.ingles.saytheword.Models.VerboIrregular;
-import martin.ingles.saytheword.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -20,6 +18,12 @@ import java.util.Collections;
 import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import martin.ingles.saytheword.Models.VerboIrregular;
+import martin.ingles.saytheword.R;
+
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_DIFICIL;
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_FACIL;
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_NORMAL;
 
 public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 
@@ -55,12 +59,17 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 	private int cantidadIntentos;
 	private int cantidadItems;
 	private int cantidadIntentosFallidos;
-	private boolean soloPalabrasProblematicas;
 
-	public JuegoEscribirVerboIrregularFragment(int cantidadIntentos, int cantidadItems, boolean soloPalabrasProblematicas) {
+	private boolean faciles;
+	private boolean normales;
+	private boolean dificiles;
+
+	public JuegoEscribirVerboIrregularFragment(int cantidadIntentos, int cantidadItems, boolean faciles, boolean normales, boolean dificiles) {
 		this.cantidadIntentos = cantidadIntentos;
 		this.cantidadItems = cantidadItems;
-		this.soloPalabrasProblematicas = soloPalabrasProblematicas;
+		this.faciles = faciles;
+		this.normales = normales;
+		this.dificiles = dificiles;
 	}
 
 	@Override
@@ -226,19 +235,26 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 	}
 
 	private void setearColorPalabraProblematica() {
-		if (verbosIrregularesDesordenados.get(indice).isPalabraProblematica()) {
-			btPalabraProblematica.setIconResource(R.drawable.ic_angry);
-			btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
-		} else {
-			btPalabraProblematica.setIconResource(R.drawable.ic_smile);
-			btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+		switch (verbosIrregularesDesordenados.get(indice).getPalabraProblematica()) {
+			case ESTADO_FACIL:
+				btPalabraProblematica.setIconResource(R.drawable.ic_happy);
+				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+				break;
+			case ESTADO_NORMAL:
+				btPalabraProblematica.setIconResource(R.drawable.ic_smile);
+				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraNormal));
+				break;
+			case ESTADO_DIFICIL:
+				btPalabraProblematica.setIconResource(R.drawable.ic_angry);
+				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
+				break;
 		}
 	}
 
 	private void inicializarJuego() {
 
 		// ------------- Se hace esto porque si lo igualo a utilService.getLista() da error
-		List<VerboIrregular> lista = utilService.getVerbosIrregulares(soloPalabrasProblematicas);
+		List<VerboIrregular> lista = utilService.getVerbosIrregulares(faciles, normales, dificiles);
 
 		realmService.cambiarMostrarRespuestasVerbosIrregulares(lista, false);
 

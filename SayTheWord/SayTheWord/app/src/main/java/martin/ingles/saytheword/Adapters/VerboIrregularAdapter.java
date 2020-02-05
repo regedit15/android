@@ -6,10 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import martin.ingles.saytheword.Activities.MainActivity;
-import martin.ingles.saytheword.Models.VerboIrregular;
-import martin.ingles.saytheword.R;
-import martin.ingles.saytheword.Services.RealmService;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
@@ -17,7 +13,15 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import martin.ingles.saytheword.Activities.MainActivity;
+import martin.ingles.saytheword.Models.VerboIrregular;
+import martin.ingles.saytheword.R;
+import martin.ingles.saytheword.Services.RealmService;
 import martin.ingles.saytheword.Services.UtilService;
+
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_DIFICIL;
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_FACIL;
+import static martin.ingles.saytheword.Services.UtilService.ESTADO_NORMAL;
 
 public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAdapter.ViewHolder> {
 
@@ -110,7 +114,9 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 			btPalabraProblematicaListado.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+
 					realmService.cambiarPalabraProblematicaVerbosIrregulares(verboIrregular);
+
 					setearColorPalabraProblematica(verboIrregular);
 					notifyDataSetChanged();
 
@@ -132,12 +138,19 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 		}
 
 		private void setearColorPalabraProblematica(VerboIrregular verboIrregular) {
-			if (verboIrregular.isPalabraProblematica()) {
-				btPalabraProblematicaListado.setIconResource(R.drawable.ic_angry);
-				btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraProblematica));
-			} else {
-				btPalabraProblematicaListado.setIconResource(R.drawable.ic_smile);
-				btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraBuena));
+			switch (verboIrregular.getPalabraProblematica()) {
+				case ESTADO_FACIL:
+					btPalabraProblematicaListado.setIconResource(R.drawable.ic_happy);
+					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraBuena));
+					break;
+				case ESTADO_NORMAL:
+					btPalabraProblematicaListado.setIconResource(R.drawable.ic_smile);
+					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraNormal));
+					break;
+				case ESTADO_DIFICIL:
+					btPalabraProblematicaListado.setIconResource(R.drawable.ic_angry);
+					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraProblematica));
+					break;
 			}
 		}
 	}

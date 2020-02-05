@@ -1,9 +1,8 @@
 package martin.ingles.saytheword.Models;
 
-import martin.ingles.saytheword.Services.RealmService;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import martin.ingles.saytheword.Services.RealmService;
 
 public class Palabra extends RealmObject {
 
@@ -13,7 +12,7 @@ public class Palabra extends RealmObject {
 	private String palabraIng;
 	private String pronunciacion;
 	private boolean mostrarRespuesta;
-	private boolean palabraProblematica;
+	private int palabraProblematica;
 
 	public Palabra() {
 	}
@@ -23,6 +22,7 @@ public class Palabra extends RealmObject {
 		this.palabraIng = palabraIng;
 		this.palabraEsp = palabraEsp;
 		this.pronunciacion = pronunciacion;
+		this.palabraProblematica = 2;
 	}
 
 	public int getId() {
@@ -65,11 +65,11 @@ public class Palabra extends RealmObject {
 		this.mostrarRespuesta = mostrarRespuesta;
 	}
 
-	public boolean isPalabraProblematica() {
+	public int getPalabraProblematica() {
 		return palabraProblematica;
 	}
 
-	public void setPalabraProblematica(boolean palabraProblematica) {
+	public void setPalabraProblematica(int palabraProblematica) {
 		this.palabraProblematica = palabraProblematica;
 	}
 

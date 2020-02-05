@@ -19,28 +19,48 @@
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintWidth_max="300dp">
 
+			<Switch
+				android:id="@+id/swFaciles"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="true"
+				android:text="Fáciles"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent" />
+
+			<Switch
+				android:id="@+id/swNormales"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dp"
+				android:checked="true"
+				android:text="Normales"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/swFaciles" />
+
+			<Switch
+				android:id="@+id/swDificiles"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dp"
+				android:checked="true"
+				android:text="Difíciles"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/swNormales" />
+
 			<com.google.android.material.button.MaterialButton
 				android:id="@+id/btListadoPalabras"
 				style="@style/Widget.MaterialComponents.Button"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="32dp"
 				android:text="Palabras"
 				app:backgroundTint="#82B1FF"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/btListadoPalabrasProblematicas"
-				style="@style/Widget.MaterialComponents.Button"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="32dp"
-				android:text="Palabras Problemáticas"
-				app:backgroundTint="#82B1FF"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/btListadoPalabras" />
+				app:layout_constraintTop_toBottomOf="@+id/swDificiles" />
 
 			<com.google.android.material.button.MaterialButton
 				android:id="@+id/btListadoVerbosIrregulares"
@@ -52,19 +72,7 @@
 				app:backgroundTint="#82B1FF"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/btListadoPalabrasProblematicas" />
-
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/btListadoVerbosIrregularesProblematicos"
-				style="@style/Widget.MaterialComponents.Button"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="32dp"
-				android:text="Verbos Irregulares Problemáticos"
-				app:backgroundTint="#82B1FF"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/btListadoVerbosIrregulares" />
+				app:layout_constraintTop_toBottomOf="@+id/btListadoPalabras" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

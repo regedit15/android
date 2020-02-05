@@ -52,8 +52,8 @@ public class RealmService {
 		return Realm.getDefaultInstance().where(Palabra.class).sort("palabraIng", Sort.ASCENDING).findAll();
 	}
 
-	public List<Palabra> getPalabrasProblematicas() {
-		return Realm.getDefaultInstance().where(Palabra.class).equalTo("palabraProblematica", true).sort("palabraIng", Sort.ASCENDING).findAll();
+	public List<Palabra> getPalabrasPorDificultad(Integer[] dificultades) {
+		return Realm.getDefaultInstance().where(Palabra.class).in("palabraProblematica", dificultades).sort("palabraIng", Sort.ASCENDING).findAll();
 	}
 
 	public void insertarPalabras(final List<Palabra> palabras) {
@@ -89,7 +89,7 @@ public class RealmService {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override
 			public void execute(Realm realm) {
-				x.setPalabraProblematica(!x.isPalabraProblematica());
+				x.setPalabraProblematica(getSiguienteValor(x.getPalabraProblematica()));
 			}
 		});
 	}
@@ -100,8 +100,8 @@ public class RealmService {
 		return Realm.getDefaultInstance().where(VerboIrregular.class).sort("infinitivo", Sort.ASCENDING).findAll();
 	}
 
-	public List<VerboIrregular> getIrregularVerbsProblematicos() {
-		return Realm.getDefaultInstance().where(VerboIrregular.class).equalTo("palabraProblematica", true).sort("infinitivo", Sort.ASCENDING).findAll();
+	public List<VerboIrregular> getIrregularVerbsProblematicos(Integer[] dificultades ) {
+		return Realm.getDefaultInstance().where(VerboIrregular.class).in("palabraProblematica", dificultades).sort("infinitivo", Sort.ASCENDING).findAll();
 	}
 
 	public void insertarIrregularVerbs(final List<VerboIrregular> palabras) {
@@ -137,7 +137,7 @@ public class RealmService {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override
 			public void execute(Realm realm) {
-				x.setPalabraProblematica(!x.isPalabraProblematica());
+				x.setPalabraProblematica(getSiguienteValor(x.getPalabraProblematica()));
 			}
 		});
 	}
@@ -150,6 +150,16 @@ public class RealmService {
 				realm.insert(palabra);
 			}
 		});
+	}
+
+	public int getSiguienteValor(int valor) {
+		int respuesta = valor;
+		respuesta++;
+
+		if (respuesta == 4) {
+			respuesta = 1;
+		}
+		return respuesta;
 	}
 
 

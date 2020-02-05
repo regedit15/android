@@ -1,12 +1,9 @@
 package martin.ingles.saytheword.Activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import martin.ingles.saytheword.Fragments.JuegoConfiguracionInicial;
-import martin.ingles.saytheword.Fragments.SeleccionListadoFragment;
-import martin.ingles.saytheword.R;
-import martin.ingles.saytheword.Services.RealmService;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -15,12 +12,23 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import martin.ingles.saytheword.Fragments.JuegoConfiguracionInicial;
+import martin.ingles.saytheword.Fragments.SeleccionListadoFragment;
+import martin.ingles.saytheword.R;
+import martin.ingles.saytheword.Services.RealmService;
+import martin.ingles.saytheword.Services.SharedPreferenceService;
+import martin.ingles.saytheword.Services.UtilService;
 
 public class MainActivity extends AppCompatActivity {
 
 	private DrawerLayout drawerLayout;
 	public NavigationView navigationView;
 	public RealmService realmService = new RealmService();
+	protected UtilService utilService = new UtilService();
+	private SharedPreferenceService sharedPreferenceService;
+
+	private static final String PREFERENCES = "PREFERENCES";
+	private static final String DATOD_GUARDADOS = "DATOD_GUARDADOS";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +80,17 @@ public class MainActivity extends AppCompatActivity {
 
 		cambiarFragment(new SeleccionListadoFragment(), navigationView.getMenu().getItem(0));
 		// cambiarFragment(new JuegoEscribirVerboIrregularFragment(3, 5, false), navigationView.getMenu().getItem(0));
+
+
+		//--------------- Compruebo si esta insertados todos los datos
+		sharedPreferenceService = new SharedPreferenceService(this.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
+
+		if (!sharedPreferenceService.getBoolean(DATOD_GUARDADOS)) {
+			realmService.insertarPalabras(utilService.getPalabrasEstaticas());
+			realmService.insertarIrregularVerbs(utilService.getVerbosIrregularesEstaticos());
+			sharedPreferenceService.guardarBooleanYCommitear(DATOD_GUARDADOS, true);
+		}
+		//-------------------------------------------------------------------
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
