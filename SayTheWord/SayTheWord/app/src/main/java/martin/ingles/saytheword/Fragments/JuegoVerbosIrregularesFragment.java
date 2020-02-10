@@ -45,6 +45,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 	private MaterialButton btMostrarRespuestaJuego;
 	private MaterialButton btPrevious;
 	private MaterialButton btRestart;
+	private MaterialButton btVolver;
 	private MaterialButton btDificultad;
 	private ConstraintLayout lyRespuestaJuego;
 	private String TIPO_TRADUCCION;
@@ -83,6 +84,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 
 		lyRespuestaJuego = view.findViewById(R.id.lyRespuestaJuego);
 		btPrevious = view.findViewById(R.id.btPrevious);
+		btVolver = view.findViewById(R.id.btVolver);
 		btRestart = view.findViewById(R.id.btRestart);
 		mbNext = view.findViewById(R.id.btNext);
 		btMostrarRespuestaJuego = view.findViewById(R.id.btMostrarRespuestaJuego);
@@ -130,6 +132,13 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 			}
 		});
 
+		btVolver.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				cambiarFragment(new JuegoConfiguracionInicial(), R.id.frame_layout);
+			}
+		});
+
 		return view;
 	}
 
@@ -158,6 +167,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 
 		if (indice == verbosIrregularesDesordenadas.size()) {
 			btRestart.setVisibility(View.VISIBLE);
+			btVolver.setVisibility(View.VISIBLE);
 			mbNext.setVisibility(View.INVISIBLE);
 			btPrevious.setVisibility(View.INVISIBLE);
 			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
@@ -207,53 +217,40 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 		// ------------- Se hace esto porque si lo igualo a utilService.getLista() da error
 		List<VerboIrregular> lista = utilService.getVerbosIrregulares(faciles, normales, dificiles);
 
-		if (lista.isEmpty()) {
-			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
-			btRestart.setVisibility(View.INVISIBLE);
-			ivCongratulations.setVisibility(View.INVISIBLE);
-			mbNext.setVisibility(View.INVISIBLE);
-			btPrevious.setVisibility(View.INVISIBLE);
-			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
-			tvInfinitivo.setVisibility(View.INVISIBLE);
-			btDificultad.setVisibility(View.INVISIBLE);
-			lyRespuestaJuego.setVisibility(View.INVISIBLE);
-			tvJuegoCantidadPalabras.setText("No hay verbos problemáticos!");
-		} else {
+		realmService.cambiarMostrarRespuestasVerbosIrregulares(lista, false);
 
-			realmService.cambiarMostrarRespuestasVerbosIrregulares(lista, false);
+		verbosIrregularesDesordenadas.clear();
 
-			verbosIrregularesDesordenadas.clear();
-
-			for (VerboIrregular x : lista) {
-				verbosIrregularesDesordenadas.add(x);
-			}
-
-			Collections.shuffle(verbosIrregularesDesordenadas);
-			// --------------------------------------------------------------
-
-			//------- Esto es por si el usuario quita una palabra problematica y se resetea el juego
-			if (cantidadItems > verbosIrregularesDesordenadas.size()) {
-				cantidadItems = verbosIrregularesDesordenadas.size();
-			}
-			// ---------------------------------------------------------------------------------
-
-			verbosIrregularesDesordenadas = verbosIrregularesDesordenadas.subList(0, cantidadItems);
-
-			indice = 0;
-			setearTitulo();
-
-			btRestart.setVisibility(View.INVISIBLE);
-			ivCongratulations.setVisibility(View.INVISIBLE);
-			mbNext.setVisibility(View.VISIBLE);
-			btPrevious.setVisibility(View.INVISIBLE);
-			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
-			btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
-			tvInfinitivo.setVisibility(View.VISIBLE);
-			btDificultad.setVisibility(View.VISIBLE);
-			lyRespuestaJuego.setVisibility(View.INVISIBLE);
-
-			setearTextoArribaYColorDeBoton();
+		for (VerboIrregular x : lista) {
+			verbosIrregularesDesordenadas.add(x);
 		}
+
+		Collections.shuffle(verbosIrregularesDesordenadas);
+		// --------------------------------------------------------------
+
+		//------- Esto es por si el usuario quita una palabra problematica y se resetea el juego
+		if (cantidadItems > verbosIrregularesDesordenadas.size()) {
+			cantidadItems = verbosIrregularesDesordenadas.size();
+		}
+		// ---------------------------------------------------------------------------------
+
+		verbosIrregularesDesordenadas = verbosIrregularesDesordenadas.subList(0, cantidadItems);
+
+		indice = 0;
+		setearTitulo();
+
+		btRestart.setVisibility(View.INVISIBLE);
+		ivCongratulations.setVisibility(View.INVISIBLE);
+		mbNext.setVisibility(View.VISIBLE);
+		btPrevious.setVisibility(View.INVISIBLE);
+		tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
+		btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
+		tvInfinitivo.setVisibility(View.VISIBLE);
+		btDificultad.setVisibility(View.VISIBLE);
+		lyRespuestaJuego.setVisibility(View.INVISIBLE);
+		btVolver.setVisibility(View.INVISIBLE);
+
+		setearTextoArribaYColorDeBoton();
 	}
 
 	private void mostrarRespuesta(boolean mostrarRespuesta) {

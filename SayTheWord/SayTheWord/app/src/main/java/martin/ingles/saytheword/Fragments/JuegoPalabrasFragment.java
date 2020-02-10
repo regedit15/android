@@ -39,6 +39,7 @@ public class JuegoPalabrasFragment extends BaseFragment {
 	private MaterialButton mbNext;
 	private MaterialButton btMostrarRespuestaJuego;
 	private MaterialButton btPrevious;
+	private MaterialButton btVolver;
 	private MaterialButton btRestart;
 	private MaterialButton btDificultad;
 	private ConstraintLayout lyRespuestaJuego;
@@ -73,6 +74,7 @@ public class JuegoPalabrasFragment extends BaseFragment {
 		lyRespuestaJuego = view.findViewById(R.id.lyRespuestaJuego);
 		tvJuegoCantidadPalabras = view.findViewById(R.id.tvJuegoCantidadPalabras);
 		btPrevious = view.findViewById(R.id.btPrevious);
+		btVolver = view.findViewById(R.id.btVolver);
 		btRestart = view.findViewById(R.id.btRestart);
 		mbNext = view.findViewById(R.id.btNext);
 		btMostrarRespuestaJuego = view.findViewById(R.id.btMostrarRespuestaJuego);
@@ -120,6 +122,13 @@ public class JuegoPalabrasFragment extends BaseFragment {
 			}
 		});
 
+		btVolver.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				cambiarFragment(new JuegoConfiguracionInicial(), R.id.frame_layout);
+			}
+		});
+
 		return view;
 	}
 
@@ -148,6 +157,7 @@ public class JuegoPalabrasFragment extends BaseFragment {
 
 		if (indice == palabrasDesordenadas.size()) {
 			btRestart.setVisibility(View.VISIBLE);
+			btVolver.setVisibility(View.VISIBLE);
 			mbNext.setVisibility(View.INVISIBLE);
 			btPrevious.setVisibility(View.INVISIBLE);
 			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
@@ -197,54 +207,40 @@ public class JuegoPalabrasFragment extends BaseFragment {
 		// ------------- Se hace esto porque si lo igualo a utilService.getLista() da error
 		List<Palabra> lista = utilService.getPalabras(faciles, normales, dificiles);
 
+		realmService.cambiarMostrarRespuestasPalabras(lista, false);
 
-		if (lista.isEmpty()) {
-			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
-			btRestart.setVisibility(View.INVISIBLE);
-			ivCongratulations.setVisibility(View.INVISIBLE);
-			mbNext.setVisibility(View.INVISIBLE);
-			btPrevious.setVisibility(View.INVISIBLE);
-			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
-			tvJuegoPalabraArriba.setVisibility(View.INVISIBLE);
-			btDificultad.setVisibility(View.INVISIBLE);
-			lyRespuestaJuego.setVisibility(View.INVISIBLE);
-			tvJuegoCantidadPalabras.setText("No hay palabras problematicas!");
-		} else {
+		palabrasDesordenadas.clear();
 
-			realmService.cambiarMostrarRespuestasPalabras(lista, false);
-
-			palabrasDesordenadas.clear();
-
-			for (Palabra p : lista) {
-				palabrasDesordenadas.add(p);
-			}
-
-			Collections.shuffle(palabrasDesordenadas);
-			// --------------------------------------------------------------
-
-			//------- Esto es por si el usuario quita una palabra problematica y se resetea el juego
-			if (cantidadItems > palabrasDesordenadas.size()) {
-				cantidadItems = palabrasDesordenadas.size();
-			}
-			// ---------------------------------------------------------------------------------
-
-			palabrasDesordenadas = palabrasDesordenadas.subList(0, cantidadItems);
-
-			indice = 0;
-			setearTitulo();
-
-			btRestart.setVisibility(View.INVISIBLE);
-			ivCongratulations.setVisibility(View.INVISIBLE);
-			mbNext.setVisibility(View.VISIBLE);
-			btPrevious.setVisibility(View.INVISIBLE);
-			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
-			btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
-			tvJuegoPalabraArriba.setVisibility(View.VISIBLE);
-			btDificultad.setVisibility(View.VISIBLE);
-			lyRespuestaJuego.setVisibility(View.INVISIBLE);
-
-			setearTextoArribaYcolorDeBoton();
+		for (Palabra p : lista) {
+			palabrasDesordenadas.add(p);
 		}
+
+		Collections.shuffle(palabrasDesordenadas);
+		// --------------------------------------------------------------
+
+		//------- Esto es por si el usuario quita una palabra problematica y se resetea el juego
+		if (cantidadItems > palabrasDesordenadas.size()) {
+			cantidadItems = palabrasDesordenadas.size();
+		}
+		// ---------------------------------------------------------------------------------
+
+		palabrasDesordenadas = palabrasDesordenadas.subList(0, cantidadItems);
+
+		indice = 0;
+		setearTitulo();
+
+		btRestart.setVisibility(View.INVISIBLE);
+		ivCongratulations.setVisibility(View.INVISIBLE);
+		mbNext.setVisibility(View.VISIBLE);
+		btPrevious.setVisibility(View.INVISIBLE);
+		btVolver.setVisibility(View.INVISIBLE);
+		tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
+		btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
+		tvJuegoPalabraArriba.setVisibility(View.VISIBLE);
+		btDificultad.setVisibility(View.VISIBLE);
+		lyRespuestaJuego.setVisibility(View.INVISIBLE);
+
+		setearTextoArribaYcolorDeBoton();
 	}
 
 	private void mostrarRespuesta(boolean mostrarRespuesta) {

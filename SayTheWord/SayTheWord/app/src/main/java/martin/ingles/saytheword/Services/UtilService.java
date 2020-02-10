@@ -222,7 +222,7 @@ public class UtilService {
 			add(new Palabra("Moron", "Idiota, imbecil", "Moran"));
 			add(new Palabra("Fit in", "Encajar", "Fit in"));
 			add(new Palabra("Wit", "Ingenio", "Wit"));
-			add(new Palabra("Nor", "Nor", "Ni"));
+			add(new Palabra("Nor", "Ni", "Nor"));
 			add(new Palabra("Fill", "Llenar, ocupar", "Fill"));
 			add(new Palabra("Bald", "Calvo", "Bold"));
 			add(new Palabra("Wisdom", "Sabiduría, juicio", "Wisdem"));
@@ -246,7 +246,7 @@ public class UtilService {
 			add(new Palabra("Graceful", "Agraciado", "Greicefol"));
 			add(new Palabra("Either", "Ya sea", "Ither"));
 			add(new Palabra("High jinks", "Travesuras", "Haig jinks"));
-			add(new Palabra("Haunt", "Obsesionar, embrujar", "Honted"));
+			add(new Palabra("Haunt", "Obsesionar, embrujar", "Hont"));
 			add(new Palabra("Burden", "Carga", "Berdn"));
 			add(new Palabra("Faithful", "Fiel", "Feitfol"));
 			add(new Palabra("Bellyache", "Dolor de vientre", "Bellyeik"));
