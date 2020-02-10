@@ -12,7 +12,7 @@ public class Palabra extends RealmObject {
 	private String palabraIng;
 	private String pronunciacion;
 	private boolean mostrarRespuesta;
-	private int palabraProblematica;
+	private int dificultad;
 
 	public Palabra() {
 	}
@@ -22,7 +22,15 @@ public class Palabra extends RealmObject {
 		this.palabraIng = palabraIng;
 		this.palabraEsp = palabraEsp;
 		this.pronunciacion = pronunciacion;
-		this.palabraProblematica = 2;
+		this.dificultad = 2;
+	}
+
+	public Palabra(String palabraIng, String palabraEsp, String pronunciacion, int dificultad) {
+		this.id = RealmService.palabraId.incrementAndGet();
+		this.palabraIng = palabraIng;
+		this.palabraEsp = palabraEsp;
+		this.pronunciacion = pronunciacion;
+		this.dificultad = dificultad;
 	}
 
 	public int getId() {
@@ -65,12 +73,12 @@ public class Palabra extends RealmObject {
 		this.mostrarRespuesta = mostrarRespuesta;
 	}
 
-	public int getPalabraProblematica() {
-		return palabraProblematica;
+	public int getDificultad() {
+		return dificultad;
 	}
 
-	public void setPalabraProblematica(int palabraProblematica) {
-		this.palabraProblematica = palabraProblematica;
+	public void setDificultad(int dificultad) {
+		this.dificultad = dificultad;
 	}
 
 }

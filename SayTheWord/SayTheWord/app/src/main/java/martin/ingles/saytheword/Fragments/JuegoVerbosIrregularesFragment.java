@@ -45,7 +45,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 	private MaterialButton btMostrarRespuestaJuego;
 	private MaterialButton btPrevious;
 	private MaterialButton btRestart;
-	private MaterialButton btPalabraProblematica;
+	private MaterialButton btDificultad;
 	private ConstraintLayout lyRespuestaJuego;
 	private String TIPO_TRADUCCION;
 	private boolean juegoAleatorio;
@@ -87,7 +87,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 		mbNext = view.findViewById(R.id.btNext);
 		btMostrarRespuestaJuego = view.findViewById(R.id.btMostrarRespuestaJuego);
 		ivCongratulations = view.findViewById(R.id.ivCongratulations);
-		btPalabraProblematica = view.findViewById(R.id.btPalabraProblematica);
+		btDificultad = view.findViewById(R.id.btDificultad);
 
 		inicializarJuego();
 
@@ -122,11 +122,11 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 			}
 		});
 
-		btPalabraProblematica.setOnClickListener(new View.OnClickListener() {
+		btDificultad.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				realmService.cambiarPalabraProblematicaVerbosIrregulares(verbosIrregularesDesordenadas.get(indice));
-				setearColorPalabraProblematica();
+				realmService.cambiarDificultadVerboIrregular(verbosIrregularesDesordenadas.get(indice));
+				setearColorDificultad();
 			}
 		});
 
@@ -165,7 +165,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 			lyRespuestaJuego.setVisibility(View.INVISIBLE);
 			ivCongratulations.setVisibility(View.VISIBLE);
 			tvInfinitivo.setVisibility(View.INVISIBLE);
-			btPalabraProblematica.setVisibility(View.INVISIBLE);
+			btDificultad.setVisibility(View.INVISIBLE);
 			Glide.with(getContext()).load(R.drawable.congratulation).into(ivCongratulations);
 		} else {
 			setearTextoArribaYColorDeBoton();
@@ -183,22 +183,22 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 				tvInfinitivo.setText(verbosIrregularesDesordenadas.get(indice).getTraduccion());
 				break;
 		}
-		setearColorPalabraProblematica();
+		setearColorDificultad();
 	}
 
-	private void setearColorPalabraProblematica() {
-		switch (verbosIrregularesDesordenadas.get(indice).getPalabraProblematica()) {
+	private void setearColorDificultad() {
+		switch (verbosIrregularesDesordenadas.get(indice).getDificultad()) {
 			case ESTADO_FACIL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_happy);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+				btDificultad.setIconResource(R.drawable.ic_happy);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadFacil));
 				break;
 			case ESTADO_NORMAL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_smile);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraNormal));
+				btDificultad.setIconResource(R.drawable.ic_smile);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadNormal));
 				break;
 			case ESTADO_DIFICIL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_angry);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
+				btDificultad.setIconResource(R.drawable.ic_angry);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadDificil));
 				break;
 		}
 	}
@@ -215,7 +215,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 			btPrevious.setVisibility(View.INVISIBLE);
 			btMostrarRespuestaJuego.setVisibility(View.INVISIBLE);
 			tvInfinitivo.setVisibility(View.INVISIBLE);
-			btPalabraProblematica.setVisibility(View.INVISIBLE);
+			btDificultad.setVisibility(View.INVISIBLE);
 			lyRespuestaJuego.setVisibility(View.INVISIBLE);
 			tvJuegoCantidadPalabras.setText("No hay verbos problemáticos!");
 		} else {
@@ -249,7 +249,7 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 			tvJuegoCantidadPalabras.setVisibility(View.VISIBLE);
 			btMostrarRespuestaJuego.setVisibility(View.VISIBLE);
 			tvInfinitivo.setVisibility(View.VISIBLE);
-			btPalabraProblematica.setVisibility(View.VISIBLE);
+			btDificultad.setVisibility(View.VISIBLE);
 			lyRespuestaJuego.setVisibility(View.INVISIBLE);
 
 			setearTextoArribaYColorDeBoton();

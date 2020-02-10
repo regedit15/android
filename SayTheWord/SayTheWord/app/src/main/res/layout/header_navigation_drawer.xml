@@ -24,7 +24,7 @@
 		android:shadowDx="5"
 		android:shadowDy="5"
 		android:shadowRadius="5"
-		android:text="Say The Word"
+		android:text="Say The Word v12.0"
 		android:textColor="#FFFFFF"
 		android:textSize="18sp"
 		android:textStyle="bold"

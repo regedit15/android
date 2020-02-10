@@ -63,7 +63,7 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 		public TextView tvTraduccion;
 		public ConstraintLayout lyRespuesta;
 		public MaterialButton btMostrarRespuesta;
-		public MaterialButton btPalabraProblematicaListado;
+		public MaterialButton btDificulatad;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
@@ -77,7 +77,7 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 			this.tvTraduccion = itemView.findViewById(R.id.tvTraduccion);
 			this.lyRespuesta = itemView.findViewById(R.id.lyRespuesta);
 			this.btMostrarRespuesta = itemView.findViewById(R.id.btMostrarRespuesta);
-			this.btPalabraProblematicaListado = itemView.findViewById(R.id.btPalabraProblematicaListado);
+			this.btDificulatad = itemView.findViewById(R.id.btDificultad);
 		}
 
 		public void bind(final VerboIrregular verboIrregular) {
@@ -101,7 +101,7 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 
 
 			setear(verboIrregular.isMostrarRespuesta());
-			setearColorPalabraProblematica(verboIrregular);
+			setearColorDificultadPalabra(verboIrregular);
 
 			btMostrarRespuesta.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -111,13 +111,13 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 				}
 			});
 
-			btPalabraProblematicaListado.setOnClickListener(new View.OnClickListener() {
+			btDificulatad.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 
-					realmService.cambiarPalabraProblematicaVerbosIrregulares(verboIrregular);
+					realmService.cambiarDificultadVerboIrregular(verboIrregular);
 
-					setearColorPalabraProblematica(verboIrregular);
+					setearColorDificultadPalabra(verboIrregular);
 					notifyDataSetChanged();
 
 					((MainActivity) activity).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) activity).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(lista.size()).append(")").toString());
@@ -137,19 +137,19 @@ public class VerboIrregularAdapter extends RecyclerView.Adapter<VerboIrregularAd
 			}
 		}
 
-		private void setearColorPalabraProblematica(VerboIrregular verboIrregular) {
-			switch (verboIrregular.getPalabraProblematica()) {
+		private void setearColorDificultadPalabra(VerboIrregular verboIrregular) {
+			switch (verboIrregular.getDificultad()) {
 				case ESTADO_FACIL:
-					btPalabraProblematicaListado.setIconResource(R.drawable.ic_happy);
-					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraBuena));
+					btDificulatad.setIconResource(R.drawable.ic_happy);
+					btDificulatad.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorDificultadFacil));
 					break;
 				case ESTADO_NORMAL:
-					btPalabraProblematicaListado.setIconResource(R.drawable.ic_smile);
-					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraNormal));
+					btDificulatad.setIconResource(R.drawable.ic_smile);
+					btDificulatad.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorDificultadNormal));
 					break;
 				case ESTADO_DIFICIL:
-					btPalabraProblematicaListado.setIconResource(R.drawable.ic_angry);
-					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraProblematica));
+					btDificulatad.setIconResource(R.drawable.ic_angry);
+					btDificulatad.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorDificultadDificil));
 					break;
 			}
 		}

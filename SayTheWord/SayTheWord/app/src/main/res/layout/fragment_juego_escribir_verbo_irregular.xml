@@ -404,7 +404,7 @@ android:nextFocusDown="@id/btEvaluar" />
 						android:gravity="center_horizontal">
 
 						<com.google.android.material.button.MaterialButton
-							android:id="@+id/btPalabraProblematica"
+							android:id="@+id/btDificultad"
 							style="@style/Widget.MaterialComponents.Button"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"

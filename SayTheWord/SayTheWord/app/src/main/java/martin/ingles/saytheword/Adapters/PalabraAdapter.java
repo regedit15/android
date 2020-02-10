@@ -59,7 +59,7 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.ViewHold
 		public TextView tvPalabraDerechaAbajo;
 		public ConstraintLayout lyRespuesta;
 		public MaterialButton mbMostrarRespuesta;
-		public MaterialButton btPalabraProblematicaListado;
+		public MaterialButton btDificultad;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
@@ -69,7 +69,7 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.ViewHold
 			this.tvPalabraDerechaAbajo = itemView.findViewById(R.id.tvPalabraDerechaAbajo);
 			this.lyRespuesta = itemView.findViewById(R.id.lyRespuesta);
 			this.mbMostrarRespuesta = itemView.findViewById(R.id.btMostrarRespuesta);
-			this.btPalabraProblematicaListado = itemView.findViewById(R.id.btPalabraProblematicaListado);
+			this.btDificultad = itemView.findViewById(R.id.btDificultad);
 		}
 
 		public void bind(final Palabra palabra) {
@@ -88,7 +88,7 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.ViewHold
 
 
 			setear(palabra.isMostrarRespuesta());
-			setearColorPalabraProblematica(palabra);
+			setearColorDificultad(palabra);
 
 			mbMostrarRespuesta.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -98,13 +98,13 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.ViewHold
 				}
 			});
 
-			btPalabraProblematicaListado.setOnClickListener(new View.OnClickListener() {
+			btDificultad.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 
-					realmService.cambiarPalabraProblematicaPalabra(palabra);
+					realmService.cambiarDificultadPalabra(palabra);
 
-					setearColorPalabraProblematica(palabra);
+					setearColorDificultad(palabra);
 					notifyDataSetChanged();
 
 					((MainActivity) activity).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) activity).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(lista.size()).append(")").toString());
@@ -122,19 +122,19 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.ViewHold
 			}
 		}
 
-		private void setearColorPalabraProblematica(Palabra palabra) {
-			switch (palabra.getPalabraProblematica()) {
+		private void setearColorDificultad(Palabra palabra) {
+			switch (palabra.getDificultad()) {
 				case ESTADO_FACIL:
-					btPalabraProblematicaListado.setIconResource(R.drawable.ic_happy);
-					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraBuena));
+					btDificultad.setIconResource(R.drawable.ic_happy);
+					btDificultad.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorDificultadFacil));
 					break;
 				case ESTADO_NORMAL:
-					btPalabraProblematicaListado.setIconResource(R.drawable.ic_smile);
-					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraNormal));
+					btDificultad.setIconResource(R.drawable.ic_smile);
+					btDificultad.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorDificultadNormal));
 					break;
 				case ESTADO_DIFICIL:
-					btPalabraProblematicaListado.setIconResource(R.drawable.ic_angry);
-					btPalabraProblematicaListado.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorPalabraProblematica));
+					btDificultad.setIconResource(R.drawable.ic_angry);
+					btDificultad.setBackgroundTintList(activity.getResources().getColorStateList(R.color.colorDificultadDificil));
 					break;
 			}
 		}

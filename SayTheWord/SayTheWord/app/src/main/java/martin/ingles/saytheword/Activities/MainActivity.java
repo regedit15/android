@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
 	private static final String PREFERENCES = "PREFERENCES";
 	private static final String DATOD_GUARDADOS = "DATOD_GUARDADOS";
+	private static final String VERSION = "VERSION";
+	private static final String VERSION_ACTUAL = "12";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,11 +88,21 @@ public class MainActivity extends AppCompatActivity {
 		sharedPreferenceService = new SharedPreferenceService(this.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
 
 		if (!sharedPreferenceService.getBoolean(DATOD_GUARDADOS)) {
-			realmService.insertarPalabras(utilService.getPalabrasEstaticas());
-			realmService.insertarIrregularVerbs(utilService.getVerbosIrregularesEstaticos());
-			sharedPreferenceService.guardarBooleanYCommitear(DATOD_GUARDADOS, true);
+			insertarDatosEnLaBD();
+		}
+
+		if (!VERSION_ACTUAL.equals(sharedPreferenceService.getString(VERSION))) {
+			sharedPreferenceService.guardarStringYCommitear(VERSION, VERSION_ACTUAL);
+			realmService.eliminarTodo();
+			insertarDatosEnLaBD();
 		}
 		//-------------------------------------------------------------------
+	}
+
+	private void insertarDatosEnLaBD() {
+		realmService.insertarPalabras(utilService.getPalabrasEstaticas());
+		realmService.insertarIrregularVerbs(utilService.getVerbosIrregularesEstaticos());
+		sharedPreferenceService.guardarBooleanYCommitear(DATOD_GUARDADOS, true);
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

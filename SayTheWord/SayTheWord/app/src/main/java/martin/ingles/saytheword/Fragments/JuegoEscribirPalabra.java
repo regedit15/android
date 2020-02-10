@@ -36,7 +36,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 	private MaterialButton btNext;
 	private MaterialButton btPrevious;
 	private MaterialButton btRestart;
-	private MaterialButton btPalabraProblematica;
+	private MaterialButton btDificultad;
 	private ConstraintLayout lyRespuestaJuego;
 	private ImageView ivCongratulations;
 
@@ -72,7 +72,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		btEvaluar = view.findViewById(R.id.btEvaluar);
 		btPrevious = view.findViewById(R.id.btPrevious);
 		btRestart = view.findViewById(R.id.btRestart);
-		btPalabraProblematica = view.findViewById(R.id.btPalabraProblematica);
+		btDificultad = view.findViewById(R.id.btDificultad);
 		lyRespuestaJuego = view.findViewById(R.id.lyRespuestaJuego);
 		ivCongratulations = view.findViewById(R.id.ivCongratulations);
 		tvCantidadIntentosRestantes = view.findViewById(R.id.tvCantidadIntentosRestantes);
@@ -84,7 +84,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 			@Override
 			public void onClick(View v) {
 
-				if (etRespuesta.getText().toString().equalsIgnoreCase(palabrasDesordenadas.get(indice).getPalabraIng())) {
+				if (utilService.compararPalabra(etRespuesta.getText().toString(), palabrasDesordenadas.get(indice).getPalabraIng())) {
 					siguiente();
 				} else {
 					cantidadIntentosFallidos++;
@@ -98,7 +98,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 						btEvaluar.setVisibility(View.INVISIBLE);
 						btPrevious.setVisibility(View.INVISIBLE);
 						btRestart.setVisibility(View.VISIBLE);
-						btPalabraProblematica.setVisibility(View.INVISIBLE);
+						btDificultad.setVisibility(View.INVISIBLE);
 						lyRespuestaJuego.setVisibility(View.INVISIBLE);
 						etRespuestaContenedor.setVisibility(View.INVISIBLE);
 						ivCongratulations.setVisibility(View.VISIBLE);
@@ -141,11 +141,11 @@ public class JuegoEscribirPalabra extends BaseFragment {
 			}
 		});
 
-		btPalabraProblematica.setOnClickListener(new View.OnClickListener() {
+		btDificultad.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				realmService.cambiarPalabraProblematicaPalabra(palabrasDesordenadas.get(indice));
-				setearColorPalabraProblematica();
+				realmService.cambiarDificultadPalabra(palabrasDesordenadas.get(indice));
+				setearColorDificultad();
 			}
 		});
 
@@ -180,7 +180,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 			btEvaluar.setVisibility(View.INVISIBLE);
 			btPrevious.setVisibility(View.INVISIBLE);
 			btRestart.setVisibility(View.VISIBLE);
-			btPalabraProblematica.setVisibility(View.INVISIBLE);
+			btDificultad.setVisibility(View.INVISIBLE);
 			lyRespuestaJuego.setVisibility(View.INVISIBLE);
 			etRespuestaContenedor.setVisibility(View.INVISIBLE);
 			btEvaluar.setVisibility(View.INVISIBLE);
@@ -198,22 +198,22 @@ public class JuegoEscribirPalabra extends BaseFragment {
 
 	private void setearTextoArribaYcolorDeBoton() {
 		tvJuegoPalabraAdivinar.setText(palabrasDesordenadas.get(indice).getPalabraEsp());
-		setearColorPalabraProblematica();
+		setearColorDificultad();
 	}
 
-	private void setearColorPalabraProblematica() {
-		switch (palabrasDesordenadas.get(indice).getPalabraProblematica()) {
+	private void setearColorDificultad() {
+		switch (palabrasDesordenadas.get(indice).getDificultad()) {
 			case ESTADO_FACIL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_happy);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+				btDificultad.setIconResource(R.drawable.ic_happy);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadFacil));
 				break;
 			case ESTADO_NORMAL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_smile);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraNormal));
+				btDificultad.setIconResource(R.drawable.ic_smile);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadNormal));
 				break;
 			case ESTADO_DIFICIL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_angry);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
+				btDificultad.setIconResource(R.drawable.ic_angry);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadDificil));
 				break;
 		}
 	}
@@ -260,7 +260,7 @@ public class JuegoEscribirPalabra extends BaseFragment {
 		lyRespuestaJuego.setVisibility(View.INVISIBLE);
 		ivCongratulations.setVisibility(View.INVISIBLE);
 		btEvaluar.setVisibility(View.VISIBLE);
-		btPalabraProblematica.setVisibility(View.VISIBLE);
+		btDificultad.setVisibility(View.VISIBLE);
 
 		setearTextoArribaYcolorDeBoton();
 

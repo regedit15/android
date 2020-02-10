@@ -53,7 +53,7 @@ public class RealmService {
 	}
 
 	public List<Palabra> getPalabrasPorDificultad(Integer[] dificultades) {
-		return Realm.getDefaultInstance().where(Palabra.class).in("palabraProblematica", dificultades).sort("palabraIng", Sort.ASCENDING).findAll();
+		return Realm.getDefaultInstance().where(Palabra.class).in("dificultad", dificultades).sort("palabraIng", Sort.ASCENDING).findAll();
 	}
 
 	public void insertarPalabras(final List<Palabra> palabras) {
@@ -85,11 +85,11 @@ public class RealmService {
 		});
 	}
 
-	public void cambiarPalabraProblematicaPalabra(final Palabra x) {
+	public void cambiarDificultadPalabra(final Palabra x) {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override
 			public void execute(Realm realm) {
-				x.setPalabraProblematica(getSiguienteValor(x.getPalabraProblematica()));
+				x.setDificultad(getSiguienteValor(x.getDificultad()));
 			}
 		});
 	}
@@ -100,8 +100,8 @@ public class RealmService {
 		return Realm.getDefaultInstance().where(VerboIrregular.class).sort("infinitivo", Sort.ASCENDING).findAll();
 	}
 
-	public List<VerboIrregular> getIrregularVerbsProblematicos(Integer[] dificultades ) {
-		return Realm.getDefaultInstance().where(VerboIrregular.class).in("palabraProblematica", dificultades).sort("infinitivo", Sort.ASCENDING).findAll();
+	public List<VerboIrregular> getIrregularVerbsProblematicos(Integer[] dificultades) {
+		return Realm.getDefaultInstance().where(VerboIrregular.class).in("dificultad", dificultades).sort("infinitivo", Sort.ASCENDING).findAll();
 	}
 
 	public void insertarIrregularVerbs(final List<VerboIrregular> palabras) {
@@ -133,11 +133,11 @@ public class RealmService {
 		});
 	}
 
-	public void cambiarPalabraProblematicaVerbosIrregulares(final VerboIrregular x) {
+	public void cambiarDificultadVerboIrregular(final VerboIrregular x) {
 		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
 			@Override
 			public void execute(Realm realm) {
-				x.setPalabraProblematica(getSiguienteValor(x.getPalabraProblematica()));
+				x.setDificultad(getSiguienteValor(x.getDificultad()));
 			}
 		});
 	}

@@ -64,7 +64,7 @@ public class UtilService {
 			add(new Palabra("Earn", "Ganar", "Earn"));
 			add(new Palabra("Faint", "Desmayarse", "Feint"));
 			add(new Palabra("Filth", "Inmundicia", "Filf"));
-			add(new Palabra("Fingernails", "Las uñas", "Fingernails"));
+			add(new Palabra("Fingernails", "Uñas", "Fingernails"));
 			add(new Palabra("Flaw", "Falla", "Floa"));
 			add(new Palabra("Flip", "Dar la vuelta", "Flep"));
 			add(new Palabra("Gee", "Caramba", "Gii"));
@@ -80,7 +80,7 @@ public class UtilService {
 			add(new Palabra("Manners", "Modales", "Menners"));
 			add(new Palabra("Marvelous", "Maravilloso", "Marvelous"));
 			add(new Palabra("Masking tape", "Cinta adhesiva", "Masking tape"));
-			add(new Palabra("May rub off on me", "Puede contagiarme", "Mey rub off on me"));
+			add(new Palabra("May rub off on me", "Puede contagiarme", "Mey rob off on me"));
 			add(new Palabra("Mean", "Significar, suponer, promedio, media", "Min"));
 			add(new Palabra("Messing", "Fastidiar", "Messing"));
 			add(new Palabra("Mockery", "Burlas", "Mackery"));
@@ -110,7 +110,7 @@ public class UtilService {
 			add(new Palabra("Sniff", "Oler", "Sniff"));
 			add(new Palabra("Stab", "Puñalada", "Staab"));
 			add(new Palabra("Stain", "Manchar", "Stein"));
-			add(new Palabra("Stairs", "Escalera", "Steirs"));
+			add(new Palabra("Stair", "Escalera", "Steir"));
 			add(new Palabra("Stream", "Corriente", "Strim"));
 			add(new Palabra("Stuck", "Atascado", "Stack"));
 			add(new Palabra("Stutter", "Tartamudear", "Stadder"));
@@ -167,7 +167,6 @@ public class UtilService {
 			add(new Palabra("Tongue", "Lengua", "Tong"));
 			add(new Palabra("Necklace", "Collar", "Neckles"));
 			add(new Palabra("Silly", "Tonto, bobo", "Silly"));
-			add(new Palabra("Lend", "Prestar, dar", "Lend"));
 			add(new Palabra("Shield", "Proteger, escudo, blindaje", "Shield"));
 			add(new Palabra("Forehead", "Frente", "Forhead"));
 			add(new Palabra("Theft", "Robo", "Zeft"));
@@ -247,7 +246,7 @@ public class UtilService {
 			add(new Palabra("Graceful", "Agraciado", "Greicefol"));
 			add(new Palabra("Either", "Ya sea", "Ither"));
 			add(new Palabra("High jinks", "Travesuras", "Haig jinks"));
-			add(new Palabra("Haunt", "Obsesionar, embrujar", "Haunted"));
+			add(new Palabra("Haunt", "Obsesionar, embrujar", "Honted"));
 			add(new Palabra("Burden", "Carga", "Berdn"));
 			add(new Palabra("Faithful", "Fiel", "Feitfol"));
 			add(new Palabra("Bellyache", "Dolor de vientre", "Bellyeik"));
@@ -277,6 +276,69 @@ public class UtilService {
 			add(new Palabra("Shavings", "Virutas", "Sheivings"));
 			add(new Palabra("Rough", "Áspero, brusco", "Roff"));
 			add(new Palabra("At stake", "En juego, en peligro", "At steik"));
+			// ----------------
+			add(new Palabra("Till", "Hasta", "Till"));
+			add(new Palabra("Within", "Dentro", "Within"));
+			add(new Palabra("Homie", "Amigo, colega", "Houmi"));
+			add(new Palabra("Baseless", "Infundado", "Beisless"));
+			add(new Palabra("Assumed", "Ficticio", "Assumd"));
+			add(new Palabra("Perform", "Realizar, ejecutar", "Perform"));
+			add(new Palabra("Straight", "Derecho, recto", "Streight"));
+			add(new Palabra("Tickle", "Cosquillas", "Tickl"));
+			add(new Palabra("Fellow", "Compañero, miembro", "Fellow"));
+			add(new Palabra("Knowledge", "Conocimiento", "Nowledch"));
+			add(new Palabra("Nasty", "Asqueroso", "Nasty"));
+			add(new Palabra("Pour", "Verter, hechar", "Puur"));
+			add(new Palabra("Handsome", "Hermoso, guapo", "Handsom"));
+			add(new Palabra("Doom", "Condenar, perdicion", "Duum"));
+			add(new Palabra("Tide", "Marea", "Taid"));
+			add(new Palabra("Wrapp", "Envoltura", "Rapp"));
+			add(new Palabra("Meal", "Comida", "Mieal"));
+			add(new Palabra("Lookout", "Estar atento", "Lukaut"));
+			add(new Palabra("Phony", "Falso, farsante", "Phouny"));
+			add(new Palabra("Dupe", "Engañar", "Duup"));
+			add(new Palabra("Clipping", "Recorte", "Clipping"));
+			add(new Palabra("Choke", "Ahogo", "Chouk"));
+			add(new Palabra("Relief", "Alivio", "Relif"));
+			add(new Palabra("Not even", "Ni siquiera", "Nat iven"));
+			add(new Palabra("Mop up", "Limpiar", "Mop ap"));
+			add(new Palabra("Bury", "Enterrar, sepultar", "Berry"));
+			add(new Palabra("Icky", "Asqueroso", "Icky"));
+			add(new Palabra("Toss", "Sacudida", "Toss"));
+			add(new Palabra("Ain't quite right", "No está del todo bien", "Ein't cuait raight"));
+			add(new Palabra("Behalf", "Favor", "Bihaf"));
+			add(new Palabra("Mudd", "Enlodado", "Modd"));
+			add(new Palabra("Shovel", "Pala", "Shovl"));
+			add(new Palabra("Lift", "Levantar", "Left"));
+			add(new Palabra("Buckle up", "Cinturón de seguridad", "Backl ap"));
+			add(new Palabra("Stow", "Estibar", "Stou"));
+			add(new Palabra("Crew", "Personal, equipo, tripulacion", "Cruu"));
+			add(new Palabra("Stitches", "Puntadas", "Stitches"));
+			add(new Palabra("Stiff", "Rígido", "Stiff"));
+			add(new Palabra("Deed", "Escritura, hecho", "Diid"));
+			add(new Palabra("Stuffed", "Relleno", "Staffd"));
+			add(new Palabra("Realize", "Realizar, darse cuenta de", "Rielaiz"));
+			add(new Palabra("Brand", "Marca", "Brand"));
+			add(new Palabra("Lizard", "Lagartija, lagarto", "Lizerd"));
+			add(new Palabra("Chopper", "Helicóptero", "Chapper"));
+			add(new Palabra("Perhaps", "Quizás", "Perhaps"));
+			add(new Palabra("Stage", "Etapa, escenario", "Steich"));
+			add(new Palabra("Such", "Tal", "Sach"));
+			add(new Palabra("Wrestle", "Luchar", "Resel"));
+			add(new Palabra("Suddenly", "Repentinamente, de repente", "Saddenly"));
+			add(new Palabra("Lest", "Para que no", "Lest"));
+			add(new Palabra("Strength", "Fuerza, resistencia", "Strengz"));
+			add(new Palabra("Against", "En contra", "Agenst"));
+			add(new Palabra("Lad", "Muchacho", "Lad"));
+			add(new Palabra("Tights", "Pantymedias, mallas", "Tights"));
+			add(new Palabra("Threaten", "Amenaza", "Thretn"));
+			add(new Palabra("Waiter", "Camarero", "Weiter"));
+			add(new Palabra("Belt", "Cinturón", "Belt"));
+			add(new Palabra("Tiny", "Minúsculo, diminuto", "Tainy"));
+			add(new Palabra("Wise", "Sabio, prudente", "Wais"));
+			add(new Palabra("Height", "Altura", "Haight"));
+			add(new Palabra("Jar", "Tarro", "Yar"));
+			add(new Palabra("Shrink", "Encoger", "Shrink"));
 		}};
 	}
 
@@ -334,7 +396,8 @@ public class UtilService {
 			add(new VerboIrregular("Lead", "Liid", "Conducir, llevar, dirigir", "Led", "Led", "Led", "Led"));
 			add(new VerboIrregular("Learn", "Lern", "Aprender", "Lernt/Lerned", "Lernt/Lernd", "Lernt/Lerned", "Lernt/Lernd"));
 			add(new VerboIrregular("Leave", "Liiv", "Dejar", "Left", "Left", "Left", "Left"));
-			add(new VerboIrregular("Let", "Let", "Permitir", "Let", "Let", "Let", "Let"));
+			add(new VerboIrregular("Lend", "Lend", "Prestar", "Lend", "Left", "Left", "Left"));
+			add(new VerboIrregular("Lend", "Lend", "Permitir", "Let", "Let", "Let", "Let"));
 			add(new VerboIrregular("Lie", "Lai", "Mentir", "Lay", "Ley", "Lain", "Lein"));
 			add(new VerboIrregular("Light", "Laight", "Encender, prender", "Lit", "Lit", "Lit", "Lit"));
 			add(new VerboIrregular("Lose", "Luus", "Perder", "Lost", "Lost", "Lost", "Lost"));
@@ -420,7 +483,7 @@ public class UtilService {
 			palabraEncontrada = checkearPalabraExistente(listaPalabrasBD, x);
 
 			if (palabraEncontrada != null) {
-				x.setPalabraProblematica(palabraEncontrada.getPalabraProblematica());
+				x.setDificultad(palabraEncontrada.getDificultad());
 			}
 		}
 
@@ -433,7 +496,7 @@ public class UtilService {
 			verboIrregularEncontrado = checkearVerboIrregularExistente(listaVerbosIrregularesBD, x);
 
 			if (verboIrregularEncontrado != null) {
-				x.setPalabraProblematica(verboIrregularEncontrado.getPalabraProblematica());
+				x.setDificultad(verboIrregularEncontrado.getDificultad());
 			}
 		}
 
@@ -466,7 +529,10 @@ public class UtilService {
 		return verboIrregularEncontrado;
 	}
 
-	//	en el juego de ver una palabra cuando pasa una palabra cullo significado es largo el boton de next pasa a quedar bien pegado a la derecha
+	//en el juego de ver una palabra cuando pasa una palabra cullo significado es largo el boton de next pasa a quedar bien pegado a la derecha
 	// Fijarse que en el juego de palabras el next cuando se estira la traduccion se sigue viendo mal..
 
+	public boolean compararPalabra(String palabra1, String palabra2) {
+		return palabra1.trim().equalsIgnoreCase(palabra2);
+	}
 }

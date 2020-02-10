@@ -47,7 +47,7 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 	private MaterialButton btVolver;
 	private MaterialButton btNext;
 	private MaterialButton btRestart;
-	private MaterialButton btPalabraProblematica;
+	private MaterialButton btDificultad;
 	private ImageView ivImagenFinal;
 	private ImageView ivRespuestaInfinitivo;
 	private ImageView ivRespuestaPasado;
@@ -94,7 +94,7 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 		btNext = view.findViewById(R.id.btNext);
 		btEvaluar = view.findViewById(R.id.btEvaluar);
 		btRestart = view.findViewById(R.id.btRestart);
-		btPalabraProblematica = view.findViewById(R.id.btPalabraProblematica);
+		btDificultad = view.findViewById(R.id.btDificultad);
 		tvCantidadIntentosRestantes = view.findViewById(R.id.tvCantidadIntentosRestantes);
 		btVolver = view.findViewById(R.id.btVolver);
 		lyContenedorGeneral = view.findViewById(R.id.lyContenedorGeneral);
@@ -109,10 +109,9 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 			@Override
 			public void onClick(View v) {
 
-				boolean respuestaInfinitivo = etRespuestaInfinitivo.getText().toString().equalsIgnoreCase(verbosIrregularesDesordenados.get(indice).getInfinitivo());
-				boolean respuestaPasado = etRespuestaPasado.getText().toString().equalsIgnoreCase(verbosIrregularesDesordenados.get(indice).getPasado());
-				boolean respuestaParticipio = etRespuestaParticipio.getText().toString().equalsIgnoreCase(verbosIrregularesDesordenados.get(indice).getParticipio());
-
+				boolean respuestaInfinitivo = utilService.compararPalabra(etRespuestaInfinitivo.getText().toString(), verbosIrregularesDesordenados.get(indice).getInfinitivo());
+				boolean respuestaPasado = utilService.compararPalabra(etRespuestaPasado.getText().toString(), verbosIrregularesDesordenados.get(indice).getPasado());
+				boolean respuestaParticipio = utilService.compararPalabra(etRespuestaParticipio.getText().toString(), verbosIrregularesDesordenados.get(indice).getParticipio());
 
 				if (respuestaInfinitivo && respuestaPasado && respuestaParticipio) {
 					siguiente();
@@ -182,11 +181,11 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 			}
 		});
 
-		btPalabraProblematica.setOnClickListener(new View.OnClickListener() {
+		btDificultad.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				realmService.cambiarPalabraProblematicaVerbosIrregulares(verbosIrregularesDesordenados.get(indice));
-				setearColorPalabraProblematica();
+				realmService.cambiarDificultadVerboIrregular(verbosIrregularesDesordenados.get(indice));
+				setearColorDificultad();
 			}
 		});
 
@@ -231,22 +230,22 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 
 	private void setearTextoArribaYcolorDeBoton() {
 		tvJuegoPalabraAdivinar.setText(verbosIrregularesDesordenados.get(indice).getTraduccion());
-		setearColorPalabraProblematica();
+		setearColorDificultad();
 	}
 
-	private void setearColorPalabraProblematica() {
-		switch (verbosIrregularesDesordenados.get(indice).getPalabraProblematica()) {
+	private void setearColorDificultad() {
+		switch (verbosIrregularesDesordenados.get(indice).getDificultad()) {
 			case ESTADO_FACIL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_happy);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraBuena));
+				btDificultad.setIconResource(R.drawable.ic_happy);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadFacil));
 				break;
 			case ESTADO_NORMAL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_smile);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraNormal));
+				btDificultad.setIconResource(R.drawable.ic_smile);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadNormal));
 				break;
 			case ESTADO_DIFICIL:
-				btPalabraProblematica.setIconResource(R.drawable.ic_angry);
-				btPalabraProblematica.setBackgroundTintList(getResources().getColorStateList(R.color.colorPalabraProblematica));
+				btDificultad.setIconResource(R.drawable.ic_angry);
+				btDificultad.setBackgroundTintList(getResources().getColorStateList(R.color.colorDificultadDificil));
 				break;
 		}
 	}
@@ -284,7 +283,7 @@ public class JuegoEscribirVerboIrregularFragment extends BaseFragment {
 		lyContenedorGeneral.setVisibility(View.VISIBLE);
 		tablaRespuestas.setVisibility(View.VISIBLE);
 		btEvaluar.setVisibility(View.VISIBLE);
-		btPalabraProblematica.setVisibility(View.VISIBLE);
+		btDificultad.setVisibility(View.VISIBLE);
 
 		tablaImagenConBotones.setVisibility(View.INVISIBLE);
 		tablaRespuestas.setVisibility(View.INVISIBLE);

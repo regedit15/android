@@ -19,7 +19,7 @@ public class VerboIrregular extends RealmObject {
 	private String participioPronunciacion;
 
 	private boolean mostrarRespuesta;
-	private int palabraProblematica;
+	private int dificultad;
 
 	public VerboIrregular() {
 	}
@@ -33,7 +33,7 @@ public class VerboIrregular extends RealmObject {
 		this.pasadoPronunciacion = pasadoPronunciacion;
 		this.participio = participio;
 		this.participioPronunciacion = participioPronunciacion;
-		this.palabraProblematica = 2;
+		this.dificultad = 2;
 	}
 
 	public int getId() {
@@ -108,11 +108,11 @@ public class VerboIrregular extends RealmObject {
 		this.mostrarRespuesta = mostrarRespuesta;
 	}
 
-	public int getPalabraProblematica() {
-		return palabraProblematica;
+	public int getDificultad() {
+		return dificultad;
 	}
 
-	public void setPalabraProblematica(int palabraProblematica) {
-		this.palabraProblematica = palabraProblematica;
+	public void setDificultad(int dificultad) {
+		this.dificultad = dificultad;
 	}
 }

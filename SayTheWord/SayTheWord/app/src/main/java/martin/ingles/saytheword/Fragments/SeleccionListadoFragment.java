@@ -26,7 +26,7 @@ public class SeleccionListadoFragment extends BaseFragment {
 	MaterialButton btListadoVerbosIrregulares;
 
 	public SeleccionListadoFragment() {
-		setHasOptionsMenu(true);
+		// setHasOptionsMenu(true);
 	}
 
 	@Override
