@@ -2,6 +2,7 @@ package martin.ingles.saytheword.Activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
@@ -19,7 +20,7 @@ import martin.ingles.saytheword.Services.RealmService;
 import martin.ingles.saytheword.Services.SharedPreferenceService;
 import martin.ingles.saytheword.Services.UtilService;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
 	private DrawerLayout drawerLayout;
 	public NavigationView navigationView;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 	private static final String PREFERENCES = "PREFERENCES";
 	private static final String DATOD_GUARDADOS = "DATOD_GUARDADOS";
 	private static final String VERSION = "VERSION";
-	private static final String VERSION_ACTUAL = "12";
+	private static final String VERSION_ACTUAL = "14";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -136,5 +137,10 @@ public class MainActivity extends AppCompatActivity {
 				break;
 		}
 		return resultado;
+	}
+
+	@Override
+	public void onInit(int status) {
+
 	}
 }

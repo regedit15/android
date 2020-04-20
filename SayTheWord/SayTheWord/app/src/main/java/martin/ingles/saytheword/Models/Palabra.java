@@ -22,7 +22,7 @@ public class Palabra extends RealmObject {
 		this.palabraIng = palabraIng;
 		this.palabraEsp = palabraEsp;
 		this.pronunciacion = pronunciacion;
-		this.dificultad = 2;
+		this.dificultad = 3;
 	}
 
 	public Palabra(String palabraIng, String palabraEsp, String pronunciacion, int dificultad) {

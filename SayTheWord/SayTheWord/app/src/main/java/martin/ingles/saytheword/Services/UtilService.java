@@ -339,6 +339,100 @@ public class UtilService {
 			add(new Palabra("Height", "Altura", "Haight"));
 			add(new Palabra("Jar", "Tarro", "Yar"));
 			add(new Palabra("Shrink", "Encoger", "Shrink"));
+			// ----------------------------------------------
+			add(new Palabra("Chase", "Persecución, caza", "Cheis"));
+			add(new Palabra("Shout", "Gritar", "Shaut"));
+			add(new Palabra("Pledge", "Promesa", "Pledch"));
+			add(new Palabra("As long as", "Mientras, siempre que", "As long es"));
+			add(new Palabra("Willing", "Dispuesto", "Willing"));
+			add(new Palabra("Senior", "Mayor", "Sinior"));
+			add(new Palabra("Ink", "Tinta", "Ink"));
+			add(new Palabra("Dessert", "Postre", "Dissert"));
+			add(new Palabra("Rage", "Rabia, ira", "Reich"));
+			add(new Palabra("Insurance", "Seguro", "Inshurans"));
+			add(new Palabra("Raw", "Crudo", "Raa"));
+			add(new Palabra("Disease", "Enfermedad", "Disis"));
+			add(new Palabra("Hount", "Perseguir", "Haunt"));
+			add(new Palabra("Snore", "Roncar", "Snor"));
+			add(new Palabra("Greeting", "Saludo", "Griting"));
+			add(new Palabra("Duty", "Deber, derechos", "Duty"));
+			add(new Palabra("Costume", "Disfraz", "Castum"));
+			add(new Palabra("Besides", "Además", "Bisaids"));
+			add(new Palabra("Weight", "Peso", "Weight"));
+			add(new Palabra("Coat", "Abrigo, saco", "Cout"));
+			add(new Palabra("Hubbub", "Alboroto", "Habbab"));
+			//--------------------------------------
+			add(new Palabra("Stray", "Extraviado", "Strey"));
+			add(new Palabra("Sheet", "Sábana, hoja, lámina", "Shiit"));
+			add(new Palabra("Abode", "Morada, domicilio", "Oboud"));
+			add(new Palabra("It's nothing but", "No es más que", "It's nothing bat"));
+			add(new Palabra("Harness", "Aprovechar", "Jarness"));
+			add(new Palabra("Cozy", "Acogedor", "Couzy"));
+			add(new Palabra("Slippers", "Pantuflas", "Slippers"));
+			add(new Palabra("Wedge", "Cuña", "Wedch"));
+			add(new Palabra("Bother", "Molestia", "Boder"));
+			add(new Palabra("Menace", "Amenazar", "Menes"));
+			add(new Palabra("Unpleasant", "Desagradable", "Anplezent"));
+			add(new Palabra("Melt", "Fundir, derretir", "Melt"));
+			add(new Palabra("Aid", "Ayudar", "Eid"));
+			add(new Palabra("Stoop", "Agacharse, inclinarse", "Stuup"));
+			add(new Palabra("Downright", "Completamente, absolutamente", "Dawnraight"));
+			add(new Palabra("Crouch", "Agacharse", "Crouch"));
+			add(new Palabra("Bloat", "Inflar, hinchar", "Blout"));
+			add(new Palabra("Worship", "Adorar", "Worship"));
+			//--------------------------------------
+			add(new Palabra("Devise", "Idear", "Devais"));
+			add(new Palabra("Sleeve", "Mangas", "Sliiv"));
+			add(new Palabra("Shoulder", "Hombro", "Shoulder"));
+			add(new Palabra("Budget", "Presupuesto", "Badget"));
+			add(new Palabra("Journey", "Viaje", "Jerny"));
+			add(new Palabra("Disposable", "Desechable", "Dispósabl"));
+			add(new Palabra("Ladle", "Cucharón", "Leidl"));
+			add(new Palabra("Handful", "Puñado, manojo", "Handful"));
+			add(new Palabra("Dashing", "Apuesto", "Dashing"));
+			add(new Palabra("Novelty", "Novedad", "Navelty"));
+			add(new Palabra("Fresh Out", "Recién Salido", "Fresh Aut"));
+			add(new Palabra("Bark", "Ladrar", "Bark"));
+			add(new Palabra("Whether", "Si", "Whether"));
+			add(new Palabra("Though", "Aunque, sin embargo", "Dou"));
+			add(new Palabra("Doorknob", "Pomo de las Puerta", "Durnab"));
+			add(new Palabra("Purchase", "Comprar", "Purches"));
+			add(new Palabra("Wink", "Guiñar", "Wink"));
+			add(new Palabra("Wipe", "Limpiar", "Waip"));
+			add(new Palabra("Chamber", "Cámara", "Cheimber"));
+			add(new Palabra("Nibble", "Picar, mordisquear", "Nibbol"));
+			add(new Palabra("Innards", "Tripas", "Inərdz"));
+			add(new Palabra("Understudy", "Suplente", "Anderstady"));
+			add(new Palabra("It's almost on", "Ya casi está", "It's almost on"));
+			add(new Palabra("Buns", "Bollos", "Bons"));
+			add(new Palabra("Bold", "Negrita", "Bold"));
+			add(new Palabra("Flatter", "Adular, halagar", "Flader"));
+			add(new Palabra("Napkin", "Servilleta", "Napkin"));
+			add(new Palabra("Approach", "Acercarse, aproximarse", "Approuch"));
+			add(new Palabra("Tail", "Cola", "Teil"));
+			add(new Palabra("Fin", "Aleta", "Fin"));
+			add(new Palabra("Shyness", "Timidez", "Shayness"));
+			add(new Palabra("No longer", "No más, ya no", "No longer"));
+			add(new Palabra("Misunderstood", "Incomprendido", "Misanderstud"));
+			add(new Palabra("Weary", "Cansado", "Wiry"));
+			add(new Palabra("Pity", "Lástima", "Píty"));
+			add(new Palabra("Stripe", "Raya", "Straip"));
+			add(new Palabra("Dough", "Masa", "Dou"));
+			add(new Palabra("Lack", "Falta, ausencia", "Lack"));
+			add(new Palabra("Cab", "Taxi", "Cab"));
+			add(new Palabra("Stretch", "Estirar, tramo", "Stretch"));
+			add(new Palabra("Edgy", "Nervioso", "Edgy"));
+			add(new Palabra("Dime", "Moneda de diez centavos", "Daim"));
+			add(new Palabra("Spare", "De eepuesto, tiempo libre", "Sper"));
+			add(new Palabra("Premises", "Local, tienda", "Premesis"));
+			add(new Palabra("Receipts", "Ingresos", "Ricipts"));
+			add(new Palabra("Stack", "Apilar, montoón", "Stack"));
+			add(new Palabra("Sample", "Muestra, probar", "Sampl"));
+			add(new Palabra("Bushed", "Agotado", "Bushd"));
+			add(new Palabra("Blanket", "Manta, cobija", "Blanket"));
+			add(new Palabra("Fetch", "Ir a buscar, extraer", "Fetch"));
+			add(new Palabra("Swat", "Aplastar", "Swat"));
+
 		}};
 	}
 
@@ -446,6 +540,39 @@ public class UtilService {
 		}};
 	}
 
+
+	// Palabras que por ahi se confunden:
+	//
+	// Wise = Sabio, prudente
+	// Wisdom = Sabiduría, juicio
+	// Wit = Ingenio
+	//
+	// Tiny = minusculo, diminuto
+	// Thin = delgado
+	// Skinny = flaco
+	//
+	// Either = ya sea
+	// Not either = tampoco
+	// Not even = ni siquiera
+	//
+	// Wrestle = luchar
+	// Wrangle = disputar, reñir
+	//
+	// Burry = enterrar, sepultar
+	// Burden = carga
+	//
+	// Owe = deber
+	// Ought = debería
+	// Shall = deberá
+	//
+	// Haunt (hont) = obsesionar, embrujar
+	// Hount (haunt) = perseguir
+	//
+	// Mudd = enlodado
+	// Sludge = lodo
+	//
+	// Shelter = Abrigo, amparo
+
 	public List<Palabra> getPalabras(boolean faciles, boolean normales, boolean dificiles) {
 		return realmService.getPalabrasPorDificultad(getDificultades(faciles, normales, dificiles));
 	}
@@ -482,6 +609,9 @@ public class UtilService {
 
 			palabraEncontrada = checkearPalabraExistente(listaPalabrasBD, x);
 
+
+			// si las palabras ya existen se le setea la dificultad por las que ya tenian, por las
+			// que ya estaban guardadas y el usuario las habia modificado a su gusto
 			if (palabraEncontrada != null) {
 				x.setDificultad(palabraEncontrada.getDificultad());
 			}
@@ -501,6 +631,9 @@ public class UtilService {
 		}
 
 		realmService.eliminarTodo();
+
+		listaPalabrasEstatica.get(listaPalabrasEstatica.size() - 1);
+
 		realmService.insertarPalabras(listaPalabrasEstatica);
 		realmService.insertarIrregularVerbs(listaVerbosIrregularesEstatica);
 	}
