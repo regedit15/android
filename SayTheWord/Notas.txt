@@ -7,3 +7,5 @@ Hacer juego con palabras y con vi
 Agregar Allophones en la palabras
 Agregar una  seccion de "Notas" en 
 la cual puedas escribir cualquier cosa y se guarde, entonces podes tener tus notas
+
+Poner un "ocultar todos" en el juego. O ver todos

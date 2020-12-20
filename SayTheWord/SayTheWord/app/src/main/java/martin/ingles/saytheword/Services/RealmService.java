@@ -93,8 +93,8 @@ public class RealmService {
 			}
 		});
 	}
-
 	// ----------------------------------------------------
+
 	// -------------------------- Verbo Irregular
 	public List<VerboIrregular> getIrregularVerbs() {
 		return Realm.getDefaultInstance().where(VerboIrregular.class).sort("infinitivo", Sort.ASCENDING).findAll();

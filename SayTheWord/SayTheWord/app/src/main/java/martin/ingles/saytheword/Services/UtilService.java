@@ -47,7 +47,7 @@ public class UtilService {
 			add(new Palabra("At least", "Al menos", "At list"));
 			add(new Palabra("Attempt", "Intento", "Attempt"));
 			add(new Palabra("Beg", "Mendigar", "Beg"));
-			add(new Palabra("Beverages", "Bebidas", "Béverages"));
+			add(new Palabra("Beverages", "Bebidas", "Béverech"));
 			add(new Palabra("Birth", "Nacimiento", "Birz"));
 			add(new Palabra("Blathering", "Chillidos", "Bladering"));
 			add(new Palabra("Blissfully", "Felizmente", "Blissfully"));
@@ -96,7 +96,7 @@ public class UtilService {
 			add(new Palabra("Prior", "Anterior", "Praior"));
 			add(new Palabra("Quake", "Terremoto", "Queike"));
 			add(new Palabra("Ripped", "Rasgado", "Rept"));
-			add(new Palabra("Rise", "Subir", "Raise"));
+			add(new Palabra("Rise", "Subir", "Rais"));
 			add(new Palabra("Roam", "Vagar", "Roum"));
 			add(new Palabra("Rub", "Frotar", "Rab"));
 			add(new Palabra("Scalawag", "Pícaro", "Scalawag"));
@@ -124,7 +124,7 @@ public class UtilService {
 			add(new Palabra("Vault", "Bóveda", "Voolt"));
 			add(new Palabra("Vow", "Voto", "Vau"));
 			add(new Palabra("Warm", "Calentar", "Worm"));
-			add(new Palabra("Whine", "Gimoteo", "Waine"));
+			add(new Palabra("Whine", "Gimoteo", "Wain"));
 			add(new Palabra("Whistle", "Silbar", "Whisel"));
 			add(new Palabra("Wide", "Amplio", "Waid"));
 			add(new Palabra("Yell", "Gritar", "Iell"));
@@ -198,7 +198,7 @@ public class UtilService {
 			add(new Palabra("Gnarly", "Retorcido", "Narly"));
 			add(new Palabra("Point out", "Señalar", "Point aut"));
 			add(new Palabra("Stuff", "Cosas", "Staff"));
-			add(new Palabra("Show Off", "Presumir", "Show Off"));
+			add(new Palabra("Show off", "Presumir", "Show off"));
 			add(new Palabra("Misshapen", "Deforme", "Missheipen"));
 			add(new Palabra("Strike", "Golpear, ataque, huelga", "Straik"));
 			add(new Palabra("Darn", "Maldito", "Darn"));
@@ -330,7 +330,7 @@ public class UtilService {
 			add(new Palabra("Strength", "Fuerza, resistencia", "Strengz"));
 			add(new Palabra("Against", "En contra", "Agenst"));
 			add(new Palabra("Lad", "Muchacho", "Lad"));
-			add(new Palabra("Tights", "Pantymedias, mallas", "Tights"));
+			add(new Palabra("Tights", "Pantymedias, mallas", "Taights"));
 			add(new Palabra("Threaten", "Amenaza", "Thretn"));
 			add(new Palabra("Waiter", "Camarero", "Weiter"));
 			add(new Palabra("Belt", "Cinturón", "Belt"));
@@ -385,23 +385,23 @@ public class UtilService {
 			add(new Palabra("Sleeve", "Mangas", "Sliiv"));
 			add(new Palabra("Shoulder", "Hombro", "Shoulder"));
 			add(new Palabra("Budget", "Presupuesto", "Badget"));
-			add(new Palabra("Journey", "Viaje", "Jerny"));
+			add(new Palabra("Journey", "Viaje", "Yerny"));
 			add(new Palabra("Disposable", "Desechable", "Dispósabl"));
 			add(new Palabra("Ladle", "Cucharón", "Leidl"));
 			add(new Palabra("Handful", "Puñado, manojo", "Handful"));
 			add(new Palabra("Dashing", "Apuesto", "Dashing"));
 			add(new Palabra("Novelty", "Novedad", "Navelty"));
-			add(new Palabra("Fresh Out", "Recién Salido", "Fresh Aut"));
+			add(new Palabra("Fresh out", "Recién Salido", "Fresh Aut"));
 			add(new Palabra("Bark", "Ladrar", "Bark"));
 			add(new Palabra("Whether", "Si", "Whether"));
 			add(new Palabra("Though", "Aunque, sin embargo", "Dou"));
-			add(new Palabra("Doorknob", "Pomo de las Puerta", "Durnab"));
+			add(new Palabra("Doorknob", "Pomo de las puerta", "Durnab"));
 			add(new Palabra("Purchase", "Comprar", "Purches"));
 			add(new Palabra("Wink", "Guiñar", "Wink"));
 			add(new Palabra("Wipe", "Limpiar", "Waip"));
 			add(new Palabra("Chamber", "Cámara", "Cheimber"));
 			add(new Palabra("Nibble", "Picar, mordisquear", "Nibbol"));
-			add(new Palabra("Innards", "Tripas", "Inərdz"));
+			add(new Palabra("Innards", "Tripas", "Inerdz"));
 			add(new Palabra("Understudy", "Suplente", "Anderstady"));
 			add(new Palabra("It's almost on", "Ya casi está", "It's almost on"));
 			add(new Palabra("Buns", "Bollos", "Bons"));
@@ -423,16 +423,115 @@ public class UtilService {
 			add(new Palabra("Stretch", "Estirar, tramo", "Stretch"));
 			add(new Palabra("Edgy", "Nervioso", "Edgy"));
 			add(new Palabra("Dime", "Moneda de diez centavos", "Daim"));
-			add(new Palabra("Spare", "De eepuesto, tiempo libre", "Sper"));
+			add(new Palabra("Spare", "De repuesto, tiempo libre", "Sper"));
 			add(new Palabra("Premises", "Local, tienda", "Premesis"));
 			add(new Palabra("Receipts", "Ingresos", "Ricipts"));
-			add(new Palabra("Stack", "Apilar, montoón", "Stack"));
+			add(new Palabra("Stack", "Apilar, montón", "Stack"));
 			add(new Palabra("Sample", "Muestra, probar", "Sampl"));
 			add(new Palabra("Bushed", "Agotado", "Bushd"));
 			add(new Palabra("Blanket", "Manta, cobija", "Blanket"));
 			add(new Palabra("Fetch", "Ir a buscar, extraer", "Fetch"));
 			add(new Palabra("Swat", "Aplastar", "Swat"));
-
+			//--------------------------------------
+			add(new Palabra("Tongs", "Tenazas", "Tongs"));
+			add(new Palabra("Reach", "Llegar, alcanzar", "Rich"));
+			add(new Palabra("Bear", "Oso, soportar, tener, llevar", "Beer"));
+			add(new Palabra("Make out", "Dar a entender", "Meik aut"));
+			add(new Palabra("Rely", "Confiar", "Relay"));
+			add(new Palabra("Chest", "Pecho, torax, cofre", "Chest"));
+			add(new Palabra("Injured", "Lesionar, herir", "Injer"));
+			add(new Palabra("Worn", "Desgastado", "Worn"));
+			add(new Palabra("Bride", "Novia", "Braid"));
+			add(new Palabra("Beam", "Rayo, haz, viga", "Biim"));
+			add(new Palabra("Measure", "Medida", "Meshur"));
+			add(new Palabra("Seam", "Costura", "Sim"));
+			add(new Palabra("Saw", "Sierra", "Soo"));
+			add(new Palabra("Wave", "Ola, onda", "Weiv"));
+			add(new Palabra("Claw", "Garra, zarpa", "Clo"));
+			add(new Palabra("Staring", "Curioso", "Stering"));
+			add(new Palabra("Rag", "Trapo", "Rag"));
+			add(new Palabra("Bush", "Arbusto", "Bush"));
+			add(new Palabra("Sleeve", "Manga", "Sliiv "));
+			add(new Palabra("Bunch", "Manojo, grupo, racimo", "Bonch"));
+			add(new Palabra("Although", "Aunque", "Oldou"));
+			add(new Palabra("Rummage", "Hurgar, rebuscar", "Romech"));
+			add(new Palabra("Comb", "Peine", "Coum"));
+			add(new Palabra("Envisage", "Prever", "Envisich"));
+			add(new Palabra("Complain", "Quejar", "Complein"));
+			add(new Palabra("Knot", "Nudo", "Nat"));
+			add(new Palabra("Idle", "Ocioso, desocupado", "Aidol"));
+			add(new Palabra("Inward", "Interior", "Inword"));
+			add(new Palabra("Sight", "Visión, mira", "Sait"));
+			add(new Palabra("Rush", "Prisa, carrera", "Rash"));
+			add(new Palabra("Hedge", "Cobertura", "Hedch"));
+			add(new Palabra("Beware", "Tener cuidado", "Biwer"));
+			add(new Palabra("Handcuffs", "Esposas", "Hendcaffs"));
+			add(new Palabra("Almost", "Casi", "Olmoust"));
+			add(new Palabra("Towards", "Hacia", "Twords"));
+			add(new Palabra("Step outs", "Salir de paseo", "Step auts"));
+			add(new Palabra("Devis", "Ideando", "Devais"));
+			add(new Palabra("Lead", "Dirigir, conducir, plomo", "Liid"));
+			add(new Palabra("How else", "De que otra forma", "Haw els"));
+			add(new Palabra("Alley", "Callejón", "Ally"));
+			add(new Palabra("Goat", "Cabra", "Gout"));
+			add(new Palabra("Prize", "Premio", "Praiz"));
+			add(new Palabra("Autumn", "Otoño", "Otumn"));
+			add(new Palabra("Defeat", "Derrota, detrrotar", "Defiit"));
+			add(new Palabra("Surveillance", "Vigilancia", "Survelens"));
+			add(new Palabra("Regarding", "Respecto a", "Regarding"));
+			add(new Palabra("Dawn", "Amanecer", "Dawn"));
+			add(new Palabra("Lawn", "Césped", "Loon"));
+			add(new Palabra("Embrace", "Abrazo", "Embreis"));
+			add(new Palabra("Thief", "Ladrón", "Tif"));
+			add(new Palabra("Ceiling", "Techo", "Ciling"));
+			add(new Palabra("Tidy", "Ordenado", "Taidy"));
+			add(new Palabra("Neat", "Ordenado", "Nit"));
+			add(new Palabra("Thorough", "Completo", "aaa"));
+			add(new Palabra("Liver", "Hígado", "Livr"));
+			add(new Palabra("Overlord", "Señor", "Overlord"));
+			add(new Palabra("Bankrupt", "Arruinado, quebrado", "Baenkrapt"));
+			add(new Palabra("Acquire", "Adquirir", "Acuaier"));
+			add(new Palabra("Humble", "Humilde, humillar", "Hambol"));
+			add(new Palabra("Harm", "Daño", "Harm"));
+			add(new Palabra("Craftsmanship", "Artesanía", "Craftmenship"));
+			add(new Palabra("Overcome", "Superar, vencer", "Overcam"));
+			add(new Palabra("Pull out", "Extraer", "Pull aut"));
+			add(new Palabra("Reach", "Alcanzar, llegar", "Rich"));
+			add(new Palabra("Brush", "Cepillo, pincel", "Brash"));
+			add(new Palabra("Lid", "Tapa", "Lid"));
+			add(new Palabra("Drip", "Goteo", "Drip"));
+			add(new Palabra("Stride", "Zancada, paso", "Strid"));
+			add(new Palabra("Oblivion", "Olvido", "Oblivion"));
+			add(new Palabra("Hum", "Tararear", "Ham"));
+			add(new Palabra("Homeless", "Vagabundo", "Homeless"));
+			add(new Palabra("Able", "Poder", "Eibol"));
+			add(new Palabra("Despite", "A pesar de", "Despait"));
+			add(new Palabra("Briefcase", "Maletín", "Brifqueis"));
+			add(new Palabra("I'll make it up to you", "Te lo compensaré", "Aill meik it ap tu yiu"));
+			add(new Palabra("Commitment", "Compromiso", "Commitment"));
+			add(new Palabra("I'd love to", "Me encantaría", "I'd lov tu"));
+			add(new Palabra("Helpless", "Indefenso, desamparado", "Helpless"));
+			add(new Palabra("Turns out", "Resulta", "Turns aut"));
+			add(new Palabra("Blender", "Licuadora", "Blender"));
+			add(new Palabra("Stubborn", "Obstinado, terco", "Stabbern"));
+			add(new Palabra("Wrench", "Llave Inglesa", "Wrench"));
+			add(new Palabra("Screw", "Tornillo", "Scruu"));
+			add(new Palabra("Dazzle", "Deslumbrar", "Dázl"));
+			add(new Palabra("Just got", "Acabo de", "Jast gat"));
+			add(new Palabra("Paragraph", "Párrafo", "Paragraf"));
+			add(new Palabra("Fancy", "Lujoso, fantasía, suposición", "Fency"));
+			add(new Palabra("Therefore", "Por lo tanto", "Derfor"));
+			add(new Palabra("Accomplish", "Realizar, lograr, cumplir", "Accomplish"));
+			add(new Palabra("Must", "Debe", "Mast"));
+			add(new Palabra("Whatnot", "Cualquier cosa, todo eso", "Watnat"));
+			add(new Palabra("Wig", "Peluca", "Wig"));
+			add(new Palabra("Indeed", "En efecto", "Indeed"));
+			add(new Palabra("Would You Care", "Te importaría", "Wud yiu quer"));
+			add(new Palabra("I don't mean to brag", "No quiero presumir", "I don't min tu brag"));
+			add(new Palabra("How's your coming along?", "Cómo te va?", "How's your coming along?"));
+			add(new Palabra("Hut", "Choza, cabaña", "Hat"));
+			add(new Palabra("Alike", "Igual", "Alike"));
+			add(new Palabra("Whose", "Cuyo", "Hus"));
 		}};
 	}
 
@@ -598,7 +697,24 @@ public class UtilService {
 		return dificultadesLista.toArray(dificultades);
 	}
 
-	public void insertarDatosSinModificarPalabrasProblematicas() {
+
+	// Este metodo obtiene la lista de todas las palabras estáticas y la lista de todas las palabras de la BD local del telefono,
+	// y va por recorriendo la lista de las palabras estáticas. Si encuentra esa palabra en la lista de la BD local, osea,
+	// las ya existentes en el telefono, le pone esa dificultad que tenían. El resto de datos de la palabra queda como estan
+	// en la lista estática
+
+	//Entonces este metodo agrega las nuevas palabras o modifica si hay un error de traduccion o mayuscula, etc pero NO altera
+	// la dificultad que le seteo el usuario. El unico quilombo que tendrías es si le erraste en el nombre de la palabra
+	// en ingles, x lo que explica la nota de abajo:
+
+	//Nota: como hace para encontrar las palabras? solo las compara por el nombre en ingles (la propiedad palabraIng),
+	// que es como el ID de la palabra, ya que es muy raro que cambie y no se suele modificar ni haber bugs
+
+	//Nota 2: Para agregar nuevas palabras y que no modifique nada de las anteriores lo que tendrías que hacer seria agregarlas
+	// con el new Palabra en la lista estatica, darle run y despues darle a los tres puntitos y "Reiniciar palabras"
+
+	//Nota 3: Las nuevas palabras por defecto tienen dificultad 3 (difícil) por defecto, ya que son nuevas
+	public void insertarDatosSinModificarPalabrasEncontradas() {
 
 		// ----------------- Palabras
 		List<Palabra> listaPalabrasBD = realmService.getPalabras();

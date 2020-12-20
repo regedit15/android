@@ -83,7 +83,7 @@ public class SeleccionListadoFragment extends BaseFragment {
 
 		switch (item.getItemId()) {
 			case R.id.reiniciar_palabras:
-				utilService.insertarDatosSinModificarPalabrasProblematicas();
+				utilService.insertarDatosSinModificarPalabrasEncontradas();
 				resultado = true;
 				break;
 			default:

@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	private SharedPreferenceService sharedPreferenceService;
 
 	private static final String PREFERENCES = "PREFERENCES";
-	private static final String DATOD_GUARDADOS = "DATOD_GUARDADOS";
+	private static final String DATOS_GUARDADOS = "DATOS_GUARDADOS";
 	private static final String VERSION = "VERSION";
 	private static final String VERSION_ACTUAL = "14";
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 		//--------------- Compruebo si esta insertados todos los datos
 		sharedPreferenceService = new SharedPreferenceService(this.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
 
-		if (!sharedPreferenceService.getBoolean(DATOD_GUARDADOS)) {
+		if (!sharedPreferenceService.getBoolean(DATOS_GUARDADOS)) {
 			insertarDatosEnLaBD();
 		}
 
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	private void insertarDatosEnLaBD() {
 		realmService.insertarPalabras(utilService.getPalabrasEstaticas());
 		realmService.insertarIrregularVerbs(utilService.getVerbosIrregularesEstaticos());
-		sharedPreferenceService.guardarBooleanYCommitear(DATOD_GUARDADOS, true);
+		sharedPreferenceService.guardarBooleanYCommitear(DATOS_GUARDADOS, true);
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {

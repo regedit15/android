@@ -33,7 +33,7 @@ public class VerboIrregular extends RealmObject {
 		this.pasadoPronunciacion = pasadoPronunciacion;
 		this.participio = participio;
 		this.participioPronunciacion = participioPronunciacion;
-		this.dificultad = 2;
+		this.dificultad = 3;
 	}
 
 	public int getId() {
