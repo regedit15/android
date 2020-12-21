@@ -2,6 +2,8 @@ package martin.ingles.saytheword.Services;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,6 @@ public class UtilService {
 
 	public SharedPreferenceService sharedPreferenceService;
 	protected static final String PREFERENCES = "PREFERENCES";
-	protected static final String DATOD_GUARDADOS = "DATOD_GUARDADOS";
 
 	public UtilService() {
 	}
@@ -36,8 +37,8 @@ public class UtilService {
 		sharedPreferenceService = new SharedPreferenceService(activity.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
 	}
 
-	public boolean conteinsIgnoreCase(String palabraBuscada, String frase) {
-		return frase.toLowerCase().contains(frase.toLowerCase());
+	public SharedPreferenceService getPreferenceService() {
+		return sharedPreferenceService;
 	}
 
 	public ArrayList<Palabra> getPalabrasEstaticas() {
@@ -746,10 +747,8 @@ public class UtilService {
 			}
 		}
 
+		// Se elimina tod0 y se insertan las palabras y verbos irregulares
 		realmService.eliminarTodo();
-
-		listaPalabrasEstatica.get(listaPalabrasEstatica.size() - 1);
-
 		realmService.insertarPalabras(listaPalabrasEstatica);
 		realmService.insertarIrregularVerbs(listaVerbosIrregularesEstatica);
 	}
@@ -783,5 +782,19 @@ public class UtilService {
 
 	public boolean compararPalabra(String palabra1, String palabra2) {
 		return palabra1.trim().equalsIgnoreCase(palabra2);
+	}
+
+	public String getVersionName(Context context) {
+
+		String version = null;
+
+		try {
+			PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+			version = pInfo.versionName;
+		} catch (PackageManager.NameNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return version;
 	}
 }

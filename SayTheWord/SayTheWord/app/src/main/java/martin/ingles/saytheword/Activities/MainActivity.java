@@ -1,6 +1,5 @@
 package martin.ingles.saytheword.Activities;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.MenuItem;
@@ -17,7 +16,6 @@ import martin.ingles.saytheword.Fragments.JuegoConfiguracionInicial;
 import martin.ingles.saytheword.Fragments.SeleccionListadoFragment;
 import martin.ingles.saytheword.R;
 import martin.ingles.saytheword.Services.RealmService;
-import martin.ingles.saytheword.Services.SharedPreferenceService;
 import martin.ingles.saytheword.Services.UtilService;
 
 public class MainActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
@@ -26,12 +24,10 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	public NavigationView navigationView;
 	public RealmService realmService = new RealmService();
 	protected UtilService utilService = new UtilService();
-	private SharedPreferenceService sharedPreferenceService;
 
 	private static final String PREFERENCES = "PREFERENCES";
 	private static final String DATOS_GUARDADOS = "DATOS_GUARDADOS";
-	private static final String VERSION = "VERSION";
-	private static final String VERSION_ACTUAL = "14";
+	private static final String APP_VERSION = "VERSION";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,16 +82,14 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
 
 		//--------------- Compruebo si esta insertados todos los datos
-		sharedPreferenceService = new SharedPreferenceService(this.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
-
-		if (!sharedPreferenceService.getBoolean(DATOS_GUARDADOS)) {
+		utilService.setsharedPreferenceService(this);
+		if (!utilService.getPreferenceService().getBoolean(DATOS_GUARDADOS)) {
 			insertarDatosEnLaBD();
 		}
 
-		if (!VERSION_ACTUAL.equals(sharedPreferenceService.getString(VERSION))) {
-			sharedPreferenceService.guardarStringYCommitear(VERSION, VERSION_ACTUAL);
-			realmService.eliminarTodo();
-			insertarDatosEnLaBD();
+		if (!utilService.getVersionName(this).equals(utilService.getPreferenceService().getString(APP_VERSION))) {
+			utilService.getPreferenceService().guardarStringYCommitear(APP_VERSION, utilService.getVersionName(this));
+			utilService.insertarDatosSinModificarPalabrasEncontradas();
 		}
 		//-------------------------------------------------------------------
 	}
@@ -103,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	private void insertarDatosEnLaBD() {
 		realmService.insertarPalabras(utilService.getPalabrasEstaticas());
 		realmService.insertarIrregularVerbs(utilService.getVerbosIrregularesEstaticos());
-		sharedPreferenceService.guardarBooleanYCommitear(DATOS_GUARDADOS, true);
+		utilService.getPreferenceService().guardarBooleanYCommitear(DATOS_GUARDADOS, true);
 	}
 
 	private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
