@@ -1,11 +1,23 @@
-Issues: 
+Issues:
 
-Agregar alta de palabras
-Mejorar el menu, pones juego y listado de palabras. Y una pantalla con 4 botones para cada uno
-Hacer juego con palabras escritas
-Hacer juego con palabras y con vi
-Agregar Allophones en la palabras
-Agregar una  seccion de "Notas" en 
-la cual puedas escribir cualquier cosa y se guarde, entonces podes tener tus notas
 
-Poner un "ocultar todos" en el juego. O ver todos
+- Agregar Allophones en la palabras. Quizas no es tan dificil, solo deberias buscar palabra por palabra en el diccionaro y copiar y pegar los allophons y listo
+ Y quizas o poner los allophons y la trad en español al mismo tiempo o hacer una opcion que sea que el usuario eliga que mostrar o los allophons o la trad en
+  español. Y e funcion de eso pones o una o la otra. Entonces no tenes que tocar tod0 el tema visual. y el tema del espacio que seria lo mas problematico quizas
+
+- Agregar una seccion de "Notas". En la cual puedas escribir cualquier cosa y se guarde, entonces podes tener tus notas. Una especie de ABM de notas.
+Aunque primera version podras tener una sola nota. Un solo String y listo, y si se puede que sea con texto enrriquecido
+
+- Hacer un buscar palabras
+
+- Lo ideal seria que cuando una palabra tenga varios significados o verbos o sustantivos, convertir todo eso que hoy tenemos en uns String en una lista,
+ ya sea de objetos, que cada objeto tenga por ejemplo si es un sust o un adj, o un verbo,  etc. O simplemente una lista de Strings. Esto vbeneficiaria muchisimo
+  el tema del juego cuando te ponen una palabra en ing y tenes que escribirla en español.
+
+Issues Realizadas:
+
+- Agregar alta de palabras
+- Mejorar el menu, pones juego y listado de palabras. Y una pantalla con 4 botones para cada uno
+- Hacer juego con palabras escritas
+- Hacer juego con palabras y con vi
+- Poner un "ocultar todos" en el juego. O ver todos
