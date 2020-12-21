@@ -33,7 +33,7 @@ public class BaseFragment extends Fragment {
 		return sharedPreferenceService;
 	}
 
-	protected void compartirAudoooo(int idAudio) {
+	protected void compartirAudio(int idAudio) {
 		fileAudio = audioService.compartirAudio(this, idAudio);
 	}
 

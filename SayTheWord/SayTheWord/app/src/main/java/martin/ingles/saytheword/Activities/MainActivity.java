@@ -6,6 +6,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import martin.ingles.saytheword.Fragments.JuegoConfiguracionInicial;
 import martin.ingles.saytheword.Fragments.SeleccionListadoFragment;
+import martin.ingles.saytheword.Models.Palabra;
 import martin.ingles.saytheword.R;
 import martin.ingles.saytheword.Services.RealmService;
 import martin.ingles.saytheword.Services.UtilService;

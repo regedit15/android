@@ -797,4 +797,32 @@ public class UtilService {
 
 		return version;
 	}
+
+	public void validarPalabraRepetida() {
+
+		List<Palabra> lista1 = getPalabrasEstaticas();
+		List<Palabra> lista2 = getPalabrasEstaticas();
+		List<Palabra> palabrasRepetidas = new ArrayList<Palabra>();
+
+		boolean resultado = false;
+
+		for (Palabra x : lista1) {
+
+			for (Palabra y : lista2) {
+
+				int contador = 0;
+				if (x.getPalabraIng().equals(y.getPalabraIng()) && contador >= 2) {
+					contador++;
+					palabrasRepetidas.add(x);
+				}
+			}
+		}
+
+		if (palabrasRepetidas.isEmpty()) {
+			System.out.println("Ninguna palabra repetida. Todo OK!!!!!");
+		} else {
+			System.out.println("Hay al menos una palabra repetida!: ");
+			System.out.println(palabrasRepetidas);
+		}
+	}
 }

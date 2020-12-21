@@ -84,7 +84,7 @@ public class AudiosFragment extends BaseFragment {
 
 			@Override
 			public void onShareClickListener(Audio audio) {
-				compartirAudoooo(audio.getIdAudio());
+				compartirAudio(audio.getIdAudio());
 			}
 		});
 
