@@ -1045,10 +1045,6 @@ public class UtilService {
                         OBJ_TAG_GAJTAUN,
                         OBJ_TAG_SONIDO
                 )),
-                new Audio(R.raw.audio_210, "* Sonido fury delfín *", Arrays.asList(
-                        OBJ_TAG_FIURI,
-                        OBJ_TAG_SONIDO
-                )),
                 new Audio(R.raw.audio_211, "* Sonido fury delfín *", Arrays.asList(
                         OBJ_TAG_FIURI,
                         OBJ_TAG_SONIDO
@@ -1060,7 +1056,7 @@ public class UtilService {
                 new Audio(R.raw.audio_213, "Un enfermo este pibe loco, mal", Arrays.asList(
                         OBJ_TAG_NIGUIN
                 )),
-                new Audio(R.raw.audio_214, "Quién entrtega el ogete", Arrays.asList(
+                new Audio(R.raw.audio_214, "Quién entrtega el ojete", Arrays.asList(
                         OBJ_TAG_UBER
                 )),
                 new Audio(R.raw.audio_215, "Si, yo le pegué, yo le agredío, que van a hacer al respecto, EEHH?", Arrays.asList(
@@ -1307,7 +1303,26 @@ public class UtilService {
                 )),
                 new Audio(R.raw.audio_289, "Contate otro mane", Arrays.asList(
                         OBJ_TAG_MARCE
-                ))
+                )),
+                new Audio(R.raw.audio_290, "Te vas al carajo marcel, cada vez peor estas eh..", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_291, "Clarito, si, ahi tenes que usar pitágoras porque", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+
+
+//[15:09, 27/12/2020] martin: Los textos de los tags no estan centrados bien verticalmente
+//[15:09, 27/12/2020] martin: Los tags grandes se cortan
+//                [15:09, 27/12/2020] martin: No estan tageados todos los qye tienen FFFFFFFGGGG de los vientos, faltan
+//                [15:10, 27/12/2020] martin: El que dice uber entiendo... Entiendo.. ahí falta un "si, entiendo"
+//                [15:12, 27/12/2020] martin: Hay una que dice hijod de puta
+//                [15:14, 27/12/2020] martin: Esta mal escrito. Tehe heshado de menos
+//[15:14, 27/12/2020] martin: Dice peroi eso es otra ventaja
+//[15:15, 27/12/2020] martin: El q dice sos un, sos un atrevido falta un ay, sos un
+//                [15:17, 27/12/2020] martin: Dice mmirada
+//[15:31, 27/12/2020] martin: Hay un bug. Cuando estas en fav y filtras por tag te trae todos
+
         );
     }
 }
