@@ -40,6 +40,24 @@
 				app:iconPadding="0dp"
 				app:iconSize="30dp" />
 
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/btLimpiart"
+				android:layout_width="@dimen/filtrosIconoWidth"
+				android:layout_height="@dimen/filtrosIconoHeight"
+				android:layout_marginTop="1dp"
+				android:layout_marginRight="5dp"
+				android:insetLeft="0dp"
+				android:insetTop="0dp"
+				android:insetRight="0dp"
+				android:insetBottom="0dp"
+				app:backgroundTint="#D81B60"
+				app:icon="@drawable/ic_trash"
+				app:iconGravity="textStart"
+				app:iconPadding="0dp"
+				app:iconSize="35dp" />
+
+
 			<com.google.android.material.button.MaterialButton
 				android:id="@+id/btTags"
 				android:layout_width="@dimen/filtrosIconoWidth"
@@ -55,6 +73,8 @@
 				app:iconGravity="textStart"
 				app:iconPadding="0dp"
 				app:iconSize="35dp" />
+
+
 
 		</LinearLayout>
 

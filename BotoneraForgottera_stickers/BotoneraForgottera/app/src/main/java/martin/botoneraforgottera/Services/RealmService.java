@@ -15,58 +15,67 @@ import martin.botoneraforgottera.Models.Tag;
 
 public class RealmService {
 
-	public static AtomicInteger audioId = new AtomicInteger();
-	public static AtomicInteger tagId = new AtomicInteger();
+    public static AtomicInteger audioId = new AtomicInteger();
+    public static AtomicInteger tagId = new AtomicInteger();
 
-	public void setearConfiguracion(Context context) {
+    public void setearConfiguracion(Context context) {
 
-		// ----- Setear configuracion
-		Realm.init(context);
-		RealmConfiguration config = new RealmConfiguration.Builder().build();
-		Realm.setDefaultConfiguration(config);
-		//-----------------
+        // ----- Setear configuracion
+        Realm.init(context);
+        RealmConfiguration config = new RealmConfiguration.Builder().build();
+        Realm.setDefaultConfiguration(config);
+        //-----------------
 
-		Realm realm = Realm.getDefaultInstance();
-		audioId = getIdByTabla(realm, Audio.class);
-		tagId = getIdByTabla(realm, Tag.class);
-		realm.close();
-	}
+        Realm realm = Realm.getDefaultInstance();
+        audioId = getIdByTabla(realm, Audio.class);
+        tagId = getIdByTabla(realm, Tag.class);
+        realm.close();
+    }
 
-	public <T extends RealmObject> AtomicInteger getIdByTabla(Realm realm, Class<T> clase) {
-		RealmResults<T> results = realm.where(clase).findAll();
+    public <T extends RealmObject> AtomicInteger getIdByTabla(Realm realm, Class<T> clase) {
+        RealmResults<T> results = realm.where(clase).findAll();
 
-		return (results.size() > 0) ? new AtomicInteger(results.max("id").intValue()) : new AtomicInteger();
-	}
+        return (results.size() > 0) ? new AtomicInteger(results.max("id").intValue()) : new AtomicInteger();
+    }
 
-	public RealmResults<Audio> getAudios() {
-		return Realm.getDefaultInstance().where(Audio.class).findAll();
-	}
+    public List<Audio> getAudios() {
+        return Realm.getDefaultInstance().where(Audio.class).findAll();
+    }
 
-	public RealmResults<Audio> getAudiosFavoritos() {
-		return Realm.getDefaultInstance().where(Audio.class).equalTo("favorito", true).findAll();
-	}
+    public List<Audio> getAudiosFavoritos() {
+        return Realm.getDefaultInstance().where(Audio.class).equalTo("favorito", true).findAll();
+    }
 
-	public void insertarAudios(List<Audio> audios) {
-		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
-			@Override
-			public void execute(Realm realm) {
-				Realm.getDefaultInstance().insert(audios);
-			}
-		});
-	}
+    public void insertarAudios(List<Audio> audios) {
+        Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Realm.getDefaultInstance().insert(audios);
+            }
+        });
+    }
 
-	public RealmResults<Audio> filtrarAudiosPorTitulo(String nombre) {
-		return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE).findAll();
-	}
+    public List<Audio> filtrarAudiosPorTitulo(String nombre) {
+        return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE).findAll();
+    }
 
-	public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList) {
+    public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList) {
 
-		String[] tags = tagsList.toArray(new String[0]);
+        String[] tags = tagsList.toArray(new String[0]);
 
-		return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE)
+        return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE)
 
-				.and().in("tags.nombre", tags)
+                .and().in("tags.nombre", tags)
 
-				.findAll();
-	}
+                .findAll();
+    }
+
+    public List<Audio> filtrarAudiosPorTags(String tag) {
+
+        String[] tags = {tag};
+
+        return Realm.getDefaultInstance().where(Audio.class).in("tags.nombre", tags)
+
+                .findAll();
+    }
 }
