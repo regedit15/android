@@ -1099,6 +1099,68 @@ public class UtilService {
                 )),
                 new Audio(R.raw.audio_225, "Vamos a la cama que hay que descansar \uD83C\uDFB5...", Arrays.asList(
                         OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_226, "Se te nota la envidia, disiomula papu", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_227, "Hace frioooo lgdadada", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_228, "A tu médico no le podes hablar así, maleducado de mierda", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_229, "ja ja, saludFFFFFFFFSSSSSHHHHHHH", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_VIENTO
+                )),
+                new Audio(R.raw.audio_230, "Bien ahí hijo de puta", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_HIJO_DE_PUTA
+                )),
+                new Audio(R.raw.audio_231, "Aguante viejaaaaaa!", Arrays.asList(
+                        OBJ_TAG_FABRIO
+                )),
+                new Audio(R.raw.audio_232, "Coman pollaaaaaaaa!", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_233, "Ah, que hijo de re mil putas que son", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_HIJO_DE_PUTA
+                )),
+                new Audio(R.raw.audio_234, "Pero la puta que te parió, llené la pantalla de mocos", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_235, "Hablá bien estúpido", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_236, "Vamos campeón mierdaaa!", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_RIVER
+                )),
+                new Audio(R.raw.audio_237, "Por fin hijo de re mil puta", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_HIJO_DE_PUTA
+                )),
+                new Audio(R.raw.audio_238, "Puta que te parió gilll", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_HIJO_DE_PUTA
+                )),
+                new Audio(R.raw.audio_239, "Aawww...", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SONIDO
+                )),
+                new Audio(R.raw.audio_240, "Ay voy a estudiar y me distrae...bueno si, chupate una pija", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_241, "Ay que reco mameeeee!", Arrays.asList(
+                        OBJ_TAG_NIGUIN,
+                        OBJ_TAG_AY_QUE_RECO_MAME
+                )),
+                new Audio(R.raw.audio_242, "Estoy en la cama todavía, vo velo", Arrays.asList(
+                        OBJ_TAG_FABRIO
+                )),
+                new Audio(R.raw.audio_243, "Dale guacho, me gusta la idea, ahí llevo unos guayma", Arrays.asList(
+                        OBJ_TAG_NIGUIN
                 ))
         );
     }
