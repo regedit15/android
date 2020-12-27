@@ -1309,7 +1309,7 @@ public class UtilService {
                 )),
                 new Audio(R.raw.audio_291, "Clarito, si, ahi tenes que usar pitágoras porque", Arrays.asList(
                         OBJ_TAG_UBER
-                )),
+                ))
 
 
 //[15:09, 27/12/2020] martin: Los textos de los tags no estan centrados bien verticalmente
