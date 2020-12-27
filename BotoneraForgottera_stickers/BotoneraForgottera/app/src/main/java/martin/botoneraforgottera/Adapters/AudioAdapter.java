@@ -128,7 +128,7 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
                         public void execute(Realm realm) {
                             audio.setFavorito(!audio.isFavorito());
                             setearCorazon(audio.isFavorito());
-
+                            notifyDataSetChanged();
                             ((MainActivity) context).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) context).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(getLista().size()).append(")").toString());
                         }
                     });

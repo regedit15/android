@@ -34,7 +34,7 @@ public class AudiosFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private AudioAdapter audioAdapter;
     private RecyclerView.LayoutManager layoutManagerAudios;
-    private int tipoFragment;
+    private final int tipoFragment;
 
     private List<String> tags = utilService.getTags();
     private List<String> tagsSeleccionadosPopup = new ArrayList();
