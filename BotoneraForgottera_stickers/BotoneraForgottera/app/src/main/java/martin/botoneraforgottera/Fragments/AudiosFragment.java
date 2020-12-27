@@ -31,7 +31,6 @@ public class AudiosFragment extends BaseFragment {
 
     public static final int TIPO_DEFAULT = 1;
     public static final int TIPO_FAVORITO = 2;
-    public static final int TIPO_TAG = 3;
     private RecyclerView recyclerView;
     private AudioAdapter audioAdapter;
     private RecyclerView.LayoutManager layoutManagerAudios;
@@ -63,8 +62,6 @@ public class AudiosFragment extends BaseFragment {
                 break;
             case TIPO_FAVORITO:
                 realmResultsAudios = realmService.getAudiosFavoritos();
-                break;
-            case TIPO_TAG:
                 break;
         }
 
@@ -172,7 +169,19 @@ public class AudiosFragment extends BaseFragment {
     private void limpiarBusqueda(View view) {
         tagsSeleccionados = new ArrayList();
         ((EditText) view.findViewById(R.id.etBusqueda)).setText("");
-        setListaYRefrezcar(realmService.getAudios());
+
+        List<Audio> lista = null;
+
+        switch (tipoFragment) {
+            case TIPO_DEFAULT:
+                lista = realmService.getAudios();
+                break;
+            case TIPO_FAVORITO:
+                lista = realmService.getAudiosFavoritos();
+                break;
+        }
+
+        setListaYRefrezcar(lista);
     }
 
 
