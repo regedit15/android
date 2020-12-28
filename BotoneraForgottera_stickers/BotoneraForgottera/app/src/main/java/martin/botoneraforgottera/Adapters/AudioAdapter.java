@@ -69,8 +69,8 @@ public class AudioAdapter extends RecyclerView.Adapter<AudioAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.tvCiudadNombre);
-            descripcion = itemView.findViewById(R.id.tvCiudadDescripcion);
+            nombre = itemView.findViewById(R.id.tvAudioNombre);
+            descripcion = itemView.findViewById(R.id.tvAudioDescripcion);
             btPlay = itemView.findViewById(R.id.btPlay);
             btShare = itemView.findViewById(R.id.btShare);
             ibCorazon = itemView.findViewById(R.id.ibCorazon);
