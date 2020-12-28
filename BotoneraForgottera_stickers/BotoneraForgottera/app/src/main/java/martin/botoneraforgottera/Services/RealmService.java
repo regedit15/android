@@ -18,6 +18,7 @@ public class RealmService {
 
     public static AtomicInteger audioId = new AtomicInteger();
     public static AtomicInteger tagId = new AtomicInteger();
+    public Realm realm;
 
     public void setearConfiguracion(Context context) {
 
@@ -27,7 +28,8 @@ public class RealmService {
         Realm.setDefaultConfiguration(config);
         //-----------------
 
-        Realm realm = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
+
         audioId = getIdByTabla(realm, Audio.class);
         tagId = getIdByTabla(realm, Tag.class);
         realm.close();
@@ -89,6 +91,19 @@ public class RealmService {
         agregarFiltradoFav(realmQuery, soloFavoritos);
 
         return realmQuery.findAll();
+    }
+
+    public void eliminarTodo() {
+//        realm.deleteAll();
+
+        Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+//                Realm.getDefaultInstance().delete(Audio.class);
+                Realm.getDefaultInstance().deleteAll();
+            }
+        });
+
     }
 
     private RealmQuery agregarFiltradoFav(RealmQuery realmQuery, boolean soloFavoritos) {

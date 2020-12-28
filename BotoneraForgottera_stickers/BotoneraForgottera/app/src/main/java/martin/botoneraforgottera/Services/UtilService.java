@@ -11,9 +11,12 @@ import martin.botoneraforgottera.R;
 public class UtilService {
 
     //    ISSUES:
-    // - Los textos de los tags no estan centrados bien verticalmente
-    // - Los tags grandes se cortan
-    // - No filtra bien si tiene acento. Ej pones para buscar "medico" y si hay una palabra "médico" no te lo toma
+    // - Los textos de los tags no estan centrados bien verticalmente. Los tags grandes se cortan
+    // - No filtra bien si tiene acento. Ej pones para buscar "medico" y si hay una palabra "médico" no te lo toma. Buscamos info de esto yy..
+    //   ta complicada, hay algo de realm filter, que si anda, pero es como que esta para swift, que es un lenguaje de apple. Lo que se podría
+    //   hacer es obtener toda la lista y filtrarla como en un array list... pero bue
+    // - Si bien se arreglo el problema de desinstalar e instalar la app cuando agregas mas audios. Tendrias que: ver si agregar lo de la version.
+    //   Y ver el tema de que no se pierdan los fav que guardaste
 
     private final String TAG_UBER = "#uber";
     private final String TAG_FABRIO = "#fabrio";
@@ -39,7 +42,7 @@ public class UtilService {
     private final String TAG_RAMI = "#rami";
     private final String TAG_AH_PERO_ANOCHE = "#ahperoanoche";
     private final String TAG_YA_TE_RAJO = "#yaterajo";
-    private final String TAG_MANE = "#marce";
+    private final String TAG_MANE = "#mane";
     private final String TAG_GAJTAUN = "#gajtaun";
     private final String TAG_BLACK = "#black";
     private final String TAG_KUKA = "#kuka";
@@ -641,7 +644,7 @@ public class UtilService {
                         OBJ_TAG_MARCE,
                         OBJ_TAG_SALUDO
                 )),
-                new Audio(R.raw.audio_110, "Holiiiii", Arrays.asList(
+                new Audio(R.raw.audio_110, "Holiiiii (1)", Arrays.asList(
                         OBJ_TAG_MARCE,
                         OBJ_TAG_SALUDO
                 )),
@@ -1361,9 +1364,9 @@ public class UtilService {
                         OBJ_TAG_MARCE
                 )),
                 new Audio(R.raw.audio_304, "Desde que no está pichu disponible, los patos dan pena!", Arrays.asList(
-                        OBJ_TAG_GULI
+                        OBJ_TAG_MARCE
                 )),
-                new Audio(R.raw.audio_305, "Igual voy y tomo algo, no necesito comer", Arrays.asList(
+                new Audio(R.raw.audio_305, "Igual voy y tomo algo, de última, no necesito comer", Arrays.asList(
                         OBJ_TAG_GULI
                 )),
                 new Audio(R.raw.audio_306, "Voy, me prendo", Arrays.asList(
@@ -1426,7 +1429,8 @@ public class UtilService {
                         OBJ_TAG_HERRAIZ
                 )),
                 new Audio(R.raw.audio_325, "* Risa llorosa *", Arrays.asList(
-                        OBJ_TAG_NIGUIN
+                        OBJ_TAG_NIGUIN,
+                        OBJ_TAG_RISA
                 )),
                 new Audio(R.raw.audio_326, "Furiiiiii, que lindas piernas", Arrays.asList(
                         OBJ_TAG_MARCE
@@ -1500,7 +1504,7 @@ public class UtilService {
                 new Audio(R.raw.audio_348, "Yo quiero poronga", Arrays.asList(
                         OBJ_TAG_MANE
                 )),
-                new Audio(R.raw.audio_349, "Matad", Arrays.asList(
+                new Audio(R.raw.audio_349, "Matad..  * se aspira una línea *", Arrays.asList(
                         OBJ_TAG_MANE
                 )),
                 new Audio(R.raw.audio_350, "Mirá mirá", Arrays.asList(
@@ -1532,6 +1536,47 @@ public class UtilService {
                 )),
                 new Audio(R.raw.audio_359, "Seguro?", Arrays.asList(
                         OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_360, "Holiiiii (2)", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_361, "Ay que reco mameeee", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_AY_QUE_RECO_MAME
+                )),
+                new Audio(R.raw.audio_362, "Asco de tipo inmundo..", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_363, "Gracias guacho", Arrays.asList(
+                        OBJ_TAG_NIGUIN
+                )),
+                new Audio(R.raw.audio_364, "Entrando damas y caballeros", Arrays.asList(
+                        OBJ_TAG_NIGUIN
+                )),
+                new Audio(R.raw.audio_365, "Juego caca, juego excremento, juego popo", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_366, "El lo saaaaaabe", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_367, "Dígame señor gastoncishhho", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_368, "Loquitaaaaa", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_369, "Marceleteeeee... * tos horrible *", Arrays.asList(
+                        OBJ_TAG_UBER,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_370, "Che gente, una pregunta, ustedes no sabian que FFFFFFFFSSSSSHHHHHHH", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_VIENTO
+                )),
+                new Audio(R.raw.audio_371, "Si si si si FFFFFFFFSSSSSHHHHHHH", Arrays.asList(
+                        OBJ_TAG_UBER,
+                        OBJ_TAG_VIENTO
                 ))
         );
     }

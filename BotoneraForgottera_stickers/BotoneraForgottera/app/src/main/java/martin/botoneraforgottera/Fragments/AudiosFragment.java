@@ -51,14 +51,26 @@ public class AudiosFragment extends BaseFragment {
         List<Audio> realmResultsAudios = null;
 
         switch (tipoFragment) {
+
+
             case TIPO_DEFAULT:
-                if (SI.equals(getsharedPreferenceService().getString(AUDIOS_GUARDADOS))) {
-                    realmResultsAudios = realmService.getAudios();
+                List<Audio> audiosDB = realmService.getAudios();
+                List<Audio> audiosEstaticos = utilService.getAudios();
+
+                //  Esto hace que si o no tiene la variable string que dice que tiene los datos guardados o no es la misma cantidad de los
+                //  datos guardados con los datos de la lista estatica de audios, lo que va a hacer es elimiar toda la BD e insertarlos de nuevo.
+                //  El problema de esto es que se borran los favoritos.. pero bue, para solucionar esto hay que hacer como say the word, ir
+                //  recorriendo la lista que tenes guardada y setenadole a la lista estatica la variable de si esta o no en favorito
+
+                if (SI.equals(getsharedPreferenceService().getString(AUDIOS_GUARDADOS)) && audiosDB.size() == audiosEstaticos.size()) {
+                    realmResultsAudios = audiosDB;
                 } else {
-                    realmService.insertarAudios(utilService.getAudios());
+                    realmService.eliminarTodo();
+                    realmService.insertarAudios(audiosEstaticos);
                     realmResultsAudios = realmService.getAudios();
                     getsharedPreferenceService().guardarStringYCommitear(AUDIOS_GUARDADOS, SI);
                 }
+
                 break;
             case TIPO_FAVORITO:
                 realmResultsAudios = realmService.getAudiosFavoritos();
