@@ -1,6 +1,7 @@
 package martin.botoneraforgottera.Services;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import martin.botoneraforgottera.Models.Audio;
@@ -12,6 +13,7 @@ public class UtilService {
     //    ISSUES:
     // - Los textos de los tags no estan centrados bien verticalmente
     // - Los tags grandes se cortan
+    // - No filtra bien si tiene acento. Ej pones para buscar "medico" y si hay una palabra "médico" no te lo toma
 
     private final String TAG_UBER = "#uber";
     private final String TAG_FABRIO = "#fabrio";
@@ -125,7 +127,7 @@ public class UtilService {
 
     public List<String> getTags() {
 
-        return Arrays.asList(
+        List<String> tags = Arrays.asList(
                 TAG_UBER,
                 TAG_FABRIO,
                 TAG_FIURI,
@@ -178,6 +180,9 @@ public class UtilService {
                 TAG_FH2,
                 TAG_FEMINISTA
         );
+
+        Collections.sort(tags);
+        return tags;
     }
 
     public List<Audio> getAudios() {
