@@ -12,7 +12,6 @@ public class UtilService {
     //    ISSUES:
     // - Los textos de los tags no estan centrados bien verticalmente
     // - Los tags grandes se cortan
-//    martin: Hay un bug. Cuando estas en fav y filtras por tag te trae todos
 
     private final String TAG_UBER = "#uber";
     private final String TAG_FABRIO = "#fabrio";
@@ -67,6 +66,7 @@ public class UtilService {
     private final String TAG_FEMINISTA = "#feminista";
     private final String TAG_AJIO = "#ajio";
     private final String TAG_VIENTO = "#viento";
+    private final String TAG_HERRAIZ = "#herraiz";
 
     private final Tag OBJ_TAG_UBER = new Tag(TAG_UBER);
     private final Tag OBJ_TAG_FABRIO = new Tag(TAG_FABRIO);
@@ -121,6 +121,7 @@ public class UtilService {
     private final Tag OBJ_TAG_FEMINISTA = new Tag(TAG_FEMINISTA);
     private final Tag OBJ_TAG_AJIO = new Tag(TAG_AJIO);
     private final Tag OBJ_TAG_VIENTO = new Tag(TAG_VIENTO);
+    private final Tag OBJ_TAG_HERRAIZ = new Tag(TAG_HERRAIZ);
 
     public List<String> getTags() {
 
@@ -1314,8 +1315,219 @@ public class UtilService {
                 )),
                 new Audio(R.raw.audio_291, "Clarito, si, ahi tenes que usar pitágoras porque", Arrays.asList(
                         OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_292, "Fabriiiiiiii", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_293, "Coman poiaaa, coman poiaaa ", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_COMAN_POIA
+                )),
+                new Audio(R.raw.audio_294, "Jeje, lo leí con voz de posho", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_295, "Guleeeee", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_296, "Agachate y conocelo jajaj...no es gracioso", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_297, "Manee, putazo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_298, "Te digo cuantas luacha?, te digo?... CEEEE RO, entendiste? CEROO!", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_299, "CEEEE RO, entendiste? CEROO!", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_300, "No te lo queria decir por acá pero...PARTIME LA BOCA LOCO", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_301, "Madre de dios, parezco robocop", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_302, "Pishu, salvame, SALVAMEEEE!", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_303, "Dale pocho, sale algo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_304, "Desde que no está pichu disponible, los patos dan pena!", Arrays.asList(
+                        OBJ_TAG_GULI
+                )),
+                new Audio(R.raw.audio_305, "Igual voy y tomo algo, no necesito comer", Arrays.asList(
+                        OBJ_TAG_GULI
+                )),
+                new Audio(R.raw.audio_306, "Voy, me prendo", Arrays.asList(
+                        OBJ_TAG_GULI
+                )),
+                new Audio(R.raw.audio_307, "Igual voy y tomo algo", Arrays.asList(
+                        OBJ_TAG_GULI
+                )),
+                new Audio(R.raw.audio_308, "Enhorabuena fabriiiii!", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_309, "Noooooo re lindos...yo les daba", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_310, "Si, viste que perra me consegui?.. jejeje", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_311, "Que hace pollo, que se esta tocando?... ah, wee huu sgdgdgd ", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_312, "Are you carpinchou? jeje", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_313, "Se está tocando el package", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_314, "No no, no lo iba a borrar, no soy cagón como vos...va...te quiero", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_315, "Ay que ternura, sos un tierno. Ay, te amo...ya era, ya era", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_316, "* Pac pac pac * Hola mi amoooor, estas viendo porno soloooo?", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_317, "Guliiiiiii", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_318, "Sos un asco, hijo de puta", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_HIJO_DE_PUTA
+                )),
+                new Audio(R.raw.audio_319, "Yo soy un hombre de pelo en pecho y mear en pared", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_320, "Se paga por ello, imbécil", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_321, "Mane, te podes ir bien a la mierda", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_322, "Luachita", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_323, "Veo tumor...tumor luachita", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_324, "Poio marica", Arrays.asList(
+                        OBJ_TAG_HERRAIZ
+                )),
+                new Audio(R.raw.audio_325, "* Risa llorosa *", Arrays.asList(
+                        OBJ_TAG_NIGUIN
+                )),
+                new Audio(R.raw.audio_326, "Furiiiiii, que lindas piernas", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_327, "Poiooooooo (4)", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_328, "Joder macho, oshtia puta", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_OSHTIAPUTA
+                )),
+                new Audio(R.raw.audio_329, "Seguiiiila comiendo, porteño puto, seguiiila comiendo \uD83C\uDFB5...", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_330, "Fabri te quierooooo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_331, "Coman poiaaa, coman poiaaaaa", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_COMAN_POIA
+                )),
+                new Audio(R.raw.audio_332, "Pero siempre gana darthtemoc", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_333, "Meee.. me presto para turnarme contigo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_334, "Si pierde uruguay me corto los huevos y los pongo a secar al sol", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_335, "Ubercitooo, mi amor", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_336, "Ay que leeeendo mi gastooon", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_337, "La puta madre uruguaaaaaay!", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_338, "Vamo a ver si mi ataque relámpago verga funciona", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_339, "Ay luacha la puta madre..", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_340, "Bueno, a ver", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_341, "Si, les destruí el castillo. Tomá la puta que te parió jajaja", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_342, "Tomá la puta que te parió", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_343, "Che les destrullo el castillo y me cago de risa", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_344, "Si señor, eso si es verdad", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_345, "Es un verga boludo..", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_346, "Jajá", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_347, "Dale la concha de tu hermana, matalos", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_348, "Yo quiero poronga", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_349, "Matad", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_350, "Mirá mirá", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_351, "No lo dije yo pero es verdad", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_352, "No no no, no mires nada", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_353, "Dale vayan muchachos", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_354, "Pone nervioso", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_355, "Probablemente no", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_356, "Si", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_357, "Si si si si", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_358, "Tomá la puta que te paró", Arrays.asList(
+                        OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_359, "Seguro?", Arrays.asList(
+                        OBJ_TAG_MANE
                 ))
-
         );
     }
 }
