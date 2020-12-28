@@ -9,6 +9,7 @@ import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
+import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import martin.botoneraforgottera.Models.Audio;
 import martin.botoneraforgottera.Models.Tag;
@@ -55,27 +56,45 @@ public class RealmService {
         });
     }
 
-    public List<Audio> filtrarAudiosPorTitulo(String nombre) {
-        return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE).findAll();
+    public List<Audio> filtrarAudiosPorTitulo(String nombre, boolean soloFavoritos) {
+
+        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE);
+
+        realmQuery = agregarFiltradoFav(realmQuery, soloFavoritos);
+
+        return realmQuery.findAll();
     }
 
-    public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList) {
+    public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList, boolean soloFavoritos) {
 
         String[] tags = tagsList.toArray(new String[0]);
 
-        return Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE)
+        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class)
 
-                .and().in("tags.nombre", tags)
+                .contains("nombre", nombre, Case.INSENSITIVE)
 
-                .findAll();
+                .and().in("tags.nombre", tags);
+
+        realmQuery = agregarFiltradoFav(realmQuery, soloFavoritos);
+
+        return realmQuery.findAll();
     }
 
-    public List<Audio> filtrarAudiosPorTags(String tag) {
+    private RealmQuery agregarFiltradoFav(RealmQuery realmQuery, boolean soloFavoritos) {
+        if (soloFavoritos) {
+            realmQuery = realmQuery.and().equalTo("favorito", true);
+        }
+        return realmQuery;
+    }
+
+    public List<Audio> filtrarAudiosPorTags(String tag, boolean soloFavoritos) {
 
         String[] tags = {tag};
 
-        return Realm.getDefaultInstance().where(Audio.class).in("tags.nombre", tags)
+        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).in("tags.nombre", tags);
 
-                .findAll();
+        realmQuery = agregarFiltradoFav(realmQuery, soloFavoritos);
+
+        return realmQuery.findAll();
     }
 }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="300px"
     android:background="#80D8FF"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="2dp">
 
     <TextView
         android:id="@+id/tvAudioDescripcion"
@@ -17,7 +18,7 @@
         android:shadowRadius="5"
         android:text="Descripcion"
         android:textColor="#FFFFFF"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvListadoTags" />
@@ -26,6 +27,11 @@
         android:id="@+id/tvAudioNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingRight="5dp"
+        android:shadowColor="#000"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="9"
         android:text="Nombre"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -44,9 +50,9 @@
         android:id="@+id/view"
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="#525252"
+        android:background="#8E8E8E"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btPlay"

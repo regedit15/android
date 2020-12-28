@@ -186,15 +186,15 @@ public class AudiosFragment extends BaseFragment {
 
 
     private void buscarPorTag(String tag) {
-        setListaYRefrezcar(realmService.filtrarAudiosPorTags(tag));
+        setListaYRefrezcar(realmService.filtrarAudiosPorTags(tag, tipoFragment == TIPO_FAVORITO));
     }
 
     private void buscarPorTitulo(String titulo) {
-        setListaYRefrezcar(realmService.filtrarAudiosPorTitulo(titulo));
+        setListaYRefrezcar(realmService.filtrarAudiosPorTitulo(titulo, tipoFragment == TIPO_FAVORITO));
     }
 
     private void buscarPorTituloYTags(String titulo) {
-        setListaYRefrezcar(realmService.filtrarAudiosPorTituloYTags(titulo, tagsSeleccionados));
+        setListaYRefrezcar(realmService.filtrarAudiosPorTituloYTags(titulo, tagsSeleccionados, tipoFragment == TIPO_FAVORITO));
     }
 
     private void setListaYRefrezcar(List<Audio> lista) {
