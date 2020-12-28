@@ -60,7 +60,7 @@ public class RealmService {
 
         RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE);
 
-        realmQuery = agregarFiltradoFav(realmQuery, soloFavoritos);
+        agregarFiltradoFav(realmQuery, soloFavoritos);
 
         return realmQuery.findAll();
     }
@@ -75,7 +75,18 @@ public class RealmService {
 
                 .and().in("tags.nombre", tags);
 
-        realmQuery = agregarFiltradoFav(realmQuery, soloFavoritos);
+        agregarFiltradoFav(realmQuery, soloFavoritos);
+
+        return realmQuery.findAll();
+    }
+
+    public List<Audio> filtrarAudiosPorTags(String tag, boolean soloFavoritos) {
+
+        String[] tags = {tag};
+
+        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).in("tags.nombre", tags);
+
+        agregarFiltradoFav(realmQuery, soloFavoritos);
 
         return realmQuery.findAll();
     }
@@ -85,16 +96,5 @@ public class RealmService {
             realmQuery = realmQuery.and().equalTo("favorito", true);
         }
         return realmQuery;
-    }
-
-    public List<Audio> filtrarAudiosPorTags(String tag, boolean soloFavoritos) {
-
-        String[] tags = {tag};
-
-        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).in("tags.nombre", tags);
-
-        realmQuery = agregarFiltradoFav(realmQuery, soloFavoritos);
-
-        return realmQuery.findAll();
     }
 }
