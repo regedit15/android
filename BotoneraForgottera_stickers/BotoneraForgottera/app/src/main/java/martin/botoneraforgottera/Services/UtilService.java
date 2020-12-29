@@ -1645,8 +1645,107 @@ public class UtilService {
                 )),
                 new Audio(R.raw.audio_392, "QUE AUDIO!", Arrays.asList(
                         OBJ_TAG_MANE
+                )),
+                new Audio(R.raw.audio_393, "Conectad al te-eseeeeeee!", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_394, "Decile a tu amiguita que tenes que jugar con los pibes", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_395, "Abbbbb..bbbb... ay no me salió el soplido", Arrays.asList(
+                        OBJ_TAG_UBER,
+                        OBJ_TAG_VIENTO
+                )),
+                new Audio(R.raw.audio_396, "* mastica * sos un tierno * mastica y tose *", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_397, "Dame tu cosita, ah, ah, dame tu cosita \uD83C\uDFB5.. ah, FFFFFFFFFSSSSSHHHHHHH", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_VIENTO
+                )),
+                new Audio(R.raw.audio_398, "Noooo el estado de pichu, no te la puedo creer, ah listo, este tipo es un loco, este tipo es un fashado de la cabeza, este tipo tiene artrosis cerebral", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_399, "Hh listo, este tipo es un loco, este tipo es un fashado de la cabeza, este tipo tiene artrosis cerebral", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_400, "Aguante AMD vieja", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_401, "Poiooooooo (5)", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_402, "Vamo boquita eh, vamo boca, la bombonera es mi segunda casa", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_403, "Cara de culo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_404, "No, pará gaston, como le vas a decir eso", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_405, "* Gaston cantando como Eros Ramazzotti *", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_SHIT_MUSIC
+                )),
+                new Audio(R.raw.audio_406, "Y como dice, las palmitas bien arribaaa", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_407, "Ay wuona woche * eructo *", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_408, "* Gaston cantando Creedence en uin ingles como el ogt *", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_SHIT_MUSIC
+                )),
+                new Audio(R.raw.audio_409, "Ahora te voy a tocar la jalea", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_410, "Luacha puto", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_411, "Jojooooo", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_412, "Jujuuu esto no es coca papi, esto no es coca", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_413, "El de tu hermana tiene", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_413, "El de tu hermana tiene", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_414, "La hermana de quién estan hablando?", Arrays.asList(
+                        OBJ_TAG_FABRIO
+                )),
+                new Audio(R.raw.audio_415, "Pero la tuya también me la cojo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_416, "Ay que rico mame", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_AY_QUE_RECO_MAME
+                )),
+                new Audio(R.raw.audio_417, "Ola bb, pasa pack", Arrays.asList(
+                        OBJ_TAG_FABRIO,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_418, "Hoy sale limpieza rápida y FH, quién esta de acuerdo, quién esta conmigo, quien esta conmigooo! ", Arrays.asList(
+                        OBJ_TAG_FABRIO
+                )),
+                new Audio(R.raw.audio_419, "Sale ducha para refrezcarse nomas? Sale con fritaaas", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_420, "Sale con fritaaas", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_421, "Ahí voy, me estoy acabando el prroooo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_422, "Es HERMOZO vieja", Arrays.asList(
+                        OBJ_TAG_MARCE
                 ))
-
 
         );
     }
