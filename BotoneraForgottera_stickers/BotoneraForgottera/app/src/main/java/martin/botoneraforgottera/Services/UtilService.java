@@ -1740,13 +1740,101 @@ public class UtilService {
                 new Audio(R.raw.audio_420, "Sale con fritaaas", Arrays.asList(
                         OBJ_TAG_MARCE
                 )),
-                new Audio(R.raw.audio_421, "Ahí voy, me estoy acabando el prroooo", Arrays.asList(
+                new Audio(R.raw.audio_421, "Ahí voy, me estoy acabando el porroooo", Arrays.asList(
                         OBJ_TAG_MARCE
                 )),
                 new Audio(R.raw.audio_422, "Es HERMOZO vieja", Arrays.asList(
                         OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_423, "Ese tipo que está en el horno soi io", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_ESE_SOI_IO
+                )),
+                new Audio(R.raw.audio_424, "Andá a mamaaaae", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_425, "Nnnooo la maravilla no", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_EISH
+                )),
+                new Audio(R.raw.audio_426, "Emmmmmmm no entendí", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_427, "Pero yo que puta sé uber * muchas otras puteadas contra uber y uruguay *", Arrays.asList(
+                        OBJ_TAG_FIURI
+                )),
+                new Audio(R.raw.audio_428, "Aguante boooca", Arrays.asList(
+                        OBJ_TAG_FIURI
+                )),
+                new Audio(R.raw.audio_429, "* Canto de futbol español *", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SHIT_MUSIC
+                )),
+                new Audio(R.raw.audio_430, "Cerrá el orto", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_431, "Cierren el orto", Arrays.asList(
+                        OBJ_TAG_FABRIO
+                )),
+                new Audio(R.raw.audio_432, "Cerrá el orto", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_433, "Eeehh..manee.. dame por el * no se entiende una mierda *", Arrays.asList(
+                        OBJ_TAG_GAJTAUN
+                )),
+                new Audio(R.raw.audio_434, "Mirá, primero jugá campaña", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_435, "Qué carajos es eso, hijo de puta", Arrays.asList(
+                        OBJ_TAG_LUACHA,
+                        OBJ_TAG_HIJO_DE_PUTA
+                )),
+                new Audio(R.raw.audio_436, "Jua jua jua jua jua", Arrays.asList(
+                        OBJ_TAG_LUACHA,
+                        OBJ_TAG_RISA,
+                        OBJ_TAG_VOZ_BOLUDO
+                )),
+                new Audio(R.raw.audio_437, "PECHULEEEEEEN (13)", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_438, "Así como quieren que viva vieja", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_439, "Nooooo el estado de pichu, nooooo", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_440, "Uuuuuh gaston exequiel", Arrays.asList(
+                        OBJ_TAG_UBER
+                )),
+                new Audio(R.raw.audio_441, "El capitalismo te quiere drogado, revélate", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_442, "Un garronazo", Arrays.asList(
+                        OBJ_TAG_GULI
+                )),
+                new Audio(R.raw.audio_443, "Dios mío, cada vez más pelotudo este tipo", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_444, "Ay uber, sos taaan lindo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_445, "Fatal, hoy los hispanos..puff..muy muy flojos", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_FH2
+                )),
+                new Audio(R.raw.audio_446, "Me siento solo", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_447, "Aún así, van a comer poia", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_448, "Feliz día putoooos", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_449, "Alto meo, aaalto meooo", Arrays.asList(
+                        OBJ_TAG_UBER
                 ))
-
         );
     }
 }
