@@ -1577,7 +1577,77 @@ public class UtilService {
                 new Audio(R.raw.audio_371, "Si si si si FFFFFFFFSSSSSHHHHHHH", Arrays.asList(
                         OBJ_TAG_UBER,
                         OBJ_TAG_VIENTO
+                )),
+                new Audio(R.raw.audio_372, "Veo tumor.. tumor luachita (2)", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_373, "Poiooooooo (4)", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_SALUDO
+                )),
+                new Audio(R.raw.audio_374, "Semana de la dulzura...anda a cagaaaar", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_375, "Cuantas mierdas inventan allá?..", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_376, "Ajio ajio ajio ajio... (2)", Arrays.asList(
+                        OBJ_TAG_GAJTAUN,
+                        OBJ_TAG_AJIO
+                )),
+                new Audio(R.raw.audio_377, "Dale soplala, soplala!", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_378, "Puuuutooos, putiiiiitooooos", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_379, "Estamos en FH por las drogas \uD83C\uDFB5...", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_380, "Miércoles, miércoles, arriba chicos que hay que laburar \uD83C\uDFB5...", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_381, "Al fiiiin", Arrays.asList(
+                        OBJ_TAG_LUACHA
+                )),
+                new Audio(R.raw.audio_382, "Va fatal el servidor este..", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_383, "Mash cláshico que tu hermana shupandola", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_384, "Viernes de queeee, viernes de ponerla y salir con los amigos? Nooo, viernes de campaña papá", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_385, "Viernes de queeee", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_386, "Viernes de campaña papa", Arrays.asList(
+                        OBJ_TAG_MARCE
+                )),
+                new Audio(R.raw.audio_387, "Quién no quiera campaña que mame, que mame polla oshtia", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_OSHTIAPUTA
+                )),
+                new Audio(R.raw.audio_388, "Hijo de mil putas", Arrays.asList(
+                        OBJ_TAG_MARCE,
+                        OBJ_TAG_HIJO_DE_PUTA
+                )),
+                new Audio(R.raw.audio_389, "El que quiera venir está invitadísimo", Arrays.asList(
+                        OBJ_TAG_NIGUIN
+                )),
+                new Audio(R.raw.audio_390, "Si pelotudo vení", Arrays.asList(
+                        OBJ_TAG_NIGUIN
+                )),
+                new Audio(R.raw.audio_391, "Clarito, clariFFFFFFFFFSSSSSHHHHHHH", Arrays.asList(
+                        OBJ_TAG_UBER,
+                        OBJ_TAG_VIENTO
+                )),
+                new Audio(R.raw.audio_392, "QUE AUDIO!", Arrays.asList(
+                        OBJ_TAG_MANE
                 ))
+
+
         );
     }
 }
