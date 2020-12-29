@@ -18,7 +18,9 @@ public class RealmService {
 
     public static AtomicInteger audioId = new AtomicInteger();
     public static AtomicInteger tagId = new AtomicInteger();
-    public Realm realm;
+    private Realm realm;
+    private List<Audio> audiosBD;
+    private List<Audio> audiosFavoritosBD;
 
     public void setearConfiguracion(Context context) {
 
@@ -42,11 +44,17 @@ public class RealmService {
     }
 
     public List<Audio> getAudios() {
-        return Realm.getDefaultInstance().where(Audio.class).findAll();
+        if (audiosBD == null) {
+            audiosBD = Realm.getDefaultInstance().where(Audio.class).findAll();
+        }
+        return audiosBD;
     }
 
     public List<Audio> getAudiosFavoritos() {
-        return Realm.getDefaultInstance().where(Audio.class).equalTo("favorito", true).findAll();
+        if (audiosFavoritosBD == null) {
+            audiosFavoritosBD = Realm.getDefaultInstance().where(Audio.class).equalTo("favorito", true).findAll();
+        }
+        return audiosFavoritosBD;
     }
 
     public void insertarAudios(List<Audio> audios) {
@@ -94,12 +102,9 @@ public class RealmService {
     }
 
     public void eliminarTodo() {
-//        realm.deleteAll();
-
         Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-//                Realm.getDefaultInstance().delete(Audio.class);
                 Realm.getDefaultInstance().deleteAll();
             }
         });
@@ -112,4 +117,5 @@ public class RealmService {
         }
         return realmQuery;
     }
+
 }

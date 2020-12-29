@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 	public RealmService realmService = new RealmService();
 	protected UtilService utilService = new UtilService();
 
-	private static final String PREFERENCES = "PREFERENCES";
 	private static final String DATOS_GUARDADOS = "DATOS_GUARDADOS";
 	private static final String APP_VERSION = "VERSION";
 

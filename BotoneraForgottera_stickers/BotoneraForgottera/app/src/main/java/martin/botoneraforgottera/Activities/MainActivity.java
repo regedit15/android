@@ -25,6 +25,7 @@ import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
 import martin.botoneraforgottera.Interfaces.StickerListener;
 import martin.botoneraforgottera.R;
 import martin.botoneraforgottera.Services.RealmService;
+import martin.botoneraforgottera.Services.UtilService;
 import martin.botoneraforgottera.Sticker.StickerPack;
 
 public class MainActivity extends AppCompatActivity implements StickerListener {
@@ -33,10 +34,13 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
     // y pesar menos de 100 kb
     // La imagen del icono del paquete debe tener 96x96 pixeles y pesar menos de 50 kb
 
-    private int PERMISO_WRITE_OK = 1;
+    private final String DATOS_GUARDADOS = "DATOS_GUARDADOS";
+    private final String APP_VERSION = "VERSION";
+    private final int PERMISO_WRITE_OK = 1;
     private DrawerLayout drawerLayout;
     public NavigationView navigationView;
     public RealmService realmService = new RealmService();
+    public UtilService utilService = new UtilService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +103,22 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
         // ------------------------------------------------
 
         realmService.setearConfiguracion(getApplicationContext());
+
+
+        //	 ---------------------- Nos fijamos si tiene los audios gardados y actualizados, sino los insertamos
+        utilService.setsharedPreferenceService(this);
+        if (!utilService.getPreferenceService().getBoolean(DATOS_GUARDADOS)) {
+            realmService.eliminarTodo();
+            realmService.insertarAudios(utilService.getAudios());
+            utilService.getPreferenceService().guardarBooleanYCommitear(DATOS_GUARDADOS, true);
+        }
+
+        String appVersion = utilService.getVersionName(this);
+        if (!appVersion.equals(utilService.getPreferenceService().getString(APP_VERSION)) || (utilService.getAudios().size() != realmService.getAudios().size())) {
+            utilService.getPreferenceService().guardarStringYCommitear(APP_VERSION, appVersion);
+            utilService.insertarDatosSinModificarFavoritos();
+        }
+        // ------------------------------------------------
     }
 
     private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
