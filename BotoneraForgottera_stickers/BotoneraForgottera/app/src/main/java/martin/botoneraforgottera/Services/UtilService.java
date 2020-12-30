@@ -20,8 +20,6 @@ public class UtilService {
     // - No filtra bien si tiene acento. Ej pones para buscar "medico" y si hay una palabra "médico" no te lo toma. Buscamos info de esto yy..
     //   ta complicada, hay algo de realm filter, que si anda, pero es como que esta para swift, que es un lenguaje de apple. Lo que se podría
     //   hacer es obtener toda la lista y filtrarla como en un array list... pero bue
-    // - Si bien se arreglo el problema de desinstalar e instalar la app cuando agregas mas audios. Tendrias que: ver si agregar lo de la version.
-    //   Y ver el tema de que no se pierdan los fav que guardaste
 
     protected static final String PREFERENCES = "PREFERENCES";
     public SharedPreferenceService sharedPreferenceService;
@@ -698,6 +696,7 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_108, "Poiooooooo (2)", Arrays.asList(
                             OBJ_TAG_MARCE,
+                            OBJ_TAG_POIO,
                             OBJ_TAG_SALUDO
                     )),
                     new Audio(R.raw.audio_109, "PECHULEEEEEEN (7)", Arrays.asList(
@@ -797,6 +796,7 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_132, "Poiooooooo (3)", Arrays.asList(
                             OBJ_TAG_MARCE,
+                            OBJ_TAG_POIO,
                             OBJ_TAG_SALUDO
                     )),
                     new Audio(R.raw.audio_133,
@@ -1497,6 +1497,7 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_327, "Poiooooooo (4)", Arrays.asList(
                             OBJ_TAG_MARCE,
+                            OBJ_TAG_POIO,
                             OBJ_TAG_SALUDO
                     )),
                     new Audio(R.raw.audio_328, "Joder macho, oshtia puta", Arrays.asList(
@@ -1643,6 +1644,7 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_373, "Poiooooooo (4)", Arrays.asList(
                             OBJ_TAG_MARCE,
+                            OBJ_TAG_POIO,
                             OBJ_TAG_SALUDO
                     )),
                     new Audio(R.raw.audio_374, "Semana de la dulzura...anda a cagaaaar", Arrays.asList(
@@ -1734,6 +1736,7 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_401, "Poiooooooo (5)", Arrays.asList(
                             OBJ_TAG_MARCE,
+                            OBJ_TAG_POIO,
                             OBJ_TAG_SALUDO
                     )),
                     new Audio(R.raw.audio_402, "Vamo boquita eh, vamo boca, la bombonera es mi segunda casa", Arrays.asList(
@@ -1755,7 +1758,7 @@ public class UtilService {
                     new Audio(R.raw.audio_407, "Ay wuona woche * eructo *", Arrays.asList(
                             OBJ_TAG_GAJTAUN
                     )),
-                    new Audio(R.raw.audio_408, "* Gaston cantando Creedence en uin ingles como el ogt *", Arrays.asList(
+                    new Audio(R.raw.audio_408, "* Gaston cantando Creedence en un ingles como el ogt *", Arrays.asList(
                             OBJ_TAG_GAJTAUN,
                             OBJ_TAG_SHIT_MUSIC
                     )),
