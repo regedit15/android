@@ -2,10 +2,11 @@ package martin.botoneraforgottera.Services;
 
 import android.content.Context;
 
+import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmObject;
@@ -66,13 +67,33 @@ public class RealmService {
         });
     }
 
+    private String quitarAcentos(String palabra) {
+        return Normalizer.normalize(palabra, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+    }
+
+    private boolean contieneNombre(String nombreAudio, String busqueda) {
+        return quitarAcentos(nombreAudio).contains(quitarAcentos(busqueda));
+    }
+
+    private List<Audio> filtrarAudiosPorNombre(List<Audio> audios, String busqueda) {
+        List<Audio> audiosFIltrados = new ArrayList<Audio>();
+
+        for (Audio audio : audios) {
+            if (contieneNombre(audio.getNombre(), busqueda)) {
+                audiosFIltrados.add(audio);
+            }
+        }
+
+        return audiosFIltrados;
+    }
+
     public List<Audio> filtrarAudiosPorTitulo(String nombre, boolean soloFavoritos) {
 
-        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE);
+        // RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE);
+        // agregarFiltradoFav(realmQuery, soloFavoritos);
+        // return realmQuery.findAll();
 
-        agregarFiltradoFav(realmQuery, soloFavoritos);
-
-        return realmQuery.findAll();
+        return filtrarAudiosPorNombre(soloFavoritos ? audiosFavoritosBD : audiosBD, nombre);
     }
 
     public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList, boolean soloFavoritos) {
@@ -81,13 +102,13 @@ public class RealmService {
 
         RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class)
 
-                .contains("nombre", nombre, Case.INSENSITIVE)
+                // .contains("nombre", nombre, Case.INSENSITIVE)
 
                 .and().in("tags.nombre", tags);
 
         agregarFiltradoFav(realmQuery, soloFavoritos);
 
-        return realmQuery.findAll();
+        return filtrarAudiosPorNombre(realmQuery.findAll(), nombre);
     }
 
     public List<Audio> filtrarAudiosPorTags(String tag, boolean soloFavoritos) {

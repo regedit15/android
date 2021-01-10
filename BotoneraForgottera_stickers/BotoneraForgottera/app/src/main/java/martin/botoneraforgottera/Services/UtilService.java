@@ -1897,6 +1897,189 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_450, "Decile que sos conocido mío y entras enseguida loco...conocido del uber", Arrays.asList(
                             OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_451, "Como dijo compañero? acá se habla español nada mas, le aviso por las dudas", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_452, "Eeeesa milocuo, que marteo que tengo.. estoy por vomitar. Saludoss", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_453, "Tremenda arcada tuve acá pero no vomité. Un loro.. pá aquella de pantalón rojo aaaay mamita, sligpgpgpgp", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_454, "Aaaay mamita, sligpgpgpgp", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_455, "Mat, qué personaje... lo amo", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_456, "Lo amo", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_457, "Laa burguesía que existe ahí increíble", Arrays.asList(
+                            OBJ_TAG_FIURI
+                    )),
+                    new Audio(R.raw.audio_458, "No loco, obvio que no se puede, no. Hay que combatir el capitalismo opresor... estee no se que estas diciendo la verdad, saludos de la banda", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_459, "Hay que combatir el capitalismo", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_460, "Hay que combatir el capitalismo.. opresor", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_461, "Temón loco, ya me pongo a bailar. Eeeee saaaa", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_462, "Y ahora me estoy yendo a lo de una amiga, a lo de una minusa, que vive acá cerca, a ver si me deja entrar", Arrays.asList(
+                            OBJ_TAG_FIURI
+                    )),
+                    new Audio(R.raw.audio_463, "Escuchala papaaa!", Arrays.asList(
+                            OBJ_TAG_NIGUIN,
+                            OBJ_TAG_GRITO
+                    )),
+                    new Audio(R.raw.audio_464, "Tranquilazo....todo tranqui", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_465, "Besitosss", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_466, "* Uber con poca plata para los trabas *", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_467, "Es mentira no?", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_468, "Mandale saludos de mi parte.. de parte del uber", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_469, "Mandale saludos de mi parte", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_470, "* Pac pac pac pac *... ajio ajio ajio", Arrays.asList(
+                            OBJ_TAG_GAJTAUN,
+                            OBJ_TAG_AJIO,
+                            OBJ_TAG_SONIDO
+                    )),
+                    new Audio(R.raw.audio_471, "Soy regulaaaar", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_472, "Hijo de puta, osea que pensas que soy un forro eh", Arrays.asList(
+                            OBJ_TAG_MARCE,
+                            OBJ_TAG_HIJO_DE_PUTA
+                    )),
+                    new Audio(R.raw.audio_473, "Agente agente, arresteme pronto \uD83C\uDFB5", Arrays.asList(
+                            OBJ_TAG_FIURI
+                    )),
+                    new Audio(R.raw.audio_474, "Que una locura voy a cometeer \uD83C\uDFB5", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_475, "Maldita maldita maldita maldita.. * pug pug pufff *", Arrays.asList(
+                            OBJ_TAG_NIGUIN,
+                            OBJ_TAG_SIMPSONS
+                    )),
+                    new Audio(R.raw.audio_476, "Sigo esperando el café, pésimo servicio, una estrellita de veinti ocho", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_477, "A que te saco la cachimba", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_478, "Que lindo sooooos", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_479, "* Sonido de disparos como enfermito *", Arrays.asList(
+                            OBJ_TAG_GAJTAUN,
+                            OBJ_TAG_SONIDO
+                    )),
+                    new Audio(R.raw.audio_480, "Ia era", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_481, "Que avión virgo, que avión, pero que avión de virgo, el piloto seguro era virgo", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_482, "* Ajio ajio ajio version Formula 1*", Arrays.asList(
+                            OBJ_TAG_GAJTAUN,
+                            OBJ_TAG_AJIO
+                    )),
+                    new Audio(R.raw.audio_483, "Weee uber para un poooocoooo", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_484, "* Pum...puuuumpuuuuuum pupumpumpumpu * sale eish", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_485, "No man, te fuiste al carajo, con eso no se jode...", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_486, "Nunca entendí eso loco, que asco.. como a alquien le puede gustar hacer eso vieja..", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_487, "Clarritouuu", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_488, "Ah sos re gracioso vos loco eh, fa sos todo un payasito, todo un pagliacci.. pero chuopame el piiiito", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_489, "Pero chuopame el piiiito", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_490, "Aaah andá a cagar, que pelotudo boludo", Arrays.asList(
+                            OBJ_TAG_NIGUIN
+                    )),
+                    new Audio(R.raw.audio_491, "* Uber no entiende el meme *", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_492, "Polooooo ayudame", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_493, "La concha de su madre", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_494, "Uber le toma la presión a la PC", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_495, "Aaaah no, sos un enfermo, no noo no. Yo ya te cierro la puerta * cierra la puerta*", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_496, "Ay marshe, a tu cola le falta crema, a tu boca una mamadera \uD83C\uDFB5", Arrays.asList(
+                            OBJ_TAG_GAJTAUN,
+                            OBJ_TAG_SHIT_MUSIC
+                    )),
+                    new Audio(R.raw.audio_497, "Salta salta, pequeñop canguro y a los madridistas, que les den por el culo \uD83C\uDFB5", Arrays.asList(
+                            OBJ_TAG_MARCE,
+                            OBJ_TAG_SHIT_MUSIC
+                    )),
+                    new Audio(R.raw.audio_498, "Ay que rico mamiiii", Arrays.asList(
+                            OBJ_TAG_FABRIO,
+                            OBJ_TAG_AY_QUE_RECO_MAME
+                    )),
+                    new Audio(R.raw.audio_499, "Mmmmm...puedo ir yo también?", Arrays.asList(
+                            OBJ_TAG_FABRIO
+                    )),
+                    new Audio(R.raw.audio_500, "Le falta aceitunas, hijo de mil putas", Arrays.asList(
+                            OBJ_TAG_FABRIO,
+                            OBJ_TAG_HIJO_DE_PUTA
+                    )),
+                    new Audio(R.raw.audio_501, "Dale dale dale, que se viene la campaña, dale", Arrays.asList(
+                            OBJ_TAG_FABRIO
+                    )),
+                    new Audio(R.raw.audio_502, "Ay mobólico, me cagué todo... ejejejé yyy AAAAAAY!", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_503, "La re contra puta madre que lo parió, creo que no voy a poder jugar", Arrays.asList(
+                            OBJ_TAG_FABRIO
+                    )),
+
+                    new Audio(R.raw.audio_504, "La re contra puta madre que lo parió", Arrays.asList(
+                            OBJ_TAG_FABRIO
+                    )),
+                    new Audio(R.raw.audio_505, "Ganamoooooooooooooooos!, vieja", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_506, "Yyyyy creo que esta claro que es más importante no?", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_507, "Claaariiiito usted lo dijo", Arrays.asList(
+                            OBJ_TAG_FABRIO
                     ))
             );
         }
