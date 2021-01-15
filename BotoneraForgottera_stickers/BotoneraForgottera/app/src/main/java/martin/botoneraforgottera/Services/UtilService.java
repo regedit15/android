@@ -2170,11 +2170,7 @@ public class UtilService {
                     new Audio(R.raw.audio_534, "Su atención por favor... Noooo el estado de faaabri", Arrays.asList(
                             OBJ_TAG_UBER
                     )),
-                    new Audio(R.raw.audio_534, "Callate putako", Arrays.asList(
-                            OBJ_TAG_FIURI,
-                            OBJ_TAG_PUTACO
-                    )),
-                    new Audio(R.raw.audio_535, "Jijiji... yo si fuera tu familia, te cago a latigazos", Arrays.asList(
+                    new Audio(R.raw.audio_548, "Jijiji... yo si fuera tu familia, te cago a latigazos", Arrays.asList(
                             OBJ_TAG_UBER
                     )),
                     new Audio(R.raw.audio_536, "Yo si fuera tu familia, te cago a latigazos", Arrays.asList(
@@ -2213,6 +2209,10 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_547, "Cuanto te salió eso bebé", Arrays.asList(
                             OBJ_TAG_NIGUIN
+                    )),
+                    new Audio(R.raw.audio_548, "Callate putako", Arrays.asList(
+                            OBJ_TAG_FIURI,
+                            OBJ_TAG_PUTACO
                     ))
             );
         }
