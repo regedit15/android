@@ -80,6 +80,7 @@ public class UtilService {
     private final String TAG_AJIO = "#ajio";
     private final String TAG_VIENTO = "#viento";
     private final String TAG_HERRAIZ = "#herraiz";
+    private final String TAG_DELA = "#dela";
 
     private final Tag OBJ_TAG_UBER = new Tag(TAG_UBER);
     private final Tag OBJ_TAG_FABRIO = new Tag(TAG_FABRIO);
@@ -135,6 +136,7 @@ public class UtilService {
     private final Tag OBJ_TAG_AJIO = new Tag(TAG_AJIO);
     private final Tag OBJ_TAG_VIENTO = new Tag(TAG_VIENTO);
     private final Tag OBJ_TAG_HERRAIZ = new Tag(TAG_HERRAIZ);
+    private final Tag OBJ_TAG_DELA = new Tag(TAG_DELA);
 
     public List<String> getTags() {
 
@@ -189,7 +191,11 @@ public class UtilService {
                 TAG_PUTACO,
                 TAG_CARAMIERDA,
                 TAG_FH2,
-                TAG_FEMINISTA
+                TAG_FEMINISTA,
+                TAG_AJIO,
+                TAG_VIENTO,
+                TAG_HERRAIZ,
+                TAG_DELA
         );
 
         Collections.sort(tags);
@@ -2213,7 +2219,85 @@ public class UtilService {
                     new Audio(R.raw.audio_548, "Callate putako", Arrays.asList(
                             OBJ_TAG_FIURI,
                             OBJ_TAG_PUTACO
+                    )),
+                    new Audio(R.raw.audio_549, "Ese soi io", Arrays.asList(
+                            OBJ_TAG_UBER,
+                            OBJ_TAG_ESE_SOI_IO
+                    )),
+                    new Audio(R.raw.audio_550, "Ese soi io * tos horrible *", Arrays.asList(
+                            OBJ_TAG_UBER,
+                            OBJ_TAG_ESE_SOI_IO
+                    )),
+                    new Audio(R.raw.audio_551, "* Gaston haciendose una paja *", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_552, "Poioooo me hechas de menosh?", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_553, "Maneeeeee", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_554, "Ay mi gastoncishoooo", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_555, "Ah, pero como vas a mandar eso pedazo de imbécil* y sigue con las puteadas *", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_556, "Jua jua jua jua que boludo jua jua jua", Arrays.asList(
+                            OBJ_TAG_LUACHA,
+                            OBJ_TAG_VOZ_BOLUDO
+                    )),
+                    new Audio(R.raw.audio_557, "Claro que si gordito", Arrays.asList(
+                            OBJ_TAG_NIGUIN
+                    )),
+                    new Audio(R.raw.audio_558, "Uuuuh alto pieee loco, mirá ese pie, faaaaah, mirá ese pieee. Mamaaa mirá este pieee", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_559, "Mirá que linda rubia haciendo esa indecencia, pero miraaaa, mira vooos", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_560, "* Uber caliente porque le sacaron el admin *", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_561, "Guliiiiiii", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )),
+                    new Audio(R.raw.audio_562, "Marceliiiiiiiin", Arrays.asList(
+                            OBJ_TAG_GULI
+                    )),
+                    new Audio(R.raw.audio_563, "Es normal que seas tan tierno?", Arrays.asList(
+                            OBJ_TAG_NIGUIN
+                    )),
+                    new Audio(R.raw.audio_564, "* Tos *... se me paró", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_565, "* Intro del eish *", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_565, "* Intro del eish *", Arrays.asList(
+                            OBJ_TAG_GAJTAUN
+                    )),
+                    new Audio(R.raw.audio_566, "Eh chabal, pero si esta bueno, chabal", Arrays.asList(
+                            OBJ_TAG_DELA
+                    )),
+                    new Audio(R.raw.audio_567, "Marce, cabronazo", Arrays.asList(
+                            OBJ_TAG_LUACHA
+                    )),
+                    new Audio(R.raw.audio_568, "Embeces quisiera que nunca te haigas fuido", Arrays.asList(
+                            OBJ_TAG_UBER
+                    )),
+                    new Audio(R.raw.audio_569, "Guliiiiiiiii", Arrays.asList(
+                            OBJ_TAG_LUACHA,
+                            OBJ_TAG_VOZ_BOLUDO
+                    )),
+                    new Audio(R.raw.audio_570, "Ese soi iooo", Arrays.asList(
+                            OBJ_TAG_POIO,
+                            OBJ_TAG_ESE_SOI_IO
+                    )),
+                    new Audio(R.raw.audio_571, "Dejen de mandar audios pelotudos de mierda", Arrays.asList(
+                            OBJ_TAG_LUACHA
                     ))
+
             );
         }
 
