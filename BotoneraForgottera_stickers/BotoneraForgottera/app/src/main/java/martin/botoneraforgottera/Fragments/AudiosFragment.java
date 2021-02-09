@@ -100,45 +100,45 @@ public class AudiosFragment extends BaseFragment {
             }
         });
 
-view.findViewById(R.id.btTags).setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Dialog dialog;
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Filtrar por Tags : ");
-
-        boolean[] checkedItems = new boolean[tags.size()];
-        List<String> tagsSeleccionadosPopup = new ArrayList<>(tagsSeleccionados);
-
-        for (int i = 0; i < tagsSeleccionados.size(); i++) {
-            checkedItems[tags.indexOf(tagsSeleccionados.get(i))] = true;
-        }
-
-        builder.setMultiChoiceItems(tags.toArray(new String[0]), checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+        view.findViewById(R.id.btTags).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int selectedItemId, boolean isSelected) {
-                if (isSelected) {
-                    tagsSeleccionadosPopup.add(tags.get(selectedItemId));
-                } else {
-                    tagsSeleccionadosPopup.remove(tags.get(selectedItemId));
+            public void onClick(View v) {
+                Dialog dialog;
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Filtrar por Tags : ");
+
+                boolean[] checkedItems = new boolean[tags.size()];
+                List<String> tagsSeleccionadosPopup = new ArrayList<>(tagsSeleccionados);
+
+                for (int i = 0; i < tagsSeleccionados.size(); i++) {
+                    checkedItems[tags.indexOf(tagsSeleccionados.get(i))] = true;
                 }
-            }
-        }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                tagsSeleccionados = new ArrayList<>(tagsSeleccionadosPopup);
-                busqueda(view);
-            }
-        }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
+
+                builder.setMultiChoiceItems(tags.toArray(new String[0]), checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int selectedItemId, boolean isSelected) {
+                        if (isSelected) {
+                            tagsSeleccionadosPopup.add(tags.get(selectedItemId));
+                        } else {
+                            tagsSeleccionadosPopup.remove(tags.get(selectedItemId));
+                        }
+                    }
+                }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        tagsSeleccionados = new ArrayList<>(tagsSeleccionadosPopup);
+                        busqueda(view);
+                    }
+                }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+                dialog = builder.create();
+                dialog.show();
             }
         });
-        dialog = builder.create();
-        dialog.show();
-    }
-});
 
         setearCantidadDeAudios();
 
