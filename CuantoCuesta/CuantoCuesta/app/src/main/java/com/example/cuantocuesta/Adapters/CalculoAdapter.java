@@ -1,35 +1,34 @@
 package com.example.cuantocuesta.Adapters;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuantocuesta.Models.Calculo;
+import com.example.cuantocuesta.R;
+import com.example.cuantocuesta.Services.UtilService;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Arrays;
 import java.util.List;
-
-//import io.realm.Realm;
-//import martin.botoneraforgottera.Activities.MainActivity;
-//import martin.botoneraforgottera.Interfaces.OnPlayClickListener;
-//import martin.botoneraforgottera.Interfaces.OnTagClickListener;
-//import martin.botoneraforgottera.Models.Audio;
-//import martin.botoneraforgottera.Models.Tag;
-//import martin.botoneraforgottera.R;
 
 public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHolder> {
 
     private Context context;
     private List<Calculo> lista;
     private int layout;
-//    private OnPlayClickListener onPlayClickListener;
 
     public CalculoAdapter(List<Calculo> lista, int layout) {
         this.lista = lista;
         this.layout = layout;
-//        this.onPlayClickListener = onPlayClickListener;
     }
 
     @Override
@@ -41,7 +40,6 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-//        holder.bind(lista.get(position), onPlayClickListener);
         holder.bind(lista.get(position));
     }
 
@@ -52,94 +50,144 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-//        public TextView nombre;
-//        public TextView descripcion;
-//        public MaterialButton btPlay;
-//        public MaterialButton btShare;
-//        public MaterialButton ibCorazon;
-
+        public TextInputEditText tiCantidad;
+        public TextInputEditText tiMetro;
+        public TextInputLayout tilCantidad;
+        public TextInputLayout tilMetro;
+        public TextInputEditText tiPrecio;
+        public Button btTipo;
+        public TextView tvResultado;
+        public TextView tvResultadoValor;
 
         public ViewHolder(View itemView) {
             super(itemView);
-//            nombre = itemView.findViewById(R.id.tvAudioNombre);
-//            descripcion = itemView.findViewById(R.id.tvAudioDescripcion);
-//            btPlay = itemView.findViewById(R.id.btPlay);
-//            btShare = itemView.findViewById(R.id.btShare);
-//            ibCorazon = itemView.findViewById(R.id.ibCorazon);
-
+            btTipo = itemView.findViewById(R.id.btTipo);
+            tiCantidad = itemView.findViewById(R.id.tiCantidad);
+            tilCantidad = itemView.findViewById(R.id.tilCantidad);
+            tiPrecio = itemView.findViewById(R.id.tiPrecio);
+            tvResultado = itemView.findViewById(R.id.tvResultado);
+            tvResultadoValor = itemView.findViewById(R.id.tvResultadoValor);
+            tiMetro = itemView.findViewById(R.id.tiMetro);
+            tilMetro = itemView.findViewById(R.id.tilMetro);
+            tvResultadoValor.setText("");
+            tilMetro.setVisibility(View.GONE);
         }
 
-        public void bind(final Calculo audio) {
-//            nombre.setText(audio.getNombre());
-//            descripcion.setText(audio.getDescripcion());
-//
-//            btPlay.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    onPlayClickListener.onPlayClickListener(audio);
-//                }
-//            });
-//
-//
-//            btShare.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    onPlayClickListener.onShareClickListener(audio);
-//                }
-//            });
-//
-//            //--------------------------- Segundo listado
-//            tags = audio.getTags();
-//            recyclerViewTags.setHasFixedSize(true);
-//            recyclerViewTags.setItemAnimator(new DefaultItemAnimator());
-//            layoutManagerTags = new GridLayoutManager(context, 3);
-//            recyclerViewTags.setLayoutManager(layoutManagerTags);
-//
-//            tagsAdapter = new TagsAdapter(tags, R.layout.item_tags, new OnTagClickListener() {
-//                @Override
-//                public void onTagClick(Tag tag) {
-//                    onPlayClickListener.onTagClickListener(tag);
-//                }
-//            });
-//
-//            recyclerViewTags.setAdapter(tagsAdapter);
-//            //----------------------------------------------------------------
-//
-//            //--------------------------- Corazon Favorito
-//            setearCorazon(audio.isFavorito());
-//
-//            ibCorazon.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                    Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
-//                        @Override
-//                        public void execute(Realm realm) {
-//                            audio.setFavorito(!audio.isFavorito());
-//                            setearCorazon(audio.isFavorito());
-//                            notifyDataSetChanged();
-//                            ((MainActivity) context).getSupportActionBar().setTitle(new StringBuilder(((MainActivity) context).navigationView.getMenu().getItem(0).getTitle().toString()).append(" (").append(getLista().size()).append(")").toString());
-//                        }
-//                    });
-//                }
-//            });
-//            //----------------------------------------------------------------
+        public void bind(final Calculo calculo) {
+            btTipo.setOnClickListener(view -> {
+                Dialog dialog;
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Filtrar por Tags: ");
+
+                String[] tipos = UtilService.getTipos();
+
+                builder.setSingleChoiceItems(tipos, Arrays.asList(tipos).indexOf(calculo.getUnidad()), (dialog1, index) -> {
+                    btTipo.setText(tipos[index]);
+                    calculo.setUnidad(tipos[index]);
+
+
+                    String frase = "Precio por ";
+
+                    switch (calculo.getUnidad()) {
+                        case UtilService.TIPO_KILO:
+                        case UtilService.TIPO_GRAMOS:
+                            frase += "kilo:";
+                            break;
+                        case UtilService.TIPO_UNIDAD:
+                            frase += "unidad:";
+                            break;
+                        case UtilService.TIPO_LITRO:
+                            frase += "litro:";
+                            break;
+                        case UtilService.TIPO_PAPEL_HIGIENICO:
+                            frase += "metro:";
+                            break;
+                    }
+
+
+                    tvResultado.setText(frase);
+                    suffixTextCantidad(calculo);
+
+                    if (calculo.getUnidad() == UtilService.TIPO_PAPEL_HIGIENICO) {
+                        tilMetro.setVisibility(View.VISIBLE);
+                    } else {
+                        tilMetro.setVisibility(View.GONE);
+                    }
+                }).setPositiveButton("Aceptar", null);
+
+                dialog = builder.create();
+                dialog.show();
+            });
+
+            tiCantidad.addTextChangedListener(UtilService.getTextWatcher(text -> {
+                calculo.setCantidad(UtilService.parseStringToDouble(text));
+                tvResultadoValor.setText(calculo.calcular());
+
+                suffixTextCantidad(calculo);
+            }));
+
+            tiPrecio.addTextChangedListener(UtilService.getTextWatcher(text -> {
+                calculo.setPrecio(UtilService.parseStringToDouble(text));
+                tvResultadoValor.setText(calculo.calcular());
+            }));
+
+            tiMetro.addTextChangedListener(UtilService.getTextWatcher(text -> {
+                calculo.setMetro(UtilService.parseStringToInteger(text));
+                tvResultadoValor.setText(calculo.calcular());
+            }));
         }
 
-//        private void setearCorazon(boolean favorito) {
-//            if (favorito) {
-//                ibCorazon.setIconResource(R.drawable.ic_like_2);
-//            } else {
-//                ibCorazon.setIconResource(R.drawable.ic_like_1);
-//            }
-//        }
-    }
 
-    public List<Calculo> getLista() {
-        return lista;
-    }
+        public void suffixTextCantidad(Calculo calculo) {
+            String suffixText = "";
+            switch (calculo.getUnidad()) {
+                case UtilService.TIPO_KILO:
+                    if (calculo.getCantidad() == 1) {
+                        suffixText = "kilo";
+                    } else {
+                        suffixText = "kilos";
+                    }
+                    break;
+                case UtilService.TIPO_GRAMOS:
+                    if (calculo.getCantidad() == 1) {
+                        suffixText = "gramo";
+                    } else {
+                        suffixText = "gramos";
+                    }
+                    break;
+                case UtilService.TIPO_UNIDAD:
+                    if (calculo.getCantidad() == 1) {
+                        suffixText = "unidad";
+                    } else {
+                        suffixText = "unidades";
+                    }
+                    break;
+                case UtilService.TIPO_LITRO:
+                    if (calculo.getCantidad() == 1) {
+                        suffixText = "litro";
+                    } else {
+                        suffixText = "litros";
+                    }
+                    break;
+                case UtilService.TIPO_PAPEL_HIGIENICO:
+                    if (calculo.getCantidad() == 1) {
+                        suffixText = "rollo";
+                    } else {
+                        suffixText = "rollos";
+                    }
+                    break;
+            }
 
-    public void setLista(List<Calculo> lista) {
-        this.lista = lista;
+            tilCantidad.setSuffixText(suffixText);
+        }
+
+        public List<Calculo> getLista() {
+            return lista;
+        }
+
+        public void setLista(List<Calculo> lista2) {
+            lista = lista2;
+        }
     }
 }

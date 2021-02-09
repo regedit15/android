@@ -14,10 +14,14 @@ Aunque primera version podras tener una sola nota. Un solo String y listo, y si 
  ya sea de objetos, que cada objeto tenga por ejemplo si es un sust o un adj, o un verbo,  etc. O simplemente una lista de Strings. Esto vbeneficiaria muchisimo
   el tema del juego cuando te ponen una palabra en ing y tenes que escribirla en español.
 
+- Agregar un boton que rediriga a un link de la palabra en el longmagn: esta es la url con la palabra "wild":
+
+https://www.ldoceonline.com/es-LA/dictionary/wild
+
 Issues Realizadas:
 
 - Agregar alta de palabras
 - Mejorar el menu, pones juego y listado de palabras. Y una pantalla con 4 botones para cada uno
 - Hacer juego con palabras escritas
 - Hacer juego con palabras y con vi
-- Poner un "ocultar todos" en el juego. O ver todos
+- Poner un "ocultar todos" en el juego. O ver todos	
