@@ -164,7 +164,7 @@
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="9"
-        android:text="Precio por Kilo:"
+        android:text="Precio por kilo:"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"

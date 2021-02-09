@@ -114,6 +114,8 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     } else {
                         tilMetro.setVisibility(View.GONE);
                     }
+
+                    tvResultadoValor.setText(calculo.calcular());
                 }).setPositiveButton("Aceptar", null);
 
                 dialog = builder.create();
