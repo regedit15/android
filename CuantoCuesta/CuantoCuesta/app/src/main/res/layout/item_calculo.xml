@@ -192,7 +192,7 @@
                         android:shadowDx="5"
                         android:shadowDy="5"
                         android:shadowRadius="9"
-                        android:text="Tipo de descuento:"
+                        android:text="Descuento:"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -217,7 +217,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilMetro1"
+                    android:id="@+id/tilPorcentaje"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

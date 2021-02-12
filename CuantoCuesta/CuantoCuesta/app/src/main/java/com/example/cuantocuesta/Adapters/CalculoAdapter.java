@@ -62,6 +62,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         private TextInputEditText tiMetro;
         private TextInputLayout tilCantidad;
         private TextInputLayout tilMetro;
+        private TextInputLayout tilPorcentaje;
         private TextInputEditText tiPrecio;
         private TextInputEditText tiPorcentaje;
         private Button btTipo;
@@ -84,6 +85,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             btTipoDescuento = itemView.findViewById(R.id.btTipoDescuento);
             tiCantidad = itemView.findViewById(R.id.tiCantidad);
             tilCantidad = itemView.findViewById(R.id.tilCantidad);
+            tilPorcentaje = itemView.findViewById(R.id.tilPorcentaje);
             tiPrecio = itemView.findViewById(R.id.tiPrecio);
             tiPorcentaje = itemView.findViewById(R.id.tiPorcentaje);
             tvPrecioPorUnidadTitulo = itemView.findViewById(R.id.tvPrecioPorUnidadTitulo);
@@ -100,6 +102,8 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             clDescuento.setVisibility(View.GONE);
             tvPrecioPorProductoTitulo.setVisibility(View.GONE);
             tvPrecioPorProductoResultado.setVisibility(View.GONE);
+
+            tilPorcentaje.setVisibility(View.GONE);
         }
 
         @RequiresApi(api = Build.VERSION_CODES.N)
@@ -144,13 +148,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
                     tvPrecioPorUnidadTitulo.setText(frase);
                     suffixTextCantidad(calculo);
-
-                    if (calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO) {
-                        tilMetro.setVisibility(View.VISIBLE);
-                    } else {
-                        tilMetro.setVisibility(View.GONE);
-                    }
-
+                    tilMetro.setVisibility(calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO ? View.GONE : View.GONE);
                     calcularCampos(calculo);
                 });
 
@@ -183,45 +181,8 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     calculo.setTipoDescuento(UtilServiceLocal.getTipoDeDescuentoValor(indexTipoDescuento.get()));
 
 
-//                    String frase = "Precio por ";
-//
-//                    switch (calculo.getUnidad()) {
-//                        case UtilServiceLocal.TIPO_KILO:
-//                        case UtilServiceLocal.TIPO_GRAMOS:
-//                            frase += "kilo";
-//                            break;
-//                        case UtilServiceLocal.TIPO_UNIDAD:
-//                            frase += "unidad";
-//                            break;
-//                        case UtilServiceLocal.TIPO_LITRO:
-//                            frase += "litro";
-//                            break;
-//                        case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
-//                            frase += "metro";
-//                            break;
-//                    }
-//
-//                    frase += " con el descuento de ";
-//
-//                    switch (calculo.getTipoDescuento()) {
-//                        case UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD:
-//                            frase += "-50% en segunda unidad:";
-//                            break;
-//                        case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
-//                            frase += "-70% en segunda unidad:";
-//                            break;
-//                        case UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD:
-//                            frase += "-X% en segunda unidad:";
-//                            break;
-//                        case UtilServiceLocal.DESCUENTO_DOS_POR_UNO:
-//                            frase += "2x1:";
-//                            break;
-//                        case UtilServiceLocal.DESCUENTO_TRES_POR_DOS:
-//                            frase += "3x1:";
-//                            break;
-//                    }
-//
-//                    tvPrecioPorProductoTitulo.setText(frase);
+                    tilPorcentaje.setVisibility(calculo.getTipoDescuento() == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD ? View.VISIBLE : View.GONE);
+
                     calcularCampos(calculo);
                 });
 
