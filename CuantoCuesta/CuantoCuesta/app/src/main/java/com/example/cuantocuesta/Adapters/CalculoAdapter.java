@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuantocuesta.Models.Calculo;
@@ -60,8 +62,12 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         public TextInputEditText tiPrecio;
         public Button btTipo;
         public Button btTipoDescuento;
-        public TextView tvResultado;
-        public TextView tvResultadoValor;
+        public TextView tvPrecioPorUnidadTitulo;
+        public TextView tvPrecioPorUnidadResultado;
+        public TextView tvPrecioPorProductoTitulo;
+        public TextView tvPrecioPorProductoResultado;
+        public CheckBox cbDescuento;
+        public ConstraintLayout clDescuento;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -70,12 +76,22 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tiCantidad = itemView.findViewById(R.id.tiCantidad);
             tilCantidad = itemView.findViewById(R.id.tilCantidad);
             tiPrecio = itemView.findViewById(R.id.tiPrecio);
-            tvResultado = itemView.findViewById(R.id.tvResultado);
-            tvResultadoValor = itemView.findViewById(R.id.tvResultadoValor);
+
+            tvPrecioPorUnidadTitulo = itemView.findViewById(R.id.tvPrecioPorUnidadTitulo);
+            tvPrecioPorUnidadResultado = itemView.findViewById(R.id.tvPrecioPorUnidadResultado);
+            tvPrecioPorProductoTitulo = itemView.findViewById(R.id.tvPrecioPorProductoTitulo);
+            tvPrecioPorProductoResultado = itemView.findViewById(R.id.tvPrecioPorProductoResultado);
+
             tiMetro = itemView.findViewById(R.id.tiMetro);
             tilMetro = itemView.findViewById(R.id.tilMetro);
-            tvResultadoValor.setText("");
+            cbDescuento = itemView.findViewById(R.id.cbDescuento);
+            clDescuento = itemView.findViewById(R.id.clDescuento);
+
+            tvPrecioPorUnidadResultado.setText("");
             tilMetro.setVisibility(View.GONE);
+            clDescuento.setVisibility(View.GONE);
+            tvPrecioPorProductoTitulo.setVisibility(View.GONE);
+            tvPrecioPorProductoResultado.setVisibility(View.GONE);
         }
 
         public void bind(final Calculo calculo) {
@@ -115,7 +131,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     }
 
 
-                    tvResultado.setText(frase);
+                    tvPrecioPorUnidadTitulo.setText(frase);
                     suffixTextCantidad(calculo);
 
                     if (calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO) {
@@ -124,7 +140,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                         tilMetro.setVisibility(View.GONE);
                     }
 
-                    tvResultadoValor.setText(calculo.calcular());
+                    tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
                 });
 
                 dialog = builder.create();
@@ -188,7 +204,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                             break;
                     }
 
-                    tvResultado.setText(frase);
+                    tvPrecioPorUnidadTitulo.setText(frase);
                     suffixTextCantidad(calculo);
 
                     if (calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO) {
@@ -197,7 +213,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                         tilMetro.setVisibility(View.GONE);
                     }
 
-                    tvResultadoValor.setText(calculo.calcular());
+                    tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
                 });
 
                 dialog = builder.create();
@@ -206,20 +222,24 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
             tiCantidad.addTextChangedListener(UtilService.getTextWatcher(text -> {
                 calculo.setCantidad(UtilService.parseStringToDouble(text));
-                tvResultadoValor.setText(calculo.calcular());
+                tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
 
                 suffixTextCantidad(calculo);
             }));
 
             tiPrecio.addTextChangedListener(UtilService.getTextWatcher(text -> {
                 calculo.setPrecio(UtilService.parseStringToDouble(text));
-                tvResultadoValor.setText(calculo.calcular());
+                tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
             }));
 
             tiMetro.addTextChangedListener(UtilService.getTextWatcher(text -> {
                 calculo.setMetro(UtilService.parseStringToInteger(text));
-                tvResultadoValor.setText(calculo.calcular());
+                tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
             }));
+
+            cbDescuento.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                clDescuento.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            });
         }
 
 
