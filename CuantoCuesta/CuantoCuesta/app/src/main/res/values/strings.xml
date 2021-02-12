@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Cuanto Cuesta</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD">-50% en segunda unidad</string>
+    <string name="DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD">-70% en segunda unidad</string>
+    <string name="DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD">-X% en segunda unidad</string>
+    <string name="DESCUENTO_DOS_POR_UNO">2x1</string>
+
 </resources>

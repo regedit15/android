@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuantocuesta.Models.Calculo;
 import com.example.cuantocuesta.R;
-import com.example.cuantocuesta.Services.UtilService;
+import com.example.cuantocuesta.Services.UtilServiceLocal;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Arrays;
 import java.util.List;
+
+import martin.library.UtilService;
 
 public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHolder> {
 
@@ -56,12 +58,14 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         public TextInputLayout tilMetro;
         public TextInputEditText tiPrecio;
         public Button btTipo;
+        public Button btTipoDescuento;
         public TextView tvResultado;
         public TextView tvResultadoValor;
 
         public ViewHolder(View itemView) {
             super(itemView);
             btTipo = itemView.findViewById(R.id.btTipo);
+            btTipoDescuento = itemView.findViewById(R.id.btTipoDescuento);
             tiCantidad = itemView.findViewById(R.id.tiCantidad);
             tilCantidad = itemView.findViewById(R.id.tilCantidad);
             tiPrecio = itemView.findViewById(R.id.tiPrecio);
@@ -78,9 +82,9 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                 Dialog dialog;
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Filtrar por Tags: ");
+                builder.setTitle("Tipo: ");
 
-                String[] tipos = UtilService.getTipos();
+                String[] tipos = UtilServiceLocal.getTipos();
 
                 builder.setSingleChoiceItems(tipos, Arrays.asList(tipos).indexOf(calculo.getUnidad()), (dialog1, index) -> {
                     btTipo.setText(tipos[index]);
@@ -90,17 +94,17 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     String frase = "Precio por ";
 
                     switch (calculo.getUnidad()) {
-                        case UtilService.TIPO_KILO:
-                        case UtilService.TIPO_GRAMOS:
+                        case UtilServiceLocal.TIPO_KILO:
+                        case UtilServiceLocal.TIPO_GRAMOS:
                             frase += "kilo:";
                             break;
-                        case UtilService.TIPO_UNIDAD:
+                        case UtilServiceLocal.TIPO_UNIDAD:
                             frase += "unidad:";
                             break;
-                        case UtilService.TIPO_LITRO:
+                        case UtilServiceLocal.TIPO_LITRO:
                             frase += "litro:";
                             break;
-                        case UtilService.TIPO_PAPEL_HIGIENICO:
+                        case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
                             frase += "metro:";
                             break;
                     }
@@ -109,7 +113,56 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     tvResultado.setText(frase);
                     suffixTextCantidad(calculo);
 
-                    if (calculo.getUnidad() == UtilService.TIPO_PAPEL_HIGIENICO) {
+                    if (calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO) {
+                        tilMetro.setVisibility(View.VISIBLE);
+                    } else {
+                        tilMetro.setVisibility(View.GONE);
+                    }
+
+                    tvResultadoValor.setText(calculo.calcular());
+                }).setPositiveButton("Aceptar", null);
+
+                dialog = builder.create();
+                dialog.show();
+            });
+
+            btTipoDescuento.setOnClickListener(view -> {
+                Dialog dialog;
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Tipo de descuento: ");
+
+
+                String[] tipos = UtilServiceLocal.getTiposDeDescuentos(context);
+
+                builder.setSingleChoiceItems(tipos, Arrays.asList(tipos).indexOf(calculo.getUnidad()), (dialog1, index) -> {
+                    btTipo.setText(tipos[index]);
+                    calculo.setUnidad(tipos[index]);
+
+
+                    String frase = "Precio por ";
+
+                    switch (calculo.getUnidad()) {
+                        case UtilServiceLocal.TIPO_KILO:
+                        case UtilServiceLocal.TIPO_GRAMOS:
+                            frase += "kilo:";
+                            break;
+                        case UtilServiceLocal.TIPO_UNIDAD:
+                            frase += "unidad:";
+                            break;
+                        case UtilServiceLocal.TIPO_LITRO:
+                            frase += "litro:";
+                            break;
+                        case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
+                            frase += "metro:";
+                            break;
+                    }
+
+
+                    tvResultado.setText(frase);
+                    suffixTextCantidad(calculo);
+
+                    if (calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO) {
                         tilMetro.setVisibility(View.VISIBLE);
                     } else {
                         tilMetro.setVisibility(View.GONE);
@@ -144,35 +197,35 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         public void suffixTextCantidad(Calculo calculo) {
             String suffixText = "";
             switch (calculo.getUnidad()) {
-                case UtilService.TIPO_KILO:
+                case UtilServiceLocal.TIPO_KILO:
                     if (calculo.getCantidad() == 1) {
                         suffixText = "kilo";
                     } else {
                         suffixText = "kilos";
                     }
                     break;
-                case UtilService.TIPO_GRAMOS:
+                case UtilServiceLocal.TIPO_GRAMOS:
                     if (calculo.getCantidad() == 1) {
                         suffixText = "gramo";
                     } else {
                         suffixText = "gramos";
                     }
                     break;
-                case UtilService.TIPO_UNIDAD:
+                case UtilServiceLocal.TIPO_UNIDAD:
                     if (calculo.getCantidad() == 1) {
                         suffixText = "unidad";
                     } else {
                         suffixText = "unidades";
                     }
                     break;
-                case UtilService.TIPO_LITRO:
+                case UtilServiceLocal.TIPO_LITRO:
                     if (calculo.getCantidad() == 1) {
                         suffixText = "litro";
                     } else {
                         suffixText = "litros";
                     }
                     break;
-                case UtilService.TIPO_PAPEL_HIGIENICO:
+                case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
                     if (calculo.getCantidad() == 1) {
                         suffixText = "rollo";
                     } else {

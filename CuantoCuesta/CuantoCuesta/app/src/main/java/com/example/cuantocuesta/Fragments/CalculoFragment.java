@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cuantocuesta.Adapters.CalculoAdapter;
 import com.example.cuantocuesta.Models.Calculo;
 import com.example.cuantocuesta.R;
-import com.example.cuantocuesta.Services.UtilService;
+import com.example.cuantocuesta.Services.UtilServiceLocal;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class CalculoFragment extends Fragment {
     private RecyclerView recyclerView;
     private CalculoAdapter audioAdapter;
     private RecyclerView.LayoutManager layoutManagerCalculos;
-    private UtilService utilService = new UtilService();
+    private UtilServiceLocal utilService = new UtilServiceLocal();
 //    private final int tipoFragment;
 
 //    private List<String> tags = utilService.getTags();

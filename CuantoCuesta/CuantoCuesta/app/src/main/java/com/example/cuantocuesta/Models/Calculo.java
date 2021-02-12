@@ -1,8 +1,10 @@
 package com.example.cuantocuesta.Models;
 
-import com.example.cuantocuesta.Services.UtilService;
+import com.example.cuantocuesta.Services.UtilServiceLocal;
 
-import static com.example.cuantocuesta.Services.UtilService.TIPO_GRAMOS;
+import martin.library.UtilService;
+
+import static com.example.cuantocuesta.Services.UtilServiceLocal.TIPO_GRAMOS;
 
 public class Calculo {
 
@@ -90,33 +92,33 @@ public class Calculo {
         String result = "";
 
         // aqui la cantidad y el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
-        if (cantidad > 0 && precio > 0 && (unidad != UtilService.TIPO_PAPEL_HIGIENICO || (unidad == UtilService.TIPO_PAPEL_HIGIENICO && metro > 0))) {
+        if (cantidad > 0 && precio > 0 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))) {
 
 
             double resultadoCuenta = 0;
 
             switch (unidad) {
-                case UtilService.TIPO_KILO:
+                case UtilServiceLocal.TIPO_KILO:
                     //500 precio            3 cant
                     //  x = 1500             1
                     resultadoCuenta = precio * cantidad;
                     break;
-                case UtilService.TIPO_GRAMOS:
+                case UtilServiceLocal.TIPO_GRAMOS:
                     //500 precio            400 cant
                     //  x = 1250                 1000
                     resultadoCuenta = (1000 * precio) / cantidad;
                     break;
-                case UtilService.TIPO_UNIDAD:
+                case UtilServiceLocal.TIPO_UNIDAD:
                     //500 precio            5 cant
                     //  x = 100             1
                     resultadoCuenta = precio / cantidad;
                     break;
-                case UtilService.TIPO_LITRO:
+                case UtilServiceLocal.TIPO_LITRO:
                     //100 precio            2 cant
                     //  x = 100             1
                     resultadoCuenta = precio / cantidad;
                     break;
-                case UtilService.TIPO_PAPEL_HIGIENICO:
+                case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
                     //100 precio      6 rollos,     20 metros
                     // precio por metros = 100 precio / 6 rollos /20 metros
                     resultadoCuenta = precio / cantidad / metro;
