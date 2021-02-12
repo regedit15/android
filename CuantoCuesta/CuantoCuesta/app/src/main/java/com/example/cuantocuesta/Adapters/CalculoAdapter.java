@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import martin.library.UtilService;
 
@@ -84,11 +85,15 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Tipo: ");
 
-                String[] tipos = UtilServiceLocal.getTipos();
+                String[] unidades = UtilServiceLocal.getTipos();
 
-                builder.setSingleChoiceItems(tipos, Arrays.asList(tipos).indexOf(calculo.getUnidad()), (dialog1, index) -> {
-                    btTipo.setText(tipos[index]);
-                    calculo.setUnidad(tipos[index]);
+                AtomicInteger indexInidad = new AtomicInteger();
+
+                builder.setSingleChoiceItems(unidades, Arrays.asList(unidades).indexOf(calculo.getUnidad()), (dialog1, index) -> {
+                    indexInidad.set(index);
+                }).setPositiveButton("Aceptar", (dialog1, index) -> {
+                    btTipo.setText(unidades[indexInidad.get()]);
+                    calculo.setUnidad(unidades[indexInidad.get()]);
 
 
                     String frase = "Precio por ";
@@ -120,11 +125,14 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     }
 
                     tvResultadoValor.setText(calculo.calcular());
-                }).setPositiveButton("Aceptar", null);
+                });
 
                 dialog = builder.create();
                 dialog.show();
             });
+
+
+            AtomicInteger indexTipoDescuento = new AtomicInteger();
 
             btTipoDescuento.setOnClickListener(view -> {
                 Dialog dialog;
@@ -133,11 +141,13 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                 builder.setTitle("Tipo de descuento: ");
 
 
-                String[] tipos = UtilServiceLocal.getTiposDeDescuentos(context);
+                String[] tiposDescuentos = UtilServiceLocal.getTiposDeDescuentos(context);
 
-                builder.setSingleChoiceItems(tipos, Arrays.asList(tipos).indexOf(calculo.getUnidad()), (dialog1, index) -> {
-                    btTipo.setText(tipos[index]);
-                    calculo.setUnidad(tipos[index]);
+                builder.setSingleChoiceItems(tiposDescuentos, Arrays.asList(tiposDescuentos).indexOf(calculo.getTipoDescuento()), (dialog1, index) -> {
+                    indexTipoDescuento.set(index);
+                }).setPositiveButton("Aceptar", (dialog1, index) -> {
+                    btTipo.setText(tiposDescuentos[indexTipoDescuento.get()]);
+                    calculo.setTipoDescuento(tiposDescuentos[indexTipoDescuento.get()]);
 
 
                     String frase = "Precio por ";
@@ -145,19 +155,38 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     switch (calculo.getUnidad()) {
                         case UtilServiceLocal.TIPO_KILO:
                         case UtilServiceLocal.TIPO_GRAMOS:
-                            frase += "kilo:";
+                            frase += "kilo";
                             break;
                         case UtilServiceLocal.TIPO_UNIDAD:
-                            frase += "unidad:";
+                            frase += "unidad";
                             break;
                         case UtilServiceLocal.TIPO_LITRO:
-                            frase += "litro:";
+                            frase += "litro";
                             break;
                         case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
-                            frase += "metro:";
+                            frase += "metro";
                             break;
                     }
 
+                    frase += " con el descuento de ";
+
+                    switch (calculo.getTipoDescuento()) {
+                        case UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD:
+                            frase += "-50% en segunda unidad:";
+                            break;
+                        case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
+                            frase += "-70% en segunda unidad:";
+                            break;
+                        case UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD:
+                            frase += "-X% en segunda unidad:";
+                            break;
+                        case UtilServiceLocal.DESCUENTO_DOS_POR_UNO:
+                            frase += "2x1:";
+                            break;
+                        case UtilServiceLocal.DESCUENTO_TRES_POR_DOS:
+                            frase += "3x1:";
+                            break;
+                    }
 
                     tvResultado.setText(frase);
                     suffixTextCantidad(calculo);
@@ -169,7 +198,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     }
 
                     tvResultadoValor.setText(calculo.calcular());
-                }).setPositiveButton("Aceptar", null);
+                });
 
                 dialog = builder.create();
                 dialog.show();

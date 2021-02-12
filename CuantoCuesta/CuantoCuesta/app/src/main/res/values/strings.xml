@@ -5,5 +5,6 @@
     <string name="DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD">-70% en segunda unidad</string>
     <string name="DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD">-X% en segunda unidad</string>
     <string name="DESCUENTO_DOS_POR_UNO">2x1</string>
+    <string name="DESCUENTO_TRES_POR_DOS">3x2</string>
 
 </resources>

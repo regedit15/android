@@ -3,7 +3,6 @@ package com.example.cuantocuesta.Services;
 import android.content.Context;
 
 import com.example.cuantocuesta.Models.Calculo;
-import com.example.cuantocuesta.R;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,6 +24,7 @@ public class UtilServiceLocal {
     public static final String DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD = "DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD";
     public static final String DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD = "DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD";
     public static final String DESCUENTO_DOS_POR_UNO = "DESCUENTO_DOS_POR_UNO";
+    public static final String DESCUENTO_TRES_POR_DOS = "DESCUENTO_TRES_POR_DOS";
 
 
     public List<Calculo> getCalculos() {
@@ -39,14 +39,14 @@ public class UtilServiceLocal {
 
 
     public static String[] getTiposDeDescuentos(Context context) {
-        String mystring = context.getResources().getString(R.string.DESCUENTO_DOS_POR_UNO);
-
-        String mystring2 = UtilService.getStringResourceByName(context, "DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD22222");
-
-
-        return new String[]{TIPO_GRAMOS, TIPO_KILO, TIPO_LITRO, TIPO_UNIDAD, TIPO_PAPEL_HIGIENICO};
+        return new String[]{
+                UtilService.getStringResourceByName(context, DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD),
+                UtilService.getStringResourceByName(context, DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD),
+                UtilService.getStringResourceByName(context, DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD),
+                UtilService.getStringResourceByName(context, DESCUENTO_DOS_POR_UNO),
+                UtilService.getStringResourceByName(context, DESCUENTO_TRES_POR_DOS),
+        };
     }
-
 
 
 }
