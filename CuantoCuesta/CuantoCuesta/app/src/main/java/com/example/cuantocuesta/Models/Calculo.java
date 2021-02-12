@@ -14,6 +14,7 @@ public class Calculo {
     private double precio;
     private String unidad;
     private int metro;
+    private int porcentajeDescuentoCustom;
     private String tipoDescuento;
     private double resultado;
     private double resultadoPorUnidad;
@@ -24,7 +25,7 @@ public class Calculo {
     }
 
 
-    public Calculo(String nombre, double cantidad, double precio, String unidad, int metro, String tipoDescuento, double resultado, double resultadoPorUnidad) {
+    public Calculo(String nombre, double cantidad, double precio, String unidad, int metro, String tipoDescuento, double resultado, double resultadoPorUnidad, int porcentajeDescuentoCustom) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -33,6 +34,15 @@ public class Calculo {
         this.tipoDescuento = tipoDescuento;
         this.resultado = resultado;
         this.resultadoPorUnidad = resultadoPorUnidad;
+        this.porcentajeDescuentoCustom = porcentajeDescuentoCustom;
+    }
+
+    public int getPorcentajeDescuentoCustom() {
+        return porcentajeDescuentoCustom;
+    }
+
+    public void setPorcentajeDescuentoCustom(int porcentajeDescuentoCustom) {
+        this.porcentajeDescuentoCustom = porcentajeDescuentoCustom;
     }
 
     public String getTipoDescuento() {
@@ -107,8 +117,10 @@ public class Calculo {
         // aqui la cantidad y el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
         if (cantidad > 0 && precio > 0 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))) {
 
+            // esto es cuanto vale el kilo, litro, etc
             double resultadoCuenta = 0;
-            double resultadoCuenta2 = 0;
+            // esto es cuanto vale cafa unidad de lo que estas comprando cuando tenes un descuento
+            double precioPorProducto = 0;
 
             switch (unidad) {
                 case UtilServiceLocal.TIPO_KILO:
@@ -145,24 +157,34 @@ public class Calculo {
             } else {
                 switch (tipoDescuento) {
                     case UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD:
-// si el $ por quilo sale 1250
-// cuanto sale cada unidad
-// cuanto sale el kilo con ese descuento comprando dos unidades
+                        // si el $ por quilo sale 1250
+                        // cuanto sale cada unidad
+                        // cuanto sale el kilo con ese descuento comprando dos unidades
 
-// $1250           100%
-//                        x = 625             50
-                        resultadoCuenta = resultadoCuenta + ((50 * resultadoCuenta) / 100);
-                        resultadoCuenta2 = precio + ((50 * precio) / 100);
+                        // $1250           100%
+                        //                        x = 625             50
+                        //
+                        //                        sdasd
+                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, 50);
+                        precioPorProducto = calcularPorcentaje(precio, 50);
                         break;
                     case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                        resultadoCuenta = resultadoCuenta + ((70 * resultadoCuenta) / 100);
-                        resultadoCuenta2 = precio + ((70 * precio) / 100);
+                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, 70);
+                        precioPorProducto = calcularPorcentaje(precio, 70);
                         break;
                     case UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD:
+                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, porcentajeDescuentoCustom);
+                        precioPorProducto = calcularPorcentaje(precio, porcentajeDescuentoCustom);
                         break;
                     case UtilServiceLocal.DESCUENTO_DOS_POR_UNO:
+                        resultadoCuenta = resultadoCuenta / 2;
+                        precioPorProducto = precio / 2;
                         break;
                     case UtilServiceLocal.DESCUENTO_TRES_POR_DOS:
+                        // $por k es 500
+                        //$por k final = 500 + 500 /3
+                        resultadoCuenta = (resultadoCuenta * 2) / 3;
+                        precioPorProducto = (precio * 2) / 3;
                         break;
                 }
             }
@@ -173,4 +195,10 @@ public class Calculo {
         }
         return result;
     }
+
+
+    private double calcularPorcentaje(double calculo, double porcentaje) {
+        return calculo + ((porcentaje * calculo) / 100);
+    }
+
 }
