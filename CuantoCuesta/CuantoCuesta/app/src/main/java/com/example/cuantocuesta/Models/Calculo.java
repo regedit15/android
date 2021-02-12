@@ -113,7 +113,10 @@ public class Calculo {
         String result = "";
 
         // aqui la cantidad y el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
-        if (cantidad > 0 && precio > 0 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))) {
+        if (precio > 0
+                && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))
+                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
+        ) {
 
             // esto es cuanto vale el kilo, litro, etc
             double resultadoCuenta = 0;
@@ -191,7 +194,7 @@ public class Calculo {
         // aqui el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
         if (precio > 0
                 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))
-                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0))
+                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
         ) {
 
             // esto es cuanto vale cafa unidad de lo que estas comprando cuando tenes un descuento
@@ -225,7 +228,7 @@ public class Calculo {
 
 
     private double calcularPorcentaje(double calculo, double porcentaje) {
-        return (calculo + ((porcentaje * calculo) / 100)) / 2;
+        return (calculo + (calculo - ((porcentaje * calculo) / 100))) / 2;
     }
 
 }
