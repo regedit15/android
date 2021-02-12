@@ -1,6 +1,9 @@
 package com.example.cuantocuesta.Services;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.cuantocuesta.Models.Calculo;
 
@@ -27,6 +30,21 @@ public class UtilServiceLocal {
     public static final String DESCUENTO_TRES_POR_DOS = "DESCUENTO_TRES_POR_DOS";
 
 
+    public static final List<String> descuentos = Arrays.asList(
+            DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD,
+            DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD,
+            DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD,
+            DESCUENTO_DOS_POR_UNO,
+            DESCUENTO_TRES_POR_DOS
+    );
+
+    public static String[] descuentosTraducidos;
+
+    public UtilServiceLocal() {
+
+    }
+
+
     public List<Calculo> getCalculos() {
         return Arrays.asList(
                 new Calculo()
@@ -38,14 +56,23 @@ public class UtilServiceLocal {
     }
 
 
+    public static String getTipoDeDescuentoValor(int index) {
+        return descuentos.get(index);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public static String[] getTiposDeDescuentos(Context context) {
-        return new String[]{
-                UtilService.getStringResourceByName(context, DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD),
-                UtilService.getStringResourceByName(context, DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD),
-                UtilService.getStringResourceByName(context, DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD),
-                UtilService.getStringResourceByName(context, DESCUENTO_DOS_POR_UNO),
-                UtilService.getStringResourceByName(context, DESCUENTO_TRES_POR_DOS),
-        };
+
+        if (descuentosTraducidos == null) {
+
+            descuentosTraducidos = new String[descuentos.size()];
+
+            for (int i = 0; i < descuentos.size(); i++) {
+                descuentosTraducidos[i] = UtilService.getStringResourceByName(context, descuentos.get(i));
+            }
+        }
+
+        return descuentosTraducidos;
     }
 
 

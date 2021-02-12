@@ -3,6 +3,7 @@ package com.example.cuantocuesta.Adapters;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +45,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         return new ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.bind(lista.get(position));
@@ -55,19 +58,25 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextInputEditText tiCantidad;
-        public TextInputEditText tiMetro;
-        public TextInputLayout tilCantidad;
-        public TextInputLayout tilMetro;
-        public TextInputEditText tiPrecio;
-        public Button btTipo;
-        public Button btTipoDescuento;
-        public TextView tvPrecioPorUnidadTitulo;
-        public TextView tvPrecioPorUnidadResultado;
-        public TextView tvPrecioPorProductoTitulo;
-        public TextView tvPrecioPorProductoResultado;
-        public CheckBox cbDescuento;
-        public ConstraintLayout clDescuento;
+        private TextInputEditText tiCantidad;
+        private TextInputEditText tiMetro;
+        private TextInputLayout tilCantidad;
+        private TextInputLayout tilMetro;
+        private TextInputEditText tiPrecio;
+        private TextInputEditText tiPorcentaje;
+        private Button btTipo;
+        private Button btTipoDescuento;
+        private TextView tvPrecioPorUnidadTitulo;
+        private TextView tvPrecioPorUnidadResultado;
+        private TextView tvPrecioPorProductoTitulo;
+        private TextView tvPrecioPorProductoResultado;
+        private CheckBox cbDescuento;
+        private ConstraintLayout clDescuento;
+
+
+        private String ultimoDescuento = UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD;
+        private boolean checkbockDescuentoTocado;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -76,12 +85,11 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tiCantidad = itemView.findViewById(R.id.tiCantidad);
             tilCantidad = itemView.findViewById(R.id.tilCantidad);
             tiPrecio = itemView.findViewById(R.id.tiPrecio);
-
+            tiPorcentaje = itemView.findViewById(R.id.tiPorcentaje);
             tvPrecioPorUnidadTitulo = itemView.findViewById(R.id.tvPrecioPorUnidadTitulo);
             tvPrecioPorUnidadResultado = itemView.findViewById(R.id.tvPrecioPorUnidadResultado);
             tvPrecioPorProductoTitulo = itemView.findViewById(R.id.tvPrecioPorProductoTitulo);
             tvPrecioPorProductoResultado = itemView.findViewById(R.id.tvPrecioPorProductoResultado);
-
             tiMetro = itemView.findViewById(R.id.tiMetro);
             tilMetro = itemView.findViewById(R.id.tilMetro);
             cbDescuento = itemView.findViewById(R.id.cbDescuento);
@@ -94,7 +102,10 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tvPrecioPorProductoResultado.setVisibility(View.GONE);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         public void bind(final Calculo calculo) {
+
+
             btTipo.setOnClickListener(view -> {
                 Dialog dialog;
 
@@ -140,7 +151,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                         tilMetro.setVisibility(View.GONE);
                     }
 
-                    tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
+                    calcularCampos(calculo);
                 });
 
                 dialog = builder.create();
@@ -159,61 +170,59 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
                 String[] tiposDescuentos = UtilServiceLocal.getTiposDeDescuentos(context);
 
-                builder.setSingleChoiceItems(tiposDescuentos, Arrays.asList(tiposDescuentos).indexOf(calculo.getTipoDescuento()), (dialog1, index) -> {
+
+                int posicionDefaultItem = UtilServiceLocal.descuentos.indexOf(calculo.getTipoDescuento());
+
+                builder.setSingleChoiceItems(tiposDescuentos, posicionDefaultItem, (dialog1, index) -> {
                     indexTipoDescuento.set(index);
                 }).setPositiveButton("Aceptar", (dialog1, index) -> {
-                    btTipo.setText(tiposDescuentos[indexTipoDescuento.get()]);
-                    calculo.setTipoDescuento(tiposDescuentos[indexTipoDescuento.get()]);
+
+                    ultimoDescuento = tiposDescuentos[indexTipoDescuento.get()];
+
+                    btTipoDescuento.setText(tiposDescuentos[indexTipoDescuento.get()]);
+                    calculo.setTipoDescuento(UtilServiceLocal.getTipoDeDescuentoValor(indexTipoDescuento.get()));
 
 
-                    String frase = "Precio por ";
-
-                    switch (calculo.getUnidad()) {
-                        case UtilServiceLocal.TIPO_KILO:
-                        case UtilServiceLocal.TIPO_GRAMOS:
-                            frase += "kilo";
-                            break;
-                        case UtilServiceLocal.TIPO_UNIDAD:
-                            frase += "unidad";
-                            break;
-                        case UtilServiceLocal.TIPO_LITRO:
-                            frase += "litro";
-                            break;
-                        case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
-                            frase += "metro";
-                            break;
-                    }
-
-                    frase += " con el descuento de ";
-
-                    switch (calculo.getTipoDescuento()) {
-                        case UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                            frase += "-50% en segunda unidad:";
-                            break;
-                        case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                            frase += "-70% en segunda unidad:";
-                            break;
-                        case UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                            frase += "-X% en segunda unidad:";
-                            break;
-                        case UtilServiceLocal.DESCUENTO_DOS_POR_UNO:
-                            frase += "2x1:";
-                            break;
-                        case UtilServiceLocal.DESCUENTO_TRES_POR_DOS:
-                            frase += "3x1:";
-                            break;
-                    }
-
-                    tvPrecioPorUnidadTitulo.setText(frase);
-                    suffixTextCantidad(calculo);
-
-                    if (calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO) {
-                        tilMetro.setVisibility(View.VISIBLE);
-                    } else {
-                        tilMetro.setVisibility(View.GONE);
-                    }
-
-                    tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
+//                    String frase = "Precio por ";
+//
+//                    switch (calculo.getUnidad()) {
+//                        case UtilServiceLocal.TIPO_KILO:
+//                        case UtilServiceLocal.TIPO_GRAMOS:
+//                            frase += "kilo";
+//                            break;
+//                        case UtilServiceLocal.TIPO_UNIDAD:
+//                            frase += "unidad";
+//                            break;
+//                        case UtilServiceLocal.TIPO_LITRO:
+//                            frase += "litro";
+//                            break;
+//                        case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
+//                            frase += "metro";
+//                            break;
+//                    }
+//
+//                    frase += " con el descuento de ";
+//
+//                    switch (calculo.getTipoDescuento()) {
+//                        case UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD:
+//                            frase += "-50% en segunda unidad:";
+//                            break;
+//                        case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
+//                            frase += "-70% en segunda unidad:";
+//                            break;
+//                        case UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD:
+//                            frase += "-X% en segunda unidad:";
+//                            break;
+//                        case UtilServiceLocal.DESCUENTO_DOS_POR_UNO:
+//                            frase += "2x1:";
+//                            break;
+//                        case UtilServiceLocal.DESCUENTO_TRES_POR_DOS:
+//                            frase += "3x1:";
+//                            break;
+//                    }
+//
+//                    tvPrecioPorProductoTitulo.setText(frase);
+                    calcularCampos(calculo);
                 });
 
                 dialog = builder.create();
@@ -222,28 +231,43 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
             tiCantidad.addTextChangedListener(UtilService.getTextWatcher(text -> {
                 calculo.setCantidad(UtilService.parseStringToDouble(text));
-                tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
+                calcularCampos(calculo);
 
                 suffixTextCantidad(calculo);
             }));
 
             tiPrecio.addTextChangedListener(UtilService.getTextWatcher(text -> {
                 calculo.setPrecio(UtilService.parseStringToDouble(text));
-                tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
+                calcularCampos(calculo);
             }));
 
             tiMetro.addTextChangedListener(UtilService.getTextWatcher(text -> {
                 calculo.setMetro(UtilService.parseStringToInteger(text));
-                tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
+                calcularCampos(calculo);
             }));
+
+            tiPorcentaje.addTextChangedListener(UtilService.getTextWatcher(text -> {
+                calculo.setPorcentajeDescuentoCustom(UtilService.parseStringToInteger(text));
+                calcularCampos(calculo);
+            }));
+
 
             cbDescuento.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 clDescuento.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                tvPrecioPorProductoTitulo.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                tvPrecioPorProductoResultado.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                calculo.setTipoDescuento(isChecked ? ultimoDescuento : null);
+                calcularCampos(calculo);
             });
         }
 
 
-        public void suffixTextCantidad(Calculo calculo) {
+        private void calcularCampos(Calculo calculo) {
+            tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
+            tvPrecioPorProductoResultado.setText(calculo.calcularPrecioPorProducto());
+        }
+
+        private void suffixTextCantidad(Calculo calculo) {
             String suffixText = "";
             switch (calculo.getUnidad()) {
                 case UtilServiceLocal.TIPO_KILO:

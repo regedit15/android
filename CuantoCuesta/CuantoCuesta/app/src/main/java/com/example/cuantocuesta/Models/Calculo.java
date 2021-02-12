@@ -21,7 +21,6 @@ public class Calculo {
 
     public Calculo() {
         this.unidad = TIPO_GRAMOS;
-        this.tipoDescuento = DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD;
     }
 
 
