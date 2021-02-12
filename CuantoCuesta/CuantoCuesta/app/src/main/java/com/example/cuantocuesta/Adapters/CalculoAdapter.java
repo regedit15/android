@@ -144,7 +144,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
                     tvPrecioPorUnidadTitulo.setText(frase);
                     suffixTextCantidad(calculo);
-                    tilMetro.setVisibility(calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO ? View.GONE : View.GONE);
+                    tilMetro.setVisibility(calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO ? View.VISIBLE : View.GONE);
                     calcularCampos(calculo);
                 });
 
