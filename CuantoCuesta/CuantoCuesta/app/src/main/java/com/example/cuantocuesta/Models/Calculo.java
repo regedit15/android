@@ -4,7 +4,6 @@ import com.example.cuantocuesta.Services.UtilServiceLocal;
 
 import martin.library.UtilService;
 
-import static com.example.cuantocuesta.Services.UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD;
 import static com.example.cuantocuesta.Services.UtilServiceLocal.TIPO_GRAMOS;
 
 public class Calculo {
@@ -190,7 +189,10 @@ public class Calculo {
         String result = "";
 
         // aqui el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
-        if ( precio > 0 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))) {
+        if (precio > 0
+                && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))
+                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0))
+        ) {
 
             // esto es cuanto vale cafa unidad de lo que estas comprando cuando tenes un descuento
             double precioPorProducto = 0;
@@ -223,7 +225,7 @@ public class Calculo {
 
 
     private double calcularPorcentaje(double calculo, double porcentaje) {
-        return calculo + ((porcentaje * calculo) / 100);
+        return (calculo + ((porcentaje * calculo) / 100)) / 2;
     }
 
 }

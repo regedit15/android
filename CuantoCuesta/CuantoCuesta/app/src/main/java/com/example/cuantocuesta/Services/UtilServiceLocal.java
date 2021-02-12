@@ -60,7 +60,6 @@ public class UtilServiceLocal {
         return descuentos.get(index);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static String[] getTiposDeDescuentos(Context context) {
 
         if (descuentosTraducidos == null) {

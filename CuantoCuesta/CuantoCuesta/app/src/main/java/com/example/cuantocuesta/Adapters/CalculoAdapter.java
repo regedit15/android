@@ -3,7 +3,6 @@ package com.example.cuantocuesta.Adapters;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,7 +43,6 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         return new ViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.bind(lista.get(position));
@@ -106,7 +103,6 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tilPorcentaje.setVisibility(View.GONE);
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.N)
         public void bind(final Calculo calculo) {
 
 
