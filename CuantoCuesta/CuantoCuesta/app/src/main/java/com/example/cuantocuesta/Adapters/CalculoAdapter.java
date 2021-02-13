@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuantocuesta.Models.Calculo;
 import com.example.cuantocuesta.R;
-import com.example.cuantocuesta.Services.DecimalDigitsInputFilter;
+import com.example.cuantocuesta.Services.InputFilterNumerosConDosDecimales;
 import com.example.cuantocuesta.Services.UtilServiceLocal;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -107,7 +107,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tilPorcentaje.setVisibility(View.GONE);
 
 
-            tiPrecio.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
+            tiPrecio.setFilters(new InputFilter[]{new InputFilterNumerosConDosDecimales()});
         }
 
         public void bind(final Calculo calculo) {
