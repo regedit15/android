@@ -124,6 +124,8 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
                     String frase = "Precio por ";
 
+                    // Nota: no se por que aca no pudimos hacer que el tiCantidad.setInputType y el tiPrecio.setFilters fueran puestos en una variable y seteados despues del switch.
+                    // Ese InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL es como que cambia si lo guardo en una variable, no es lo mismo y hace que no admita decimales sino
                     switch (calculo.getUnidad()) {
                         case UtilServiceLocal.TIPO_KILO:
                         case UtilServiceLocal.TIPO_GRAMOS:
