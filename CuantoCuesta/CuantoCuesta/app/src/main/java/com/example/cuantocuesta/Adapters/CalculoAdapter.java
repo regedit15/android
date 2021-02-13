@@ -3,6 +3,7 @@ package com.example.cuantocuesta.Adapters;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuantocuesta.Models.Calculo;
 import com.example.cuantocuesta.R;
+import com.example.cuantocuesta.Services.DecimalDigitsInputFilter;
 import com.example.cuantocuesta.Services.UtilServiceLocal;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -22,6 +24,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import martin.library.UtilService;
 
@@ -101,9 +105,19 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tvPrecioPorProductoResultado.setVisibility(View.GONE);
 
             tilPorcentaje.setVisibility(View.GONE);
+
+
+            tiPrecio.setFilters(new InputFilter[]{new DecimalDigitsInputFilter()});
         }
 
         public void bind(final Calculo calculo) {
+
+
+            //            Pattern pattern = Pattern.compile("^(([1-9]{1}([0-9]*))|0{1})?(\\\\.[0-9]{1,2})?$");
+            Pattern pattern = Pattern.compile("^(([1-9]{1}([0-9]*))|0{1})?(\\.[0-9]{1,2})?$");
+            Matcher matcher = pattern.matcher("125.50");
+            matcher.matches();
+            String whatYouNeed = matcher.group(1);
 
 
             btTipo.setOnClickListener(view -> {
