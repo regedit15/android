@@ -123,8 +123,6 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
 
                     String frase = "Precio por ";
-                    InputFilter[] filter = new InputFilter[0];
-                    int type = InputType.TYPE_CLASS_NUMBER;
 
                     switch (calculo.getUnidad()) {
                         case UtilServiceLocal.TIPO_KILO:
