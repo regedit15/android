@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuantocuesta.Models.Calculo;
 import com.example.cuantocuesta.R;
-import com.example.cuantocuesta.Services.InputFilterNumerosConDosDecimales;
 import com.example.cuantocuesta.Services.UtilServiceLocal;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,10 +24,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import martin.library.UtilService;
+import martin.library.inputsFilters.UtilInputFilter;
+import martin.library.services.UtilService;
 
 public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHolder> {
 
@@ -75,10 +74,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         private CheckBox cbDescuento;
         private ConstraintLayout clDescuento;
 
-
         private String ultimoDescuento = UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD;
-        private boolean checkbockDescuentoTocado;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -103,22 +99,11 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             clDescuento.setVisibility(View.GONE);
             tvPrecioPorProductoTitulo.setVisibility(View.GONE);
             tvPrecioPorProductoResultado.setVisibility(View.GONE);
-
             tilPorcentaje.setVisibility(View.GONE);
-
-
-            tiPrecio.setFilters(new InputFilter[]{new InputFilterNumerosConDosDecimales()});
+            tiPrecio.setFilters(UtilInputFilter.getInputFilterDosDecimales());
         }
 
         public void bind(final Calculo calculo) {
-
-
-            //            Pattern pattern = Pattern.compile("^(([1-9]{1}([0-9]*))|0{1})?(\\\\.[0-9]{1,2})?$");
-            Pattern pattern = Pattern.compile("^(([1-9]{1}([0-9]*))|0{1})?(\\.[0-9]{1,2})?$");
-            Matcher matcher = pattern.matcher("125.50");
-            matcher.matches();
-            String whatYouNeed = matcher.group(1);
-
 
             btTipo.setOnClickListener(view -> {
                 Dialog dialog;
@@ -138,23 +123,32 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
 
                     String frase = "Precio por ";
+                    InputFilter[] filter = new InputFilter[0];
+                    int type = InputType.TYPE_CLASS_NUMBER;
 
                     switch (calculo.getUnidad()) {
                         case UtilServiceLocal.TIPO_KILO:
                         case UtilServiceLocal.TIPO_GRAMOS:
                             frase += "kilo:";
+                            tiCantidad.setInputType(InputType.TYPE_CLASS_NUMBER);
+                            tiPrecio.setFilters(new InputFilter[0]);
                             break;
                         case UtilServiceLocal.TIPO_UNIDAD:
                             frase += "unidad:";
+                            tiCantidad.setInputType(InputType.TYPE_CLASS_NUMBER);
+                            tiPrecio.setFilters(new InputFilter[0]);
                             break;
                         case UtilServiceLocal.TIPO_LITRO:
                             frase += "litro:";
+                            tiCantidad.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+                            tiCantidad.setFilters(UtilInputFilter.getInputFilterDosDecimales());
                             break;
                         case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
                             frase += "metro:";
+                            tiCantidad.setInputType(InputType.TYPE_CLASS_NUMBER);
+                            tiPrecio.setFilters(new InputFilter[0]);
                             break;
                     }
-
 
                     tvPrecioPorUnidadTitulo.setText(frase);
                     suffixTextCantidad(calculo);

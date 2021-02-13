@@ -2,7 +2,7 @@ package com.example.cuantocuesta.Models;
 
 import com.example.cuantocuesta.Services.UtilServiceLocal;
 
-import martin.library.UtilService;
+import martin.library.services.UtilService;
 
 import static com.example.cuantocuesta.Services.UtilServiceLocal.TIPO_GRAMOS;
 
