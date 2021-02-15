@@ -10,6 +10,15 @@ import martin.cuantocuesta.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    //-------------------------------------------------------------------------------------------------------
+    //                                            ISSUES
+    //-------------------------------------------------------------------------------------------------------
+    // 1- Agregar a la app: el ejemplo de la barrita de cereal no calza con ninguno. Si compro una caja, cuanto cuesta cada barrita
+    // 2- Poder agregar items
+    // 3- Hacer un limpiar que saque todos los items
+    // 4- Hacer como un check de comparar o algo que solo muestr los nombre y los precios
+    //-------------------------------------------------------------------------------------------------------
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

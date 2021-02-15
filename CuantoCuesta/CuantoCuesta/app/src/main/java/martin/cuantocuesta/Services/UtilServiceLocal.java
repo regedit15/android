@@ -60,7 +60,7 @@ public class UtilServiceLocal {
         return descuentos.get(index);
     }
 
-    public static String[] getTiposDeDescuentos(Context context) {
+    public static String[] getDescuentosTraducidos(Context context) {
 
         if (descuentosTraducidos == null) {
 

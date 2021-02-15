@@ -15,9 +15,6 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import martin.cuantocuesta.Models.Calculo;
-import martin.cuantocuesta.R;
-import martin.cuantocuesta.Services.UtilServiceLocal;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -25,6 +22,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import martin.cuantocuesta.Models.Calculo;
+import martin.cuantocuesta.R;
+import martin.cuantocuesta.Services.UtilServiceLocal;
 import martin.library.inputsFilters.UtilInputFilter;
 import martin.library.services.UtilService;
 
@@ -170,7 +170,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                 builder.setTitle("Tipo de descuento: ");
 
 
-                String[] tiposDescuentos = UtilServiceLocal.getTiposDeDescuentos(context);
+                String[] tiposDescuentos = UtilServiceLocal.getDescuentosTraducidos(context);
 
 
                 int posicionDefaultItem = UtilServiceLocal.descuentos.indexOf(calculo.getTipoDescuento());
@@ -179,7 +179,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
                     indexTipoDescuento.set(index);
                 }).setPositiveButton("Aceptar", (dialog1, index) -> {
 
-                    ultimoDescuento = tiposDescuentos[indexTipoDescuento.get()];
+                    ultimoDescuento = UtilServiceLocal.getTipoDeDescuentoValor(indexTipoDescuento.get());
 
                     btTipoDescuento.setText(tiposDescuentos[indexTipoDescuento.get()]);
                     calculo.setTipoDescuento(UtilServiceLocal.getTipoDeDescuentoValor(indexTipoDescuento.get()));
