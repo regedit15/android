@@ -1,10 +1,12 @@
-La pass va a ser 
+------------------------------------------------------------
+		Contraseñas Para el Signed APK
+------------------------------------------------------------
+Key Store Password: CuantoCuestaByMR
 
-CuantoCuestaByMR
+Key Alias: cuantocuestakey
 
-
-CuantoCuestaByMRkey
-
+Key Password: CuantoCuestaByMRkey
+------------------------------------------------------------
 
 
 

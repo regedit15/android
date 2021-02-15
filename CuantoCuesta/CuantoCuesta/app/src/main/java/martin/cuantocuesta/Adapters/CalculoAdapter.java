@@ -1,4 +1,4 @@
-package com.example.cuantocuesta.Adapters;
+package martin.cuantocuesta.Adapters;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -15,9 +15,9 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cuantocuesta.Models.Calculo;
-import com.example.cuantocuesta.R;
-import com.example.cuantocuesta.Services.UtilServiceLocal;
+import martin.cuantocuesta.Models.Calculo;
+import martin.cuantocuesta.R;
+import martin.cuantocuesta.Services.UtilServiceLocal;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 

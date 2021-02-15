@@ -1,10 +1,10 @@
-package com.example.cuantocuesta.Models;
+package martin.cuantocuesta.Models;
 
-import com.example.cuantocuesta.Services.UtilServiceLocal;
+import martin.cuantocuesta.Services.UtilServiceLocal;
 
 import martin.library.services.UtilService;
 
-import static com.example.cuantocuesta.Services.UtilServiceLocal.TIPO_GRAMOS;
+import static martin.cuantocuesta.Services.UtilServiceLocal.TIPO_GRAMOS;
 
 public class Calculo {
 

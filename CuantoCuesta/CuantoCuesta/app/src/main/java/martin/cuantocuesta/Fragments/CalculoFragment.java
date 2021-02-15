@@ -1,4 +1,4 @@
-package com.example.cuantocuesta.Fragments;
+package martin.cuantocuesta.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cuantocuesta.Adapters.CalculoAdapter;
-import com.example.cuantocuesta.Models.Calculo;
-import com.example.cuantocuesta.R;
-import com.example.cuantocuesta.Services.UtilServiceLocal;
+import martin.cuantocuesta.Adapters.CalculoAdapter;
+import martin.cuantocuesta.Models.Calculo;
+import martin.cuantocuesta.R;
+import martin.cuantocuesta.Services.UtilServiceLocal;
 
 import java.util.List;
 

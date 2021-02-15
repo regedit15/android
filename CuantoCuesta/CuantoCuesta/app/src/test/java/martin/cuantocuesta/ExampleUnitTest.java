@@ -1,4 +1,4 @@
-package com.example.cuantocuesta;
+package martin.cuantocuesta;
 
 import org.junit.Test;
 
