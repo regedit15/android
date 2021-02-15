@@ -1,15 +1,12 @@
 package martin.cuantocuesta.Services;
 
 import android.content.Context;
-import android.os.Build;
 
-import androidx.annotation.RequiresApi;
-
-import martin.cuantocuesta.Models.Calculo;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import martin.cuantocuesta.Models.Calculo;
 import martin.library.services.UtilService;
 
 
@@ -45,10 +42,8 @@ public class UtilServiceLocal {
     }
 
 
-    public List<Calculo> getCalculos() {
-        return Arrays.asList(
-                new Calculo()
-        );
+    public static List<Calculo> getCalculos() {
+        return new ArrayList<>(Arrays.asList(new Calculo()));
     }
 
     public static String[] getTipos() {

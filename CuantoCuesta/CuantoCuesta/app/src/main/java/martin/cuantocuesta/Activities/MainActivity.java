@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     // 2- Poder agregar items
     // 3- Hacer un limpiar que saque todos los items
     // 4- Hacer como un check de comparar o algo que solo muestr los nombre y los precios
+    // 5- Poner el icono del chanchito en la barra de menu, eso debe ser facil
+    // 6- Mostrar un demo, así investigamos como podemos hacer uno de esos demos en android
     //-------------------------------------------------------------------------------------------------------
 
 
@@ -25,21 +27,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //        cambiarFragment(new CalculoFragment( ), navigationView.getMenu().getItem(0));
         cambiarFragment(new CalculoFragment());
     }
 
-
-    //    private void cambiarFragment(Fragment fragment, MenuItem menuItem) {
     private void cambiarFragment(Fragment fragment) {
-        //cambiamos de fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
-
-        //para que se muestre seleccionado
-        //        menuItem.setChecked(true);
-
-        // Seteamos que el titulo de la barra sea igual que el item
-        //        getSupportActionBar().setTitle(menuItem.getTitle());
     }
 
 }
