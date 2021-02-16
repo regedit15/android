@@ -62,6 +62,21 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         return lista.size();
     }
 
+    public void agregarItem() {
+        lista.add(new Calculo());
+        //        notifyDataSetChanged();
+        notifyItemInserted(lista.size() - 1);
+    }
+
+    public void limpiar() {
+        //        int size = lista.size();
+        lista.clear();
+        //        notifyItemRangeRemoved(0, size - 1);
+        lista.add(new Calculo());
+        //        notifyItemInserted(0);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextInputEditText tiCantidad;
@@ -70,6 +85,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         private TextInputLayout tilMetro;
         private TextInputLayout tilPorcentaje;
         private TextInputEditText tiPrecio;
+        private TextInputEditText tiNombre;
         private TextInputEditText tiPorcentaje;
         private Button btTipo;
         private Button btTipoDescuento;
@@ -90,6 +106,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tilCantidad = itemView.findViewById(R.id.tilCantidad);
             tilPorcentaje = itemView.findViewById(R.id.tilPorcentaje);
             tiPrecio = itemView.findViewById(R.id.tiPrecio);
+            tiNombre = itemView.findViewById(R.id.tiNombre);
             tiPorcentaje = itemView.findViewById(R.id.tiPorcentaje);
             tvPrecioPorUnidadTitulo = itemView.findViewById(R.id.tvPrecioPorUnidadTitulo);
             tvPrecioPorUnidadResultado = itemView.findViewById(R.id.tvPrecioPorUnidadResultado);
@@ -111,6 +128,13 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         }
 
         public void bind(final Calculo calculo) {
+
+            tiNombre.setText(calculo.getNombre() == null ? "" : calculo.getNombre());
+
+
+            tiNombre.addTextChangedListener(UtilService.getTextWatcher(text -> {
+                calculo.setNombre(text);
+            }));
 
             btTipo.setOnClickListener(view -> {
                 Dialog dialog;
