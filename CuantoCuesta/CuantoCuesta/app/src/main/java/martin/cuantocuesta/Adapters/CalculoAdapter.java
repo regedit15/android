@@ -130,7 +130,9 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         public void bind(final Calculo calculo) {
 
             tiNombre.setText(calculo.getNombre() == null ? "" : calculo.getNombre());
-
+            tiPrecio.setText(calculo.getPrecio() == null ? "" : calculo.getNombre());
+            tiCantidad.setText(calculo.getCantidad() == null ? "" : calculo.getNombre());
+            tiMetro.setText(calculo.getMetro() == null ? "" : calculo.getNombre());
 
             tiNombre.addTextChangedListener(UtilService.getTextWatcher(text -> {
                 calculo.setNombre(text);
