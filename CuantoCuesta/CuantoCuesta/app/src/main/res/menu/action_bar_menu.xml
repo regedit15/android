@@ -3,4 +3,7 @@
     <item
         android:id="@+id/item_agregar"
         android:title="Agregar item" />
+    <item
+        android:id="@+id/item_limpiar"
+        android:title="Limpiar todo" />
 </menu>

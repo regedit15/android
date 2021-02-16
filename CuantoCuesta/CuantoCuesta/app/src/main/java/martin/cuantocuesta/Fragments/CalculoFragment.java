@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import martin.cuantocuesta.Adapters.CalculoAdapter;
@@ -47,7 +49,6 @@ public class CalculoFragment extends Fragment {
         audioAdapter = new CalculoAdapter(calculos, R.layout.item_calculo);
 
         recyclerView.setAdapter(audioAdapter);
-
         return view;
     }
 
@@ -66,6 +67,32 @@ public class CalculoFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.item_agregar:
                 calculos.add(new Calculo());
+                audioAdapter.notifyDataSetChanged();
+                resultado = true;
+                break;
+            case R.id.item_limpiar:
+                //                calculos = new ArrayList<>(Arrays.asList(new Calculo()));
+                //                calculos.clear();
+                //                audioAdapter.notifyDataSetChanged();
+                //                calculos.add(new Calculo());
+                //                audioAdapter.notifyDataSetChanged();
+                //                audioAdapter.notifyItemChanged(0);
+
+
+                int size = calculos.size();
+                //                calculos.clear();
+                calculos = new ArrayList<>(Arrays.asList(new Calculo(
+                        "",
+                        0,
+                        0,
+                        null,
+                        0,
+                        null,
+                        0,
+                        0,
+                        0
+                )));
+                //                audioAdapter.notifyItemRangeRemoved(0, size);
                 audioAdapter.notifyDataSetChanged();
                 resultado = true;
                 break;

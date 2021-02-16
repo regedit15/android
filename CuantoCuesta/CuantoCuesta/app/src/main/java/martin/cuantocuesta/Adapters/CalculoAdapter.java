@@ -43,7 +43,13 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         context = parent.getContext();
-        return new ViewHolder(view);
+
+        ViewHolder viewHolder = new ViewHolder(view);
+        // Eso es porque sino no refrezca bien el 1er item. Si yo escribo un nombre, una cantidad, etc.
+        // Despues le doy a agregar a otro item y despues le doy limpiar tod0. Si me saca el segundo
+        // item pero el primero queda igual que como estaba, porque lo recicla. COn esto si lo refrezca bien
+        viewHolder.setIsRecyclable(false);
+        return viewHolder;
     }
 
     @Override
@@ -101,6 +107,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tvPrecioPorProductoResultado.setVisibility(View.GONE);
             tilPorcentaje.setVisibility(View.GONE);
             tiPrecio.setFilters(UtilInputFilter.getInputFilterDosDecimales());
+            tiPorcentaje.setFilters(UtilInputFilter.getInputFilterPorcentajeSinCero());
         }
 
         public void bind(final Calculo calculo) {
