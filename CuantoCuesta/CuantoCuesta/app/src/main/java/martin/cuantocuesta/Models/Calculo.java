@@ -1,7 +1,6 @@
 package martin.cuantocuesta.Models;
 
 import martin.cuantocuesta.Services.UtilServiceLocal;
-
 import martin.library.services.UtilService;
 
 import static martin.cuantocuesta.Services.UtilServiceLocal.TIPO_GRAMOS;
@@ -9,21 +8,26 @@ import static martin.cuantocuesta.Services.UtilServiceLocal.TIPO_GRAMOS;
 public class Calculo {
 
     private String nombre;
-    private double cantidad;
-    private double precio;
+    private Double cantidad;
+    private Double precio;
     private String unidad;
-    private int metro;
-    private int porcentajeDescuentoCustom;
+    private Integer metro;
+    private Integer porcentajeDescuentoCustom;
     private String tipoDescuento;
-    private double resultado;
-    private double resultadoPorUnidad;
+    private Double resultado;
+    private Double resultadoPorUnidad;
 
     public Calculo() {
         this.unidad = TIPO_GRAMOS;
     }
 
+    public Calculo(String nombre) {
+        this.unidad = TIPO_GRAMOS;
+        this.nombre = nombre;
+    }
 
-    public Calculo(String nombre, double cantidad, double precio, String unidad, int metro, String tipoDescuento, double resultado, double resultadoPorUnidad, int porcentajeDescuentoCustom) {
+
+    public Calculo(String nombre, Double cantidad, Double precio, String unidad, Integer metro, String tipoDescuento, Double resultado, Double resultadoPorUnidad, Integer porcentajeDescuentoCustom) {
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.precio = precio;
@@ -35,11 +39,11 @@ public class Calculo {
         this.porcentajeDescuentoCustom = porcentajeDescuentoCustom;
     }
 
-    public int getPorcentajeDescuentoCustom() {
+    public Integer getPorcentajeDescuentoCustom() {
         return porcentajeDescuentoCustom;
     }
 
-    public void setPorcentajeDescuentoCustom(int porcentajeDescuentoCustom) {
+    public void setPorcentajeDescuentoCustom(Integer porcentajeDescuentoCustom) {
         this.porcentajeDescuentoCustom = porcentajeDescuentoCustom;
     }
 
@@ -51,19 +55,19 @@ public class Calculo {
         this.tipoDescuento = tipoDescuento;
     }
 
-    public int getMetro() {
+    public Integer getMetro() {
         return metro;
     }
 
-    public void setMetro(int metro) {
+    public void setMetro(Integer metro) {
         this.metro = metro;
     }
 
-    public double getCantidad() {
+    public Double getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(double cantidad) {
+    public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -75,11 +79,11 @@ public class Calculo {
         this.nombre = nombre;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -91,19 +95,19 @@ public class Calculo {
         this.unidad = unidad;
     }
 
-    public double getResultado() {
+    public Double getResultado() {
         return resultado;
     }
 
-    public void setResultado(double resultado) {
+    public void setResultado(Double resultado) {
         this.resultado = resultado;
     }
 
-    public double getResultadoPorUnidad() {
+    public Double getResultadoPorUnidad() {
         return resultadoPorUnidad;
     }
 
-    public void setResultadoPorUnidad(double resultadoPorUnidad) {
+    public void setResultadoPorUnidad(Double resultadoPorUnidad) {
         this.resultadoPorUnidad = resultadoPorUnidad;
     }
 
@@ -113,13 +117,14 @@ public class Calculo {
         String result = "";
 
         // aqui la cantidad y el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
-        if (precio > 0
+        if (precio > 0 && cantidad != null && cantidad > 0
                 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))
                 && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
         ) {
 
             // esto es cuanto vale el kilo, litro, etc
-            double resultadoCuenta = 0;
+            Double resultadoCuenta = new Double(0);
+
 
             switch (unidad) {
                 case UtilServiceLocal.TIPO_KILO:
@@ -161,13 +166,13 @@ public class Calculo {
                         //                        x = 625             50
                         //
                         //                        sdasd
-                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, 50);
+                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, new Double(50));
                         break;
                     case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, 70);
+                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, new Double(70));
                         break;
                     case UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, porcentajeDescuentoCustom);
+                        resultadoCuenta = calcularPorcentaje(resultadoCuenta, new Double(porcentajeDescuentoCustom));
                         break;
                     case UtilServiceLocal.DESCUENTO_DOS_POR_UNO:
                         resultadoCuenta = resultadoCuenta / 2;
@@ -198,19 +203,19 @@ public class Calculo {
         ) {
 
             // esto es cuanto vale cafa unidad de lo que estas comprando cuando tenes un descuento
-            double precioPorProducto = 0;
+            Double precioPorProducto = new Double(0);
 
 
             if (tipoDescuento != null) {
                 switch (tipoDescuento) {
                     case UtilServiceLocal.DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                        precioPorProducto = calcularPorcentaje(precio, 50);
+                        precioPorProducto = calcularPorcentaje(precio, new Double(50));
                         break;
                     case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                        precioPorProducto = calcularPorcentaje(precio, 70);
+                        precioPorProducto = calcularPorcentaje(precio, new Double(70));
                         break;
                     case UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD:
-                        precioPorProducto = calcularPorcentaje(precio, porcentajeDescuentoCustom);
+                        precioPorProducto = calcularPorcentaje(precio, new Double(porcentajeDescuentoCustom));
                         break;
                     case UtilServiceLocal.DESCUENTO_DOS_POR_UNO:
                         precioPorProducto = precio / 2;
@@ -227,7 +232,7 @@ public class Calculo {
     }
 
 
-    private double calcularPorcentaje(double calculo, double porcentaje) {
+    private Double calcularPorcentaje(Double calculo, Double porcentaje) {
         return (calculo + (calculo - ((porcentaje * calculo) / 100))) / 2;
     }
 

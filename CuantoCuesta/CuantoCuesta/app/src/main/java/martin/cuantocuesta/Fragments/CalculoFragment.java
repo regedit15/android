@@ -7,14 +7,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import martin.cuantocuesta.Adapters.CalculoAdapter;
@@ -25,9 +23,9 @@ import martin.cuantocuesta.Services.UtilServiceLocal;
 public class CalculoFragment extends Fragment {
 
 
-    private RecyclerView recyclerView;
+    private ListView recyclerView;
     private CalculoAdapter audioAdapter;
-    private RecyclerView.LayoutManager layoutManagerCalculos;
+//    private RecyclerView.LayoutManager layoutManagerCalculos;
     private List<Calculo> calculos = UtilServiceLocal.getCalculos();
 
     public CalculoFragment() {
@@ -41,12 +39,14 @@ public class CalculoFragment extends Fragment {
 
 
         recyclerView = view.findViewById(R.id.rvListadoCalculos);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        layoutManagerCalculos = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManagerCalculos);
+        //        recyclerView.setHasFixedSize(true);
+        //        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        layoutManagerCalculos = new LinearLayoutManager(getContext());
+        //        recyclerView.setLayoutManager(layoutManagerCalculos);
 
-        audioAdapter = new CalculoAdapter(calculos, R.layout.item_calculo);
+        //        audioAdapter = new CalculoAdapter(calculos, R.layout.item_calculo);
+        audioAdapter = new CalculoAdapter(getContext(), R.layout.item_calculo, calculos);
+
 
         recyclerView.setAdapter(audioAdapter);
         return view;
@@ -66,34 +66,11 @@ public class CalculoFragment extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.item_agregar:
-                calculos.add(new Calculo());
-                audioAdapter.notifyDataSetChanged();
+                audioAdapter.agregarItem();
                 resultado = true;
                 break;
             case R.id.item_limpiar:
-                //                calculos = new ArrayList<>(Arrays.asList(new Calculo()));
-                //                calculos.clear();
-                //                audioAdapter.notifyDataSetChanged();
-                //                calculos.add(new Calculo());
-                //                audioAdapter.notifyDataSetChanged();
-                //                audioAdapter.notifyItemChanged(0);
-
-
-                int size = calculos.size();
-                //                calculos.clear();
-                calculos = new ArrayList<>(Arrays.asList(new Calculo(
-                        "",
-                        0,
-                        0,
-                        null,
-                        0,
-                        null,
-                        0,
-                        0,
-                        0
-                )));
-                //                audioAdapter.notifyItemRangeRemoved(0, size);
-                audioAdapter.notifyDataSetChanged();
+                audioAdapter.limpiar();
                 resultado = true;
                 break;
             default:

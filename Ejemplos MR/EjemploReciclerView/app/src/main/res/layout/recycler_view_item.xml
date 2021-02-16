@@ -42,6 +42,14 @@
 				android:layout_weight="0.70"
 				android:orientation="vertical">
 
+				<EditText
+					android:id="@+id/etNombre"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_weight="0.1"
+					android:ems="10"
+					android:inputType="textPersonName" />
+
 				<TextView
 					android:id="@+id/textViewTitulo"
 					android:layout_width="wrap_content"
@@ -57,9 +65,10 @@
 					android:layout_width="wrap_content"
 					android:layout_height="0dp"
 					android:layout_gravity="center"
-					android:layout_weight="0.5"
+					android:layout_weight="0.1"
 					android:gravity="center"
 					android:text="Descripcion" />
+
 			</LinearLayout>
 		</LinearLayout>
 	</androidx.cardview.widget.CardView>
