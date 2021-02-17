@@ -269,35 +269,35 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             String suffixText = "";
             switch (calculo.getUnidad()) {
                 case UtilServiceLocal.TIPO_KILO:
-                    if (calculo.getCantidad() == 1) {
+                    if (calculo.getCantidad() != null && calculo.getCantidad() == 1) {
                         suffixText = "kilo";
                     } else {
                         suffixText = "kilos";
                     }
                     break;
                 case UtilServiceLocal.TIPO_GRAMOS:
-                    if (calculo.getCantidad() == 1) {
+                    if (calculo.getCantidad() != null && calculo.getCantidad() == 1) {
                         suffixText = "gramo";
                     } else {
                         suffixText = "gramos";
                     }
                     break;
                 case UtilServiceLocal.TIPO_UNIDAD:
-                    if (calculo.getCantidad() == 1) {
+                    if (calculo.getCantidad() != null && calculo.getCantidad() == 1) {
                         suffixText = "unidad";
                     } else {
                         suffixText = "unidades";
                     }
                     break;
                 case UtilServiceLocal.TIPO_LITRO:
-                    if (calculo.getCantidad() == 1) {
+                    if (calculo.getCantidad() != null && calculo.getCantidad() == 1) {
                         suffixText = "litro";
                     } else {
                         suffixText = "litros";
                     }
                     break;
                 case UtilServiceLocal.TIPO_PAPEL_HIGIENICO:
-                    if (calculo.getCantidad() == 1) {
+                    if (calculo.getCantidad() != null && calculo.getCantidad() == 1) {
                         suffixText = "rollo";
                     } else {
                         suffixText = "rollos";

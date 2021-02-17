@@ -112,8 +112,8 @@ public class Calculo {
         String result = "";
 
         // aqui la cantidad y el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
-        if (precio > 0 && cantidad != null && cantidad > 0
-                && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))
+        if (precio != null && precio > 0 && cantidad != null && cantidad > 0
+                && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO  && metro != null && metro > 0))
                 && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
         ) {
 
@@ -191,8 +191,8 @@ public class Calculo {
         String result = "";
 
         // aqui el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
-        if (precio > 0
-                && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro > 0))
+        if (precio != null && precio > 0
+                && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro != null && metro > 0))
                 && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
         ) {
 
