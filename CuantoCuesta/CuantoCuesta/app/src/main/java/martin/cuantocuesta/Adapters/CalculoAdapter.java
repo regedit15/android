@@ -43,13 +43,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         context = parent.getContext();
-
-        ViewHolder viewHolder = new ViewHolder(view);
-        // Eso es porque sino no refrezca bien el 1er item. Si yo escribo un nombre, una cantidad, etc.
-        // Despues le doy a agregar a otro item y despues le doy limpiar tod0. Si me saca el segundo
-        // item pero el primero queda igual que como estaba, porque lo recicla. COn esto si lo refrezca bien
-        viewHolder.setIsRecyclable(false);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -62,19 +56,30 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         return lista.size();
     }
 
+    @Override
+    public long getItemId(int id) {
+        return id;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     public void agregarItem() {
         lista.add(new Calculo());
-        //        notifyDataSetChanged();
         notifyItemInserted(lista.size() - 1);
     }
 
     public void limpiar() {
-        //        int size = lista.size();
         lista.clear();
-        //        notifyItemRangeRemoved(0, size - 1);
         lista.add(new Calculo());
-        //        notifyItemInserted(0);
         notifyDataSetChanged();
+    }
+
+    public void limpiar2() {
+        lista.add(new Calculo());
+        notifyItemInserted(0);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -129,14 +134,11 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
         public void bind(final Calculo calculo) {
 
-            tiNombre.setText(calculo.getNombre() == null ? "" : calculo.getNombre());
-            tiPrecio.setText(calculo.getPrecio() == null ? "" : calculo.getNombre());
-            tiCantidad.setText(calculo.getCantidad() == null ? "" : calculo.getNombre());
-            tiMetro.setText(calculo.getMetro() == null ? "" : calculo.getNombre());
 
-            tiNombre.addTextChangedListener(UtilService.getTextWatcher(text -> {
-                calculo.setNombre(text);
-            }));
+            tiNombre.setText(calculo.getNombre() == null ? "" : calculo.getNombre());
+            tiPrecio.setText(calculo.getPrecio() == null ? "" : calculo.getPrecio() + "");
+            tiCantidad.setText(calculo.getCantidad() == null ? "" : calculo.getCantidad() + "");
+            tiMetro.setText(calculo.getMetro() == null ? "" : calculo.getMetro() + "");
 
             btTipo.setOnClickListener(view -> {
                 Dialog dialog;

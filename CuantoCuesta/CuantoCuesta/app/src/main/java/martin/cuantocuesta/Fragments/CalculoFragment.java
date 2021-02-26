@@ -37,7 +37,6 @@ public class CalculoFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_calculo, container, false);
 
-
         recyclerView = view.findViewById(R.id.rvListadoCalculos);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -69,6 +68,10 @@ public class CalculoFragment extends Fragment {
                 break;
             case R.id.item_limpiar:
                 audioAdapter.limpiar();
+                resultado = true;
+                break;
+            case R.id.item_limpiar2:
+                audioAdapter.limpiar2();
                 resultado = true;
                 break;
             default:
