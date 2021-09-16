@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
     //Nota sobre los stickers: cada stickers debe estar en formato .webp y debe tener 512x512 pixeles
     // y pesar menos de 100 kb
     // La imagen del icono del paquete debe tener 96x96 pixeles y pesar menos de 50 kb
+    //   sasas 22323
 
     private final String DATOS_GUARDADOS = "DATOS_GUARDADOS";
     private final String APP_VERSION = "VERSION";
