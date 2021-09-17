@@ -17,6 +17,7 @@ import java.io.InputStream;
 
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+
 import martin.botoneraforgottera.Exceptions.PermisoException;
 
 public class AudioService {
@@ -115,9 +116,14 @@ public class AudioService {
 			validarPermisos(fragment.getContext());
 
 			// Directorio del telefono, el de mas arriba, el de "Este equipo\moto g(7)\Almacenamiento interno compartido"
-			File filePath = Environment.getExternalStorageDirectory();
+			// File filePath = Environment.getExternalStorageDirectory();
 			// Directorio de Downloads: "Este equipo\moto g(7)\Almacenamiento interno compartido\Download"
-			// File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+			// File filePath = Enviroment.getFilesDir();
+			// File filePath = fragment.getContext().getFilesDir();
+			// File filePath = fragment.getContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC);
+			// Esta es la única que anda en android 11 y anteriores (por lo que hemos probado, así que nos parece la mejor)
+			File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
 
 			InputStream inputStream = fragment.getResources().openRawResource(idAudio);
 			fileAudio = new File(filePath, AUDIO_PARA_COMPARTIR);
