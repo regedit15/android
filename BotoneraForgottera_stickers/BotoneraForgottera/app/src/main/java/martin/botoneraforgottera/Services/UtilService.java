@@ -2296,8 +2296,41 @@ public class UtilService {
                     )),
                     new Audio(R.raw.audio_571, "Dejen de mandar audios pelotudos de mierda", Arrays.asList(
                             OBJ_TAG_LUACHA
-                    ))
+                    )),
+                    new Audio(R.raw.audio_572, "California dreamin by uber", Arrays.asList(
+                            OBJ_TAG_UBER,
+                            OBJ_TAG_SHIT_MUSIC
 
+                    )), new Audio(R.raw.audio_573, "Uver riendo", Arrays.asList(
+                            OBJ_TAG_UBER,
+                            OBJ_TAG_RISA
+                    )), new Audio(R.raw.audio_574, "Uver riendo y tosiendo", Arrays.asList(
+                            OBJ_TAG_UBER,
+                            OBJ_TAG_RISA
+                    )), new Audio(R.raw.audio_575, "Poiooooooo te hecho de menosh", Arrays.asList(
+                            OBJ_TAG_MARCE,
+                            OBJ_TAG_POIO
+                    )), new Audio(R.raw.audio_576, "Esa luchoncita, esa luchoncita tiene que ser mi mujeeer \uD83C\uDFB5 * tira la cadena * ", Arrays.asList(
+                            OBJ_TAG_NIGUIN
+                    )), new Audio(R.raw.audio_577, "Me llaman oso panda, me llaman oso panda \uD83C\uDFB5", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )), new Audio(R.raw.audio_578, "Acá tenés la que pedís vos, puto de mierda", Arrays.asList(
+                            OBJ_TAG_NIGUIN
+                    )), new Audio(R.raw.audio_579, "No se diga más señor pichu", Arrays.asList(
+                            OBJ_TAG_NIGUIN
+                    )), new Audio(R.raw.audio_580, "Boludo me esta sudando hasta el escroto", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )), new Audio(R.raw.audio_581, "Che mandalo a virgossinfronteras.com", Arrays.asList(
+                            OBJ_TAG_MARCE
+                    )), new Audio(R.raw.audio_582, "Nha, que puto que sos", Arrays.asList(
+                            OBJ_TAG_NIGUIN
+                    )), new Audio(R.raw.audio_583, "Marcelitooooooo", Arrays.asList(
+                            OBJ_TAG_UBER,
+                            OBJ_TAG_SALUDO
+                    )), new Audio(R.raw.audio_584, "Ubercito de mi vidaaaa, mi amol", Arrays.asList(
+                            OBJ_TAG_MARCE,
+                            OBJ_TAG_SALUDO
+                    ))
             );
         }
 
