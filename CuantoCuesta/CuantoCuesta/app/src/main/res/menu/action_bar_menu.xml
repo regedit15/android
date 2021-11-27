@@ -6,7 +6,5 @@
     <item
         android:id="@+id/item_limpiar"
         android:title="Limpiar todo" />
-    <item
-        android:id="@+id/item_limpiar2"
-        android:title="Limpiar todo2" />
+
 </menu>

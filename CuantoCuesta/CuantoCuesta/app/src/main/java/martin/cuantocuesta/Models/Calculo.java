@@ -21,6 +21,10 @@ public class Calculo {
         this.unidad = TIPO_GRAMOS;
     }
 
+    public Calculo(String unidad) {
+        this.unidad = unidad;
+    }
+
 
     public Calculo(int id, String nombre, Double cantidad, Double precio, String unidad, Integer metro, String tipoDescuento, Double resultado, Double resultadoPorUnidad, Integer porcentajeDescuentoCustom) {
         this.nombre = nombre;
@@ -114,7 +118,7 @@ public class Calculo {
         // aqui la cantidad y el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
         if (precio != null && precio > 0 && cantidad != null && cantidad > 0
                 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro != null && metro > 0))
-                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
+                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom != null && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
         ) {
 
             // esto es cuanto vale el kilo, litro, etc
@@ -193,7 +197,7 @@ public class Calculo {
         // aqui el precio si o si tienen que ser mayores a cero, pero si ademas esta en TIPO_PAPEL_HIGIENICO tiene que tener los metros mayor a cero
         if (precio != null && precio > 0
                 && (unidad != UtilServiceLocal.TIPO_PAPEL_HIGIENICO || (unidad == UtilServiceLocal.TIPO_PAPEL_HIGIENICO && metro != null && metro > 0))
-                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
+                && (tipoDescuento != UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD || (tipoDescuento == UtilServiceLocal.DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD && porcentajeDescuentoCustom != null && porcentajeDescuentoCustom > 0 && porcentajeDescuentoCustom < 101))
         ) {
 
             // esto es cuanto vale cafa unidad de lo que estas comprando cuando tenes un descuento

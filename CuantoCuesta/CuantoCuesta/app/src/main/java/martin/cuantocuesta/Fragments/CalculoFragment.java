@@ -70,10 +70,6 @@ public class CalculoFragment extends Fragment {
                 audioAdapter.limpiar();
                 resultado = true;
                 break;
-            case R.id.item_limpiar2:
-                audioAdapter.limpiar2();
-                resultado = true;
-                break;
             default:
                 resultado = super.onOptionsItemSelected(item);
                 break;

@@ -33,6 +33,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
     private Context context;
     private List<Calculo> lista;
     private int layout;
+    private String ultimoTipoDeUnidad = UtilServiceLocal.TIPO_GRAMOS;
 
     public CalculoAdapter(List<Calculo> lista, int layout) {
         this.lista = lista;
@@ -67,7 +68,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
     }
 
     public void agregarItem() {
-        lista.add(new Calculo());
+        lista.add(new Calculo(ultimoTipoDeUnidad));
         notifyItemInserted(lista.size() - 1);
     }
 
@@ -75,11 +76,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
         lista.clear();
         lista.add(new Calculo());
         notifyDataSetChanged();
-    }
-
-    public void limpiar2() {
-        lista.add(new Calculo());
-        notifyItemInserted(0);
+        // notifyItemInserted(0);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -122,6 +119,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             cbDescuento = itemView.findViewById(R.id.cbDescuento);
             clDescuento = itemView.findViewById(R.id.clDescuento);
 
+            btTipo.setText(ultimoTipoDeUnidad);
             tvPrecioPorUnidadResultado.setText("");
             tilMetro.setVisibility(View.GONE);
             clDescuento.setVisibility(View.GONE);
@@ -139,6 +137,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
             tiPrecio.setText(calculo.getPrecio() == null ? "" : calculo.getPrecio() + "");
             tiCantidad.setText(calculo.getCantidad() == null ? "" : calculo.getCantidad() + "");
             tiMetro.setText(calculo.getMetro() == null ? "" : calculo.getMetro() + "");
+            suffixTextCantidad(calculo);
 
             btTipo.setOnClickListener(view -> {
                 Dialog dialog;
@@ -148,13 +147,14 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
                 String[] unidades = UtilServiceLocal.getTipos();
 
-                AtomicInteger indexInidad = new AtomicInteger();
+                AtomicInteger indexUnidad = new AtomicInteger();
 
                 builder.setSingleChoiceItems(unidades, Arrays.asList(unidades).indexOf(calculo.getUnidad()), (dialog1, index) -> {
-                    indexInidad.set(index);
+                    indexUnidad.set(index);
                 }).setPositiveButton("Aceptar", (dialog1, index) -> {
-                    btTipo.setText(unidades[indexInidad.get()]);
-                    calculo.setUnidad(unidades[indexInidad.get()]);
+                    btTipo.setText(unidades[indexUnidad.get()]);
+                    calculo.setUnidad(unidades[indexUnidad.get()]);
+                    ultimoTipoDeUnidad = unidades[indexUnidad.get()];
 
 
                     String frase = "Precio por ";
