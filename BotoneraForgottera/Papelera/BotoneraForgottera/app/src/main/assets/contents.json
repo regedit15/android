@@ -1,0 +1,454 @@
+{
+    "android_play_store_link": "",
+    "ios_app_store_link": "",
+    "sticker_packs": [
+        {
+            "identifier": "1",
+            "name": "Random",
+            "publisher": "McPollo",
+            "tray_image_file": "pato_donald_war.png",
+            "image_data_version": "1",
+            "avoid_cache": false,
+            "publisher_email": "",
+            "publisher_website": "",
+            "privacy_policy_website": "",
+            "license_agreement_website": "",
+            "stickers": [
+                {
+                    "image_file": "Sticker_01.webp",
+                    "emojis": [
+                        "☕",
+                        "🙂"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_02.webp",
+                    "emojis": [
+                        "😄",
+                        "😀"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_03.webp",
+                    "emojis": [
+                        "😆",
+                        "😂"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_04.webp",
+                    "emojis": [
+                        "😩",
+                        "😰"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_05.webp",
+                    "emojis": [
+                        "😭",
+                        "💧"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_06.webp",
+                    "emojis": [
+                        "😍",
+                        "♥"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_07.webp",
+                    "emojis": [
+                        "💔",
+                        "👎"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_08.webp",
+                    "emojis": [
+                        "😍",
+                        "💑"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_09.webp",
+                    "emojis": [
+                        "😘",
+                        "🍪"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_10.webp",
+                    "emojis": [
+                        "🤔",
+                        "😐"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_11.webp",
+                    "emojis": [
+                        "😱",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_12.webp",
+                    "emojis": [
+                        "😡",
+                        "😠"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_13.webp",
+                    "emojis": [
+                        "❓",
+                        "🤔"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_14.webp",
+                    "emojis": [
+                        "🌈",
+                        "😜"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_15.webp",
+                    "emojis": [
+                        "💻",
+                        "😩"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_16.webp",
+                    "emojis": [
+                        "😡",
+                        "😤"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_17.webp",
+                    "emojis": [
+                        "😩",
+                        "😨"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_18.webp",
+                    "emojis": [
+                        "💻",
+                        "🌃"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_19.webp",
+                    "emojis": [
+                        "🎉",
+                        "✨"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_20.webp",
+                    "emojis": [
+                        "🤮",
+                        "👎"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_21.webp",
+                    "emojis": [
+                        "🖐",
+                        "🙋"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_22.webp",
+                    "emojis": [
+                        "🖐",
+                        "👋"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_23.webp",
+                    "emojis": [
+                        "🍵",
+                        "😌"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_24.webp",
+                    "emojis": [
+                        "📱",
+                        "😦"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_25.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_26.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_27.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_28.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_29.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_30.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                }
+            ]
+        },
+        {
+            "identifier": "2",
+            "name": "Shifladosh",
+            "publisher": "McPollo",
+            "tray_image_file": "gaston.png",
+            "image_data_version": "1",
+            "avoid_cache": false,
+            "publisher_email": "",
+            "publisher_website": "",
+            "privacy_policy_website": "",
+            "license_agreement_website": "",
+            "stickers": [
+                {
+                    "image_file": "Sticker_31.webp",
+                    "emojis": [
+                        "☕",
+                        "🙂"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_32.webp",
+                    "emojis": [
+                        "😄",
+                        "😀"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_33.webp",
+                    "emojis": [
+                        "🖐",
+                        "👋"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_34.webp",
+                    "emojis": [
+                        "🍵",
+                        "😌"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_35.webp",
+                    "emojis": [
+                        "📱",
+                        "😦"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_36.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_37.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_38.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_39.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_40.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_41.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_42.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_43.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_44.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_45.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_46.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_47.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_48.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_49.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_50.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_51.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_52.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_53.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_54.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_55.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_56.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_57.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_58.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_59.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                },
+                {
+                    "image_file": "Sticker_60.webp",
+                    "emojis": [
+                        "🔋",
+                        "😵"
+                    ]
+                }
+            ]
+        }
+    ]
+}
