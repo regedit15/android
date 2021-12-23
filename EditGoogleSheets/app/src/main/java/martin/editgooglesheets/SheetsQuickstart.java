@@ -15,6 +15,8 @@ package martin.editgooglesheets;// Copyright 2018 Google LLC
 // [START sheets_quickstart]
 
 
+import android.os.Environment;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -29,6 +31,7 @@ import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,7 +50,7 @@ public class SheetsQuickstart {
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
-    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+    private static final String CREDENTIALS_FILE_PATH = "/googleSheetsApiCredential.json";
 
     /**
      * Creates an authorized Credential object.
@@ -56,18 +59,54 @@ public class SheetsQuickstart {
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
      */
-    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT, InputStream in, File tokenFolder) throws IOException {
         // Load client secrets.
-        InputStream in = SheetsQuickstart.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+        // InputStream in = SheetsQuickstart.class.getClass().getResourceAsStream("/initialization" + CREDENTIALS_FILE_PATH);
+
+
+        // InputStream contentsInputStream = MainActivity. getAssets().open(CREDENTIALS_FILE_PATH);
+
+
+        File file = new File("getCacheDir()", "cacheFileAppeal.srl");
+
+
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
         }
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
+
+        // File tokenFolder = new File(Environment.getExternalStorageDirectory() + File.separator + TOKENS_DIRECTORY_PATH);
+
+
+        // File tokenFolder = new File(.getExternalFilesDir("")?.absolutePath + TOKENS_DIRECTORY_PATH);
+
+
+        // this.context.getExternalFilesDir("")?.absolutePath + TOKENS_DIRECTORY_PATH
+
+        // Esto funcionooooo
+
+        // File tokenFolder = new File(getExternalFilesDir("").getAbsolutePath() + "/tokens");
+        // File tokenFolder = new File("/storage/emulated/0/Android/data/com.example.myapplication/files/tokens/StoredCredential");
+
+        // /storage/emulated/0/Android/data/com.example.myapplication/files/tokens/StoredCredential
+
+
+        if (!tokenFolder.exists()) {
+            tokenFolder.mkdirs();
+        }
+
+        // FileDataStoreFactory aa = new FileDataStoreFactory(tokenFolder);
+
+        // /** Directory to store user credentials. */
+        // File DATA_STORE_DIR = new java.io.File(System.getProperty("user.home"), ".store/plus_sample");
+
         // Build flow and trigger user authorization request.
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                // .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                .setDataStoreFactory(new FileDataStoreFactory(tokenFolder))
+                // .setDataStoreFactory(new FileDataStoreFactory(DATA_STORE_DIR))
                 .setAccessType("offline")
                 .build();
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
@@ -79,26 +118,45 @@ public class SheetsQuickstart {
      * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
      */
     public static void main(String... args) throws IOException, GeneralSecurityException {
-        // Build a new authorized API client service.
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
-        final String range = "Class Data!A2:E";
-        Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-        ValueRange response = service.spreadsheets().values()
-                .get(spreadsheetId, range)
-                .execute();
-        List<List<Object>> values = response.getValues();
-        if (values == null || values.isEmpty()) {
-            System.out.println("No data found.");
-        } else {
-            System.out.println("Name, Major");
-            for (List row : values) {
-                // Print columns A and E, which correspond to indices 0 and 4.
-                System.out.printf("%s, %s\n", row.get(0), row.get(4));
-            }
+        // // Build a new authorized API client service.
+        // final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+        // final String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
+        // final String range = "Class Data!A2:E";
+        // Sheets service = new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+        //         .setApplicationName(APPLICATION_NAME)
+        //         .build();
+        // ValueRange response = service.spreadsheets().values()
+        //         .get(spreadsheetId, range)
+        //         .execute();
+        // List<List<Object>> values = response.getValues();
+        // if (values == null || values.isEmpty()) {
+        //     System.out.println("No data found.");
+        // } else {
+        //     System.out.println("Name, Major");
+        //     for (List row : values) {
+        //         // Print columns A and E, which correspond to indices 0 and 4.
+        //         System.out.printf("%s, %s\n", row.get(0), row.get(4));
+        //     }
+        // }
+    }
+
+
+    public static Sheets getGoogleSheetService(InputStream contentsInputStream, File tokenFolder) {
+
+        Sheets service = null;
+        try {
+            final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+            final String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
+            final String range = "Class Data!A2:E";
+
+            return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT, contentsInputStream, tokenFolder))
+                    .setApplicationName(APPLICATION_NAME)
+                    .build();
+        } catch (Exception e) {
+            System.out.printf("ERRRRRRRRRRRRRRRROOOOOOOOOOOOOORRRRRR!!!");
+            e.printStackTrace();
         }
+
+        return service;
     }
 }
-// [END sheets_quickstart]
