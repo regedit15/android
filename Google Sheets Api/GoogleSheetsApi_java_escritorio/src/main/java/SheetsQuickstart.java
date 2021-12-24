@@ -48,10 +48,7 @@ public class SheetsQuickstart {
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
     private static final List<String> SCOPES = Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
-    //    private static final String CREDENTIALS_FILE_PATH = "/googleSheetsApiCredential.json";
-//    private static final String CREDENTIALS_FILE_PATH = "/googleSheetsApiCredentialv3.json";
-//    private static final String CREDENTIALS_FILE_PATH = "/googleSheetsApiCredentialv3Escritorio.json";
-    private static final String CREDENTIALS_FILE_PATH = "/googleSheetsApiCredentialv3EscritorioTutorialVideo";
+    private static final String CREDENTIALS_FILE_PATH = "/prueba3CuentaDeServicio.json";
 
     /**
      * Creates an authorized Credential object.
