@@ -22,6 +22,8 @@ public class SheetsQuickstart222 {
     // aca dice que va cualquier nombre, no importa
     private static final String APPLICATION_NAME = "prueba1";
     private static final String CREDENTIALS_FILE_PATH = "googleSheetsApiCredentialv3EscritorioTutorialVideo.json";
+    // private static final String CREDENTIALS_FILE_PATH = "prueba3CuentaDeServicio.json";
+    // private static final String CREDENTIALS_FILE_PATH = "OAuthClientForAndroid.json";
 
 
     private static Credential authorize() throws IOException, GeneralSecurityException {
@@ -40,6 +42,10 @@ public class SheetsQuickstart222 {
         ).setDataStoreFactory(new FileDataStoreFactory(new File("tokens")))
                 .setAccessType("offline")
                 .build();
+
+        // new FileDataStoreFactory(new File("tokens")).getDataStore("StoredCredential");
+
+        Credential credential1 = flow.loadCredential("user");
 
         Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 

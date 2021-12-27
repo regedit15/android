@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdk 31
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "martin.googlesheetsapi"
@@ -69,6 +69,18 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.api-client/google-api-client-android
     implementation 'com.google.api-client:google-api-client-android:1.32.2'
+
+    // https://mvnrepository.com/artifact/com.google.android.gms/play-services-identity
+    implementation 'com.google.android.gms:play-services-identity:15.0.0'
+
+
+    // https://mvnrepository.com/artifact/com.google.apis/google-api-services-script
+    implementation 'com.google.apis:google-api-services-script:v1-rev462-1.25.0'
+
+
+    // https://mvnrepository.com/artifact/com.google.http-client/google-http-client-android
+    implementation 'com.google.http-client:google-http-client-android:1.12.0-beta'
+
 
 
 }

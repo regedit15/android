@@ -1,6 +1,8 @@
 package martin.googlesheetsapi;
 
 import android.content.Context;
+import android.os.Environment;
+import android.os.StrictMode;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -26,7 +28,8 @@ public class SheetsQuickstart222 {
     //    private static final Sheets sheetsService = null;
     // aca dice que va cualquier nombre, no importa
     private static final String APPLICATION_NAME = "prueba1";
-    private static final String CREDENTIALS_FILE_PATH = "googleSheetsApiCredentialv3EscritorioTutorialVideo.json";
+    // private static final String CREDENTIALS_FILE_PATH = "googleSheetsApiCredentialv3EscritorioTutorialVideo.json";
+    private static final String CREDENTIALS_FILE_PATH = "OAuthClientForAndroid.json";
     //    private static final String SPREADSHEET_ID = "1E1z-MY5q3jbX0dIX1W8KHxT7mpbwpMeWKYxutdpHd6E";
 
 
@@ -37,7 +40,18 @@ public class SheetsQuickstart222 {
 
         InputStream in = context.getAssets().open(CREDENTIALS_FILE_PATH);
         File tokenFolder = new File(context.getExternalFilesDir("").getAbsolutePath() + "/tokens");
+        // File tokenFolder = new File("tokens");
 
+
+        // File tokenFolder = new File(Environment.getExternalStorageDirectory() + File.separator + "tokens");
+
+        if (!tokenFolder.exists()) {
+            tokenFolder.mkdirs();
+        }
+
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(), new InputStreamReader(in));
 
@@ -54,6 +68,11 @@ public class SheetsQuickstart222 {
                 .setAccessType("offline")
                 .build();
 
+
+        // Credential credential1 = flow.loadCredential("user"); // we got credential null here
+        // Credential credential2 = flow.loadCredential("martinrossi9009@gmail.com"); // we got credential null here
+
+        // Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
         Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
 
         return credential;

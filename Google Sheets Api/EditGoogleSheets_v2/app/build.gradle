@@ -4,6 +4,7 @@ plugins {
 
 android {
     compileSdk 31
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "martin.googlesheetsapi"
@@ -13,6 +14,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        useLibrary 'org.apache.http.legacy'
     }
 
     buildTypes {
@@ -55,7 +58,7 @@ dependencies {
     implementation 'com.google.api-client:google-api-client-jackson2:1.20.0'
 
     // https://mvnrepository.com/artifact/com.sun.net.httpserver/http
-    implementation 'com.sun.net.httpserver:http:20070405'
+//    implementation 'com.sun.net.httpserver:http:20070405'
     // https://mvnrepository.com/artifact/com.sun.security.auth.module/psiNtSystem
 //    implementation group: 'com.sun.security.auth.module', name: 'psiNtSystem', version: '1.0.0'
 
