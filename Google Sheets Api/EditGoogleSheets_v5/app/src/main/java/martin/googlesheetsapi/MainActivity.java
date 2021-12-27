@@ -73,27 +73,20 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LinearLayout activityLayout = new LinearLayout(this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         activityLayout.setLayoutParams(lp);
         activityLayout.setOrientation(LinearLayout.VERTICAL);
         activityLayout.setPadding(16, 16, 16, 16);
 
-        ViewGroup.LayoutParams tlp = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
+        ViewGroup.LayoutParams tlp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         mCallApiButton = new Button(this);
         mCallApiButton.setText(BUTTON_TEXT);
-        mCallApiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCallApiButton.setEnabled(false);
-                mOutputText.setText("");
-                getResultsFromApi();
-                mCallApiButton.setEnabled(true);
-            }
+        mCallApiButton.setOnClickListener(v -> {
+            mCallApiButton.setEnabled(false);
+            mOutputText.setText("");
+            getResultsFromApi();
+            mCallApiButton.setEnabled(true);
         });
         activityLayout.addView(mCallApiButton);
 
