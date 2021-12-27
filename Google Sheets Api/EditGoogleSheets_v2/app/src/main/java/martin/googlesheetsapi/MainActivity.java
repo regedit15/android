@@ -2,6 +2,7 @@ package martin.googlesheetsapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -34,21 +35,35 @@ public class MainActivity extends AppCompatActivity {
 
             String range = "Hoja1!A1:C2";
 
-            ValueRange response = null;
-            response = sheetsService.spreadsheets().values()
-                    .get(SPREADSHEET_ID, range)
-                    .execute();
 
-            List<List<Object>> values = response.getValues();
+            new AsyncTask<Void, Void, String>() {
+                @Override
+                protected String doInBackground(Void... params) {
+                    try {
+                        ValueRange response = sheetsService.spreadsheets().values()
+                                .get(SPREADSHEET_ID, range)
+                                .execute();
 
-            if (values == null || values.isEmpty()) {
-                System.out.println("No data found.");
-            } else {
-                for (List row : values) {
-                    //                System.out.printf("%s, %s\n", row.get(0), row.get(4));
-                    System.out.printf("%s %s from %s\n", row.get(5), row.get(4), row.get(1));
+                        List<List<Object>> values = response.getValues();
+
+
+                        if (values == null || values.isEmpty()) {
+                            System.out.println("No data found.");
+                        } else {
+                            for (List row : values) {
+                                //                System.out.printf("%s, %s\n", row.get(0), row.get(4));
+                                System.out.printf("%s %s from %s\n", row.get(5), row.get(4), row.get(1));
+                            }
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    return "token";
                 }
-            }
+            }.execute();
+
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,8 +9,10 @@ import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInsta
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
@@ -33,54 +35,60 @@ public class SheetsQuickstart222 {
     //    private static final String SPREADSHEET_ID = "1E1z-MY5q3jbX0dIX1W8KHxT7mpbwpMeWKYxutdpHd6E";
 
 
-    private static Credential authorize(Context context) throws IOException, GeneralSecurityException {
+    private static GoogleAccountCredential authorize(Context context) throws IOException, GeneralSecurityException {
 
 
         // InputStream in = MainActivity.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
 
-        InputStream in = context.getAssets().open(CREDENTIALS_FILE_PATH);
-        File tokenFolder = new File(context.getExternalFilesDir("").getAbsolutePath() + "/tokens");
-        // File tokenFolder = new File("tokens");
-
-
-        // File tokenFolder = new File(Environment.getExternalStorageDirectory() + File.separator + "tokens");
-
-        if (!tokenFolder.exists()) {
-            tokenFolder.mkdirs();
-        }
+        // InputStream in = context.getAssets().open(CREDENTIALS_FILE_PATH);
+        // File tokenFolder = new File(context.getExternalFilesDir("").getAbsolutePath() + "/tokens");
+        // // File tokenFolder = new File("tokens");
+        //
+        //
+        // // File tokenFolder = new File(Environment.getExternalStorageDirectory() + File.separator + "tokens");
+        //
+        // if (!tokenFolder.exists()) {
+        //     tokenFolder.mkdirs();
+        // }
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(), new InputStreamReader(in));
+        // GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory.getDefaultInstance(), new InputStreamReader(in));
 
 
-        List<String> scopes = Arrays.asList(SheetsScopes.SPREADSHEETS);
+        // List<String> scopes = Arrays.asList(SheetsScopes.SPREADSHEETS);
 
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-                GoogleNetHttpTransport.newTrustedTransport(),
-                JacksonFactory.getDefaultInstance(),
-                clientSecrets,
-                scopes
-                // ).setDataStoreFactory(new FileDataStoreFactory(new File("tokens")))
-        ).setDataStoreFactory(new FileDataStoreFactory(tokenFolder))
-                .setAccessType("offline")
-                .build();
+        // GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+        //         GoogleNetHttpTransport.newTrustedTransport(),
+        //         JacksonFactory.getDefaultInstance(),
+        //         clientSecrets,
+        //         scopes
+        //         // ).setDataStoreFactory(new FileDataStoreFactory(new File("tokens")))
+        // ).setDataStoreFactory(new FileDataStoreFactory(tokenFolder))
+        //         .setAccessType("offline")
+        //         .build();
 
 
         // Credential credential1 = flow.loadCredential("user"); // we got credential null here
         // Credential credential2 = flow.loadCredential("martinrossi9009@gmail.com"); // we got credential null here
 
         // Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
-        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+        // Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+
+        GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(
+                context.getApplicationContext(), Arrays.asList(SheetsScopes.SPREADSHEETS_READONLY))
+                .setBackOff(new ExponentialBackOff());
 
         return credential;
     }
 
 
     public static Sheets getSheetsService(Context context) throws GeneralSecurityException, IOException {
-        Credential credential = authorize(context);
+        GoogleAccountCredential credential = authorize(context);
+
+        credential.setSelectedAccountName("martinrossi9009@gmail.com");
 
         Sheets sheets = new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),
                 JacksonFactory.getDefaultInstance(), credential)

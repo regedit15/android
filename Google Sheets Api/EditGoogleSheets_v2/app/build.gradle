@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdk 31
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "26.0.3"
 
     defaultConfig {
         applicationId "martin.googlesheetsapi"
@@ -52,21 +52,48 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //    agregadas
+//    implementation 'com.google.apis:google-api-services-sheets:v4-rev614-1.18.0-rc'
+//    implementation 'com.google.api-client:google-api-client:1.32.2'
+//    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.32.1'
+//    implementation 'com.google.api-client:google-api-client-jackson2:1.20.0'
+//
+//    // https://mvnrepository.com/artifact/com.sun.net.httpserver/http
+////    implementation 'com.sun.net.httpserver:http:20070405'
+//    // https://mvnrepository.com/artifact/com.sun.security.auth.module/psiNtSystem
+////    implementation group: 'com.sun.security.auth.module', name: 'psiNtSystem', version: '1.0.0'
+//
+//    // https://mvnrepository.com/artifact/com.sun/tools
+////    implementation group: 'com.sun', name: '*'
+//
+//    // https://mvnrepository.com/artifact/com.sun/tools
+////    system 'com.sun:tools:1.5.0'
+//
+//    implementation('com.google.api-client:google-api-client-android:1.32.2') {
+//        exclude group: 'org.apache.httpcomponents'
+//    }
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.0.2'
+    implementation 'com.google.android.gms:play-services-auth:20.0.0'
+    implementation 'pub.devrel:easypermissions:0.3.0'
+
+    implementation('com.google.api-client:google-api-client-android:1.32.2') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.apis:google-api-services-sheets:v4-rev506-1.23.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+
+
+//        agregadas
     implementation 'com.google.apis:google-api-services-sheets:v4-rev614-1.18.0-rc'
     implementation 'com.google.api-client:google-api-client:1.32.2'
     implementation 'com.google.oauth-client:google-oauth-client-jetty:1.32.1'
     implementation 'com.google.api-client:google-api-client-jackson2:1.20.0'
 
-    // https://mvnrepository.com/artifact/com.sun.net.httpserver/http
-//    implementation 'com.sun.net.httpserver:http:20070405'
-    // https://mvnrepository.com/artifact/com.sun.security.auth.module/psiNtSystem
-//    implementation group: 'com.sun.security.auth.module', name: 'psiNtSystem', version: '1.0.0'
-
-    // https://mvnrepository.com/artifact/com.sun/tools
-//    implementation group: 'com.sun', name: '*'
-
-    // https://mvnrepository.com/artifact/com.sun/tools
-//    system 'com.sun:tools:1.5.0'
+    // https://mvnrepository.com/artifact/com.google.http-client/google-http-client-android
+    implementation 'com.google.http-client:google-http-client-android:1.12.0-beta'
 
 
 }
