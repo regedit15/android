@@ -2,6 +2,9 @@ package martin.googlesheetsapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
+
+
 import android.accounts.AccountManager;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -33,14 +36,15 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.script.model.ExecutionRequest;
 import com.google.api.services.script.model.Operation;
-import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.google.api.services.sheets.v4.Sheets;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -253,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
      * Placing the API calls in their own task ensures the UI stays responsive.
      */
     private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
+        // private com.google.api.services.script.Script mService = null;
         private Sheets mService = null;
         private Exception mLastError = null;
 

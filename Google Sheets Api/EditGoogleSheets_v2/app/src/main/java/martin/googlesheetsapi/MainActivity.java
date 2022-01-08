@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     if (values == null || values.isEmpty()) {
-                        System.out.println("No data found.");
+                        System.out.println("No data found .");
                     } else {
                         for (List row : values) {
                             System.out.printf("%s %s from %s\n", row.get(5), row.get(4), row.get(1));
