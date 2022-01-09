@@ -1,10 +1,13 @@
-package martin.googlesheetsapi;
+package martin.googlesheetsapi.classes;
 
 import android.os.AsyncTask;
 
+import martin.googlesheetsapi.interfaces.CommonFunctionInterface;
+
+
 public class CommonAsyncTask extends AsyncTask {
 
-CommonFunctionInterface commonFunctionInterface;
+    CommonFunctionInterface commonFunctionInterface;
 
     public CommonAsyncTask(CommonFunctionInterface commonFunctionInterface) {
         this.commonFunctionInterface = commonFunctionInterface;
