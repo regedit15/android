@@ -36,6 +36,7 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.script.model.ExecutionRequest;
 import com.google.api.services.script.model.Operation;
+import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.google.api.services.sheets.v4.Sheets;
 
@@ -57,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_AUTHORIZATION = 1001;
     static final int REQUEST_GOOGLE_PLAY_SERVICES = 1002;
     private static final String PREF_ACCOUNT_NAME = "accountName";
-    private static final String[] SCOPES = {"https://www.googleapis.com/auth/drive"};
+    // private static final String[] SCOPES = {"https://www.googleapis.com/auth/drive"};
+    private Sheets mService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +93,39 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize credentials and service object.
         SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
-        mCredential = GoogleAccountCredential.usingOAuth2(getApplicationContext(), Arrays.asList(SCOPES))
+        // mCredential = GoogleAccountCredential.usingOAuth2(getApplicationContext(), Arrays.asList(SCOPES))
+        mCredential = GoogleAccountCredential.usingOAuth2(getApplicationContext(), Arrays.asList(SheetsScopes.SPREADSHEETS_READONLY))
                 .setBackOff(new ExponentialBackOff())
                 .setSelectedAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
+
+
+        //     ------------------------------
+
+        // String SPREADSHEET_ID = "1E1z-MY5q3jbX0dIX1W8KHxT7mpbwpMeWKYxutdpHd6E";
+        // String range = "Hoja1!A1:C2";
+
+
+        // new CommonAsyncTask(() -> {
+        //     try {
+        //         ValueRange response = mService.spreadsheets().values().get(SPREADSHEET_ID, range).execute();
+        //
+        //         List<List<Object>> values = response.getValues();
+        //
+        //
+        //         if (values == null || values.isEmpty()) {
+        //             System.out.println("No data found .");
+        //         } else {
+        //             for (List row : values) {
+        //                 System.out.printf("%s %s from %s\n", row.get(5), row.get(4), row.get(1));
+        //             }
+        //         }
+        //
+        //     } catch (Exception e) {
+        //         e.printStackTrace();
+        //     }
+        // });
+
+
     }
 
     /**
@@ -258,7 +290,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
         // private com.google.api.services.script.Script mService = null;
-        private Sheets mService = null;
+        // private Sheets mService = null;
+
         private Exception mLastError = null;
 
         public MakeRequestTask(GoogleAccountCredential credential) {
@@ -298,7 +331,9 @@ public class MainActivity extends AppCompatActivity {
             // ID of the script to call. Acquire this from the Apps Script editor,
             // under Publish > Deploy as API executable.
             // String scriptId = "ENTER_YOUR_SCRIPT_ID_HERE";
-            String scriptId = "1E1z-MY5q3jbX0dIX1W8KHxT7mpbwpMeWKYxutdpHd6E";
+            // String scriptId = "1E1z-MY5q3jbX0dIX1W8KHxT7mpbwpMeWKYxutdpHd6E";
+            // nueva
+            String scriptId = "1wxtUzQoKCKDQVqL6ztnRiLIaGiFkD2HwLrfI48_ZFlw";
 
             List<String> folderList = new ArrayList<String>();
 
