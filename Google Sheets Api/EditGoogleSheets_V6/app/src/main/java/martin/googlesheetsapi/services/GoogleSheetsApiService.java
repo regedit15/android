@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import martin.googlesheetsapi.classes.CommonAsyncTask;
-import martin.googlesheetsapi.interfaces.ListObjectFunctionInterface;
+import martin.googlesheetsapi.interfaces.CommonResultGoogleSheetValuesInterface;
 
 public class GoogleSheetsApiService {
 
@@ -38,7 +38,7 @@ public class GoogleSheetsApiService {
         sheetService = new Sheets.Builder(transport, jsonFactory, setHttpTimeout(mCredential)).setApplicationName(APPLICATION_NAME).build();
     }
 
-    public void getDatos(String range, ListObjectFunctionInterface listObjectFunctionInterface) {
+    public void getDatos(String range, CommonResultGoogleSheetValuesInterface commonResultGoogleSheetValuesInterface) {
         new CommonAsyncTask(() -> {
             try {
                 HttpTransport transport = AndroidHttp.newCompatibleTransport();
@@ -47,7 +47,7 @@ public class GoogleSheetsApiService {
 
                 ValueRange response = sheetService.spreadsheets().values().get(SPREADSHEET_ID, range).execute();
                 List<List<Object>> values = response.getValues();
-                listObjectFunctionInterface.apply(values);
+                commonResultGoogleSheetValuesInterface.excecute(values);
             } catch (Exception e) {
                 e.printStackTrace();
             }

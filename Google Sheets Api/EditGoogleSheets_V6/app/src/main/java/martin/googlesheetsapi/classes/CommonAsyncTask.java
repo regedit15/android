@@ -23,7 +23,7 @@ public class CommonAsyncTask extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] objects) {
-        functionDoInBackground.apply();
+        functionDoInBackground.execute();
         return null;
     }
 
@@ -32,7 +32,7 @@ public class CommonAsyncTask extends AsyncTask {
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
         if (functionDoInBackground != null) {
-            functionOnPostExecute.apply();
+            functionOnPostExecute.execute();
         }
     }
 

@@ -1,8 +1,6 @@
 package martin.googlesheetsapi.interfaces;
 
 public interface CommonFunctionInterface {
-    void apply();
+    void execute();
 
-    // void apply2(List<List<Object>> values);
-    // void apply2();
 }
