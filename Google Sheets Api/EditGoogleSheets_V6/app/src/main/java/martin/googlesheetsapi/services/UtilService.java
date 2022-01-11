@@ -25,7 +25,6 @@ public class UtilService {
         for (String titulo : titulos) {
             textView = new TextView(main);
             textView.setText(titulo);
-            textView.setTextColor(Color.WHITE);
             tbrow0.addView(textView);
         }
 
@@ -40,7 +39,6 @@ public class UtilService {
         for (Object titulo : titulos) {
             textView = new TextView(main);
             textView.setText(titulo.toString());
-            textView.setTextColor(Color.WHITE);
             tbrow0.addView(textView);
         }
 
@@ -57,7 +55,6 @@ public class UtilService {
             for (String cell : row) {
                 textView = new TextView(main);
                 textView.setText(cell);
-                textView.setTextColor(Color.WHITE);
                 tableRow.addView(textView);
             }
             tableLayout.addView(tableRow);

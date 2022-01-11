@@ -48,8 +48,6 @@ public class GoogleSheetsApiService {
     public void getDatos(String range, CommonResultGoogleSheetValuesInterface commonResultGoogleSheetValuesInterface) {
         new CommonAsyncTask(() -> {
             try {
-
-
                 ValueRange response = sheetService.spreadsheets().values().get(SPREADSHEET_ID, range).execute();
                 List<List<Object>> values = response.getValues();
 
