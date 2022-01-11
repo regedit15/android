@@ -22,6 +22,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // utilService.addRow(
+        //         R.id.table_main
+        //         , new String[]{"Titulo Col 1", "Titulo Col 2"}
+        //         , new String[]{"a1", "a2"}
+        //         , new String[]{"b1", "b2"}
+        // );
+        // utilService.ceateTable(
+        //         R.id.table_main
+        //         , new String[]{"Titulo Col 1", "Titulo Col 2", "Titulo Col 3"}
+        //         , new String[]{"a1", "a2", "a3"}
+        //         , new String[]{"b1", "b2", "b3"}
+        // );
+
+
         try {
             googleSheetsApiService = new GoogleSheetsApiService(this, R.id.table_main);
 

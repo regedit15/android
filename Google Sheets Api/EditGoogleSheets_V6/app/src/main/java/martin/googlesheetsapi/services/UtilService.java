@@ -1,6 +1,7 @@
 package martin.googlesheetsapi.services;
 
-import android.graphics.Color;
+import android.view.Gravity;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -24,6 +25,10 @@ public class UtilService {
 
         for (String titulo : titulos) {
             textView = new TextView(main);
+            TableRow.LayoutParams p = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            p.weight = 1;
+            textView.setLayoutParams(p);
+            textView.setGravity(Gravity.CENTER);
             textView.setText(titulo);
             tbrow0.addView(textView);
         }
@@ -39,6 +44,11 @@ public class UtilService {
         for (Object titulo : titulos) {
             textView = new TextView(main);
             textView.setText(titulo.toString());
+            TableRow.LayoutParams p = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            p.weight = 1;
+            textView.setLayoutParams(p);
+            textView.setGravity(Gravity.CENTER);
+
             tbrow0.addView(textView);
         }
 
@@ -54,6 +64,10 @@ public class UtilService {
 
             for (String cell : row) {
                 textView = new TextView(main);
+                TableRow.LayoutParams p = new TableRow.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                p.weight = 1;
+                textView.setLayoutParams(p);
+                textView.setGravity(Gravity.CENTER);
                 textView.setText(cell);
                 tableRow.addView(textView);
             }
