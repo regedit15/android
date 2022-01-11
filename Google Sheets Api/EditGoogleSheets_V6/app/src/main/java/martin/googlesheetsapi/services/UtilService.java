@@ -5,6 +5,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.List;
+
 import martin.googlesheetsapi.MainActivity;
 
 public class UtilService {
@@ -23,6 +25,21 @@ public class UtilService {
         for (String titulo : titulos) {
             textView = new TextView(main);
             textView.setText(titulo);
+            textView.setTextColor(Color.WHITE);
+            tbrow0.addView(textView);
+        }
+
+        tableLayout.addView(tbrow0);
+    }
+
+    public void addRow2(Integer idTableLayout, List titulos) {
+        TableLayout tableLayout = main.findViewById(idTableLayout);
+        TableRow tbrow0 = new TableRow(main);
+        TextView textView;
+
+        for (Object titulo : titulos) {
+            textView = new TextView(main);
+            textView.setText(titulo.toString());
             textView.setTextColor(Color.WHITE);
             tbrow0.addView(textView);
         }

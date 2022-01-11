@@ -3,7 +3,11 @@
 package martin.googlesheetsapi.services;
 
 import android.accounts.Account;
+import android.app.Activity;
 import android.content.Context;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
@@ -27,13 +31,16 @@ public class GoogleSheetsApiService {
 
     private static final String ACCOUNT_NAME = "martinrossi9009@gmail.com";
     private static final String APPLICATION_NAME = "martin.googlesheetsapi.v1";
-    private static final String SPREADSHEET_ID = "1E1z-MY5q3jbX0dIX1W8KHxT7mpbwpMeWKYxutdpHd6E";
+    private static final String SPREADSHEET_ID = "1wxtUzQoKCKDQVqL6ztnRiLIaGiFkD2HwLrfI48_ZFlw";
     private Sheets sheetService;
-    private Context context;
+    private Activity context;
+    private int idTabla;
     GoogleAccountCredential mCredential;
 
-    public GoogleSheetsApiService(Context context) {
+    public GoogleSheetsApiService(Activity context, int idTabla) {
         this.context = context;
+        this.idTabla = idTabla;
+
         mCredential = GoogleAccountCredential.usingOAuth2(context.getApplicationContext(), Arrays.asList(SheetsScopes.SPREADSHEETS_READONLY))
                 .setBackOff(new ExponentialBackOff())
                 .setSelectedAccount(new Account(ACCOUNT_NAME, APPLICATION_NAME));
@@ -47,8 +54,38 @@ public class GoogleSheetsApiService {
     public void getDatos(String range, CommonResultGoogleSheetValuesInterface commonResultGoogleSheetValuesInterface) {
         new CommonAsyncTask(() -> {
             try {
+
+                TableLayout tableLayout = context.findViewById(idTabla);
+
+                TableRow tbrow0 = new TableRow(context);
+
+                TextView tv0 = new TextView(context);
+                tv0.setText("Titulo Col 1");
+                tbrow0.addView(tv0);
+
+                TextView tv1 = new TextView(context);
+                tv1.setText("Titulo Col 2");
+                tbrow0.addView(tv1);
+
+                TextView tv2 = new TextView(context);
+                tv2.setText("Titulo Col 3");
+                tbrow0.addView(tv2);
+
+                TextView tv3 = new TextView(context);
+                tv3.setText("Titulo Col 4222222");
+                tbrow0.addView(tv3);
+
+                tableLayout.addView(tbrow0);
+
+
                 ValueRange response = sheetService.spreadsheets().values().get(SPREADSHEET_ID, range).execute();
                 List<List<Object>> values = response.getValues();
+
+                // List<String> strings = values.stream()
+                //         .map(x -> x.toString())
+                //         .collect(Collectors.toList());
+
+
                 commonResultGoogleSheetValuesInterface.excecute(values);
             } catch (Exception e) {
                 e.printStackTrace();
