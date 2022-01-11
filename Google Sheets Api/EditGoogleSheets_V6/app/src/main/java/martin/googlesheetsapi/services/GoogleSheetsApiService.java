@@ -1,5 +1,8 @@
+
+
 package martin.googlesheetsapi.services;
 
+import android.accounts.Account;
 import android.content.Context;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -26,25 +29,24 @@ public class GoogleSheetsApiService {
     private static final String APPLICATION_NAME = "martin.googlesheetsapi.v1";
     private static final String SPREADSHEET_ID = "1E1z-MY5q3jbX0dIX1W8KHxT7mpbwpMeWKYxutdpHd6E";
     private Sheets sheetService;
+    private Context context;
     GoogleAccountCredential mCredential;
 
     public GoogleSheetsApiService(Context context) {
+        this.context = context;
         mCredential = GoogleAccountCredential.usingOAuth2(context.getApplicationContext(), Arrays.asList(SheetsScopes.SPREADSHEETS_READONLY))
                 .setBackOff(new ExponentialBackOff())
-                .setSelectedAccountName(ACCOUNT_NAME);
+                .setSelectedAccount(new Account(ACCOUNT_NAME, APPLICATION_NAME));
 
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
         sheetService = new Sheets.Builder(transport, jsonFactory, setHttpTimeout(mCredential)).setApplicationName(APPLICATION_NAME).build();
     }
 
+
     public void getDatos(String range, CommonResultGoogleSheetValuesInterface commonResultGoogleSheetValuesInterface) {
         new CommonAsyncTask(() -> {
             try {
-                HttpTransport transport = AndroidHttp.newCompatibleTransport();
-                JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-                sheetService = new Sheets.Builder(transport, jsonFactory, setHttpTimeout(mCredential)).build();
-
                 ValueRange response = sheetService.spreadsheets().values().get(SPREADSHEET_ID, range).execute();
                 List<List<Object>> values = response.getValues();
                 commonResultGoogleSheetValuesInterface.excecute(values);
@@ -67,3 +69,7 @@ public class GoogleSheetsApiService {
     }
 
 }
+
+
+
+

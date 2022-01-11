@@ -31,7 +31,7 @@ public class CommonAsyncTask extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        if (functionDoInBackground != null) {
+        if (functionOnPostExecute != null) {
             functionOnPostExecute.execute();
         }
     }
