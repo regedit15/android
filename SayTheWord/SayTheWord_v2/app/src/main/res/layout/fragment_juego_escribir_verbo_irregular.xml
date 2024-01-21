@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="martin.saytheword.Fragments.JuegoEscribirVerboIrregularFragment">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			tools:layout_editor_absoluteX="50dp"
+			tools:layout_editor_absoluteY="110dp">
+
+			<LinearLayout
+				android:id="@+id/tablaImagenConBotones"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:visibility="invisible"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<ImageView
+					android:id="@+id/ivImagenFinal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_alignParentLeft="true"
+					android:layout_alignParentRight="true"
+					android:layout_centerVertical="true"
+					android:adjustViewBounds="true"
+					android:cropToPadding="true"
+					android:src="@drawable/congratulation" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="horizontal">
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_weight="1">
+
+						<com.google.android.material.button.MaterialButton
+							android:id="@+id/btVolver"
+							style="@style/Widget.MaterialComponents.Button"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Volver"
+							app:backgroundTint="#82B1FF"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+					</androidx.constraintlayout.widget.ConstraintLayout>
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_weight="1">
+
+						<com.google.android.material.button.MaterialButton
+							android:id="@+id/btRestart"
+							style="@style/Widget.MaterialComponents.Button"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Restart"
+							app:backgroundTint="#82B1FF"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent" />
+					</androidx.constraintlayout.widget.ConstraintLayout>
+				</LinearLayout>
+			</LinearLayout>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/lyContenedorGeneral"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<TextView
+					android:id="@+id/tvJuegoCantidadPalabras"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="TextView"
+					android:textSize="@dimen/tamanioTextoJuegoVI"
+					android:textStyle="bold"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/tvJuegoPalabraAdivinar"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					android:gravity="center"
+					android:text="TextView"
+					android:textSize="@dimen/tamanioTextoJuegoVI"
+					android:textStyle="bold"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/tvJuegoCantidadPalabras" />
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/lyContendor4"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/tvJuegoPalabraAdivinar">
+
+					<TableLayout
+						android:id="@+id/tableLayout"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent">
+
+						<TableRow
+							android:layout_width="match_parent"
+							android:layout_height="match_parent">
+
+							<com.google.android.material.textfield.TextInputLayout
+								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_marginLeft="2dp"
+								android:layout_weight="1"
+								android:hint="Infinitivo"
+								android:inputType="text">
+
+								<com.google.android.material.textfield.TextInputEditText
+									android:id="@+id/etRespuestaInfinitivo"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:inputType="text"
+									android:nextFocusDown="@id/etRespuestaPasado" />
+							</com.google.android.material.textfield.TextInputLayout>
+
+							<com.google.android.material.textfield.TextInputLayout
+								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_marginLeft="2dp"
+								android:layout_marginRight="2dp"
+								android:layout_weight="1"
+								android:hint="Pasado">
+
+								<com.google.android.material.textfield.TextInputEditText
+									android:id="@+id/etRespuestaPasado"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:inputType="text"
+									android:nextFocusDown="@id/etRespuestaParticipio" />
+							</com.google.android.material.textfield.TextInputLayout>
+
+							<com.google.android.material.textfield.TextInputLayout
+								style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_marginRight="2dp"
+								android:layout_weight="1"
+								android:hint="Participio"
+								android:inputType="text">
+
+								<com.google.android.material.textfield.TextInputEditText
+									android:id="@+id/etRespuestaParticipio"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+android:inputType="text"
+android:nextFocusDown="@id/btEvaluar" />
+							</com.google.android.material.textfield.TextInputLayout>
+						</TableRow>
+					</TableLayout>
+
+					<TableLayout
+						android:id="@+id/tablaRespuestas"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tableLayout">
+
+						<TableRow
+							android:layout_width="match_parent"
+							android:layout_height="match_parent">
+
+							<TextView
+								android:id="@+id/tvSolucionInfinitivo"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold" />
+
+							<TextView
+								android:id="@+id/tvSolucionPasado"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold" />
+
+							<TextView
+								android:id="@+id/tvSolucionParticipio"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold" />
+						</TableRow>
+
+						<TableRow
+							android:layout_width="match_parent"
+							android:layout_height="match_parent">
+
+							<TextView
+								android:id="@+id/tvPronunciacionInfinitivo"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold" />
+
+							<TextView
+								android:id="@+id/tvPronunciacionPasado"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold" />
+
+							<TextView
+								android:id="@+id/tvPronunciacionParticipio"
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:gravity="center"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold" />
+						</TableRow>
+
+						<TableRow
+							android:layout_width="match_parent"
+							android:layout_height="match_parent">
+
+							<androidx.constraintlayout.widget.ConstraintLayout
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1">
+
+								<ImageView
+									android:id="@+id/ivRespuestaInfinitivo"
+									android:layout_width="50dp"
+									android:layout_height="50dp"
+									android:src="@drawable/ic_iconfinder_sign_check"
+									app:layout_constraintEnd_toEndOf="parent"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="parent" />
+							</androidx.constraintlayout.widget.ConstraintLayout>
+
+							<androidx.constraintlayout.widget.ConstraintLayout
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1">
+
+								<ImageView
+									android:id="@+id/ivRespuestaPasado"
+									android:layout_width="50dp"
+									android:layout_height="50dp"
+									android:src="@drawable/ic_iconfinder_sign_check"
+									app:layout_constraintEnd_toEndOf="parent"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="parent" />
+							</androidx.constraintlayout.widget.ConstraintLayout>
+
+							<androidx.constraintlayout.widget.ConstraintLayout
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_weight="1">
+
+								<ImageView
+									android:id="@+id/ivRespuestaParticipio"
+									android:layout_width="50dp"
+									android:layout_height="50dp"
+									android:src="@drawable/ic_iconfinder_sign_check"
+									app:layout_constraintEnd_toEndOf="parent"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="parent" />
+							</androidx.constraintlayout.widget.ConstraintLayout>
+						</TableRow>
+
+						<TableRow
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:gravity="center_horizontal">
+
+							<androidx.constraintlayout.widget.ConstraintLayout
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:layout_span="1"
+								android:layout_weight="1">
+
+								<TextView
+									android:id="@+id/tvCantidadIntentosRestantes"
+									android:layout_width="0dp"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="24dp"
+									android:gravity="center"
+									android:text="TextView TextView "
+									android:textSize="@dimen/tamanioTextoJuegoVI"
+									android:textStyle="bold"
+									app:layout_constraintEnd_toEndOf="parent"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="parent" />
+							</androidx.constraintlayout.widget.ConstraintLayout>
+						</TableRow>
+					</TableLayout>
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+				<TableLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="24dp"
+					app:layout_constraintTop_toBottomOf="@+id/lyContendor4">
+
+					<TableRow
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_gravity="center_horizontal">
+
+						<androidx.constraintlayout.widget.ConstraintLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1">
+
+							<TextView
+								android:id="@+id/textView2"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="TextView"
+								android:visibility="invisible"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
+
+						<androidx.constraintlayout.widget.ConstraintLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1">
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/btNext"
+								style="@style/Widget.MaterialComponents.Button"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Next"
+								app:backgroundTint="#82B1FF"
+								app:layout_constraintEnd_toEndOf="parent"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/btEvaluar"
+								style="@style/Widget.MaterialComponents.Button"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Evaluar"
+								app:backgroundTint="#82B1FF"
+								app:layout_constraintEnd_toEndOf="parent"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
+					</TableRow>
+
+					<TableRow
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:gravity="center_horizontal">
+
+						<com.google.android.material.button.MaterialButton
+							android:id="@+id/btDificultad"
+							style="@style/Widget.MaterialComponents.Button"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							app:backgroundTint="#ADADAD"
+							app:icon="@drawable/ic_smile"
+							app:iconGravity="textStart"
+							app:iconPadding="0dp"
+							app:iconSize="25dp" />
+					</TableRow>
+				</TableLayout>
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

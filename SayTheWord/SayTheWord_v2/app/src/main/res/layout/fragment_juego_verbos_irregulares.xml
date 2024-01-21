@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="martin.saytheword.Fragments.JuegoPalabrasFragment">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.cardview.widget.CardView
+			android:id="@+id/cardView"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="8dp"
+			android:layout_marginRight="8dp"
+			app:cardBackgroundColor="#bde3e0"
+			app:cardCornerRadius="15dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="0.494"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginTop="50dp"
+				android:layout_marginBottom="50dp">
+
+				<ImageView
+					android:id="@+id/ivCongratulations"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:src="@drawable/congratulation"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+				<TextView
+					android:id="@+id/tvJuegoCantidadPalabras"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:text="TextView"
+					android:textSize="@dimen/tamanioTextoJuegoVI"
+					android:textStyle="bold"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/tvInfinitivo"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="20dp"
+					android:gravity="center"
+					android:text="TextView"
+					android:textSize="@dimen/tamanioTextoJuegoVI"
+					android:textStyle="bold"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/tvJuegoCantidadPalabras" />
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/btMostrarRespuestaJuego"
+					android:layout_width="65dp"
+					android:layout_height="40dp"
+					android:layout_marginTop="16dp"
+					android:insetLeft="0dp"
+					android:insetTop="0dp"
+					android:insetRight="0dp"
+					android:insetBottom="0dp"
+					app:backgroundTint="#448AFF"
+					app:icon="@drawable/ic_eye_closed"
+					app:iconGravity="textStart"
+					app:iconPadding="0dp"
+					app:iconSize="25dp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/tvInfinitivo" />
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/lyRespuestaJuego"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="16dp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/btMostrarRespuestaJuego">
+
+					<TextView
+						android:id="@+id/tvTraduccion"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:text="TextView "
+						android:textSize="@dimen/tamanioTextoJuegoVI"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<TextView
+						android:id="@+id/tvPronunciacion"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="16dp"
+						android:gravity="center"
+						android:text="TextView"
+						android:textSize="@dimen/tamanioTextoJuegoVI"
+						android:textStyle="bold"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tvTraduccion" />
+
+					<androidx.constraintlayout.widget.ConstraintLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="16dp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/tvPronunciacion">
+
+						<androidx.constraintlayout.widget.ConstraintLayout
+							android:id="@+id/constraintLayout2"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toTopOf="parent">
+
+							<TextView
+								android:id="@+id/tvPasadoPronunciacion"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="8dp"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toBottomOf="@+id/tvPasado" />
+
+							<TextView
+								android:id="@+id/tvPasado"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
+
+						<androidx.constraintlayout.widget.ConstraintLayout
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginStart="16dp"
+							app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+							app:layout_constraintTop_toTopOf="parent">
+
+							<TextView
+								android:id="@+id/tvParticipioPronunciacion"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="8dp"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toBottomOf="@+id/tvParticipio" />
+
+							<TextView
+								android:id="@+id/tvParticipio"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="TextView"
+								android:textSize="@dimen/tamanioTextoJuegoVI"
+								android:textStyle="bold"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
+					</androidx.constraintlayout.widget.ConstraintLayout>
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+				<TableLayout
+					android:id="@+id/tableLayout2"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_marginTop="32dp"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/lyRespuestaJuego">
+
+					<TableRow
+						android:layout_width="match_parent"
+						android:layout_height="match_parent">
+
+						<androidx.constraintlayout.widget.ConstraintLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1">
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/btPrevious"
+								style="@style/Widget.MaterialComponents.Button"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Previous"
+								app:backgroundTint="#82B1FF"
+								app:layout_constraintEnd_toEndOf="parent"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/btVolver"
+								style="@style/Widget.MaterialComponents.Button"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Volver"
+								app:backgroundTint="#82B1FF"
+								app:layout_constraintEnd_toEndOf="parent"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
+
+						<androidx.constraintlayout.widget.ConstraintLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_weight="1">
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/btNext"
+								style="@style/Widget.MaterialComponents.Button"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Next"
+								app:backgroundTint="#82B1FF"
+								app:layout_constraintEnd_toEndOf="parent"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+
+							<com.google.android.material.button.MaterialButton
+								android:id="@+id/btRestart"
+								style="@style/Widget.MaterialComponents.Button"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Restart"
+								app:backgroundTint="#82B1FF"
+								app:layout_constraintEnd_toEndOf="parent"
+								app:layout_constraintStart_toStartOf="parent"
+								app:layout_constraintTop_toTopOf="parent" />
+						</androidx.constraintlayout.widget.ConstraintLayout>
+					</TableRow>
+				</TableLayout>
+
+				<com.google.android.material.button.MaterialButton
+					android:id="@+id/btDificultad"
+					style="@style/Widget.MaterialComponents.Button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:backgroundTint="#ADADAD"
+					app:icon="@drawable/ic_smile"
+					app:iconGravity="textStart"
+					app:iconPadding="0dp"
+					app:iconSize="25dp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/tableLayout2" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.cardview.widget.CardView>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
