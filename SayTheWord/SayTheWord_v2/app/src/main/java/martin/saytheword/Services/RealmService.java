@@ -20,13 +20,38 @@ public class RealmService {
 
 	public void setearConfiguracion(Context context) {
 
-//		String realmName = "My Project";
-//		RealmConfiguration config = new RealmConfiguration.Builder().name(realmName).build();
-//		Realm backgroundThreadRealm = Realm.getInstance(config);
+		// ------------------- Config Realm Nueva
+		// Fuente: https://www.mongodb.com/docs/realm/sdk/java/quick-starts/quick-start-local/
+		// String realmName = "sayTheWordRealm";
+		// RealmConfiguration config = new RealmConfiguration.Builder()
+		// 		.name(realmName)
+		// 		.allowQueriesOnUiThread(true)
+		// 		.allowWritesOnUiThread(true)
+		// 		.build();
 
-		// ----- Setear configuracion
+
+		// Realm backgroundThreadRealm = Realm.getInstance(config);
+
+
+		// Realm.getInstanceAsync(config, new Realm.Callback() {
+		// 	@Override
+		// 	public void onSuccess(Realm realm) {
+		// 		Log.v(
+		// 				"EXAMPLE",
+		// 				"Successfully opened a realm with reads and writes allowed on the UI thread."
+		// 		);
+		// 	}
+		// });
+
+		// --------------------------------------------
+
+		// ----- Setear configuracionSyncConfiguration
 		Realm.init(context);
-		RealmConfiguration config = new RealmConfiguration.Builder().build();
+		RealmConfiguration config = new RealmConfiguration
+				.Builder()
+				// .allowQueriesOnUiThread(true)
+				// .allowWritesOnUiThread(true)
+				.build();
 		Realm.setDefaultConfiguration(config);
 		//-----------------
 
