@@ -40,16 +40,15 @@
 
 					<RadioButton
 						android:id="@+id/rdVisualizacion"
-						android:layout_width="0dp"
+						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_weight="1"
 						android:text="Visualización" />
+
 
 					<RadioButton
 						android:id="@+id/rbEscritura"
-						android:layout_width="0dp"
+						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_weight="1"
 						android:text="Escritura" />
 				</RadioGroup>
 
