@@ -81,15 +81,13 @@ public class SeleccionListadoFragment extends BaseFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		boolean resultado;
 
-		switch (item.getItemId()) {
-			case R.id.reiniciar_palabras:
-				utilService.insertarDatosSinModificarPalabrasEncontradas();
-				resultado = true;
-				break;
-			default:
-				resultado = super.onOptionsItemSelected(item);
-				break;
+		if (item.getItemId() == R.id.reiniciar_palabras) {
+			utilService.insertarDatosSinModificarPalabrasEncontradas();
+			resultado = true;
+		} else {
+			resultado = super.onOptionsItemSelected(item);
 		}
+
 		return resultado;
 	}
 	//-------------------------------------------------

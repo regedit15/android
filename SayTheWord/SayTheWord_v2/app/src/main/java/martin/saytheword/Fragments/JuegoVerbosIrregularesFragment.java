@@ -291,25 +291,21 @@ public class JuegoVerbosIrregularesFragment extends BaseFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		boolean resultado;
 
-		switch (item.getItemId()) {
-			case R.id.item_juegoEspaniolIngles:
-				TIPO_TRADUCCION = JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES;
-				juegoAleatorio = false;
-				resultado = true;
-				break;
-			case R.id.item_juegoInglesEspañol:
-				TIPO_TRADUCCION = JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
-				juegoAleatorio = false;
-				resultado = true;
-				break;
-			case R.id.item_juegoMezclado:
-				juegoAleatorio = true;
-				resultado = true;
-				break;
-			default:
-				resultado = super.onOptionsItemSelected(item);
-				break;
+		if (item.getItemId() == R.id.item_juegoEspaniolIngles) {
+			TIPO_TRADUCCION = JUEGO_TIPO_TRADUCCION_ESPANIOL_INGLES;
+			juegoAleatorio = false;
+			resultado = true;
+		} else if (item.getItemId() == R.id.item_juegoInglesEspañol) {
+			TIPO_TRADUCCION = JUEGO_TIPO_TRADUCCION_INGLES_ESPANIOL;
+			juegoAleatorio = false;
+			resultado = true;
+		} else if (item.getItemId() == R.id.item_juegoMezclado) {
+			juegoAleatorio = true;
+			resultado = true;
+		} else {
+			resultado = super.onOptionsItemSelected(item);
 		}
+		
 		return resultado;
 	}
 	//-------------------------------------------------

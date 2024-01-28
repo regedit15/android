@@ -55,54 +55,46 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 				try {
 					validar();
 
-					switch (rgEscrituraOVisualizacion.getCheckedRadioButtonId()) {
-						case R.id.rdVisualizacion:
+					if (rgEscrituraOVisualizacion.getCheckedRadioButtonId() == R.id.rdVisualizacion) {
 
-							switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
-								case R.id.rbPalabras:
-									cambiarFragment(new JuegoPalabrasFragment(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked(), Integer.parseInt(etCantidadItems.getText().toString())), R.id.frame_layout);
-									break;
-								case R.id.rbVerbosIrregulares:
-									cambiarFragment(new JuegoVerbosIrregularesFragment(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked(), Integer.parseInt(etCantidadItems.getText().toString())), R.id.frame_layout);
-									break;
-							}
+						if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbPalabras) {
+							cambiarFragment(new JuegoPalabrasFragment(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked(), Integer.parseInt(etCantidadItems.getText().toString())), R.id.frame_layout);
 
-							break;
-						case R.id.rbEscritura:
+						} else if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbVerbosIrregulares) {
+							cambiarFragment(new JuegoVerbosIrregularesFragment(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked(), Integer.parseInt(etCantidadItems.getText().toString())), R.id.frame_layout);
 
-							switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
-								case R.id.rbPalabras:
-									cambiarFragment(new JuegoEscribirPalabra(
+						}
 
-											Integer.parseInt(etCantidadIntentos.getText().toString()),
+					} else if (rgEscrituraOVisualizacion.getCheckedRadioButtonId() == R.id.rbEscritura) {
+						if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbPalabras) {
+							cambiarFragment(new JuegoEscribirPalabra(
 
-											Integer.parseInt(etCantidadItems.getText().toString()),
+									Integer.parseInt(etCantidadIntentos.getText().toString()),
 
-											swFaciles.isChecked(),
+									Integer.parseInt(etCantidadItems.getText().toString()),
 
-											swNormales.isChecked(),
+									swFaciles.isChecked(),
 
-											swDificiles.isChecked()
+									swNormales.isChecked(),
 
-									), R.id.frame_layout);
-									break;
-								case R.id.rbVerbosIrregulares:
-									cambiarFragment(new JuegoEscribirVerboIrregularFragment(
+									swDificiles.isChecked()
 
-											Integer.parseInt(etCantidadIntentos.getText().toString()),
+							), R.id.frame_layout);
+						} else if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbVerbosIrregulares) {
+							cambiarFragment(new JuegoEscribirVerboIrregularFragment(
 
-											Integer.parseInt(etCantidadItems.getText().toString()),
+									Integer.parseInt(etCantidadIntentos.getText().toString()),
 
-											swFaciles.isChecked(),
+									Integer.parseInt(etCantidadItems.getText().toString()),
 
-											swNormales.isChecked(),
+									swFaciles.isChecked(),
 
-											swDificiles.isChecked()
+									swNormales.isChecked(),
 
-									), R.id.frame_layout);
-									break;
-							}
-							break;
+									swDificiles.isChecked()
+
+							), R.id.frame_layout);
+						}
 					}
 				} catch (GenericException e) {
 					mostrarPopup(e.getTitulo(), e.getMensaje());
@@ -113,14 +105,13 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 		rgEscrituraOVisualizacion.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				switch (checkedId) {
-					case R.id.rdVisualizacion:
-						etCantidadIntentosContenedor.setVisibility(View.GONE);
-						break;
-					case R.id.rbEscritura:
-						etCantidadIntentosContenedor.setVisibility(View.VISIBLE);
-						break;
+
+				if (checkedId == R.id.rdVisualizacion) {
+					etCantidadIntentosContenedor.setVisibility(View.GONE);
+				} else if (checkedId == R.id.rbEscritura) {
+					etCantidadIntentosContenedor.setVisibility(View.VISIBLE);
 				}
+
 				calcularCantidadItems();
 			}
 		});
@@ -160,13 +151,10 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 
 		int cantidadItems = 0;
 
-		switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
-			case R.id.rbPalabras:
-				cantidadItems = utilService.getPalabras(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
-				break;
-			case R.id.rbVerbosIrregulares:
-				cantidadItems = utilService.getVerbosIrregulares(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
-				break;
+		if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbPalabras) {
+			cantidadItems = utilService.getPalabras(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
+		} else if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbVerbosIrregulares) {
+			cantidadItems = utilService.getVerbosIrregulares(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
 		}
 
 		int cantidadPalabras = Integer.parseInt(etCantidadItems.getText().toString());
@@ -199,13 +187,10 @@ public class JuegoConfiguracionInicial extends BaseFragment {
 
 		int cantidad = 0;
 
-		switch (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId()) {
-			case R.id.rbPalabras:
-				cantidad = utilService.getPalabras(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
-				break;
-			case R.id.rbVerbosIrregulares:
-				cantidad = utilService.getVerbosIrregulares(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
-				break;
+		if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbPalabras) {
+			cantidad = utilService.getPalabras(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
+		} else if (rgPalabrasOVerbosIrregulares.getCheckedRadioButtonId() == R.id.rbVerbosIrregulares) {
+			cantidad = utilService.getVerbosIrregulares(swFaciles.isChecked(), swNormales.isChecked(), swDificiles.isChecked()).size();
 		}
 
 		setearCantidadItems(cantidad);

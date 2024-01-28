@@ -106,58 +106,53 @@ public class ListadoFragment extends BaseFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		boolean resultado;
 
-		switch (item.getItemId()) {
-			case R.id.item_verTodo:
-				switch (TIPO_LISTADO) {
-					case UtilService.LISTADO_PALABRAS:
-						palabraAdapter.verTodo();
-						break;
-					case UtilService.LISTADO_VERBOS_IRREGULARES:
-						verboIrregularAdapter.verTodo();
-						break;
-				}
-				resultado = true;
-				break;
-			case R.id.item_ocultarTodo:
-				switch (TIPO_LISTADO) {
-					case UtilService.LISTADO_PALABRAS:
-						palabraAdapter.ocultarTodo();
-						break;
-					case UtilService.LISTADO_VERBOS_IRREGULARES:
-						verboIrregularAdapter.ocultarTodo();
-						break;
-				}
-				resultado = true;
-				break;
-			case R.id.item_espaniolIngles:
-				switch (TIPO_LISTADO) {
-					case UtilService.LISTADO_PALABRAS:
-						palabraAdapter.cambiarAEspaniolIngles();
-						break;
-					case UtilService.LISTADO_VERBOS_IRREGULARES:
-						verboIrregularAdapter.cambiarAEspaniolIngles();
-						break;
-				}
-				resultado = true;
-				break;
-			case R.id.item_inglesEspañol:
-				switch (TIPO_LISTADO) {
-					case UtilService.LISTADO_PALABRAS:
-						palabraAdapter.cambiarAInglesEspaniol();
-						break;
-					case UtilService.LISTADO_VERBOS_IRREGULARES:
-						verboIrregularAdapter.cambiarAInglesEspaniol();
-						break;
-				}
-				resultado = true;
-				break;
-			case R.id.item_AgregarPalabra:
-				cambiarFragment(new AgregarPalabraFragment(), R.id.frame_layout);
-				resultado = true;
-				break;
-			default:
-				resultado = super.onOptionsItemSelected(item);
-				break;
+		if (item.getItemId() == R.id.item_verTodo) {
+
+			switch (TIPO_LISTADO) {
+				case UtilService.LISTADO_PALABRAS:
+					palabraAdapter.verTodo();
+					break;
+				case UtilService.LISTADO_VERBOS_IRREGULARES:
+					verboIrregularAdapter.verTodo();
+					break;
+			}
+			resultado = true;
+
+		} else if (item.getItemId() == R.id.item_ocultarTodo) {
+			switch (TIPO_LISTADO) {
+				case UtilService.LISTADO_PALABRAS:
+					palabraAdapter.ocultarTodo();
+					break;
+				case UtilService.LISTADO_VERBOS_IRREGULARES:
+					verboIrregularAdapter.ocultarTodo();
+					break;
+			}
+			resultado = true;
+		} else if (item.getItemId() == R.id.item_espaniolIngles) {
+			switch (TIPO_LISTADO) {
+				case UtilService.LISTADO_PALABRAS:
+					palabraAdapter.cambiarAEspaniolIngles();
+					break;
+				case UtilService.LISTADO_VERBOS_IRREGULARES:
+					verboIrregularAdapter.cambiarAEspaniolIngles();
+					break;
+			}
+			resultado = true;
+		} else if (item.getItemId() == R.id.item_inglesEspañol) {
+			switch (TIPO_LISTADO) {
+				case UtilService.LISTADO_PALABRAS:
+					palabraAdapter.cambiarAInglesEspaniol();
+					break;
+				case UtilService.LISTADO_VERBOS_IRREGULARES:
+					verboIrregularAdapter.cambiarAInglesEspaniol();
+					break;
+			}
+			resultado = true;
+		} else if (item.getItemId() == R.id.item_AgregarPalabra) {
+			cambiarFragment(new AgregarPalabraFragment(), R.id.frame_layout);
+			resultado = true;
+		} else {
+			resultado = super.onOptionsItemSelected(item);
 		}
 
 		return resultado;

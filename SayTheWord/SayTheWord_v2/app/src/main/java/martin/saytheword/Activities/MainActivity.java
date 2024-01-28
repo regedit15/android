@@ -15,7 +15,6 @@ import com.google.android.material.navigation.NavigationView;
 
 import martin.saytheword.Fragments.JuegoConfiguracionInicial;
 import martin.saytheword.Fragments.SeleccionListadoFragment;
-//import martin.saytheword.R;
 import martin.saytheword.R;
 import martin.saytheword.Services.RealmService;
 import martin.saytheword.Services.UtilService;
@@ -55,16 +54,13 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 				boolean transaction = false;
 				Fragment fragment = null;
 
-				System.out.println(R.id.tvPalabraIzquierda);
-				switch (menuItem.getItemId()) {
-					case R.id.it_listado:
-						fragment = new SeleccionListadoFragment();
-						transaction = true;
-						break;
-					case R.id.it_juego:
-						fragment = new JuegoConfiguracionInicial();
-						transaction = true;
-						break;
+				if (menuItem.getItemId() == R.id.it_listado) {
+					fragment = new SeleccionListadoFragment();
+					transaction = true;
+				} else if (menuItem.getItemId() == R.id.it_juego) {
+
+					fragment = new JuegoConfiguracionInicial();
+					transaction = true;
 				}
 
 				if (transaction) {
