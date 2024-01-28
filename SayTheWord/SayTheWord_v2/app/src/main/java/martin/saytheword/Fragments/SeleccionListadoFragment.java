@@ -87,6 +87,7 @@ public class SeleccionListadoFragment extends BaseFragment {
 		} else {
 			resultado = super.onOptionsItemSelected(item);
 		}
+
 		return resultado;
 	}
 	//-------------------------------------------------
