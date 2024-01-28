@@ -4,11 +4,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "io.realm:realm-gradle-plugin:10.11.1"
+        classpath "io.realm:realm-gradle-plugin:10.17.0"
     }
 }
 
 plugins {
-id 'com.android.application' version '8.2.1' apply false
+    id 'com.android.application' version '8.2.2' apply false
 }
 

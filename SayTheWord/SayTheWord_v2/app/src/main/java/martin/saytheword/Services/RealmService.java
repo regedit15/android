@@ -20,6 +20,10 @@ public class RealmService {
 
 	public void setearConfiguracion(Context context) {
 
+//		String realmName = "My Project";
+//		RealmConfiguration config = new RealmConfiguration.Builder().name(realmName).build();
+//		Realm backgroundThreadRealm = Realm.getInstance(config);
+
 		// ----- Setear configuracion
 		Realm.init(context);
 		RealmConfiguration config = new RealmConfiguration.Builder().build();
