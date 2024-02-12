@@ -10,28 +10,26 @@ import martin.cuantocuesta.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    //-------------------------------------------------------------------------------------------------------
-    //                                            ISSUES
-    //-------------------------------------------------------------------------------------------------------
-    // 1- Agregar a la app: el ejemplo de la barrita de cereal no calza con ninguno. Si compro una caja, cuanto cuesta cada barrita
-    // 2- Poder agregar items
-    // 3- Hacer un limpiar que saque todos los items
-    // 4- Hacer como un check de comparar o algo que solo muestr los nombre y los precios
-    // 5- Poner el icono del chanchito en la barra de menu, eso debe ser facil
-    // 6- Mostrar un demo, así investigamos como podemos hacer uno de esos demos en android
-    //-------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------
+	//                                            ISSUES
+	//-------------------------------------------------------------------------------------------------------
+	// 1- Agregar a la app: el ejemplo de la barrita de cereal no calza con ninguno. Si compro una caja, cuanto cuesta cada barrita
+	// 2- Hacer como un check de comparar o algo que solo muestr los nombre y los precios
+	// 3- Poner el icono del chanchito en la barra de menu, eso debe ser fácil
+	// 4- Mostrar un demo, así investigamos como podemos hacer uno de esos demos en android
+	//-------------------------------------------------------------------------------------------------------
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
 
-        cambiarFragment(new CalculoFragment());
-    }
+		cambiarFragment(new CalculoFragment());
+	}
 
-    private void cambiarFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
-    }
+	private void cambiarFragment(Fragment fragment) {
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
+	}
 
 }
