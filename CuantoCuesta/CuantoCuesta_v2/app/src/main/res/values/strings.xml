@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CuantoCuesta_v2</string>
+    <string name="app_name">Cuanto Cuesta</string>
     <string name="DESCUENTO_MENOS_50_PORCIENTO_EN_SEGUNDA_UNIDAD">-50% en segunda unidad</string>
     <string name="DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD">-70% en segunda unidad</string>
     <string name="DESCUENTO_MENOS_X_PORCIENTO_EN_SEGUNDA_UNIDAD">-X% en segunda unidad</string>

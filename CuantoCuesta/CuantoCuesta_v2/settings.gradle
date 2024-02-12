@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CuantoCuesta_v2"
+rootProject.name = "CuantoCuesta"
 include ':app'
