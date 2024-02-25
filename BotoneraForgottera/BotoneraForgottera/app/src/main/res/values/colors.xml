@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <!--    <color name="black">#FF000000</color>-->
+    <!--    <color name="white">#FFFFFFFF</color>-->
+
+
+    <!--	<color name="colorPrimary">#008577</color>-->
+    <!--	<color name="colorPrimaryDark">#00574B</color>-->
+    <color name="colorPrimaryDark">#147383</color>
+    <color name="colorPrimary">#3494B8</color>
+    <color name="colorAccent">#FF6E40</color>
+    <color name="colorBoton1">#82B1FF</color>
+    <color name="colorBotonTag">#F7A404</color>
+    <!-- - - - - - - - - - - WhatsApp Stickers - - - - - - - - - - - -  -->
+    <color name="inactiveAddButtonColor">#B3B3B3</color>
+    <color name="infoPageBackgroundColor">#EBEBEB</color>
+    <color name="actionBarArrowColor">@color/colorAccent</color>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
 </resources>
