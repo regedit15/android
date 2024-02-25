@@ -3,27 +3,17 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    namespace 'martin.botoneraforgottera'
+    compileSdk 34
 
     defaultConfig {
         applicationId "martin.botoneraforgottera"
-        minSdk 21
-        targetSdk 31
-        versionCode 9
-        versionName "9.0"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        // ----------    WhatsApp Stickers
-        def contentProviderAuthority = applicationId + ".botoneraforgotteracontentprovider"
-        // Creates a placeholder property to use in the manifest.
-        manifestPlaceholders =
-                [contentProviderAuthority: contentProviderAuthority]
-        // Adds a new field for the authority to the BuildConfig class.
-        buildConfigField("String",
-                "CONTENT_PROVIDER_AUTHORITY",
-                "\"${contentProviderAuthority}\"")
-        // --------------------------------------------------------------------
     }
 
     buildTypes {
@@ -36,49 +26,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    sourceSets {
-        main {
-            res.srcDirs =
-                    [
-                            'src/main/res',
-                            'src/main/res/layouts/common',
-                            'src/main/res/layouts/stickers',
-                            'src/main/res/layouts/audios',
-                    ]
-        }
-    }
-    androidResources {
-        noCompress 'webp'
-    }
 }
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    testImplementation 'junit:junit:'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
-    //    Agregadas
-    implementation 'com.google.android.material:material:1.4.0'
-    // ----------    Para el FileUtils
-    implementation 'commons-io:commons-io:2.6'
-    // --------------------------------------------------------------------
-    // ----------    Realm
-    apply plugin: 'realm-android'
-
-    implementation 'io.realm:android-adapters:3.1.0'
-    // --------------------------------------------------------------------
-    // ----------    Material icons
-    implementation 'com.google.android.material:material:1.6.0-alpha01'
-    // --------------------------------------------------------------------
-    // ----------    WhatsApp Stickers
-    implementation 'com.facebook.fresco:fresco:2.0.0'
-    implementation 'com.facebook.fresco:webpsupport:2.0.0'
-    implementation 'com.facebook.fresco:animated-webp:2.0.0'
-    implementation 'com.facebook.fresco:animated-base:2.0.0'
-    // --------------------------------------------------------------------
-
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
