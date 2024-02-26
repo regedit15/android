@@ -17,128 +17,130 @@ import martin.botoneraforgottera.Models.Tag;
 
 public class RealmService {
 
-    public static AtomicInteger audioId = new AtomicInteger();
-    public static AtomicInteger tagId = new AtomicInteger();
-    private Realm realm;
-    private List<Audio> audiosBD;
-    private List<Audio> audiosFavoritosBD;
+	public static AtomicInteger audioId = new AtomicInteger();
+	public static AtomicInteger tagId = new AtomicInteger();
+	// private Realm realm;
+	private List<Audio> audiosBD;
+	private List<Audio> audiosFavoritosBD;
 
-    public void setearConfiguracion(Context context) {
+	public void setearConfiguracion(Context context) {
 
-        // ----- Setear configuracion
-        Realm.init(context);
-        RealmConfiguration config = new RealmConfiguration.Builder()
-                .allowWritesOnUiThread(true)
-                .build();
-        Realm.setDefaultConfiguration(config);
-        //-----------------
+		// ----- Setear configuracionSyncConfiguration
+		Realm.init(context);
+		RealmConfiguration config = new RealmConfiguration
+				.Builder()
+				.allowQueriesOnUiThread(true)
+				.allowWritesOnUiThread(true)
+				.build();
+		Realm.setDefaultConfiguration(config);
+		//-----------------
 
-        realm = Realm.getDefaultInstance();
 
-        audioId = getIdByTabla(realm, Audio.class);
-        tagId = getIdByTabla(realm, Tag.class);
-        realm.close();
-    }
+		Realm realm = Realm.getDefaultInstance();
+		audioId = getIdByTabla(realm, Audio.class);
+		tagId = getIdByTabla(realm, Tag.class);
+		realm.close();
+	}
 
-    public <T extends RealmObject> AtomicInteger getIdByTabla(Realm realm, Class<T> clase) {
-        RealmResults<T> results = realm.where(clase).findAll();
+	public <T extends RealmObject> AtomicInteger getIdByTabla(Realm realm, Class<T> clase) {
+		RealmResults<T> results = realm.where(clase).findAll();
 
-        return (results.size() > 0) ? new AtomicInteger(results.max("id").intValue()) : new AtomicInteger();
-    }
+		return (results.size() > 0) ? new AtomicInteger(results.max("id").intValue()) : new AtomicInteger();
+	}
 
-    public List<Audio> getAudios() {
-        if (audiosBD == null) {
-            audiosBD = Realm.getDefaultInstance().where(Audio.class).findAll();
-        }
-        return audiosBD;
-    }
+	public List<Audio> getAudios() {
+		if (audiosBD == null) {
+			audiosBD = Realm.getDefaultInstance().where(Audio.class).findAll();
+		}
+		return audiosBD;
+	}
 
-    public List<Audio> getAudiosFavoritos() {
-        if (audiosFavoritosBD == null) {
-            audiosFavoritosBD = Realm.getDefaultInstance().where(Audio.class).equalTo("favorito", true).findAll();
-        }
-        return audiosFavoritosBD;
-    }
+	public List<Audio> getAudiosFavoritos() {
+		if (audiosFavoritosBD == null) {
+			audiosFavoritosBD = Realm.getDefaultInstance().where(Audio.class).equalTo("favorito", true).findAll();
+		}
+		return audiosFavoritosBD;
+	}
 
-    public void insertarAudios(List<Audio> audios) {
-        Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                Realm.getDefaultInstance().insert(audios);
-            }
-        });
-    }
+	public void insertarAudios(List<Audio> audios) {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				Realm.getDefaultInstance().insert(audios);
+			}
+		});
+	}
 
-    private String quitarAcentos(String palabra) {
-        return Normalizer.normalize(palabra, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
-    }
+	private String quitarAcentos(String palabra) {
+		return Normalizer.normalize(palabra, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "").toLowerCase();
+	}
 
-    private boolean contieneNombre(String nombreAudio, String busqueda) {
-        return quitarAcentos(nombreAudio).contains(quitarAcentos(busqueda));
-    }
+	private boolean contieneNombre(String nombreAudio, String busqueda) {
+		return quitarAcentos(nombreAudio).contains(quitarAcentos(busqueda));
+	}
 
-    private List<Audio> filtrarAudiosPorNombre(List<Audio> audios, String busqueda) {
-        List<Audio> audiosFIltrados = new ArrayList<Audio>();
+	private List<Audio> filtrarAudiosPorNombre(List<Audio> audios, String busqueda) {
+		List<Audio> audiosFIltrados = new ArrayList<Audio>();
 
-        for (Audio audio : audios) {
-            if (contieneNombre(audio.getNombre(), busqueda)) {
-                audiosFIltrados.add(audio);
-            }
-        }
+		for (Audio audio : audios) {
+			if (contieneNombre(audio.getNombre(), busqueda)) {
+				audiosFIltrados.add(audio);
+			}
+		}
 
-        return audiosFIltrados;
-    }
+		return audiosFIltrados;
+	}
 
-    public List<Audio> filtrarAudiosPorTitulo(String nombre, boolean soloFavoritos) {
+	public List<Audio> filtrarAudiosPorTitulo(String nombre, boolean soloFavoritos) {
 
-        // RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE);
-        // agregarFiltradoFav(realmQuery, soloFavoritos);
-        // return realmQuery.findAll();
+		// RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).contains("nombre", nombre, Case.INSENSITIVE);
+		// agregarFiltradoFav(realmQuery, soloFavoritos);
+		// return realmQuery.findAll();
 
-        return filtrarAudiosPorNombre(soloFavoritos ? audiosFavoritosBD : audiosBD, nombre);
-    }
+		return filtrarAudiosPorNombre(soloFavoritos ? audiosFavoritosBD : audiosBD, nombre);
+	}
 
-    public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList, boolean soloFavoritos) {
+	public List<Audio> filtrarAudiosPorTituloYTags(String nombre, List<String> tagsList, boolean soloFavoritos) {
 
-        String[] tags = tagsList.toArray(new String[0]);
+		String[] tags = tagsList.toArray(new String[0]);
 
-        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class)
+		RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class)
 
-                // .contains("nombre", nombre, Case.INSENSITIVE)
+				// .contains("nombre", nombre, Case.INSENSITIVE)
 
-                .and().in("tags.nombre", tags);
+				.and().in("tags.nombre", tags);
 
-        agregarFiltradoFav(realmQuery, soloFavoritos);
+		agregarFiltradoFav(realmQuery, soloFavoritos);
 
-        return filtrarAudiosPorNombre(realmQuery.findAll(), nombre);
-    }
+		return filtrarAudiosPorNombre(realmQuery.findAll(), nombre);
+	}
 
-    public List<Audio> filtrarAudiosPorTags(String tag, boolean soloFavoritos) {
+	public List<Audio> filtrarAudiosPorTags(String tag, boolean soloFavoritos) {
 
-        String[] tags = {tag};
+		String[] tags = {tag};
 
-        RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).in("tags.nombre", tags);
+		RealmQuery realmQuery = Realm.getDefaultInstance().where(Audio.class).in("tags.nombre", tags);
 
-        agregarFiltradoFav(realmQuery, soloFavoritos);
+		agregarFiltradoFav(realmQuery, soloFavoritos);
 
-        return realmQuery.findAll();
-    }
+		return realmQuery.findAll();
+	}
 
-    public void eliminarTodo() {
-        Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                Realm.getDefaultInstance().deleteAll();
-            }
-        });
+	public void eliminarTodo() {
+		Realm.getDefaultInstance().executeTransaction(new Realm.Transaction() {
+			@Override
+			public void execute(Realm realm) {
+				Realm.getDefaultInstance().deleteAll();
+			}
+		});
 
-    }
+	}
 
-    private RealmQuery agregarFiltradoFav(RealmQuery realmQuery, boolean soloFavoritos) {
-        if (soloFavoritos) {
-            realmQuery = realmQuery.and().equalTo("favorito", true);
-        }
-        return realmQuery;
-    }
+	private RealmQuery agregarFiltradoFav(RealmQuery realmQuery, boolean soloFavoritos) {
+		if (soloFavoritos) {
+			realmQuery = realmQuery.and().equalTo("favorito", true);
+		}
+		return realmQuery;
+	}
 
 }
