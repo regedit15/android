@@ -51,10 +51,9 @@ android {
             res.srcDirs =
                     [
                             'src/main/res',
-                            'src/main/papa',
-//                            'src/main/res/layouts/common',
-//                            'src/main/res/layouts/stickers',
-//                            'src/main/res/layouts/audios',
+                            'src/main/res/layouts/common',
+                            'src/main/res/layouts/stickers',
+                            'src/main/res/layouts/audios',
                     ]
         }
     }
