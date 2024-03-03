@@ -9,14 +9,14 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.widget.Toast;
 
+import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
-import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
 
 import martin.botoneraforgottera.Exceptions.PermisoException;
 

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"
+        tools:ignore="ScopedStorage" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,6 +26,47 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- - - - - - - - - - - WhatsApp Stickers - - - - - - - - - - - -  -->
+        <!--        <activity android:name=".Sticker.EntryActivity" />-->
+        <!--        <activity android:name=".Sticker.StickerPackListActivity" />-->
+        <!--        <activity-->
+        <!--            android:name=".Sticker.StickerPackDetailsActivity"-->
+        <!--            android:parentActivityName=".Sticker.StickerPackListActivity"-->
+        <!--            tools:ignore="UnusedAttribute">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.PARENT_ACTIVITY"-->
+        <!--                android:value=".Sticker.StickerPackListActivity" />-->
+        <!--        </activity>-->
+        <!--        <activity-->
+        <!--            android:name=".Sticker.StickerPackInfoActivity"-->
+        <!--            android:label="@string/title_activity_sticker_pack_info"-->
+        <!--            android:parentActivityName=".Sticker.StickerPackDetailsActivity"-->
+        <!--            tools:ignore="UnusedAttribute">-->
+        <!--            <meta-data-->
+        <!--                android:name="android.support.PARENT_ACTIVITY"-->
+        <!--                android:value=".Sticker.StickerPackDetailsActivity" />-->
+        <!--        </activity>-->
+
+        <!--        <provider-->
+        <!--            android:name=".Sticker.StickerContentProvider"-->
+        <!--            android:authorities="${contentProviderAuthority}"-->
+        <!--            android:enabled="true"-->
+        <!--            android:exported="true"-->
+        <!--            android:readPermission="com.whatsapp.sticker.READ" />-->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+
+        <!-- - - - - - - - - - - FileProvider Para Audios - - - - - - - - - - - -  -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.myfileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
     </application>
 
 </manifest>
