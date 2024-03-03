@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
+// Este es el servicio original que hicimos con el video, pero sirve para pedir un solo permiso
+// El PermissionService que hicimos es para que se le pueda pasar una lista de permisos, es mas completo y escalable
 public class PermissionServiceOriginal {
 
 	private static final int PERMISSION_REQ_CODE = 100;
