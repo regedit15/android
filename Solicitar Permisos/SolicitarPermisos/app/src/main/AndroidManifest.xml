@@ -2,7 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--    WRITE_EXTERNAL_STORAGE is deprecated (and is not granted) when targeting Android 13+. If you need to write to shared storage,
+     use the MediaStore.createWriteRequest intent. More... (Ctrl+F1)-->
+    <!--    Inspection info:Scoped storage is enforced on Android 10+ (or Android 11+ if using requestLegacyExternalStorage). In particular,
+     WRITE_EXTERNAL_STORAGE will no longer provide write access to all files; it will provide the equivalent of READ_EXTERNAL_STORAGE instead.
+       As of Android 13, if you need to query or interact with MediaStore or media files on the shared storage, you should be using instead
+       one or more new storage permissions: * android.permission.READ_MEDIA_IMAGES * android.permission.READ_MEDIA_VIDEO * android.permission.READ_MEDIA_AUDIO
+        and then add maxSdkVersion="33" to the older permission. See the developer guide for how to do
+        this: https://developer.android.com/about/versions/13/behavior-changes-13#granular-media-permissions
+         The MANAGE_EXTERNAL_STORAGE permission can be used to manage all files, but it is rarely necessary and most apps on Google Play are
+         not allowed to use it. Most apps should instead migrate to use scoped storage. To modify or delete files, apps should request write
+          access from the user as described at https://goo.gle/android-mediastore-createwriterequest.  To learn more, read these
+          resources: Play policy: https://goo.gle/policy-storage-help Allowable use cases: https://goo.gle/policy-storage-usecases
+           Issue id: ScopedStorage  More info: https://goo.gle/android-storage-usecases  Vendor: Android Open Source Project
+           Contact: https://groups.google.com/g/lint-dev Feedback: https://issuetracker.google.com/issues/new?component=192708-->
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MANAGE_DEVICE_POLICY_MICROPHONE" />
 
     <application
         android:allowBackup="true"
