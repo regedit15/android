@@ -18,7 +18,7 @@
            Contact: https://groups.google.com/g/lint-dev Feedback: https://issuetracker.google.com/issues/new?component=192708-->
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.MANAGE_DEVICE_POLICY_MICROPHONE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"

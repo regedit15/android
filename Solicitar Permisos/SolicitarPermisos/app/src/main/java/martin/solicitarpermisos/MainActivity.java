@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 	private PermissionServiceOriginal permissionServiceOriginal = new PermissionServiceOriginal();
 	private String[] permissionsOriginal = new String[]{
 			Manifest.permission.RECORD_AUDIO,
-			Manifest.permission.MANAGE_DEVICE_POLICY_MICROPHONE
+			Manifest.permission.READ_SMS
 	};
 
 
@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 
 		findViewById(R.id.requestPermissions).setOnClickListener(v -> {
-			// permissionService.requestRuntimePermissions(this, permissionsOriginal);
-			permissionServiceOriginal.requestRuntimePermissions(this);
+			permissionService.requestRuntimePermissions(this, permissionsOriginal);
+			// permissionServiceOriginal.requestRuntimePermissions(this);
 		});
 	}
 
@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-		// permissionService.onRequestPermissionsResult(this, requestCode, grantResults, getPackageName(), permissions, permissionsOriginal);
-		permissionServiceOriginal.onRequestPermissionsResult(this, requestCode, grantResults, getPackageName());
+		permissionService.onRequestPermissionsResult(this, requestCode, grantResults, getPackageName(), permissions, permissionsOriginal);
+		// permissionServiceOriginal.onRequestPermissionsResult(this, requestCode, grantResults, getPackageName());
 	}
+
 }
