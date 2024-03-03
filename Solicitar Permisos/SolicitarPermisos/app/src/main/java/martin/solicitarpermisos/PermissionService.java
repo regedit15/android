@@ -13,7 +13,6 @@ import java.util.List;
 public class PermissionService {
 
 	private static final int PERMISSION_REQ_CODE = 100;
-
 	private int allQuantityPermissionsOk = 0;
 	private int actualIndexPermission = 1;
 	List<String> quantityPermissionsNegativeLocal = new ArrayList<String>();
@@ -38,10 +37,10 @@ public class PermissionService {
 		for (String permission : permissions) {
 
 			if (ActivityCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED) {
-				// por aca entran cuando el usuario ya le ha dado el permiso
+				// por aca entran cuando el usuario ya le ha dado el permiso para siempre
 				quantityPermissionsOk++;
 			} else if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-				// por aca entran cuando el usuario a negado el permiso
+				// por aca entran cuando el usuario ha negado el permiso o cuando le dió "permitir sólo esta vez" y está entrando de nuevo a la app
 				quantityPermissionsNegativeLocal.add(permission);
 			} else {
 				// por aca entran la primera vez
