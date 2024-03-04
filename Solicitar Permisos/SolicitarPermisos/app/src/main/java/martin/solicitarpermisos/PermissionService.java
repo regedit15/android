@@ -15,7 +15,7 @@ public class PermissionService {
 	private static final int PERMISSION_REQ_CODE = 100;
 	private int allQuantityPermissionsOk = 0;
 	private int actualIndexPermission = 1;
-	List<String> quantityPermissionsNegativeLocal = new ArrayList<String>();
+	List<String> quantityPermissionsNegative = new ArrayList<String>();
 
 
 	private void messageOk(Activity activity, String[] permissions) {
@@ -29,8 +29,17 @@ public class PermissionService {
 		Toast.makeText(activity, message.toString(), Toast.LENGTH_SHORT).show();
 	}
 
-	public void requestRuntimePermissions(Activity activity, String[] permissions) {
-		quantityPermissionsNegativeLocal.clear();
+
+	public void checkIfAllPermissionIsOk(Activity activity, String[] permissions, List<String>... parametersQuantityPermissionsNegativeLocal) throws PermisoException {
+
+		List<String> quantityPermissionsNegativeLocal;
+
+		if (parametersQuantityPermissionsNegativeLocal.length > 0) {
+			quantityPermissionsNegativeLocal = parametersQuantityPermissionsNegativeLocal[0];
+		} else {
+			quantityPermissionsNegativeLocal = new ArrayList<String>();
+		}
+
 		int quantityPermissionsOk = 0;
 
 
@@ -48,12 +57,22 @@ public class PermissionService {
 			}
 		}
 
-		if (quantityPermissionsOk == permissions.length) {
+		if (quantityPermissionsOk != permissions.length) {
+			throw new PermisoException();
+		}
+	}
+
+	public void requestRuntimePermissions(Activity activity, String[] permissions) {
+		quantityPermissionsNegative.clear();
+
+		try {
+			checkIfAllPermissionIsOk(activity, permissions, quantityPermissionsNegative);
+
 			messageOk(activity, permissions);
-		} else {
+		} catch (PermisoException e) {
 			StringBuilder message = new StringBuilder("La aplicación necesita los siguientes permisos para continuar: \n\n");
 
-			for (String p : quantityPermissionsNegativeLocal) {
+			for (String p : quantityPermissionsNegative) {
 				message.append("\n- ").append(p.split("\\.")[2]);
 			}
 
@@ -63,7 +82,7 @@ public class PermissionService {
 					.setCancelable(false)
 					.setPositiveButton("ok", (dialog, which) -> {
 
-						ActivityCompat.requestPermissions(activity, new String[]{quantityPermissionsNegativeLocal.get(0)}, PERMISSION_REQ_CODE);
+						ActivityCompat.requestPermissions(activity, new String[]{quantityPermissionsNegative.get(0)}, PERMISSION_REQ_CODE);
 						dialog.dismiss();
 
 					})
@@ -71,7 +90,6 @@ public class PermissionService {
 						dialog.dismiss();
 					})
 					.show();
-
 		}
 	}
 
@@ -85,7 +103,7 @@ public class PermissionService {
 			if (allQuantityPermissionsOk == permissionsOriginal.length) {
 				// si todos los permisos fueron dados se muestra el mensaje de ok
 				messageOk(activity, permissionsOriginal);
-			} else if (actualIndexPermission < quantityPermissionsNegativeLocal.size()) {
+			} else if (actualIndexPermission < quantityPermissionsNegative.size()) {
 				// si se negó el permiso pero aún falta por preguntar los otros
 				actualIndexPermission++;
 				ActivityCompat.requestPermissions(activity, new String[]{permissionsOriginal[actualIndexPermission - 1]}, PERMISSION_REQ_CODE);

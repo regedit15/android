@@ -2,6 +2,7 @@ package martin.solicitarpermisos;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,8 +23,15 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 
 		findViewById(R.id.requestPermissions).setOnClickListener(v -> {
-			permissionService.requestRuntimePermissions(this, permissionsOriginal);
-			// permissionServiceOriginal.requestRuntimePermissions(this);
+			try {
+				permissionService.checkIfAllPermissionIsOk(this, permissionsOriginal);
+
+				findViewById(R.id.requestPermissions).setVisibility(View.INVISIBLE);
+				findViewById(R.id.textView).setVisibility(View.VISIBLE);
+			} catch (PermisoException e) {
+				permissionService.requestRuntimePermissions(this, permissionsOriginal);
+			}
+
 		});
 	}
 
