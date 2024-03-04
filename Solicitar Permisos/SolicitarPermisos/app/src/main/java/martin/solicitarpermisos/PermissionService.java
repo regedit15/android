@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: corregir error de que si se negaron todos los permisos no aparece ningun cartel. Tiene que aparecer ele de ir a ajustes
 public class PermissionService {
 
 	private static final int PERMISSION_REQ_CODE = 100;
