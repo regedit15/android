@@ -161,9 +161,7 @@ public class Calculo {
 						// cuanto sale el kilo con ese descuento comprando dos unidades
 
 						// $1250           100%
-						//                        x = 625             50
-						//
-						//                        sdasd
+						// x = 625             50
 						resultadoCuenta = calcularPorcentaje(resultadoCuenta, new Double(50));
 						break;
 					case UtilServiceLocal.DESCUENTO_MENOS_70_PORCIENTO_EN_SEGUNDA_UNIDAD:
@@ -177,7 +175,7 @@ public class Calculo {
 						break;
 					case UtilServiceLocal.DESCUENTO_TRES_POR_DOS:
 						// $por k es 500
-						//$por k final = 500 + 500 /3
+						// $por k final = 500 + 500 /3
 						resultadoCuenta = (resultadoCuenta * 2) / 3;
 						break;
 				}
