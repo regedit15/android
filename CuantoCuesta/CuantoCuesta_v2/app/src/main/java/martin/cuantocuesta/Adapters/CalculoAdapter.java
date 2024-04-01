@@ -91,8 +91,8 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 		private TextInputEditText tiPorcentaje;
 		private Button btTipo;
 		private Button btTipoDescuento;
-		private TextView tvPrecioPorUnidadTitulo;
-		private TextView tvPrecioPorUnidadResultado;
+		private TextView tvPrecioPorKiloTitulo;
+		private TextView tvPrecioPorKiloResultado;
 		private TextView tvPrecioPorProductoTitulo;
 		private TextView tvPrecioPorProductoResultado;
 		private CheckBox cbDescuento;
@@ -110,8 +110,8 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 			tiPrecio = itemView.findViewById(R.id.tiPrecio);
 			tiNombre = itemView.findViewById(R.id.tiNombre);
 			tiPorcentaje = itemView.findViewById(R.id.tiPorcentaje);
-			tvPrecioPorUnidadTitulo = itemView.findViewById(R.id.tvPrecioPorUnidadTitulo);
-			tvPrecioPorUnidadResultado = itemView.findViewById(R.id.tvPrecioPorUnidadResultado);
+			tvPrecioPorKiloTitulo = itemView.findViewById(R.id.tvPrecioPorKiloTitulo);
+			tvPrecioPorKiloResultado = itemView.findViewById(R.id.tvPrecioPorKiloResultado);
 			tvPrecioPorProductoTitulo = itemView.findViewById(R.id.tvPrecioPorProductoTitulo);
 			tvPrecioPorProductoResultado = itemView.findViewById(R.id.tvPrecioPorProductoResultado);
 			tiMetro = itemView.findViewById(R.id.tiMetro);
@@ -120,7 +120,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 			clDescuento = itemView.findViewById(R.id.clDescuento);
 
 			btTipo.setText(ultimoTipoDeUnidad);
-			tvPrecioPorUnidadResultado.setText("");
+			tvPrecioPorKiloResultado.setText("");
 			tilMetro.setVisibility(View.GONE);
 			clDescuento.setVisibility(View.GONE);
 			tvPrecioPorProductoTitulo.setVisibility(View.GONE);
@@ -203,7 +203,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 							break;
 					}
 
-					tvPrecioPorUnidadTitulo.setText(frase);
+					tvPrecioPorKiloTitulo.setText(frase);
 					suffixTextCantidad(calculo);
 					tilMetro.setVisibility(calculo.getUnidad() == UtilServiceLocal.TIPO_PAPEL_HIGIENICO ? View.VISIBLE : View.GONE);
 					calcularCampos(calculo);
@@ -281,7 +281,7 @@ public class CalculoAdapter extends RecyclerView.Adapter<CalculoAdapter.ViewHold
 
 
 		private void calcularCampos(Calculo calculo) {
-			tvPrecioPorUnidadResultado.setText(calculo.calcularPrecioPorUnidad());
+			tvPrecioPorKiloResultado.setText(calculo.calcularPrecioPorUnidad());
 			tvPrecioPorProductoResultado.setText(calculo.calcularPrecioPorProducto());
 		}
 

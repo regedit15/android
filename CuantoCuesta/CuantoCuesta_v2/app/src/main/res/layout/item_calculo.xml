@@ -249,7 +249,7 @@
 
 
             <TextView
-                android:id="@+id/tvPrecioPorUnidadTitulo"
+                android:id="@+id/tvPrecioPorKiloTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
@@ -265,7 +265,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvPrecioPorUnidadResultado"
+                android:id="@+id/tvPrecioPorKiloResultado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -279,7 +279,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/tvPrecioPorUnidadTitulo"
+                app:layout_constraintStart_toEndOf="@+id/tvPrecioPorKiloTitulo"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -297,7 +297,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPrecioPorUnidadTitulo" />
+                app:layout_constraintTop_toBottomOf="@+id/tvPrecioPorKiloTitulo" />
 
             <TextView
                 android:id="@+id/tvPrecioPorProductoResultado"
@@ -316,7 +316,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/tvPrecioPorProductoTitulo"
-                app:layout_constraintTop_toBottomOf="@+id/tvPrecioPorUnidadResultado" />
+                app:layout_constraintTop_toBottomOf="@+id/tvPrecioPorKiloResultado" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
