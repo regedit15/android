@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		findViewById(R.id.requestPermissions).setOnClickListener(v -> {
+		findViewById(R.id.buttonRequestPermissions).setOnClickListener(v -> {
 			try {
 				permissionService.checkIfAllPermissionIsOk(this, permissionsOriginal);
 
-				findViewById(R.id.requestPermissions).setVisibility(View.INVISIBLE);
+				findViewById(R.id.buttonRequestPermissions).setVisibility(View.INVISIBLE);
 				findViewById(R.id.textView).setVisibility(View.VISIBLE);
 			} catch (PermisoException e) {
 				permissionService.requestRuntimePermissions(this, permissionsOriginal);
