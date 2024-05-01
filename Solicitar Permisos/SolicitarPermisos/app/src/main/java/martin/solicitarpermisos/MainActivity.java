@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-	private PermissionService permissionService = new PermissionService();
+	private PermissionService permissionService;
 	private PermissionServiceOriginal permissionServiceOriginal = new PermissionServiceOriginal();
 	private String[] permissionsOriginal = new String[]{
 			Manifest.permission.RECORD_AUDIO,
@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		permissionService = new PermissionService(this);
+
 		findViewById(R.id.buttonRequestPermissions).setOnClickListener(v -> {
 			try {
 				permissionService.checkIfAllPermissionIsOk(this, permissionsOriginal);
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 				findViewById(R.id.buttonRequestPermissions).setVisibility(View.INVISIBLE);
 				findViewById(R.id.textView).setVisibility(View.VISIBLE);
 			} catch (PermisoException e) {
-				permissionService.requestRuntimePermissions(this, permissionsOriginal);
+				// permissionService.requestRuntimePermissions(this, permissionsOriginal);
 			}
 
 		});

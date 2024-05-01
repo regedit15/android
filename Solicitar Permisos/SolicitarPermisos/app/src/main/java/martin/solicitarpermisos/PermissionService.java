@@ -1,6 +1,7 @@
 package martin.solicitarpermisos;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.widget.Toast;
 
@@ -18,28 +19,46 @@ public class PermissionService {
 	private int actualIndexPermission = 1;
 	List<String> quantityPermissionsNegative = new ArrayList<String>();
 
+	// -------------------------------------------------
+	SharedPreferenceService sharedPreferenceService;
+	protected static final String PERMISOS_YA_CHECKEADOS = "PERMISOS_YA_CHECKEADOS";
+	protected static final String PREFERENCES = "PREFERENCES";
+	// -------------------------------------------------
+
+
+	public PermissionService(Activity activity) {
+		sharedPreferenceService = new SharedPreferenceService(activity.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE));
+	}
+
 
 	private void messageOk(Activity activity, String[] permissions) {
-		String message;
-		if (permissions.length == 1) {
-			message = "Permiso concedido, puede usar la app!";
-		} else {
-			message = "Todos los permisos han sido concedidos, puede usar la app!";
+
+		if (!sharedPreferenceService.getBoolean(PERMISOS_YA_CHECKEADOS)) {
+			String message;
+			if (permissions.length == 1) {
+				message = "Permiso concedido, puede usar la app!";
+			} else {
+				message = "Todos los permisos han sido concedidos, puede usar la app!";
+			}
+
+			Toast.makeText(activity, message.toString(), Toast.LENGTH_SHORT).show();
+			sharedPreferenceService.guardarBooleanYCommitear(PERMISOS_YA_CHECKEADOS, true);
 		}
 
-		Toast.makeText(activity, message.toString(), Toast.LENGTH_SHORT).show();
 	}
 
 
 	public void checkIfAllPermissionIsOk(Activity activity, String[] permissions, List<String>... parametersQuantityPermissionsNegativeLocal) throws PermisoException {
 
-		List<String> quantityPermissionsNegativeLocal;
+		quantityPermissionsNegative.clear();
 
-		if (parametersQuantityPermissionsNegativeLocal.length > 0) {
-			quantityPermissionsNegativeLocal = parametersQuantityPermissionsNegativeLocal[0];
-		} else {
-			quantityPermissionsNegativeLocal = new ArrayList<String>();
-		}
+		// List<String> quantityPermissionsNegativeLocal;
+		//
+		// if (parametersQuantityPermissionsNegativeLocal.length > 0) {
+		// 	quantityPermissionsNegativeLocal = parametersQuantityPermissionsNegativeLocal[0];
+		// } else {
+		// 	quantityPermissionsNegativeLocal = new ArrayList<String>();
+		// }
 
 		int quantityPermissionsOk = 0;
 
@@ -51,53 +70,60 @@ public class PermissionService {
 				quantityPermissionsOk++;
 			} else if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
 				// por aca entran cuando el usuario ha negado el permiso o cuando le dió "permitir sólo esta vez" y está entrando de nuevo a la app
-				quantityPermissionsNegativeLocal.add(permission);
+				// quantityPermissionsNegativeLocal.add(permission);
+				quantityPermissionsNegative.add(permission);
 			} else {
 				// por aca entran la primera vez
-				quantityPermissionsNegativeLocal.add(permission);
+				// quantityPermissionsNegativeLocal.add(permission);
+				quantityPermissionsNegative.add(permission);
 			}
 		}
 
-		if (quantityPermissionsOk != permissions.length) {
+		if (quantityPermissionsOk == permissions.length) {
+			messageOk(activity, permissions);
+		} else {
+			requestRuntimePermissions(activity, permissions);
 			throw new PermisoException();
 		}
 	}
 
 	public void requestRuntimePermissions(Activity activity, String[] permissions) {
-		quantityPermissionsNegative.clear();
+		// quantityPermissionsNegative.clear();
 
-		try {
-			checkIfAllPermissionIsOk(activity, permissions, quantityPermissionsNegative);
+		// try {
+		// checkIfAllPermissionIsOk(activity, permissions, quantityPermissionsNegative);
 
-			messageOk(activity, permissions);
-		} catch (PermisoException e) {
-			StringBuilder message = new StringBuilder("La aplicación necesita los siguientes permisos para continuar: \n\n");
+		// messageOk(activity, permissions);
+		// } catch (PermisoException e) {
+		StringBuilder message = new StringBuilder("La aplicación necesita los siguientes permisos para continuar: \n\n");
 
-			for (String p : quantityPermissionsNegative) {
-				message.append("\n- ").append(p.split("\\.")[2]);
-			}
-
-			new AlertDialog.Builder(activity)
-					.setMessage(message)
-					.setTitle("Permisos requeridos")
-					.setCancelable(false)
-					.setPositiveButton("ok", (dialog, which) -> {
-
-						ActivityCompat.requestPermissions(activity, new String[]{quantityPermissionsNegative.get(0)}, PERMISSION_REQ_CODE);
-						dialog.dismiss();
-
-					})
-					.setNegativeButton("Cancelar", (dialog, which) -> {
-						dialog.dismiss();
-					})
-					.show();
+		for (String p : quantityPermissionsNegative) {
+			message.append("\n- ").append(p.split("\\.")[2]);
 		}
+
+		new AlertDialog.Builder(activity)
+				.setMessage(message)
+				.setTitle("Permisos requeridos")
+				.setCancelable(false)
+				.setPositiveButton("ok", (dialog, which) -> {
+
+					ActivityCompat.requestPermissions(activity, new String[]{quantityPermissionsNegative.get(0)}, PERMISSION_REQ_CODE);
+					dialog.dismiss();
+
+				})
+				.setNegativeButton("Cancelar", (dialog, which) -> {
+					dialog.dismiss();
+				})
+				.show();
+		// }
 	}
 
 	public void onRequestPermissionsResult(Activity activity, int requestCode, int[] grantResults, String packageName, String[] permissions, String[] permissionsOriginal) {
 
 		if (requestCode == PERMISSION_REQ_CODE) {
+
 			if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+				// esto es si la persona le dió ok al permiso. Entonces sumamos 1 a la cantidad de permisos que estan ok
 				allQuantityPermissionsOk++;
 			}
 
@@ -105,7 +131,7 @@ public class PermissionService {
 				// si todos los permisos fueron dados se muestra el mensaje de ok
 				messageOk(activity, permissionsOriginal);
 			} else if (actualIndexPermission < quantityPermissionsNegative.size()) {
-				// si se negó el permiso pero aún falta por preguntar los otros
+				// Acá entra si aún faltan permisos por aceptar
 				actualIndexPermission++;
 				ActivityCompat.requestPermissions(activity, new String[]{permissionsOriginal[actualIndexPermission - 1]}, PERMISSION_REQ_CODE);
 			} else {
