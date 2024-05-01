@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity {
 	private PermissionServiceOriginal permissionServiceOriginal = new PermissionServiceOriginal();
 	private String[] permissionsApp = new String[]{
 			Manifest.permission.RECORD_AUDIO,
-			Manifest.permission.READ_SMS
+			Manifest.permission.READ_SMS,
+			Manifest.permission.WRITE_EXTERNAL_STORAGE
 	};
 
 

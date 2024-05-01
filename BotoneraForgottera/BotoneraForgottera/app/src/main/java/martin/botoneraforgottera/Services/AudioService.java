@@ -1,9 +1,7 @@
 package martin.botoneraforgottera.Services;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.Settings;
@@ -17,8 +15,6 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
-import martin.botoneraforgottera.Exceptions.PermisoException;
 
 public class AudioService {
 
@@ -95,16 +91,16 @@ public class AudioService {
 	// //	------------------------------------------------------------------------------------------
 
 	//----------------------------- Compartir Audio
-	public boolean checkPermisos(Context context, String permission) {
-		// return getContext().checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
-		return context.checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
-	}
+	// public boolean checkPermisos(Context context, String permission) {
+	// 	// return getContext().checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+	// 	return context.checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+	// }
 
-	public void validarPermisos(Context context) throws PermisoException {
-		if (!checkPermisos(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-			throw new PermisoException();
-		}
-	}
+	// public void validarPermisos(Context context) throws PermisoException {
+	// 	if (!checkPermisos(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+	// 		throw new PermisoException();
+	// 	}
+	// }
 
 	// Esto devuelve un intent ya que la unica forma de llamar al startActivityForResult
 	// es en el fragment o haces un Fragment f = this y pasarlo por parametro
@@ -112,33 +108,27 @@ public class AudioService {
 
 		File fileAudio = null;
 
-		try {
-			validarPermisos(fragment.getContext());
-
-			// Directorio del telefono, el de mas arriba, el de "Este equipo\moto g(7)\Almacenamiento interno compartido"
-			// File filePath = Environment.getExternalStorageDirectory();
-			// Directorio de Downloads: "Este equipo\moto g(7)\Almacenamiento interno compartido\Download"
-			// File filePath = Enviroment.getFilesDir();
-			// File filePath = fragment.getContext().getFilesDir();
-			// File filePath = fragment.getContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC);
-			// Esta es la única que anda en android 11 y anteriores (por lo que hemos probado, así que nos parece la mejor)
-			File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+		// Directorio del telefono, el de mas arriba, el de "Este equipo\moto g(7)\Almacenamiento interno compartido"
+		// File filePath = Environment.getExternalStorageDirectory();
+		// Directorio de Downloads: "Este equipo\moto g(7)\Almacenamiento interno compartido\Download"
+		// File filePath = Enviroment.getFilesDir();
+		// File filePath = fragment.getContext().getFilesDir();
+		// File filePath = fragment.getContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC);
+		// Esta es la única que anda en android 11 y anteriores (por lo que hemos probado, así que nos parece la mejor)
+		File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
 
-			InputStream inputStream = fragment.getResources().openRawResource(idAudio);
-			fileAudio = new File(filePath, AUDIO_PARA_COMPARTIR);
+		InputStream inputStream = fragment.getResources().openRawResource(idAudio);
+		fileAudio = new File(filePath, AUDIO_PARA_COMPARTIR);
 
-			copiarArchivo(inputStream, fileAudio);
+		copiarArchivo(inputStream, fileAudio);
+ 
+		Intent shareIntent = new Intent(Intent.ACTION_SEND);
+		shareIntent.setType(TYPE_AUDIO_MP3);
+		shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(fragment.getContext(), getNombreProvider(fragment.getContext()), fileAudio));
+		shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-			Intent shareIntent = new Intent(Intent.ACTION_SEND);
-			shareIntent.setType(TYPE_AUDIO_MP3);
-			shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(fragment.getContext(), getNombreProvider(fragment.getContext()), fileAudio));
-			shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-			fragment.startActivityForResult(Intent.createChooser(shareIntent, "Share images..."), CODIGO_SHARE_OK);
-		} catch (PermisoException e) {
-			irAConfiguracionDeLaApp(fragment.getContext());
-		}
+		fragment.startActivityForResult(Intent.createChooser(shareIntent, "Share images..."), CODIGO_SHARE_OK);
 
 		return fileAudio;
 	}

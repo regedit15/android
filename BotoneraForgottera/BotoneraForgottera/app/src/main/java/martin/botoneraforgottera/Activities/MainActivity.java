@@ -24,6 +24,7 @@ import martin.botoneraforgottera.Fragments.StickersListadoFragment;
 import martin.botoneraforgottera.Fragments.StickersListadoPaquetesFragment;
 import martin.botoneraforgottera.Interfaces.StickerListener;
 import martin.botoneraforgottera.R;
+import martin.botoneraforgottera.Services.PermissionService;
 import martin.botoneraforgottera.Services.RealmService;
 import martin.botoneraforgottera.Services.UtilService;
 import martin.botoneraforgottera.Sticker.StickerPack;
@@ -42,12 +43,18 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 	public NavigationView navigationView;
 	public RealmService realmService = new RealmService();
 	public UtilService utilService = new UtilService();
+	private PermissionService permissionService;
+
+	private String[] permissionsApp = new String[]{
+			Manifest.permission.WRITE_EXTERNAL_STORAGE,
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_main);
+
+		permissionService = new PermissionService(this, getPackageName(), permissionsApp);
 
 		Toolbar myToolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(myToolbar);
@@ -67,10 +74,10 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 				Fragment fragment = null;
 
 				if (menuItem.getItemId() == R.id.it_audios) {
-					fragment = new AudiosFragment(AudiosFragment.TIPO_DEFAULT);
+					fragment = new AudiosFragment(AudiosFragment.TIPO_DEFAULT, permissionService);
 					transaction = true;
 				} else if (menuItem.getItemId() == R.id.it_favoritos) {
-					fragment = new AudiosFragment(AudiosFragment.TIPO_FAVORITO);
+					fragment = new AudiosFragment(AudiosFragment.TIPO_FAVORITO, permissionService);
 					transaction = true;
 				} else if (menuItem.getItemId() == R.id.it_gif) {
 					fragment = new GifFragment();
@@ -89,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 			}
 		});
 
-		cambiarFragment(new AudiosFragment(AudiosFragment.TIPO_DEFAULT), navigationView.getMenu().getItem(0));
+		cambiarFragment(new AudiosFragment(AudiosFragment.TIPO_DEFAULT, permissionService), navigationView.getMenu().getItem(0));
 
 		//	 ---------------------- Se piden permisos
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -155,4 +162,12 @@ public class MainActivity extends AppCompatActivity implements StickerListener {
 		Fragment fragment = new StickersListadoPaquetesFragment(stickerPackList);
 		getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, fragment).commit();
 	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+		permissionService.onRequestPermissionsResult(requestCode, grantResults);
+	}
+
 }
