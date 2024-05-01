@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
 	private PermissionService permissionService;
 	private PermissionServiceOriginal permissionServiceOriginal = new PermissionServiceOriginal();
-	private String[] permissionsOriginal = new String[]{
+	private String[] permissionsApp = new String[]{
 			Manifest.permission.RECORD_AUDIO,
 			Manifest.permission.READ_SMS
 	};
@@ -22,16 +22,16 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		permissionService = new PermissionService(this);
+		permissionService = new PermissionService(this, getPackageName(), permissionsApp);
 
 		findViewById(R.id.buttonRequestPermissions).setOnClickListener(v -> {
 			try {
-				permissionService.checkIfAllPermissionIsOk(this, permissionsOriginal);
+				permissionService.checkIfAllPermissionIsOk();
 
 				findViewById(R.id.buttonRequestPermissions).setVisibility(View.INVISIBLE);
 				findViewById(R.id.textView).setVisibility(View.VISIBLE);
 			} catch (PermisoException e) {
-				// permissionService.requestRuntimePermissions(this, permissionsOriginal);
+				System.out.println("No se continua con la ejecución porque no estan todos los permisos concedidos");
 			}
 
 		});
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-		permissionService.onRequestPermissionsResult(this, requestCode, grantResults, getPackageName(), permissions, permissionsOriginal);
+		permissionService.onRequestPermissionsResult(requestCode, grantResults);
 		// permissionServiceOriginal.onRequestPermissionsResult(this, requestCode, grantResults, getPackageName());
 	}
 
