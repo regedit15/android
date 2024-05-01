@@ -26,7 +26,7 @@ public class AudioService {
 	public String TYPE_PDF = "aplication/pdf";
 	//---------------------------------------------------------
 
-	public static final String AUDIO_PARA_COMPARTIR = "audioBotoneraForgottera.mp3";
+	public static final String AUDIO_PARA_COMPARTIR = "audioBotoneraForgottera222.mp3";
 	public String NOMBRE_FILE_PROVIDER = "myfileprovider";
 	public int CODIGO_SHARE_OK = 1515;
 
@@ -121,8 +121,10 @@ public class AudioService {
 		InputStream inputStream = fragment.getResources().openRawResource(idAudio);
 		fileAudio = new File(filePath, AUDIO_PARA_COMPARTIR);
 
+		eliminarFileSiExiste(fileAudio);
+
 		copiarArchivo(inputStream, fileAudio);
- 
+
 		Intent shareIntent = new Intent(Intent.ACTION_SEND);
 		shareIntent.setType(TYPE_AUDIO_MP3);
 		shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(fragment.getContext(), getNombreProvider(fragment.getContext()), fileAudio));
@@ -161,6 +163,11 @@ public class AudioService {
 	public void eliminarFileSiExiste(File file) {
 		if (file != null && file.exists()) {
 			file.delete();
+			System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("SE ELIMINO EL ARCHIVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+			System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------");
 		}
 	}
 
