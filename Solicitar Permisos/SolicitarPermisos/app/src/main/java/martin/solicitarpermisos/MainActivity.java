@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 				findViewById(R.id.buttonRequestPermissions).setVisibility(View.INVISIBLE);
 				findViewById(R.id.textView).setVisibility(View.VISIBLE);
-			} catch (PermisoException e) {
+			} catch (PermissionException e) {
 				System.out.println("No se continua con la ejecución porque no estan todos los permisos concedidos");
 			}
 

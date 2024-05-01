@@ -57,7 +57,7 @@ public class PermissionService {
 	}
 
 
-	public void checkIfAllPermissionIsOk() throws PermisoException {
+	public void checkIfAllPermissionIsOk() throws PermissionException {
 		permissionsForRequest.clear();
 		int quantityPermissionsOk = 0;
 
@@ -104,7 +104,7 @@ public class PermissionService {
 							dialog.dismiss();
 						}).show();
 			}
-			throw new PermisoException();
+			throw new PermissionException();
 		}
 	}
 
