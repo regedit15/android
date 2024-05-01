@@ -17,6 +17,10 @@
            Issue id: ScopedStorage  More info: https://goo.gle/android-storage-usecases  Vendor: Android Open Source Project
            Contact: https://groups.google.com/g/lint-dev Feedback: https://issuetracker.google.com/issues/new?component=192708-->
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_SMS" />
 

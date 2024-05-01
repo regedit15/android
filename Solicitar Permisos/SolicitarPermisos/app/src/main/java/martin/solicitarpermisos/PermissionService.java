@@ -2,7 +2,10 @@ package martin.solicitarpermisos;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.provider.Settings;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -73,7 +76,7 @@ public class PermissionService {
 				// quantityPermissionsNegativeLocal.add(permission);
 				quantityPermissionsNegative.add(permission);
 			} else {
-				// por aca entran la primera vez
+				// por aca entran la primera vez, cuando nunca se pidió nada
 				// quantityPermissionsNegativeLocal.add(permission);
 				quantityPermissionsNegative.add(permission);
 			}
@@ -137,6 +140,26 @@ public class PermissionService {
 			} else {
 				// si terminó la vuelta de preguntarle a todos los permisos
 				actualIndexPermission = 1;
+				// Toast.makeText(activity, "Usted ha denegado algunos permisos, por favor vaya a la configuracion de la app para darlos", Toast.LENGTH_SHORT).show();
+
+				if (allQuantityPermissionsOk != permissionsOriginal.length) {
+
+					new AlertDialog.Builder(activity)
+							.setMessage("Esta aplicación necesita el permiso de grabación que has rechazado, por favor conceda el permiso llendo a los ajustes")
+							.setCancelable(false)
+							.setPositiveButton("Ir a Settings", (dialog, which) -> {
+
+								activity.startActivity(
+										new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+												.setData(Uri.fromParts("package", packageName, null))
+								);
+								dialog.dismiss();
+							})
+							.setNegativeButton("Cancelar", (dialog, which) -> {
+								dialog.dismiss();
+							}).show();
+				}
+
 			}
 
 		}
