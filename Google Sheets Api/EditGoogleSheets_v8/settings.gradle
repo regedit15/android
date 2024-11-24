@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "EditGoogleSheets_v8"
+rootProject.name = "EditGoogleSheets"
 include ':app'

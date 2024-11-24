@@ -1,4 +1,4 @@
-package martin.editgooglesheets_v8;
+package martin.googlesheetsapi;
 
 import android.os.Bundle;
 
